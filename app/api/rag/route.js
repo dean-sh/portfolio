@@ -19,7 +19,6 @@ const openai = new OpenAI({
 const chatModel = new ChatOpenAI({
   openAIApiKey: process.env.OPENAI_API_KEY,
   modelName: "gpt-4o-mini",
-  temperature: 0.1,
 });
 
 // Initialize Upstash Vector client
