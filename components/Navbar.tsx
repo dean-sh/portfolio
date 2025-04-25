@@ -1,18 +1,18 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/#about' },
-  { name: 'Works', href: '/#works' },
-  { name: 'Skills', href: '/#skills' },
-  { name: 'Resume', href: '/resume' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Home', href: '/', isSection: false },
+  { name: 'About', href: '/#about', isSection: true },
+  { name: 'Works', href: '/#works', isSection: true },
+  { name: 'Skills', href: '/#skills', isSection: true },
+  { name: 'Resume', href: '/resume', isSection: false },
+  { name: 'Contact', href: '/#contact', isSection: true },
 ];
 
 export default function Navbar() {
@@ -20,6 +20,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const observerRefs = useRef<Map<string, IntersectionObserver | null>>(new Map());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,17 +31,78 @@ export default function Navbar() {
     };
 
     handleScroll();
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const isActivePage = (href: string) => {
-    if (href.startsWith('/#') && pathname === '/') {
-      return false;
+  useEffect(() => {
+    if (pathname !== '/') {
+      observerRefs.current.forEach(observer => observer?.disconnect());
+      observerRefs.current.clear();
+      setActiveSection(null);
+      return;
+    }
+
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('id');
+        if (entry.isIntersecting && id) {
+           const rect = entry.boundingClientRect;
+           const viewportHeight = window.innerHeight;
+           const isCentered = rect.top <= viewportHeight * 0.5 && rect.bottom >= viewportHeight * 0.5;
+
+           if (isCentered) {
+             setActiveSection(id);
+           }
+        }
+      });
+    };
+
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0,
+    };
+
+    observerRefs.current.forEach(observer => observer?.disconnect());
+    observerRefs.current.clear();
+
+    navLinks.forEach((link) => {
+      if (link.isSection && link.href.startsWith('/#')) {
+        const sectionId = link.href.substring(2);
+        const sectionElement = document.getElementById(sectionId);
+
+        if (sectionElement) {
+          const observer = new IntersectionObserver(observerCallback, observerOptions);
+          observer.observe(sectionElement);
+          observerRefs.current.set(sectionId, observer);
+        } else {
+          console.warn(`Navbar: Section element with ID "${sectionId}" not found.`);
+        }
+      }
+    });
+
+    return () => {
+      observerRefs.current.forEach(observer => observer?.disconnect());
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    if (pathname === '/' && isHeroVisible) {
+      setActiveSection(null);
+    }
+  }, [isHeroVisible, pathname]);
+
+  const isActivePage = (href: string, isSection?: boolean) => {
+    if (isSection && href.startsWith('/#') && pathname === '/') {
+       const sectionId = href.substring(2);
+       return sectionId === activeSection && !isHeroVisible;
+    }
+    if (href === '/' && pathname === '/') {
+        return activeSection === null || isHeroVisible;
     }
     return href === pathname;
   };
@@ -75,7 +138,7 @@ export default function Navbar() {
         {/* Desktop navigation */}
         <nav className="hidden md:flex space-x-8">
           {navLinks.map((link, index) => {
-            const isActive = isActivePage(link.href);
+            const isActive = isActivePage(link.href, link.isSection);
               
             return (
               <motion.div
@@ -136,7 +199,7 @@ export default function Navbar() {
           >
             <div className="py-4 px-6 space-y-3">
               {navLinks.map((link, index) => {
-                const isActive = isActivePage(link.href);
+                const isActive = isActivePage(link.href, link.isSection);
                   
                 return (
                   <motion.div
