@@ -1,0 +1,155 @@
+import { Icon } from "astro-icon";
+
+<style>
+  /* Add some basic styling for the RAG components */
+  #rag-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid var(--theme-divider);
+    border-radius: 0.75rem;
+    background-color: var(--theme-surface-1);
+  }
+
+  #rag-container h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  #rag-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #rag-query {
+    flex-grow: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--theme-divider);
+    border-radius: 0.375rem;
+    background-color: var(--theme-surface-2);
+    color: var(--theme-text-1);
+  }
+
+  #rag-submit {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--theme-primary);
+    color: var(--theme-on-primary);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  #rag-submit:hover {
+    background-color: var(--theme-primary-hover);
+  }
+
+  #rag-response {
+    min-height: 50px; /* Placeholder height */
+    padding: 0.75rem;
+    border: 1px solid var(--theme-divider);
+    border-radius: 0.375rem;
+    background-color: var(--theme-surface-2);
+    white-space: pre-wrap; /* Preserve whitespace and newlines */
+    font-size: 0.9rem;
+    color: var(--theme-text-2);
+  }
+
+   #rag-response.loading {
+        color: var(--theme-text-3);
+        font-style: italic;
+   }
+
+   #rag-response.error {
+        color: var(--theme-error);
+        font-weight: 500;
+   }
+</style>
+
+<section class="hero my-24">
+  <div class="container">
+    <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
+      <div class="flex flex-col items-center gap-8 md:items-start">
+        <h1 class="text-center text-5xl font-bold md:text-left lg:text-6xl">
+          Hey, I'm <span class="text-gradient">Dean</span>.
+        </h1>
+        <p class="text-center text-lg text-muted md:text-left">
+          I'm a student software engineer based in Ireland. I am proficient in a variety
+          of technologies related to web development and machine learning.
+        </p>
+        <div class="flex gap-3">
+          <a href="https://github.com/deanglavina" class="social-link">
+            <span class="sr-only">GitHub</span>
+            <Icon name="uil:github" />
+          </a>
+          <a href="https://linkedin.com/in/deanglavina" class="social-link">
+            <span class="sr-only">LinkedIn</span>
+            <Icon name="uil:linkedin" />
+          </a>
+        </div>
+      </div>
+      <!-- RAG Feature Container -->
+      <div id="rag-container">
+        <h3>Interact with my data (CV, Website Content)</h3>
+         <form id="rag-form">
+              <input
+                id="rag-query"
+                type="text"
+                placeholder="Ask about my experience, projects, etc."
+                required
+              />
+              <button id="rag-submit" type="submit">Ask</button>
+            </form>
+        <div id="rag-response" aria-live="polite">Your answer will appear here...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const ragForm = document.getElementById('rag-form');
+  const ragQueryInput = document.getElementById('rag-query');
+  const ragResponseArea = document.getElementById('rag-response');
+  const ragSubmitButton = document.getElementById('rag-submit');
+
+  ragForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const query = ragQueryInput.value.trim();
+    if (!query) return;
+
+    // Provide visual feedback
+    ragResponseArea.textContent = 'Thinking...';
+    ragResponseArea.className = 'loading'; // Use class for styling
+    ragSubmitButton.disabled = true;
+    ragQueryInput.disabled = true;
+
+    try {
+      const response = await fetch('/api/rag', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ detail: 'Unknown error occurred' })); // Catch potential JSON parse errors
+        throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      ragResponseArea.textContent = data.answer || 'No answer received.';
+      ragResponseArea.className = ''; // Reset class
+    } catch (error) {
+      console.error('RAG API call failed:', error);
+      ragResponseArea.textContent = `Error: ${error.message}`;
+      ragResponseArea.className = 'error'; // Use class for styling
+    } finally {
+        // Re-enable form
+         ragSubmitButton.disabled = false;
+         ragQueryInput.disabled = false;
+    }
+  });
+</script> 

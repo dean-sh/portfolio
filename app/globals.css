@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 125%; /* Increase base font size from 16px to 20px (125%) */
+  }
+
+  body {
+    @apply bg-gradient-to-b from-bg-start to-bg-end text-primary min-h-screen;
+  }
+  
+  p {
+    @apply text-secondary; /* Default paragraph color */
+  }
+  
+  ::selection {
+    @apply bg-accent/20 text-accent;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-8xl mx-auto px-6 sm:px-8 lg:px-12; /* Using larger max-width */
+  }
+  
+  /* Modern button styling */
+  .btn {
+    @apply inline-flex items-center justify-center px-7 py-3.5 rounded-md text-base font-medium 
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 
+           focus:ring-accent disabled:opacity-50 tracking-wide;
+  }
+  
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-dark shadow-sm hover:shadow-md 
+           hover:translate-y-[-1px];
+  }
+  
+  .btn-secondary {
+    @apply bg-bg-light text-secondary border border-slate-200 hover:bg-slate-100 
+           hover:text-primary hover:border-slate-300 shadow-sm hover:shadow-md
+           hover:translate-y-[-1px];
+  }
+  
+  .btn-small {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .section {
+    @apply py-20;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300;
+  }
+}
+
+/* Removed unused animations */
+/* Animation for code typing cursor
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 0.8s infinite;
+}
+
+// Gradient text animation
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-purple-600;
+  background-size: 200% 200%;
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// Horizontal gradient animation
+.animate-gradient-x {
+  background-size: 300% 100%;
+  animation: gradientX 8s ease infinite;
+}
+
+@keyframes gradientX {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// Subtle float animation
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+*/
+
+/* Removed commented-out enhanced button styles */
+
+/* Add styles for the animated gradient */
+.animate-gradient-flow {
+  background-size: 200% 200%; /* Needs size larger than 100% for position animation */
+}
+
+/* Styles for Vanta container */
+#vanta-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute; /* Already set via className, but good for clarity */
+  top: 0;
+  left: 0;
+  z-index: -1; /* Already set via className, but good for clarity */
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  /* Define spotlight properties as CSS variables */
+  --spotlight-size: 250px; /* Size of the spotlight gradient */
+  --spotlight-color: rgba(255, 255, 255, 0.1); /* Color of the spotlight (light with low opacity) */
+}
+
+/* === RAG Container Spotlight Border Effect === */
+.rag-container-spotlight-border { /* Renamed class for clarity */
+  position: relative; 
+  overflow: hidden; 
+}
+
+.rag-container-spotlight-border::before {
+  content: '';
+  position: absolute;
+  /* Positioned using inset and translate for centering based on variables */
+  left: var(--spotlight-x, 50%); /* Default to center if var not set */
+  top: var(--spotlight-y, 50%);
+  /* Make it cover the parent, adjusted by transform later */
+  width: var(--spotlight-size);
+  height: var(--spotlight-size);
+  /* Center the gradient origin */
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    var(--spotlight-color) 0%,
+    rgba(255, 255, 255, 0) 70% /* Fade to transparent */
+  );
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-in-out; /* Smooth fade */
+  z-index: 0; /* Place it behind the content but above the container background */
+  pointer-events: none; /* Make sure it doesn't interfere with mouse events on content */
+  border-radius: 50%; /* Keep it circular */
+}
+
+/* Show the spotlight on hover of the parent container */
+.rag-container-spotlight-border:hover::before {
+  opacity: 1;
+}
+
+/* === End RAG Container Spotlight Border Effect === */
