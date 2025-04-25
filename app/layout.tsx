@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VantaScripts from '@/components/VantaScripts';
+import { Analytics } from "@vercel/analytics/react";
 
 const outfit = Outfit({ 
   subsets: ['latin'], 
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Footer />
 
         <VantaScripts />
+        <Analytics />
       </body>
     </html>
   );
