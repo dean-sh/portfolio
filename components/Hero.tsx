@@ -652,7 +652,7 @@ export default function Hero() {
                                   : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 rounded-tl-sm border border-gray-200'
                               }`}
                             >
-                              <p className={`text-xs xs:text-sm whitespace-pre-wrap font-medium leading-relaxed ${
+                              <p className={`text-sm sm:text-base whitespace-pre-wrap font-medium leading-relaxed ${
                                 message.role === 'user' ? 'text-white' : ''
                               }`}>{message.content}</p>
                               <div className={`text-xs mt-1.5 flex items-center ${
