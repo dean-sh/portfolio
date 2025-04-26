@@ -29,6 +29,7 @@ const index = new Index({
 
 const CONTEXT_SCORE_THRESHOLD = 0.70; // Minimum similarity score for context chunks
 const MAX_CONTEXT_CHUNKS = 5; // Number of context chunks to retrieve initially
+const MAX_TOTAL_CHUNKS = 5; // Maximum total chunks to use for final response
 
 // Function to query the vector database
 async function queryVectorStore(query, topK = MAX_CONTEXT_CHUNKS) {
@@ -68,10 +69,10 @@ export async function POST(req) {
     // Create a Langchain prompt template for the first response
     const responsePrompt = ChatPromptTemplate.fromMessages([
       ["system", `You are Dean Shabi's digital twin, answering questions about Dean based on provided context.
-- Respond with energy and professional enthusiasm, highlighting Dean's strengths and why he would be an excellent hire.
+- Be concise and direct in your responses.
+- Respond with professional enthusiasm, highlighting Dean's key strengths.
 - Your answer MUST be based *only* on the information contained within the provided text context.
 - Frame Dean's experiences and skills positively, emphasizing concrete achievements.
-- Be concise but also positive.
 - If you CANNOT answer fully based on the provided context, respond with "NEED_MORE_INFORMATION" followed by what specifically you need to search for.
 - DO NOT make up information if it's not in the context.`],
       ...formattedConversation,
@@ -82,7 +83,7 @@ export async function POST(req) {
 
 Question: {query}
 
-Answer (based only on the context above, maintaining professional enthusiasm):`]
+Answer (based only on the context above, keep responses brief and focused):`]
     ]);
 
     // Create chain for initial answer attempt
@@ -114,7 +115,7 @@ Answer (based only on the context above, maintaining professional enthusiasm):`]
         
 Additional context needed: ${searchQuery}
 
-Create 3 specific, targeted search queries related to this information need. Each query should be different and target different aspects of the information need. Respond with ONLY the queries, one per line.`]
+Create 2 specific, targeted search queries related to this information need. Each query should be different and target different aspects of the information need. Respond with ONLY the queries, one per line.`]
       ]);
       
       // Create chain for search query refinement
@@ -126,35 +127,37 @@ Create 3 specific, targeted search queries related to this information need. Eac
       
       // Get refined search queries
       const refinedQueries = await searchRefinerChain.invoke({});
-      const queryList = refinedQueries.split('\n').filter(q => q.trim()).slice(0, 3);
+      const queryList = refinedQueries.split('\n').filter(q => q.trim()).slice(0, 2);
       
       console.log("Refined search queries:", queryList);
       
       // Perform multiple searches with refined queries
-      const additionalContextPromises = queryList.map(q => queryVectorStore(q, 3));
+      const additionalContextPromises = queryList.map(q => queryVectorStore(q, 2));
       const additionalContextResults = await Promise.all(additionalContextPromises);
       
-      // Combine all results, removing duplicates
+      // Combine all results, removing duplicates, but limit to MAX_TOTAL_CHUNKS
       const seenContent = new Set(initialContext);
-      const allContext = [...initialContext];
+      let allContext = [...initialContext];
       
-      additionalContextResults.flat().forEach(content => {
-        if (!seenContent.has(content)) {
-          seenContent.add(content);
-          allContext.push(content);
+      for (const chunk of additionalContextResults.flat()) {
+        if (!seenContent.has(chunk) && allContext.length < MAX_TOTAL_CHUNKS) {
+          seenContent.add(chunk);
+          allContext.push(chunk);
         }
-      });
+      }
       
-      console.log(`Enhanced context with ${allContext.length} chunks`);
+      // Ensure we're not exceeding MAX_TOTAL_CHUNKS
+      allContext = allContext.slice(0, MAX_TOTAL_CHUNKS);
+      
+      console.log(`Enhanced context with ${allContext.length} chunks (limited to ${MAX_TOTAL_CHUNKS} max)`);
       
       // Create final answer prompt with enhanced context
       const finalAnswerPrompt = ChatPromptTemplate.fromMessages([
         ["system", `You are Dean Shabi's digital twin, answering questions about Dean based on provided context.
-- Respond with energy and professional enthusiasm, highlighting Dean's strengths and why he would be an excellent hire.
+- Be concise and direct, limiting responses to 2-3 sentences when possible.
+- Respond with professional enthusiasm, highlighting Dean's key strengths.
 - Your answer MUST be based *only* on the information contained within the provided text context.
 - Frame Dean's experiences and skills positively, emphasizing concrete achievements.
-- When discussing projects or experience, mention the impact and value Dean brought.
-- Be concise but also positive.
 - Remember you're having a multi-turn conversation with the user, so refer back to previous exchanges when relevant.`],
         ...formattedConversation,
         ["user", `Enhanced context documents (searched specifically for your question):
@@ -164,7 +167,7 @@ Create 3 specific, targeted search queries related to this information need. Eac
 
 Question: {query}
 
-Answer (based only on the context above):`]
+Answer (based only on the context above, keep responses brief and focused):`]
       ]);
       
       // Create chain for final answer

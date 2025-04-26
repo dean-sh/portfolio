@@ -5,6 +5,7 @@ import Link from 'next/link';
 import PopupLink from './PopupLink';
 import { useEffect, useState, useRef, FormEvent, useCallback, MouseEvent } from 'react';
 import { SpotlightCard } from './SpotlightCard';
+import ClientEmoji from './ClientEmoji';
 
 // Declare VANTA globally or import if types are available
 declare global {
@@ -68,6 +69,7 @@ export default function Hero() {
   // --- End Cache State ---
 
   const ragContainerRef = useRef<HTMLDivElement>(null); // Ref for the RAG container
+  const chatAreaRef = useRef<HTMLDivElement>(null); // Ref for the scrollable chat area
 
   // Determine initial theme based on common dark mode patterns
   /*
@@ -247,6 +249,45 @@ export default function Hero() {
   }, [responseCache]); // Run whenever responseCache changes
   // --- End localStorage save effect ---
 
+  // --- Effect to scroll chat to latest user message, positioning it at the top --- 
+  useEffect(() => {
+    const chatArea = chatAreaRef.current;
+    if (!chatArea || conversationHistory.length === 0) return;
+    
+    // Small timeout to ensure DOM is updated
+    setTimeout(() => {
+      const currentChatArea = chatAreaRef.current;
+      if (!currentChatArea) return;
+      
+      // Get all message elements in the chat area
+      const messages = currentChatArea.querySelectorAll('[id^="message-"]');
+      
+      if (messages.length === 0) return;
+      
+      // Convert NodeList to Array for easier processing
+      const messagesArray = Array.from(messages);
+      
+      // Find the latest user message (starting from the end)
+      for (let i = messagesArray.length - 1; i >= 0; i--) {
+        const messageEl = messagesArray[i];
+        if (messageEl.getAttribute('data-role') === 'user') {
+          // Get the position of the message relative to the chat container
+          const containerTop = currentChatArea.getBoundingClientRect().top;
+          const messageTop = messageEl.getBoundingClientRect().top;
+          const offsetTop = messageTop - containerTop + currentChatArea.scrollTop;
+          
+          // Scroll the chat container (not the page) to show the message at the top
+          currentChatArea.scrollTop = offsetTop - 10; // 10px padding from top
+          return;
+        }
+      }
+      
+      // Fallback: if no user message found, scroll to bottom of chat
+      currentChatArea.scrollTop = currentChatArea.scrollHeight;
+    }, 100); // Small delay to ensure DOM updates are complete
+  }, [conversationHistory]); // Trigger when conversation history changes
+  // --- End scroll effect ---
+
   // --- RAG Fetch Logic (Multi-turn) ---
   const fetchRagResponse = useCallback(async (query: string) => {
     if (!query || isRagLoading) return;
@@ -409,7 +450,7 @@ export default function Hero() {
       <div className="container relative z-10">
         {/* Wrap existing content and RAG section in a container if needed for layout */}
         {/* For example, using grid or flex */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Existing Hero Content Column */}
           <motion.div 
             ref={containerRef}
@@ -523,16 +564,17 @@ export default function Hero() {
               <div className="absolute inset-px rounded-[calc(var(--radius)-1px)] bg-white/80 backdrop-blur-sm"></div>
               
               {/* RAG Content */}
-              <div className="relative z-10 p-4">
-                <h3 className="text-base font-semibold mb-2 text-gray-900">Chat with Dean's Digital Twin</h3>
+              <div className="relative z-10 p-2 xs:p-3 sm:p-4">
+                <h3 className="text-sm xs:text-base font-semibold mb-1 xs:mb-2 text-gray-900">Chat with Dean's Digital Twin</h3>
                 
                 {/* WhatsApp-style chat container */}
-                <div className="flex flex-col h-[400px]">
+                <div className="flex flex-col h-[400px] xs:h-[430px] sm:h-[450px] md:h-[480px] lg:h-[500px]">
                   {/* Chat messages area */}
                 <div 
+                  ref={chatAreaRef}
                   id="rag-response-area" 
                   aria-live="polite" 
-                    className="flex-grow overflow-y-auto p-3 border border-gray-200 rounded-t-md bg-gray-50/80 backdrop-blur-sm shadow-inner transition-colors duration-200 ease-in-out"
+                    className={`flex-grow ${conversationHistory.length > 0 ? 'overflow-y-auto' : 'overflow-hidden'} p-2 xs:p-3 border border-gray-200 rounded-t-md bg-gray-50/80 backdrop-blur-sm shadow-inner transition-colors duration-200 ease-in-out`}
                   >
                     {/* Conversation header with clear button */}
                     {conversationHistory.length > 0 && (
@@ -548,6 +590,7 @@ export default function Hero() {
                     )}
                     
                   <AnimatePresence mode="wait">
+                      {/* Initial Loading indicator - REMAINS INSIDE scrollable area */}
                       {isRagLoading && conversationHistory.length === 0 && (
                       <motion.div
                         key="loading"
@@ -565,7 +608,7 @@ export default function Hero() {
                       </motion.div>
                     )}
                       
-                      {/* Display error if no conversation and error exists */}
+                      {/* Initial Error display - REMAINS INSIDE scrollable area */}
                       {ragError && conversationHistory.length === 0 && (
                         <motion.div
                         key="error"
@@ -581,57 +624,21 @@ export default function Hero() {
                       </motion.div>
                     )}
                       
-                      {/* Conversation Messages */}
-                      <div className="space-y-2">
-                        {/* Empty state with suggestions - shown only when conversation is empty */}
-                        {!isRagLoading && !ragError && conversationHistory.length === 0 && (
-                          <motion.div 
-                            key="placeholder"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="flex flex-col items-center justify-start py-2 text-center space-y-3"
-                          >
-                            <div>
-                              <div className="text-3xl mb-2">👋</div>
-                              <div className="inline-block mb-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 shadow-sm">
-                                <p className="text-gray-700 text-sm font-medium">
-                                  Hi! I'm Dean's digital twin! Ask me anything about his skills, projects, or experience!
-                                </p>
-                              </div>
-                            </div>
-                            
-                            {/* Suggestions inside the chat area */}
-                            <div className="w-full max-w-[90%] mx-auto">
-                              <p className="text-xs font-medium text-gray-500 mb-2 text-left">Try asking:</p>
-                              <div className="flex flex-wrap gap-1.5 justify-center">
-                                {suggestedPrompts.map((prompt, index) => (
-                                  <button
-                                    key={index}
-                                    type="button" 
-                                    onClick={() => handleSuggestionClick(prompt)}
-                                    disabled={isRagLoading}
-                                    className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 rounded-full hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 hover:border-blue-200 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 ease-in-out border border-gray-200 shadow-sm"
-                                  >
-                                    {prompt}
-                                  </button>
-                                ))}
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
-                        
-                        {/* Actual conversation messages */}
-                        {conversationHistory.map((message, index) => (
-                          <motion.div 
-                            key={`message-${index}`}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: 0.1 * (index % 3) }}
-                            className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} my-2`}
-                          >
-                            {/* Bot avatar for assistant messages */}
+                      {/* Conversation Messages - REMAINS INSIDE scrollable area */}
+                      {/* Only render messages if history is not empty */}
+                      {conversationHistory.length > 0 && (
+                        <div className="space-y-2"> 
+                          {conversationHistory.map((message, index) => (
+                            <motion.div 
+                              key={`message-${index}`}
+                              id={`message-${index}`}
+                              data-role={message.role}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.3, delay: 0.1 * (index % 3) }}
+                              className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} my-2`}
+                            >
+                              {/* Bot avatar for assistant messages */}
                             {message.role === 'assistant' && (
                               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-violet-500 flex items-center justify-center text-white text-xs mr-1.5 shadow-md flex-shrink-0">
                                 D
@@ -639,13 +646,13 @@ export default function Hero() {
                             )}
                             
                             <div 
-                              className={`max-w-[85%] px-4 py-2.5 rounded-2xl shadow-sm ${
+                              className={`max-w-[80%] xs:max-w-[85%] px-3 xs:px-4 py-2 xs:py-2.5 rounded-2xl shadow-sm ${
                                 message.role === 'user' 
                                   ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-tr-sm border border-blue-500/20' 
                                   : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 rounded-tl-sm border border-gray-200'
                               }`}
                             >
-                              <p className={`text-sm whitespace-pre-wrap font-medium leading-relaxed ${
+                              <p className={`text-xs xs:text-sm whitespace-pre-wrap font-medium leading-relaxed ${
                                 message.role === 'user' ? 'text-white' : ''
                               }`}>{message.content}</p>
                               <div className={`text-xs mt-1.5 flex items-center ${
@@ -670,43 +677,92 @@ export default function Hero() {
                                 U
                               </div>
                             )}
-                          </motion.div>
-                        ))}
+                            </motion.div>
+                          ))}
                         
-                        {/* Loading indicator for ongoing response */}
-                        {isRagLoading && conversationHistory.length > 0 && (
-                          <motion.div 
-                            key="ongoing-loading"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="flex justify-start my-1.5"
-                          >
-                            {/* Bot avatar for loading state */}
+                          {/* Loading indicator for ongoing response - REMAINS INSIDE scrollable area */}
+                          {isRagLoading && ( // Show ongoing loading only when loading is true
+                            <motion.div 
+                              key="ongoing-loading"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              className="flex justify-start my-1.5"
+                            >
+                              {/* Bot avatar for loading state */}
                             <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-400 to-violet-500 flex items-center justify-center text-white text-xs mr-1.5 shadow-md flex-shrink-0">
                               D
                             </div>
                             
-                            <div className="bg-gradient-to-r from-gray-100 to-gray-200 px-4 py-2.5 rounded-2xl rounded-tl-sm shadow-sm border border-gray-200">
+                            <div className="bg-gradient-to-r from-gray-100 to-gray-200 px-3 xs:px-4 py-2 xs:py-2.5 rounded-2xl rounded-tl-sm shadow-sm border border-gray-200">
                               <div className="flex flex-col">
                                 <div className="flex items-center space-x-1.5">
-                                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                  <div className="w-1.5 xs:w-2 h-1.5 xs:h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                  <div className="w-1.5 xs:w-2 h-1.5 xs:h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                  <div className="w-1.5 xs:w-2 h-1.5 xs:h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '300ms' }}></div>
                                 </div>
-                                <div className="text-xs text-gray-600 mt-1.5 font-medium max-w-[220px]">
+                                <div className="text-xs text-gray-600 mt-1.5 font-medium max-w-[180px] xs:max-w-[220px]">
                                   Searching for information...
                                 </div>
                               </div>
                             </div>
-                          </motion.div>
-                        )}
-                      </div>
+                            </motion.div>
+                          )}
+                        </div> // End space-y-2 for messages
+                      )} 
+
+                      {/* Empty state with suggestions - MOVED BACK INSIDE scrollable area */}
+                      {!isRagLoading && !ragError && conversationHistory.length === 0 && (
+                        <motion.div 
+                          key="placeholder"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="flex flex-col items-center justify-start h-full pt-0.5 pb-1 xs:py-2 text-center space-y-1 xs:space-y-2"
+                        >
+                          <div>
+                            <div className="text-xl mb-1 flex justify-center">
+                              <ClientEmoji unified="1f44b" />
+                            </div>
+                            <div className="inline-block mb-1 px-2 py-1 xs:px-3 xs:py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 shadow-sm">
+                              <p className="text-gray-700 text-xs font-medium">
+                                Hi! I'm Dean's digital twin! Ask me anything!
+                              </p>
+                            </div>
+                          </div>
+                          
+                          {/* Suggestions inside the chat area */}
+                          <div className="w-full max-w-[98%] mx-auto mt-0.5">
+                            <p className="text-xs font-medium text-gray-500 mb-0.5 text-left">Try asking:</p>
+                            <div className="grid grid-cols-1 gap-1 xs:flex xs:flex-col xs:gap-1 sm:grid sm:grid-cols-2 sm:gap-1">
+                              {suggestedPrompts.map((prompt, index) => (
+                                <button
+                                  key={index}
+                                  type="button" 
+                                  onClick={() => handleSuggestionClick(prompt)}
+                                  disabled={isRagLoading}
+                                  className="w-full px-2 py-1 sm:px-2 sm:py-1 text-xs font-medium bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 hover:border-blue-200 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 ease-in-out border border-gray-200 shadow-sm text-left overflow-hidden text-ellipsis flex items-center"
+                                >
+                                  <span className="inline-flex xs:hidden items-center justify-center w-3 h-3 mr-1 rounded-full bg-blue-100 text-blue-500 flex-shrink-0">
+                                    <svg className="w-2 h-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+                                    </svg>
+                                  </span>
+                                  {/* Show bullet only on non-mobile */}
+                                  <span className="mr-1 text-blue-500 hidden sm:inline">•</span> 
+                                  <span className="flex-1 text-xs">{prompt}</span>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
                     </AnimatePresence>
-                  </div>
-                  
+                  </div> {/* End #rag-response-area */}
+
                   {/* Input form at bottom */}
-                  <form onSubmit={handleRagSubmit} className="mt-2"> 
-                    <div className="flex items-center gap-2 border border-gray-200 rounded-b-md p-2 bg-white/90 backdrop-blur-sm"> 
+                  <form onSubmit={handleRagSubmit} className="mt-1 xs:mt-2 flex-shrink-0"> {/* Added flex-shrink-0 */}
+                    <div className="flex items-center gap-1 xs:gap-2 border border-gray-200 rounded-b-md p-2 xs:p-3 bg-white/90 backdrop-blur-sm"> 
                       <input
                         id="rag-query"
                         type="text"
@@ -715,13 +771,13 @@ export default function Hero() {
                         placeholder="Message Dean's digital twin..."
                         required
                         disabled={isRagLoading}
-                        className="flex-grow px-4 py-2.5 rounded-full bg-gray-100/80 text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white border-none transition-all duration-200 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed shadow-inner"
+                        className="flex-grow px-3 py-2 xs:px-4 xs:py-2.5 rounded-full bg-gray-100/80 text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white border-none transition-all duration-200 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed shadow-inner text-sm"
                       />
                       <button 
                         id="rag-submit"
                         type="submit" 
                         disabled={isRagLoading}
-                        className="p-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center transition-all duration-200 ease-in-out shadow-md"
+                        className="min-w-[44px] min-h-[44px] p-2.5 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center transition-all duration-200 ease-in-out shadow-md"
                         aria-label="Send message"
                       >
                         {isRagLoading ? (
@@ -737,7 +793,7 @@ export default function Hero() {
                       </button>
                     </div>
                   </form>
-                </div>
+                </div> {/* End WhatsApp-style chat container */}
               </div>
             </SpotlightCard>
           </motion.div>
