@@ -25,7 +25,7 @@ const RAG_CACHE_KEY = 'ragResponseCache';
 
 // Blinking Cursor Component
 const BlinkingCursor = () => (
-  <span className="inline-block w-1 h-4 ml-1 bg-gray-800 dark:bg-gray-200 animate-pulse"></span>
+  <span className="inline-block w-1 h-4 ml-1 bg-gray-800 animate-pulse"></span>
 );
 
 export default function Hero() {
@@ -520,11 +520,11 @@ export default function Hero() {
               className="relative w-full rounded-[--radius] p-0 shadow-xl [--radius:theme(borderRadius.lg)]"
             >
               {/* Background layer */}
-              <div className="absolute inset-px rounded-[calc(var(--radius)-1px)] bg-white/80 dark:bg-gray-800/90 backdrop-blur-sm"></div>
+              <div className="absolute inset-px rounded-[calc(var(--radius)-1px)] bg-white/80 backdrop-blur-sm"></div>
               
               {/* RAG Content */}
               <div className="relative z-10 p-4">
-                <h3 className="text-base font-semibold mb-2 text-gray-900 dark:text-gray-100">Chat with Dean's Digital Twin</h3>
+                <h3 className="text-base font-semibold mb-2 text-gray-900">Chat with Dean's Digital Twin</h3>
                 
                 {/* WhatsApp-style chat container */}
                 <div className="flex flex-col h-[400px]">
@@ -532,15 +532,15 @@ export default function Hero() {
                 <div 
                   id="rag-response-area" 
                   aria-live="polite" 
-                    className="flex-grow overflow-y-auto p-3 border border-gray-200 dark:border-gray-600/80 rounded-t-md bg-gray-50/80 dark:bg-gray-700/60 backdrop-blur-sm shadow-inner transition-colors duration-200 ease-in-out"
+                    className="flex-grow overflow-y-auto p-3 border border-gray-200 rounded-t-md bg-gray-50/80 backdrop-blur-sm shadow-inner transition-colors duration-200 ease-in-out"
                   >
                     {/* Conversation header with clear button */}
                     {conversationHistory.length > 0 && (
-                      <div className="flex justify-between items-center mb-2 pb-1 border-b border-gray-200 dark:border-gray-600/50">
-                        <h4 className="text-xs font-medium text-gray-500 dark:text-gray-400">Conversation</h4>
+                      <div className="flex justify-between items-center mb-2 pb-1 border-b border-gray-200">
+                        <h4 className="text-xs font-medium text-gray-500">Conversation</h4>
                         <button 
                           onClick={clearConversation}
-                          className="text-xs text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400 transition-colors"
+                          className="text-xs text-gray-500 hover:text-red-500 transition-colors"
                         >
                           Clear chat
                         </button>
@@ -555,7 +555,7 @@ export default function Hero() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="flex items-center justify-center text-gray-500 dark:text-gray-400 text-sm italic"
+                        className="flex items-center justify-center text-gray-500 text-sm italic"
                       >
                         <svg className="animate-spin h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -575,7 +575,7 @@ export default function Hero() {
                         transition={{ duration: 0.3 }}
                           className="text-center py-4"
                       >
-                          <p className="text-red-600 dark:text-red-400 font-medium">
+                          <p className="text-red-600 font-medium">
                         Error: {ragError}
                           </p>
                       </motion.div>
@@ -595,8 +595,8 @@ export default function Hero() {
                           >
                             <div>
                               <div className="text-3xl mb-2">👋</div>
-                              <div className="inline-block mb-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 rounded-lg border border-blue-100 dark:border-blue-800/30 shadow-sm">
-                                <p className="text-gray-700 dark:text-gray-200 text-sm font-medium">
+                              <div className="inline-block mb-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 shadow-sm">
+                                <p className="text-gray-700 text-sm font-medium">
                                   Hi! I'm Dean's digital twin! Ask me anything about his skills, projects, or experience!
                                 </p>
                               </div>
@@ -604,7 +604,7 @@ export default function Hero() {
                             
                             {/* Suggestions inside the chat area */}
                             <div className="w-full max-w-[90%] mx-auto">
-                              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2 text-left">Try asking:</p>
+                              <p className="text-xs font-medium text-gray-500 mb-2 text-left">Try asking:</p>
                               <div className="flex flex-wrap gap-1.5 justify-center">
                                 {suggestedPrompts.map((prompt, index) => (
                                   <button
@@ -612,7 +612,7 @@ export default function Hero() {
                                     type="button" 
                                     onClick={() => handleSuggestionClick(prompt)}
                                     disabled={isRagLoading}
-                                    className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:from-blue-50 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:to-blue-800/30 hover:text-blue-600 dark:hover:text-blue-300 hover:border-blue-200 dark:hover:border-blue-700/50 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 ease-in-out border border-gray-200 dark:border-gray-600/40 shadow-sm"
+                                    className="px-3 py-1.5 text-xs font-medium bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 rounded-full hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 hover:border-blue-200 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 ease-in-out border border-gray-200 shadow-sm"
                                   >
                                     {prompt}
                                   </button>
@@ -642,7 +642,7 @@ export default function Hero() {
                               className={`max-w-[85%] px-4 py-2.5 rounded-2xl shadow-sm ${
                                 message.role === 'user' 
                                   ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-tr-sm border border-blue-500/20' 
-                                  : 'bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-800 dark:text-gray-100 rounded-tl-sm border border-gray-200 dark:border-gray-600/30'
+                                  : 'bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 rounded-tl-sm border border-gray-200'
                               }`}
                             >
                               <p className={`text-sm whitespace-pre-wrap font-medium leading-relaxed ${
@@ -651,7 +651,7 @@ export default function Hero() {
                               <div className={`text-xs mt-1.5 flex items-center ${
                                 message.role === 'user' 
                                   ? 'text-white/90' 
-                                  : 'text-gray-500 dark:text-gray-400'
+                                  : 'text-gray-500'
                               }`}>
                                 {new Date(message.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
                                 
@@ -686,14 +686,14 @@ export default function Hero() {
                               D
                             </div>
                             
-                            <div className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 px-4 py-2.5 rounded-2xl rounded-tl-sm shadow-sm border border-gray-200 dark:border-gray-600/30">
+                            <div className="bg-gradient-to-r from-gray-100 to-gray-200 px-4 py-2.5 rounded-2xl rounded-tl-sm shadow-sm border border-gray-200">
                               <div className="flex flex-col">
                                 <div className="flex items-center space-x-1.5">
-                                  <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400 animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                                  <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400 animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                                  <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-400 animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                                  <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '300ms' }}></div>
                                 </div>
-                                <div className="text-xs text-gray-600 dark:text-gray-300 mt-1.5 font-medium max-w-[220px]">
+                                <div className="text-xs text-gray-600 mt-1.5 font-medium max-w-[220px]">
                                   Searching for information...
                                 </div>
                               </div>
@@ -706,7 +706,7 @@ export default function Hero() {
                   
                   {/* Input form at bottom */}
                   <form onSubmit={handleRagSubmit} className="mt-2"> 
-                    <div className="flex items-center gap-2 border border-gray-200 dark:border-gray-600/80 rounded-b-md p-2 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm"> 
+                    <div className="flex items-center gap-2 border border-gray-200 rounded-b-md p-2 bg-white/90 backdrop-blur-sm"> 
                       <input
                         id="rag-query"
                         type="text"
@@ -715,7 +715,7 @@ export default function Hero() {
                         placeholder="Message Dean's digital twin..."
                         required
                         disabled={isRagLoading}
-                        className="flex-grow px-4 py-2.5 rounded-full bg-gray-100/80 dark:bg-gray-700/80 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white dark:focus:bg-gray-700 border-none transition-all duration-200 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed shadow-inner"
+                        className="flex-grow px-4 py-2.5 rounded-full bg-gray-100/80 text-gray-900 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white border-none transition-all duration-200 ease-in-out disabled:opacity-60 disabled:cursor-not-allowed shadow-inner"
                       />
                       <button 
                         id="rag-submit"
