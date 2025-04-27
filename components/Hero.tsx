@@ -725,7 +725,7 @@ export default function Hero() {
                               <ClientEmoji unified="1f44b" />
                             </div>
                             <div className="inline-block mb-1 px-2 py-1 xs:px-3 xs:py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 shadow-sm">
-                              <p className="text-gray-700 text-xs font-medium">
+                              <p className="text-gray-700 text-sm font-medium">
                                 Hi! I'm Dean's digital twin! Ask me anything!
                               </p>
                             </div>
@@ -733,7 +733,7 @@ export default function Hero() {
                           
                           {/* Suggestions inside the chat area */}
                           <div className="w-full max-w-[98%] mx-auto mt-0.5">
-                            <p className="text-xs font-medium text-gray-500 mb-0.5 text-left">Try asking:</p>
+                            <p className="text-sm font-medium text-gray-500 mb-0.5 text-left">Try asking:</p>
                             <div className="grid grid-cols-1 gap-1 xs:flex xs:flex-col xs:gap-1 sm:grid sm:grid-cols-2 sm:gap-1">
                               {suggestedPrompts.map((prompt, index) => (
                                 <button
@@ -741,7 +741,7 @@ export default function Hero() {
                                   type="button" 
                                   onClick={() => handleSuggestionClick(prompt)}
                                   disabled={isRagLoading}
-                                  className="w-full px-2 py-1 sm:px-2 sm:py-1 text-xs font-medium bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 hover:border-blue-200 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 ease-in-out border border-gray-200 shadow-sm text-left overflow-hidden text-ellipsis flex items-center"
+                                  className="w-full px-2 py-1 sm:px-2 sm:py-1.5 text-sm font-medium bg-gradient-to-r from-gray-50 to-gray-100 text-gray-700 rounded-lg hover:from-blue-50 hover:to-blue-100 hover:text-blue-600 hover:border-blue-200 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-150 ease-in-out border border-gray-200 shadow-sm text-left overflow-hidden text-ellipsis flex items-center"
                                 >
                                   <span className="inline-flex xs:hidden items-center justify-center w-3 h-3 mr-1 rounded-full bg-blue-100 text-blue-500 flex-shrink-0">
                                     <svg className="w-2 h-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
