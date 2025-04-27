@@ -1,6 +1,6 @@
-# Dean Shabi - Professional Portfolio
+# Professional Portfolio
 
-A modern, responsive portfolio website showcasing Dean Shabi's work as a Senior Data Scientist.
+A modern, responsive portfolio website 
 
 ## Project Structure
 
