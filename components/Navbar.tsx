@@ -102,7 +102,7 @@ export default function Navbar() {
        return sectionId === activeSection && !isHeroVisible;
     }
     if (href === '/' && pathname === '/') {
-        return activeSection === null || isHeroVisible;
+        return isHeroVisible;
     }
     return href === pathname;
   };
@@ -152,14 +152,16 @@ export default function Navbar() {
               >
                 <Link 
                   href={link.href}
-                  className={`text-primary hover:text-accent transition-all duration-300 relative group ${
-                    isActive ? 'text-accent font-medium' : ''
+                  className={`relative group transition-all duration-300 hover:text-accent text-primary ${
+                    isActive 
+                      ? 'text-accent font-medium bg-slate-100 px-3 py-1 rounded-md' 
+                      : ''
                   }`}
                 >
                   {link.name}
                   
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 ${
-                    isActive ? 'w-full' : 'group-hover:w-full'
+                  <span className={`absolute left-0 w-0 h-0.5 bg-accent transition-all duration-300 ${
+                    isActive ? 'w-full -bottom-1' : 'group-hover:w-full -bottom-1'
                   }`} />
                 </Link>
               </motion.div>
@@ -213,17 +215,17 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`block py-2 text-primary hover:text-accent transition-all duration-300 relative ${
-                        isActive ? 'text-accent font-medium pl-3' : ''
+                      className={`block py-2 text-primary hover:text-accent transition-all duration-300 relative rounded-md hover:bg-slate-100 ${
+                        isActive ? 'text-accent font-medium bg-slate-100 px-3' : 'px-3'
                       }`}
                       onClick={() => setIsOpen(false)}
                     >
                       {isActive && (
                         <span
-                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-5 bg-accent rounded-full"
+                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-accent rounded-full"
                         />
                       )}
-                      {link.name}
+                      <span className={`${isActive ? 'ml-3': ''}`}>{link.name}</span>
                     </Link>
                   </motion.div>
                 );

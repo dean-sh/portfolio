@@ -52,14 +52,20 @@ export default function ProjectCard({ title, description, tags, image, link, ind
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ 
-        duration: 0.7, 
+        duration: 0.5, 
         ease: "easeOut"
       }}
-      className="card overflow-hidden group"
+      whileHover={{ 
+        scale: 1.03, 
+        y: -5,
+        boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 6px 12px -6px rgba(0, 0, 0, 0.08)",
+        transition: { duration: 0.2, ease: "easeOut" } 
+      }}
+      className="card overflow-hidden group flex flex-col"
     >
       <div className="relative aspect-video w-full overflow-hidden">
         {/* Placeholder or image */}
@@ -68,17 +74,15 @@ export default function ProjectCard({ title, description, tags, image, link, ind
             src={image} 
             alt={title} 
             fill 
-            className={`object-cover transition-all duration-300 group-hover:scale-105`}
+            className="object-cover"
             onError={() => setImageError(true)}
           />
         ) : (
           <div className={`absolute inset-0 bg-gradient-to-br ${getColorFromTitle(title)} flex flex-col items-center justify-center`}>
             <span className="text-primary font-medium text-lg opacity-80">{title}</span>
-            <motion.div 
-              className="mt-2 text-4xl"
-            >
+            <div className="mt-2 text-4xl">
               {getEmoji(title)}
-            </motion.div>
+            </div>
           </div>
         )}
       </div>
@@ -91,7 +95,7 @@ export default function ProjectCard({ title, description, tags, image, link, ind
           {tags.map((tag, i) => (
             <span 
               key={i} 
-              className="text-xs font-medium px-2 py-0.5 rounded bg-slate-100 text-secondary group-hover:bg-slate-200 transition-colors duration-200"
+              className="text-xs font-medium px-2 py-0.5 rounded bg-slate-100 text-secondary transition-colors duration-200"
             >
               {tag}
             </span>
@@ -104,10 +108,10 @@ export default function ProjectCard({ title, description, tags, image, link, ind
               href={link} 
               className="inline-flex items-center text-accent font-medium group"
             >
-              <span className="group-hover:underline mr-1">View Project</span>
+              <span className="mr-1">View Project</span>
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className="h-4 w-4 transform transition-transform group-hover:translate-x-1" 
+                className="h-4 w-4 transform transition-transform" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"

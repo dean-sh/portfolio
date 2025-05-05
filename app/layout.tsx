@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VantaScripts from '@/components/VantaScripts';
 import { Analytics } from "@vercel/analytics/react";
+import PageTransitionWrapper from '@/components/PageTransitionWrapper';
 
 const outfit = Outfit({ 
   subsets: ['latin'], 
@@ -47,7 +48,9 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable} font-sans bg-bg-light text-primary antialiased overflow-x-hidden`}>
         <Navbar />
-        <main>{children}</main>
+        <PageTransitionWrapper>
+          {children}
+        </PageTransitionWrapper>
         <Footer />
 
         <VantaScripts />

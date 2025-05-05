@@ -163,7 +163,7 @@ export default function Works() {
 
         {/* Projects grid with AnimatePresence for smooth transitions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="wait">
+          <AnimatePresence initial={false}>
             {filteredProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}

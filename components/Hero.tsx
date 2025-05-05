@@ -6,7 +6,7 @@ import PopupLink from './PopupLink';
 import { useEffect, useState, useRef, FormEvent, useCallback, MouseEvent } from 'react';
 import { SpotlightCard } from './SpotlightCard';
 import ClientEmoji from './ClientEmoji';
-import ParticleBackground from './ParticleBackground';
+import R3fBackground from './R3fBackground';
 import { useIsInViewport } from '../hooks/useIsInViewport';
 
 // Declare VANTA globally or import if types are available
@@ -348,11 +348,15 @@ export default function Hero() {
     >
       {/* Particle background container */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        {!prefersReducedMotion && isInViewport && <ParticleBackground />}
+        {/* Ensure container has position for canvas absolute fill */}
+        {/* Replace with R3F background */} 
+        {/* {!prefersReducedMotion && isInViewport && <R3fBackground />} */}
+        {/* Force render for debugging */} 
+        <R3fBackground />
       </div>
       
       {/* Subtle gradient overlay to enhance the particle effect */}
-      <div className="absolute inset-0 -z-5 bg-gradient-radial from-blue-50/40 via-transparent to-transparent"></div>
+      {/* <div className="absolute inset-0 -z-5 bg-gradient-radial from-blue-50/40 via-transparent to-transparent"></div> */}
       
       <div className="container relative z-10">
         {/* Wrap existing content and RAG section in a container if needed for layout */}
@@ -370,18 +374,52 @@ export default function Hero() {
               <div className="mb-6"> 
                 <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-[1.1] mb-3">
                   <span 
-                    className="block text-lg sm:text-xl md:text-2xl font-semibold mb-4 tracking-wide text-gray-800 uppercase" 
+                    className="block text-lg sm:text-xl md:text-2xl font-semibold mb-4 tracking-wide text-gray-600 uppercase" 
                   >
                     {greeting}
                   </span>
                   <motion.span 
-                    className="relative inline-block cursor-pointer tracking-tight" 
+                    className="relative inline-block cursor-pointer tracking-tight font-bold" 
                     whileHover={{ 
-                      scale: 1.03, 
-                      color: 'var(--color-accent)' 
-                    }} 
-                    transition={{ type: "spring", stiffness: 300, damping: 10 }} 
-                    style={{ '--color-accent': '#3b82f6' } as React.CSSProperties} 
+                      scale: 1.03,
+                      textShadow: "0 0 12px rgba(130, 138, 230, 0.5)"
+                    }}
+                    style={{
+                      background: "linear-gradient(90deg, #3b5998, #4f86c6, #9f67c8, #e57373, #64b5f6, #3b5998)",
+                      backgroundSize: "400% 100%",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      color: "transparent",
+                      display: "inline-block",
+                      textShadow: "0 0 6px rgba(130, 138, 230, 0.3)"
+                    }}
+                    animate={{
+                      backgroundPosition: ["0% center", "100% center", "0% center"],
+                      scale: [1, 1.01, 1],
+                      textShadow: [
+                        "0 0 6px rgba(130, 138, 230, 0.3)",
+                        "0 0 8px rgba(130, 138, 230, 0.4)",
+                        "0 0 6px rgba(130, 138, 230, 0.3)"
+                      ]
+                    }}
+                    transition={{ 
+                      backgroundPosition: {
+                        repeat: Infinity, 
+                        duration: 12, 
+                        ease: "linear"
+                      },
+                      scale: {
+                        repeat: Infinity,
+                        duration: 5,
+                        ease: "easeInOut"
+                      },
+                      textShadow: {
+                        repeat: Infinity,
+                        duration: 3,
+                        ease: "easeInOut"
+                      }
+                    }}
                   >
                     Dean Shabi
                   </motion.span>
@@ -395,7 +433,7 @@ export default function Hero() {
               </h2>
               
               <p 
-                className="mt-8 mb-10 text-lg md:text-xl text-gray-800 max-w-2xl leading-relaxed tracking-wide font-medium"
+                className="mt-8 mb-10 text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed tracking-wide font-medium"
               >
                 6+ years experience building high-impact ML products in the energy-tech space, 
                 within fast-moving startups and scaleups.
@@ -462,13 +500,13 @@ export default function Hero() {
             className="lg:col-span-1 mt-8 lg:mt-0"
           >
             <SpotlightCard
-              from="#1cd1c6"
-              via="#407cff"  
-              size={300}
+              from="#dbeafe"
+              via="#818cf8"  
+              size={350}
               className="relative w-full rounded-[--radius] p-0 shadow-xl [--radius:theme(borderRadius.lg)]"
             >
               {/* Background layer */}
-              <div className="absolute inset-px rounded-[calc(var(--radius)-1px)] bg-white/80 backdrop-blur-sm"></div>
+              <div className="absolute inset-px rounded-[calc(var(--radius)-1px)] bg-white/90 backdrop-blur-sm"></div>
               
               {/* RAG Content */}
               <div className="relative z-10 p-2 xs:p-3 sm:p-4">
