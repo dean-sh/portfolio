@@ -61,9 +61,9 @@ export function ProjectDetails({
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <div className="p-6 md:p-10 w-full">
+              <div className="p-4 md:p-6 lg:p-10 w-full">
                 <motion.h1 
-                  className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -72,7 +72,7 @@ export function ProjectDetails({
                 </motion.h1>
                 
                 <motion.p 
-                  className="text-xl text-white/90 mb-6 max-w-3xl"
+                  className="text-base sm:text-lg md:text-xl text-white/90 mb-4 md:mb-6 max-w-3xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
