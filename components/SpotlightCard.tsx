@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect } from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '../lib/utils'
 
 export interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
   from?: string
