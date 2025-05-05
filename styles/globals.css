@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent horizontal scrolling on all devices, especially mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 /* === Spotlight Card Effect === */
 /* Applied to the container (e.g., the RAG chatbox div) */
 .rag-container-spotlight-border {
