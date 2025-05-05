@@ -34,6 +34,15 @@ const projects = [
     link: '/projects/exempt-supply-matching',
   },
   {
+    id: 4,
+    title: 'EV Driver Behaviour Simulator',
+    description: 'Developed a modular, agent-based simulator to model heterogeneous electric vehicle charging behaviours across diverse driver populations, with an interactive Streamlit dashboard for scenario testing.',
+    tags: ['Simulation', 'Energy', 'Python'],
+    image: '/images/ev-simulator.jpg',
+    category: 'Energy',
+    link: '/projects/ev-simulator',
+  },
+  {
     id: 6,
     title: 'Robot Failure Detection',
     description: 'Implemented anomaly detection algorithms to identify and predict robot failures in automotive manufacturing.',
