@@ -6,6 +6,8 @@ import PopupLink from './PopupLink';
 import { useEffect, useState, useRef, FormEvent, useCallback, MouseEvent } from 'react';
 import { SpotlightCard } from './SpotlightCard';
 import ClientEmoji from './ClientEmoji';
+import ParticleBackground from './ParticleBackground';
+import { useIsInViewport } from '../hooks/useIsInViewport';
 
 // Declare VANTA globally or import if types are available
 declare global {
@@ -32,12 +34,9 @@ const BlinkingCursor = () => (
 export default function Hero() {
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
-  const vantaRef = useRef<HTMLDivElement>(null); // Ref for Vanta container
-  const vantaInstanceRef = useRef<any>(null);
   const controls = useAnimation();
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [greeting, setGreeting] = useState("Hello, I'm");
-  const [isVantaReady, setIsVantaReady] = useState(false); // Track if script loaded
   
   // --- RAG State ---
   const [ragQuery, setRagQuery] = useState('');
@@ -71,6 +70,9 @@ export default function Hero() {
   const ragContainerRef = useRef<HTMLDivElement>(null); // Ref for the RAG container
   const chatAreaRef = useRef<HTMLDivElement>(null); // Ref for the scrollable chat area
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInViewport = useIsInViewport(sectionRef);
+
   // Determine initial theme based on common dark mode patterns
   /*
   useEffect(() => {
@@ -81,102 +83,10 @@ export default function Hero() {
   }, []);
   */
 
-  // Function to destroy Vanta effect
-  const destroyVanta = () => {
-    if (vantaInstanceRef.current) {
-      console.log('Destroying Vanta effect');
-      vantaInstanceRef.current.destroy();
-      vantaInstanceRef.current = null;
-    }
-  };
-
-  // Function to initialize Vanta effect
-  const initializeVanta = () => {
-    // Check if already initialized, ref exists, Vanta loaded, and motion not reduced
-    if (vantaInstanceRef.current || !vantaRef.current || !window.VANTA?.NET || prefersReducedMotion) {
-      console.log('Skipping Vanta initialization:', {
-        hasInstance: !!vantaInstanceRef.current,
-        hasRef: !!vantaRef.current,
-        isVantaLoaded: !!window.VANTA?.NET,
-        prefersReducedMotion,
-      });
-      return;
-    }
-    
-    console.log('Initializing Vanta (Simpler)');
-
-    vantaInstanceRef.current = window.VANTA.NET({
-      el: vantaRef.current,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      // Simplified parameters + High Contrast Color - Defaulting to light mode colors
-      color: 0x1a202c, // Dark Gray
-      backgroundColor: 0xf8fafc, // Light background
-      points: 9.00,        // Fewer points
-      maxDistance: 22.00,  // Slightly larger distance
-      spacing: 20.00       // More spacing
-    });
-  };
-
-  // Effect to check dark mode and listen for Vanta script loaded event
-  useEffect(() => {
-    const handleVantaLoaded = () => {
-      console.log('Received vantaLoaded event');
-      setIsVantaReady(true);
-      // Attempt initialization only if motion is not reduced
-      if (!prefersReducedMotion) {
-        initializeVanta();
-      }
-    };
-
-    // Check if VANTA already exists when component mounts (e.g., fast refresh)
-    if (window.VANTA?.NET) {
-      handleVantaLoaded();
-    } else {
-      window.addEventListener('vantaLoaded', handleVantaLoaded);
-    }
-
-    // Cleanup listener
-    return () => {
-      window.removeEventListener('vantaLoaded', handleVantaLoaded);
-    };
-  }, [prefersReducedMotion]); // Include prefersReducedMotion to re-trigger init attempt if needed
-
-  // Effect to handle motion preference changes
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
-      const motionReduced = e.matches;
-      setPrefersReducedMotion(motionReduced);
-      console.log('Prefers Reduced Motion Changed:', motionReduced);
-      if (motionReduced) {
-        destroyVanta();
-      } else if (isVantaReady) { // Only initialize if script is ready
-        initializeVanta();
-      }
-    };
-    
-    // Set initial state and add listener
-    setPrefersReducedMotion(mediaQuery.matches);
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-    // Cleanup listener
-    return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
-    };
-  }, [isVantaReady]); // Depend on isVantaReady
-
   // Effect for resize handling and fade-in animation
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-      // Optional: Resize Vanta effect if needed
-      // if (vantaInstanceRef.current) vantaInstanceRef.current.resize();
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -189,15 +99,7 @@ export default function Hero() {
     };
   }, [controls]);
 
-  // Effect for component unmount cleanup
-  useEffect(() => {
-    // Return a cleanup function that runs only on unmount
-    return () => {
-      console.log('Hero component unmounting, destroying Vanta.');
-      destroyVanta();
-    };
-  }, []); // Empty dependency array ensures this runs only on unmount
-
+  // Keep checking prefersReducedMotion
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     setPrefersReducedMotion(mediaQuery.matches);
@@ -440,12 +342,17 @@ export default function Hero() {
   // --- End Spotlight Effect Handler ---
 
   return (
-    <section className="min-h-screen flex items-center pt-16 md:pt-24 pb-16 relative overflow-hidden">
-      {/* Reduce blur strength */}
-      <div ref={vantaRef} id="vanta-bg" className="absolute inset-0 -z-10 filter blur-[3px]"></div>
+    <section 
+      ref={sectionRef}
+      className="min-h-screen flex items-center pt-16 md:pt-24 pb-16 relative overflow-hidden"
+    >
+      {/* Particle background container */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {!prefersReducedMotion && isInViewport && <ParticleBackground />}
+      </div>
       
-      {/* Add a colorful radial gradient overlay with accent color as middle stop */}
-      <div className="absolute inset-0 -z-5 bg-gradient-radial from-bg-light/70 via-accent/10 to-transparent"></div>
+      {/* Subtle gradient overlay to enhance the particle effect */}
+      <div className="absolute inset-0 -z-5 bg-gradient-radial from-blue-50/40 via-transparent to-transparent"></div>
       
       <div className="container relative z-10">
         {/* Wrap existing content and RAG section in a container if needed for layout */}

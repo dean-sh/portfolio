@@ -1,23 +1,8 @@
 'use client';
 
-import Script from 'next/script';
+// This component has been deprecated since we're now using tsParticles
+// It's kept with an empty return to prevent breaking changes
 
 export default function VantaScripts() {
-  return (
-    <>
-      {/* Vanta.js Scripts */}
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" strategy="beforeInteractive" />
-      <Script 
-        src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js" 
-        strategy="afterInteractive" 
-        onLoad={() => {
-          console.log('Vanta script loaded, dispatching event.');
-          window.dispatchEvent(new Event('vantaLoaded'));
-        }}
-        onError={(e) => {
-          console.error('Error loading Vanta script:', e);
-        }}
-      /> 
-    </>
-  );
+  return null;
 } 
