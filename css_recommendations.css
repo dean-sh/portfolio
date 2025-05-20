@@ -1,0 +1,239 @@
+/* General Body Styling */
+body {
+    font-family: 'Open Sans', sans-serif; /* Example font */
+    line-height: 1.6;
+    color: #333; /* Dark gray for good readability */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light off-white background */
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    padding: 60px 20px;
+    text-align: center; /* Or left-align based on design preference */
+    background-color: #ffffff; /* White or a very light background for hero */
+    border-bottom: 1px solid #eee;
+}
+
+.hero-section h1 { /* "Hello, I'm Dean Shabi" */
+    font-size: 3.0em;  /* Example size, adjust as needed */
+    font-weight: 700; /* Bold */
+    color: #222;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.hero-section .sub-headline { /* "Senior Data Scientist based in Prague" */
+    font-size: 1.8em;
+    font-weight: 400; /* Normal weight */
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.hero-section .description { /* "6+ years experience..." */
+    font-size: 1.1em;
+    color: #666;
+    max-width: 600px; /* Constrain width for readability */
+    margin: 0 auto 30px auto; /* Center if text-align: center */
+}
+
+.hero-section .cta-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff; /* Example primary color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section .cta-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.hero-section .secondary-cta-button {
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+}
+
+.hero-section .secondary-cta-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+/* --- Section Styling (General) --- */
+.section {
+    padding: 50px 20px;
+}
+
+.section-title { /* "About Me", "My Work" */
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2c3e50; /* A slightly different, strong color for section titles */
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative; /* For potential decorative underlines */
+}
+
+.section-title::after { /* Optional: decorative underline */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #007bff; /* Accent color */
+    margin: 10px auto 0;
+}
+
+/* --- 'About Me' Section --- */
+.about-me-section .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto; /* Center content */
+    text-align: left; /* Or center if preferred */
+}
+
+.about-me-section h3 { /* "Dean Shabi" under "About Me" */
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.about-me-section .role-title { /* "Senior Data Scientist" under "Dean Shabi" */
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.about-me-section p {
+    font-size: 1.05em; /* Slightly larger than default for readability */
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.about-me-section .stats-container {
+    display: flex; /* Or grid */
+    justify-content: space-around;
+    margin-top: 30px;
+    padding: 20px 0;
+    background-color: #f0f0f0; /* Subtle background for stats */
+    border-radius: 8px;
+}
+
+.about-me-section .stat-item {
+    text-align: center;
+}
+
+.about-me-section .stat-item .number {
+    font-size: 2em;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.about-me-section .stat-item .label {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* --- 'My Work' Section --- */
+.my-work-section .intro-paragraph {
+    font-size: 1.1em;
+    text-align: center;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.my-work-section .filter-buttons {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.my-work-section .filter-button {
+    padding: 8px 18px;
+    font-size: 0.95em;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Pill-shaped */
+    background-color: #fff;
+    color: #555;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.my-work-section .filter-button.active,
+.my-work-section .filter-button:hover {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.my-work-section .projects-grid {
+    display: grid; /* Or flexbox */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+}
+
+.my-work-section .project-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.my-work-section .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.my-work-section .project-card h3 { /* Project Title */
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #007bff; /* Using accent color for project titles */
+    margin-bottom: 10px;
+}
+
+.my-work-section .project-card p { /* Project Description */
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.my-work-section .project-tags {
+    margin-bottom: 15px;
+}
+
+.my-work-section .project-tags .tag {
+    display: inline-block;
+    font-size: 0.8em;
+    background-color: #e9ecef; /* Light gray for tags */
+    color: #495057;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.my-work-section .project-link {
+    display: inline-block;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.my-work-section .project-link:hover {
+    text-decoration: underline;
+}

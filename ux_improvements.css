@@ -1,0 +1,401 @@
+/* ux_improvements.css */
+
+/* === Sticky Navigation Bar === */
+/* Assuming a basic HTML structure for the nav:
+<header class="site-header">
+    <nav class="main-nav sticky-nav"> // Add 'sticky-nav' class
+        <div class="nav-logo">
+            <a href="/">DS</a> // Or your logo
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li> // 'active' class for current page
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#works" class="nav-link">Works</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="/resume" class="nav-link">Resume</a></li> // Assuming resume is a separate page
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+*/
+
+.site-header { /* Optional: if you have a header wrapper */
+    /* position: relative; // Might be needed depending on layout */
+    /* z-index: 1000; // Ensure it's above other content */
+}
+
+.main-nav.sticky-nav {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Or your desired nav background */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 30px; /* Adjust padding as needed */
+    z-index: 999; /* Ensure it stays on top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo a {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #0A2540; /* Using primary color from previous palette */
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px; /* Adjust spacing */
+}
+
+.nav-links .nav-link {
+    text-decoration: none;
+    color: #2D3748; /* Using dark neutral for text */
+    font-weight: 500;
+    padding: 8px 0; /* Add some padding for easier clicking and for border placement */
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links .nav-link:hover {
+    color: #00C49A; /* Using accent color on hover */
+}
+
+/* Active Navigation Link Styling */
+.nav-links .nav-link.active {
+    color: #00C49A; /* Accent color for active link */
+    font-weight: 700; /* Make it bolder */
+}
+
+.nav-links .nav-link.active::after { /* Underline effect for active link */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #00C49A; /* Accent color */
+    border-radius: 2px;
+}
+
+/* === Chat Widget Enhancement === */
+/*
+HTML Structure for Chat Widget:
+<div class="chat-widget-container">
+    <button class="chat-toggle-button">
+        <span class="chat-icon">👋</span> Chat with Dean's Twin
+    </button>
+    <div class="chat-window"> <!-- Add class 'open' with JS to show -->
+        <!-- <div class="chat-header">
+            <h3>Dean's Digital Twin</h3>
+            <button class="close-chat-button">&times;</button>
+        </div>
+        <div class="chat-messages-area">
+            <div class="message received">
+                <p>Hi! I'm Dean's digital twin! Ask me anything!</p>
+            </div>
+            <div class="message sent">
+                <p>What are Dean's main skills?</p>
+            </div>
+        </div>
+        <div class="chat-example-questions">
+            <button class="example-question-btn">What are Dean's main skills?</button>
+            <button class="example-question-btn">Summarize Dean's forecasting experience.</button>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" class="chat-input" placeholder="Type your message...">
+            <button class="send-message-btn">Send</button>
+        </div> -->
+    <!-- </div>
+</div>
+*/
+
+.chat-widget-container {
+    position: fixed; /* Or absolute, depending on desired behavior */
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chat-toggle-button { /* The button to open the chat */
+    background-color: #0A2540; /* Primary color */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px; /* Pill shape */
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.chat-toggle-button:hover {
+    background-color: #081F33; /* Darker primary */
+}
+
+.chat-toggle-button .chat-icon {
+    font-size: 1.2em;
+}
+
+.chat-window {
+    width: 350px; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    overflow: hidden; /* Contains child elements */
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.chat-window.open { /* Add this class with JS to show */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.chat-header {
+    background-color: #0A2540; /* Primary color */
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    color: white; /* Override global h3 color if needed */
+}
+
+.close-chat-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.chat-messages-area {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #F0F2F5; /* Light neutral background for messages */
+    min-height: 200px; /* Ensure some space for messages */
+}
+
+.message {
+    margin-bottom: 12px;
+    padding: 10px 15px;
+    border-radius: 18px; /* More rounded bubbles */
+    max-width: 80%;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message p {
+    margin: 0;
+    font-size: 0.95em;
+}
+
+.message.received {
+    background-color: #E2E8F0; /* Lighter gray for received messages */
+    color: #2D3748;
+    border-bottom-left-radius: 4px; /* Typical chat bubble styling */
+    align-self: flex-start; /* If using flex on parent */
+    margin-right: auto; /* Push to left */
+}
+
+.message.sent {
+    background-color: #00C49A; /* Accent color for sent messages */
+    color: white;
+    border-bottom-right-radius: 4px; /* Typical chat bubble styling */
+    align-self: flex-end; /* If using flex on parent */
+    margin-left: auto; /* Push to right */
+}
+
+.chat-example-questions {
+    padding: 10px 15px;
+    border-top: 1px solid #E2E8F0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.example-question-btn {
+    background-color: transparent;
+    border: 1px solid #00C49A; /* Accent color */
+    color: #00C49A;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.example-question-btn:hover {
+    background-color: #00C49A;
+    color: white;
+}
+
+.chat-input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #E2E8F0;
+    background-color: #ffffff;
+}
+
+.chat-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #CED4DA; /* Medium neutral border */
+    border-radius: 20px; /* Pill-shaped input */
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: #00C49A; /* Accent color on focus */
+    box-shadow: 0 0 0 2px rgba(0, 196, 154, 0.2);
+}
+
+.send-message-btn {
+    background-color: #0A2540; /* Primary color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px; /* Pill shape */
+    font-size: 0.9em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-message-btn:hover {
+    background-color: #081F33; /* Darker primary */
+}
+
+/* === CTA Placement & Styling (Reference) === */
+/*
+    Primary CTAs should use .btn-primary or .btn-accent from modern_aesthetic_styles.css
+    Example: <a href="#contact" class="btn btn-primary">Book a Call</a>
+
+    Secondary CTAs should use .btn-secondary from modern_aesthetic_styles.css
+    Example: <a href="/resume.pdf" class="btn btn-secondary">Download Resume</a>
+*/
+
+/* Utility classes for CTA layout if needed */
+.cta-group {
+    display: flex;
+    gap: 15px; /* Space between buttons in a group */
+    align-items: center;
+    margin-top: 20px; /* Space above the CTA group */
+}
+
+/* Example usage in Hero:
+<div class="hero-content">
+    <h1>...</h1>
+    <p>...</p>
+    <div class="cta-group">
+        <a href="#works" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-secondary">Book a Call</a>
+    </div>
+</div>
+*/
+
+/* Javascript concepts for dynamic behavior are commented out in the thought block and here for reference.
+// Concept for active link highlighting on scroll
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links .nav-link');
+
+    function changeActiveLink() {
+        let index = sections.length;
+        while(--index && window.scrollY + 50 < sections[index].offsetTop) {}
+        navLinks.forEach((link) => link.classList.remove('active'));
+        if (navLinks[index]) {
+            const activeLink = Array.from(navLinks).find(link => link.getAttribute('href') === `#${sections[index].id}`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    }
+    if (sections.length && navLinks.length) {
+        changeActiveLink();
+        window.addEventListener('scroll', changeActiveLink);
+    }
+});
+
+// Concept for Chat Widget Interactivity
+document.addEventListener('DOMContentLoaded', () => {
+    const chatToggleButton = document.querySelector('.chat-toggle-button');
+    const chatWindow = document.querySelector('.chat-window');
+    const closeChatButton = document.querySelector('.close-chat-button');
+    const exampleQuestionButtons = document.querySelectorAll('.example-question-btn');
+    const chatInput = document.querySelector('.chat-input');
+    const sendMessageButton = document.querySelector('.send-message-btn');
+    const messagesArea = document.querySelector('.chat-messages-area');
+
+    if (chatToggleButton && chatWindow) {
+        chatToggleButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('open');
+        });
+    }
+
+    if (closeChatButton && chatWindow) {
+        closeChatButton.addEventListener('click', () => {
+            chatWindow.classList.remove('open');
+        });
+    }
+
+    if (exampleQuestionButtons.length && chatInput) {
+        exampleQuestionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                chatInput.value = button.textContent;
+            });
+        });
+    }
+    
+    function handleSendMessage() {
+        if (!chatInput || !messagesArea) return;
+        const text = chatInput.value;
+        if (text.trim() === '') return;
+
+        const sentMessageDiv = document.createElement('div');
+        sentMessageDiv.classList.add('message', 'sent');
+        sentMessageDiv.innerHTML = `<p>${text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>`; // Basic sanitization
+        messagesArea.appendChild(sentMessageDiv);
+        chatInput.value = '';
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+        // TODO: Logic to send to backend and display received message
+    }
+
+    if (sendMessageButton && chatInput) {
+        sendMessageButton.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendMessage();
+            }
+        });
+    }
+});
+*/

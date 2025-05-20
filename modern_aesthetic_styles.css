@@ -1,0 +1,236 @@
+/* modern_aesthetic_styles.css */
+
+/* Palette 1: Tech Forward & Trustworthy */
+:root {
+    --primary-color: #0A2540; /* Deep Blue */
+    --accent-color: #00C49A;  /* Bright Teal/Cyan */
+    --neutral-light: #F0F2F5; /* Light Gray for backgrounds */
+    --neutral-medium: #A0AEC0;/* Medium Gray for secondary text/borders */
+    --neutral-dark: #2D3748;  /* Dark Gray/Off-Black for primary text */
+    --white-color: #FFFFFF;
+    --card-bg: var(--white-color);
+    --card-border: #E2E8F0;
+    --tag-bg: #E9F7F5; /* Lightened accent for tags */
+    --tag-text: var(--accent-color);
+
+    --font-primary: 'Inter', sans-serif; /* Example: Using Inter. Ensure it's imported or available */
+    --font-secondary: 'Roboto Slab', serif; /* Example for headings if desired */
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--neutral-dark);
+    background-color: var(--neutral-light);
+    line-height: 1.6;
+}
+
+/* General Container for demo purposes */
+.container {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-secondary); /* Optional: different font for headings */
+    color: var(--primary-color);
+}
+
+/* === Button Styles === */
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px; /* Slightly more rounded */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent; /* For consistent sizing with secondary button */
+    line-height: 1.5; /* Ensure text is centered */
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #081F33; /* Slightly darker primary */
+    color: var(--white-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(10, 37, 64, 0.2); /* Enhanced shadow */
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(10, 37, 64, 0.15);
+}
+
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(10, 37, 64, 0.1);
+}
+
+.btn-secondary:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(10, 37, 64, 0.08);
+}
+
+/* Accent Button (Example using accent color) */
+.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--primary-color); /* Or white, depending on contrast */
+    font-weight: 700;
+}
+
+.btn-accent:hover,
+.btn-accent:focus {
+    background-color: #00A380; /* Darker accent */
+    color: var(--white-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 196, 154, 0.25);
+}
+
+
+/* === Project Card Styles === */
+
+.project-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px; /* More modern, softer radius */
+    padding: 28px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure cards in a row have same height if using flexbox for grid items */
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(10, 37, 64, 0.12); /* Softer, more diffused shadow */
+    border-color: var(--accent-color); /* Highlight border on hover */
+}
+
+.project-card-image-placeholder { /* If you add images later */
+    height: 180px;
+    background-color: var(--neutral-light);
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    margin: -28px -28px 20px -28px; /* Extend to edges */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-medium);
+    font-size: 0.9rem;
+}
+
+.project-card-title {
+    font-family: var(--font-secondary); /* Optional separate font */
+    font-size: 1.6rem; /* Larger title */
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.project-card-description {
+    font-size: 0.95rem;
+    color: var(--neutral-dark);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allows description to take available space, pushing tags/links down */
+}
+
+.project-card-tags {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-card-tags .tag {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 0.75rem; /* Smaller tag text */
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 15px; /* Pill-shaped tags */
+    text-transform: uppercase; /* Optional: for styling */
+    letter-spacing: 0.5px; /* Optional */
+}
+
+.project-card-link {
+    display: inline-block; /* Or block if it's on its own line */
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-top: auto; /* Pushes link to bottom if card is flex column */
+}
+
+.project-card-link:hover,
+.project-card-link:focus {
+    color: #00A380; /* Darker accent */
+    text-decoration: underline;
+}
+
+.project-card-link .icon { /* If using icons with links */
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Example HTML structure this CSS targets:
+
+<div class="container">
+    <h2>Buttons</h2>
+    <button class="btn btn-primary">Primary Button</button>
+    <button class="btn btn-secondary">Secondary Button</button>
+    <button class="btn btn-accent">Accent Button</button>
+
+    <h2>Project Cards</h2>
+    <div class="project-cards-grid">
+        <div class="project-card">
+            <div class="project-card-image-placeholder">Image Placeholder</div>
+            <h3 class="project-card-title">Project Title One</h3>
+            <p class="project-card-description">
+                A brief but engaging description of the project, highlighting its key features and impact.
+            </p>
+            <div class="project-card-tags">
+                <span class="tag">AI</span>
+                <span class="tag">Energy</span>
+                <span class="tag">Forecasting</span>
+            </div>
+            <a href="#" class="project-card-link">View Project <span class="icon">&rarr;</span></a>
+        </div>
+         More cards...
+    </div>
+</div>
+
+*/
