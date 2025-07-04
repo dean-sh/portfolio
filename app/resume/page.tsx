@@ -15,6 +15,22 @@ import {
 const experiences = [
   {
     id: 1,
+    title: "Founder",
+    company: "Bloome AI",
+    location: "Remote",
+    period: "May 2025-present",
+    description:
+      "\nThe first AI agent that finds jobs, researches companies & applies for you. \n Grow your career, not frustration.",
+    image: "/images/bloome.png",
+    skills: [
+      "AI Agents",
+      "Product Development",
+      "Entrepreneurship",
+      "Full-Stack Development",
+    ],
+  },
+  {
+    id: 2,
     title: "Senior Data Scientist",
     company: "Renewcast",
     location: "Italy (Remote)",
@@ -32,7 +48,7 @@ const experiences = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: "Founding Data Scientist",
     company: "tem.energy",
     location: "London (Remote)",
@@ -43,7 +59,7 @@ const experiences = [
     skills: ["AWS", "Python", "Grafana", "PyTorch", "dbt"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Data Scientist for Energy",
     company: "AmpX",
     location: "Prague, London (Remote)",
@@ -54,7 +70,7 @@ const experiences = [
     skills: ["AWS", "Kubernetes", "Python", "Airflow", "Grafana"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Data Scientist",
     company: "Datamole AI",
     location: "Prague",
@@ -65,7 +81,7 @@ const experiences = [
     skills: ["SQL", "Docker", "Python", "Azure", "Scikit-Learn"],
   },
   {
-    id: 5,
+    id: 6,
     title: "Project Lead in Aerospace Defense",
     company: "Israeli Air Force",
     location: "Israel",
@@ -76,7 +92,7 @@ const experiences = [
     skills: ["Python", "TensorFlow", "MatLab", "Scikit-Learn", "Keras"],
   },
   {
-    id: 6,
+    id: 7,
     title: "Flight Researcher and Analyst",
     company: "Israeli Air Force",
     location: "Israel",
@@ -217,34 +233,25 @@ export default function Resume() {
               </Link>
             </motion.div>
 
-            <div className="flex justify-between items-start flex-wrap gap-4 mb-8">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-8">
               <motion.div variants={itemVariants}>
-                <h1 className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                <h1 className="text-3xl md:text-5xl font-bold text-primary mb-2">
                   Resume
                 </h1>
-                <p className="text-secondary text-lg">
+                <p className="text-secondary text-base md:text-lg">
                   My professional background and experience
                 </p>
               </motion.div>
 
-              <motion.div className="flex gap-3" variants={itemVariants}>
+              <motion.div variants={itemVariants}>
                 <a
-                  href="/dean-shabi-cv.pdf"
-                  download
-                  className="btn btn-primary flex items-center"
-                >
-                  <DocumentArrowDownIcon className="w-5 h-5 mr-2" />
-                  Download CV
-                </a>
-
-                <a
-                  href="/dean-shabi-cv.pdf"
+                  href="https://www.linkedin.com/in/dean-shabi/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-secondary flex items-center"
+                  className="btn btn-primary flex items-center justify-center text-sm md:text-base"
                 >
                   <ArrowTopRightOnSquareIcon className="w-5 h-5 mr-2" />
-                  View CV
+                  View LinkedIn Profile
                 </a>
               </motion.div>
             </div>
