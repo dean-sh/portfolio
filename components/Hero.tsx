@@ -2,6 +2,7 @@
 
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import PopupLink from './PopupLink';
 import { useEffect, useState, useRef, FormEvent, useCallback, MouseEvent } from 'react';
 import { SpotlightCard } from './SpotlightCard';
@@ -382,25 +383,25 @@ export default function Hero() {
                     className="relative inline-block cursor-pointer tracking-tight font-bold" 
                     whileHover={{ 
                       scale: 1.03,
-                      textShadow: "0 0 12px rgba(130, 138, 230, 0.5)"
+                      textShadow: "0 0 12px rgba(59, 130, 246, 0.5)"
                     }}
                     style={{
-                      background: "linear-gradient(90deg, #3b5998, #4f86c6, #9f67c8, #e57373, #64b5f6, #3b5998)",
+                      background: "linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981, #3b82f6)",
                       backgroundSize: "400% 100%",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
                       color: "transparent",
                       display: "inline-block",
-                      textShadow: "0 0 6px rgba(130, 138, 230, 0.3)"
+                      textShadow: "0 0 6px rgba(59, 130, 246, 0.3)"
                     }}
                     animate={{
                       backgroundPosition: ["0% center", "100% center", "0% center"],
                       scale: [1, 1.01, 1],
                       textShadow: [
-                        "0 0 6px rgba(130, 138, 230, 0.3)",
-                        "0 0 8px rgba(130, 138, 230, 0.4)",
-                        "0 0 6px rgba(130, 138, 230, 0.3)"
+                        "0 0 6px rgba(59, 130, 246, 0.3)",
+                        "0 0 8px rgba(59, 130, 246, 0.4)",
+                        "0 0 6px rgba(59, 130, 246, 0.3)"
                       ]
                     }}
                     transition={{ 
@@ -429,7 +430,16 @@ export default function Hero() {
               <h2 
                 className="text-3xl md:text-4xl text-gray-800 mt-6 mb-8 font-medium tracking-wide leading-snug"
               >
-                Senior Data Scientist based in Prague
+                Founder of{" "}
+                <a 
+                  href="https://www.bloome.ai/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:text-blue-700 transition-colors duration-200 font-semibold"
+                >
+                  Bloome AI
+                </a>
+                {" "}& Senior Data Scientist based in Prague
               </h2>
               
               <p 

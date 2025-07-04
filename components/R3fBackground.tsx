@@ -163,7 +163,7 @@ const fragmentShader = `
     // Add a subtle vignette effect that maintains readability
     float distToCenter = length(vUv - 0.5) * 1.6;
     float vignette = smoothstep(0.7, 1.5, distToCenter);
-    color = mix(color, vec3(0.97, 0.97, 0.99), vignette * 0.6);
+    color = mix(color, vec3(0.98, 0.98, 0.99), vignette * 0.5);
     
     gl_FragColor = vec4(color, 1.0);
   }
@@ -174,11 +174,11 @@ const GradientBlob = () => {
   const mesh = useRef<any>();
   const uniforms = useRef({
     uTime: { value: 0 },
-    uColorA: { value: [0.945, 0.976, 1.000] },  // Light blue #f1f9ff
-    uColorB: { value: [0.867, 0.925, 0.996] },  // Soft blue #ddeefe
-    uColorC: { value: [0.933, 0.878, 0.984] },  // Soft lavender #eedffc
-    uColorD: { value: [0.957, 0.914, 0.906] },  // Soft peach #f4e9e7
-    uColorE: { value: [0.871, 0.922, 0.957] }   // Sky blue #def0f4
+    uColorA: { value: [0.945, 0.976, 0.988] },  // Very light blue-gray #f1f9fc
+    uColorB: { value: [0.925, 0.965, 0.976] },  // Light cyan #ecf6f9
+    uColorC: { value: [0.890, 0.945, 0.945] },  // Soft mint #e3f1f1
+    uColorD: { value: [0.937, 0.949, 0.965] },  // Light silver #eff2f6
+    uColorE: { value: [0.914, 0.957, 0.969] }   // Pale sky #e9f4f7
   });
 
   useFrame(({ clock }) => {
@@ -232,7 +232,7 @@ const FloatingParticles = () => {
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#ffffff" transparent opacity={0.6} />
+      <pointsMaterial size={0.05} color="#b8c5d6" transparent opacity={0.6} />
     </points>
   );
 };
@@ -242,7 +242,7 @@ export default function R3fBackground() {
   return (
     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
       <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 5], fov: 45 }}>
-        <color attach="background" args={['#f8faff']} />
+        <color attach="background" args={['#fafbfc']} />
         <Suspense fallback={null}>
           <GradientBlob />
           <FloatingParticles />

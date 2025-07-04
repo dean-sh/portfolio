@@ -15,22 +15,22 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Dean Shabi | Senior Data Scientist',
-  description: 'Senior Data Scientist specializing in high-impact ML products for energy-tech, including forecasting models, pricing engines, and supply matching algorithms for renewable energy.',
+  title: 'Dean Shabi | AI Founder & Senior Data Scientist',
+  description: 'AI Founder of Bloome AI and Senior Data Scientist specializing in high-impact ML products for energy-tech, including forecasting models, pricing engines, and supply matching algorithms for renewable energy.',
   keywords: ['Data Scientist', 'AI', 'Machine Learning', 'Energy Tech', 'Forecasting', 'Portfolio', 'Dean Shabi'],
   authors: [{ name: 'Dean Shabi' }],
   creator: 'Dean Shabi',
   metadataBase: new URL('https://www.deanshabi.com'),
   openGraph: {
-    title: 'Dean Shabi | Senior Data Scientist',
-    description: 'Senior Data Scientist specializing in high-impact ML products for energy-tech, including forecasting models, pricing engines, and supply matching algorithms for renewable energy.',
+    title: 'Dean Shabi | AI Founder & Senior Data Scientist',
+    description: 'AI Founder of Bloome AI and Senior Data Scientist specializing in high-impact ML products for energy-tech, including forecasting models, pricing engines, and supply matching algorithms for renewable energy.',
     images: ['/images/og-image.jpg'],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dean Shabi | Senior Data Scientist',
-    description: 'Senior Data Scientist specializing in high-impact ML products for energy-tech, including forecasting models, pricing engines, and supply matching algorithms for renewable energy.',
+    title: 'Dean Shabi | AI Founder & Senior Data Scientist',
+    description: 'AI Founder of Bloome AI and Senior Data Scientist specializing in high-impact ML products for energy-tech, including forecasting models, pricing engines, and supply matching algorithms for renewable energy.',
     images: ['/images/og-image.jpg'],
   },
 };

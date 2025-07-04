@@ -42,29 +42,32 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-2xl font-semibold text-primary mb-4">Senior Data Scientist</h3>
+            <h3 className="text-2xl font-semibold text-primary mb-4">
+              Founder of <a href="https://www.bloome.ai/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 transition-colors">Bloome AI</a> & Senior Data Scientist
+            </h3>
             <p className="text-secondary mb-6">
-              I'm a seasoned Data Scientist with 6+ years of expertise in building impactful ML solutions primarily 
-              in the energy technology sector. My passion lies in transforming complex data into actionable 
-              insights and creating intelligent systems that drive business value.
+              I'm currently building <a href="https://www.bloome.ai/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700 font-medium">Bloome AI</a>, 
+              the first AI agent that finds jobs, researches companies, and applies for you. With 6+ years of expertise 
+              in building impactful ML solutions, I'm passionate about creating AI systems that transform how people 
+              navigate their careers.
             </p>
             <p className="text-secondary mb-6">
-              Throughout my career, I've specialized in time series forecasting, anomaly detection, 
-              and developing AI-powered applications that optimize energy usage and reduce waste. I thrive in 
+              Beyond Bloome, I've specialized in the energy technology sector, developing time series forecasting models, 
+              anomaly detection systems, and AI-powered applications that optimize energy usage. I thrive in 
               fast-paced startup environments where I can leverage cutting-edge technologies to solve real-world problems.
             </p>
             <div className="flex flex-wrap gap-6 sm:gap-8 mb-8">
+              <div className="text-center sm:text-left">
+                <span className="block text-3xl font-bold text-accent">1</span>
+                <span className="text-secondary text-sm">AI Startup Founded</span>
+              </div>
               <div className="text-center sm:text-left">
                 <span className="block text-3xl font-bold text-accent">6+</span>
                 <span className="text-secondary text-sm">Years Experience</span>
               </div>
               <div className="text-center sm:text-left">
                 <span className="block text-3xl font-bold text-accent">15+</span>
-                <span className="text-secondary text-sm">Projects</span>
-              </div>
-              <div className="text-center sm:text-left">
-                <span className="block text-3xl font-bold text-accent">10+</span>
-                <span className="text-secondary text-sm">ML Models</span>
+                <span className="text-secondary text-sm">ML Projects</span>
               </div>
             </div>
             
