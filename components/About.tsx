@@ -19,10 +19,16 @@ export default function About() {
   }, []);
 
   const cardVariants = isMobile ? {} : {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
     viewport: { once: true },
-    whileHover: { y: -4 }
+    whileHover: { 
+      scale: 1.03, 
+      y: -5,
+      boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 6px 12px -6px rgba(0, 0, 0, 0.08)",
+      transition: { duration: 0.2, ease: "easeOut" } 
+    },
+    transition: { duration: 0.2, ease: "easeOut" }
   };
 
   return (
