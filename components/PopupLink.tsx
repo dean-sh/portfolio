@@ -14,25 +14,32 @@ const PopupLink: React.FC<PopupLinkProps> = ({ href, className, children, icon =
   const [isHovering, setIsHovering] = useState(false);
   
   const openPopup = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault(); // Prevent default anchor tag behavior
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const calendarUrl = 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1FNGEsrn4DPL4_EkcnKhDXUnyyG0Rqluwnf6D9_a2vaF35hcUg0DaMTjDOE_0AbGIPT1F7iz_6?gv=true';
+    
     const width = 800;
     const height = 700;
-    const left = window.screen.width / 2 - width / 2;
-    const top = window.screen.height / 2 - height / 2;
+    const left = (window.screen.width - width) / 2;
+    const top = (window.screen.height - height) / 2;
     
-    console.log('Opening popup for:', href); // Add logging for debugging
+    console.log('Opening calendar popup from header');
     
-    // Try to open popup - window.open can return null if blocked
+    // Open popup with proper features
     const popup = window.open(
-      href,
-      'googleCalendarPopup',
-      `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
+      calendarUrl,
+      '_blank',
+      `popup=yes,width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,status=no`
     );
     
-    // Check if popup was blocked
-    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
-      console.warn('Popup was blocked - informing user');
-      alert('Please allow popups for this site to book a call.');
+    // Focus the popup window
+    if (popup) {
+      popup.focus();
+    } else {
+      console.warn('Popup was blocked');
+      // Fallback: try to open in new tab
+      window.open(calendarUrl, '_blank', 'noopener,noreferrer');
     }
   };
 

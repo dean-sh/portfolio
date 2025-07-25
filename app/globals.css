@@ -279,3 +279,112 @@
     @apply text-dark-200;
   }
 }
+
+/* Google Calendar Button Styling - Match Energy Theme */
+.google-calendar-widget {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Multiple selectors to ensure we override Google's styles */
+.google-calendar-scheduling-button,
+button[data-calendar-button],
+div[data-calendar-button] button,
+.google-calendar-widget button,
+.google-calendar-widget > div > button {
+  /* Advanced gradient with energy theme */
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%) !important;
+  background-color: #059669 !important;
+  border: 1px solid rgba(5, 150, 105, 0.3) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  padding: 16px 32px !important;
+  border-radius: 12px !important;
+  font-family: var(--font-outfit), -apple-system, BlinkMacSystemFont, sans-serif !important;
+  letter-spacing: 0.025em !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  
+  /* Enhanced shadows */
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  
+  /* Reset any Google styles */
+  min-height: auto !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+}
+
+.google-calendar-scheduling-button::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+.google-calendar-scheduling-button:hover::before {
+  left: 100% !important;
+}
+
+/* Hover states for all button selectors */
+.google-calendar-scheduling-button:hover,
+button[data-calendar-button]:hover,
+div[data-calendar-button] button:hover,
+.google-calendar-widget button:hover,
+.google-calendar-widget > div > button:hover {
+  background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%) !important;
+  background-color: #047857 !important;
+  border-color: rgba(4, 120, 87, 0.4) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 0 1px rgba(5, 150, 105, 0.2) !important;
+}
+
+.google-calendar-scheduling-button:active {
+  transform: translateY(-1px) scale(1.01) !important;
+  transition: all 0.1s ease !important;
+}
+
+.google-calendar-scheduling-button:focus {
+  outline: none !important;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0 0 0 3px rgba(5, 150, 105, 0.3) !important;
+}
+
+/* Add icon space if needed */
+.google-calendar-scheduling-button svg {
+  margin-right: 8px !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Prevent multiple calendar widgets from loading */
+.google-calendar-widget > .google-calendar-scheduling-button:not(:first-child) {
+  display: none !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .google-calendar-scheduling-button {
+    padding: 14px 24px !important;
+    font-size: 15px !important;
+  }
+}

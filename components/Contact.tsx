@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import PopupLink from './PopupLink';
+import GoogleCalendarWidget from './GoogleCalendarWidget';
 import { useForm, ValidationError } from '@formspree/react';
 
 // Formspree form ID
@@ -87,17 +88,22 @@ export default function Contact() {
                 </div>
               </div>
               
-              {/* Book a Call Button (using PopupLink) */}
-              <div className="mt-8">
-                <h4 className="text-sm font-medium text-white mb-2">Schedule a Meeting</h4>
-                <PopupLink 
-                  href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ180wRsTGwCpyUCMXBilTrYOOt8c7MKblFpoLqgE-Nq0lBwL9kJm-DwuAicPu34U9__ST970IiL?gv=true"
-                  className="btn btn-primary group"
-                  icon={true}
-                >
-                  <span className="group-hover:text-white">Book a Call</span>
-                </PopupLink>
-                <p className="text-xs text-dark-200 mt-2">Quick 30-minute discussion about your project needs</p>
+              {/* Google Calendar Widget */}
+              <div className="mt-8 p-6 glass-card-readable rounded-lg border border-dark-700/50">
+                <div className="text-center mb-6">
+                  <div className="flex items-center justify-center mb-3">
+                    <div className="w-10 h-10 rounded-full bg-energy-600/10 flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h4 className="text-lg font-semibold text-white">Schedule a Consultation</h4>
+                  </div>
+                  <p className="text-sm text-dark-200 mb-6">
+                    Book a <strong className="text-white">30-minute consultation</strong> to discuss your energy AI project needs and explore how we can work together.
+                  </p>
+                </div>
+                <GoogleCalendarWidget />
               </div>
             </div>
           </motion.div>

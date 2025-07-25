@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 
@@ -102,10 +102,25 @@ const categories = ['All', 'Renewable Energy AI', 'Energy Trading', 'Grid Optimi
 
 export default function Works() {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [showAllProjects, setShowAllProjects] = useState(false);
   
-  const filteredProjects = activeCategory === 'All'
+  // Define energy-related project IDs
+  const energyProjectIds = [1, 2, 3, 4, 8]; // High-Accuracy Forecasting, Portfolio Pricing, Exempt Supply, EV Simulator, Wind Energy
+  
+  // First filter by category
+  const categoryFilteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(project => project.category === activeCategory);
+  
+  // Then filter by energy relevance if not showing all projects
+  const filteredProjects = showAllProjects 
+    ? categoryFilteredProjects
+    : categoryFilteredProjects.filter(project => energyProjectIds.includes(project.id));
+
+  // Reset showAllProjects when category changes
+  useEffect(() => {
+    setShowAllProjects(false);
+  }, [activeCategory]);
 
   return (
     <section id="works" className="section">
@@ -177,6 +192,61 @@ export default function Works() {
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Expand/Collapse Button - Only show if there are hidden projects */}
+        {!showAllProjects && categoryFilteredProjects.length > filteredProjects.length && (
+          <motion.div 
+            className="flex justify-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <motion.button
+              onClick={() => setShowAllProjects(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn btn-glass group text-lg px-8 py-4"
+            >
+              <span>Show More Projects</span>
+              <svg 
+                className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-y-1" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </motion.button>
+          </motion.div>
+        )}
+
+        {/* Collapse Button - Only show if all projects are visible */}
+        {showAllProjects && categoryFilteredProjects.length > energyProjectIds.length && (
+          <motion.div 
+            className="flex justify-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.button
+              onClick={() => setShowAllProjects(false)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn btn-glass group text-lg px-8 py-4"
+            >
+              <span>Show Less</span>
+              <svg 
+                className="w-5 h-5 ml-2 transform transition-transform group-hover:-translate-y-1" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+              </svg>
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

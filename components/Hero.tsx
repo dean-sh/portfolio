@@ -357,32 +357,23 @@ export default function Hero() {
       {/* Professional gradient overlay */}
       <div className="absolute inset-0 bg-professional-gradient opacity-60" />
       
-      {/* Main Hero Content - Centered Single Column */}
-      <div className="flex-1 flex flex-col items-center justify-center relative z-10 py-16">
-        <div className="container max-w-6xl">
+      {/* Main Hero Content - Two Column Layout */}
+      <div className="flex-1 flex items-center justify-center relative z-10 py-16">
+        <div className="container max-w-7xl">
           
-          {/* Hero Text Content - Centered */}
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Professional Greeting */}
+          <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
+            
+            {/* Left Column - Hero Text Content */}
             <motion.div 
-              className="mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center lg:text-left"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <span className="inline-block px-6 py-3 rounded-full bg-energy-600/10 border border-energy-600/20 text-energy-400 text-sm font-medium">
-                {greeting}
-              </span>
-            </motion.div>
             
             {/* Main Headline */}
             <motion.h1 
-              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -396,7 +387,7 @@ export default function Hero() {
             
             {/* Subtitle */}
             <motion.p 
-              className="text-xl md:text-2xl text-dark-200 font-medium mb-12 leading-relaxed max-w-4xl mx-auto"
+              className="text-lg md:text-xl lg:text-2xl text-dark-200 font-medium mb-12 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -406,7 +397,7 @@ export default function Hero() {
             
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -418,27 +409,26 @@ export default function Hero() {
                 </svg>
               </Link>
               
-              <PopupLink 
-                href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ180wRsTGwCpyUCMXBilTrYOOt8c7MKblFpoLqgE-Nq0lBwL9kJm-DwuAicPu34U9__ST970IiL?gv=true"
-                className="btn btn-glass group text-lg px-8 py-4"
-              >
+              <Link href="/#contact" className="btn btn-glass group text-lg px-8 py-4">
                 <span>Schedule Consultation</span>
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-              </PopupLink>
+              </Link>
             </motion.div>
           </motion.div>
 
-          {/* Energy Dashboard - Full Width Below */}
+          {/* Right Column - Energy Dashboard */}
           <motion.div 
-            className="w-full max-w-5xl mx-auto"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            className="w-full max-w-2xl mx-auto lg:max-w-none"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
             <EnergyDashboard />
           </motion.div>
+          
+          </div>
           
         </div>
       </div>

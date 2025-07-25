@@ -46,6 +46,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#0f172a" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        {/* Google Calendar Scheduling */}
+        <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
+        <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
       </head>
       <body className={`${outfit.variable} font-sans bg-bg-light text-primary antialiased overflow-x-hidden`}>
         <Navbar />
