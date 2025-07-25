@@ -136,7 +136,7 @@ export default function Contact() {
                     name="name" 
                     required
                     className="w-full px-4 py-3 bg-dark-800 text-white border border-dark-600 rounded-md focus:outline-none focus:ring-2 focus:ring-energy-600 focus:border-transparent placeholder-dark-400"
-                    placeholder="John Doe"
+                    placeholder="Alex Chen"
                   />
                   <ValidationError prefix="Name" field="name" errors={state.errors} className="mt-1 text-sm text-red-600" />
                 </div>
@@ -149,7 +149,7 @@ export default function Contact() {
                     name="email" 
                     required
                     className="w-full px-4 py-3 bg-dark-800 text-white border border-dark-600 rounded-md focus:outline-none focus:ring-2 focus:ring-energy-600 focus:border-transparent placeholder-dark-400"
-                    placeholder="john@example.com"
+                    placeholder="alex@energytech.com"
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} className="mt-1 text-sm text-red-600" />
                 </div>
