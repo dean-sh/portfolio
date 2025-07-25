@@ -21,18 +21,33 @@ export default function EnergyDashboard() {
   const [currentTime, setCurrentTime] = useState<string>('');
   const [mounted, setMounted] = useState(false);
   
-  // Forecast data for charts
-  const [forecastData, setForecastData] = useState({
-    wind: Array.from({ length: 24 }, (_, i) => ({
-      hour: i,
-      forecast: 400 + Math.sin(i * 0.3) * 200 + Math.random() * 100,
-      actual: i < 12 ? 380 + Math.sin(i * 0.3) * 180 + Math.random() * 80 : null
-    })),
-    solar: Array.from({ length: 24 }, (_, i) => ({
-      hour: i,
-      forecast: Math.max(0, 800 * Math.sin((i - 6) * Math.PI / 12) + Math.random() * 100),
-      actual: i < 12 ? Math.max(0, 750 * Math.sin((i - 6) * Math.PI / 12) + Math.random() * 80) : null
-    }))
+  // Forecast data for charts - Initialize with time-aware patterns
+  const [forecastData, setForecastData] = useState(() => {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const timeOffset = currentHour + currentMinute / 60;
+    
+    return {
+      wind: Array.from({ length: 24 }, (_, i) => {
+        const hour = (i + timeOffset) % 24;
+        const baseWind = 400 + Math.sin(hour * 0.3) * 200;
+        return {
+          hour: i,
+          forecast: Math.max(0, baseWind + Math.random() * 100),
+          actual: i < 12 ? Math.max(0, baseWind * 0.9 + Math.random() * 80) : null
+        };
+      }),
+      solar: Array.from({ length: 24 }, (_, i) => {
+        const hour = (i + timeOffset) % 24;
+        const solarBase = Math.max(0, 800 * Math.sin((hour - 6) * Math.PI / 12));
+        return {
+          hour: i,
+          forecast: Math.max(0, solarBase + Math.random() * 100),
+          actual: i < 12 ? Math.max(0, solarBase * 0.85 + Math.random() * 80) : null
+        };
+      })
+    };
   });
 
   // Prevent hydration mismatch
@@ -41,28 +56,59 @@ export default function EnergyDashboard() {
     setCurrentTime(new Date().toLocaleTimeString());
   }, []);
 
-  // Simulate real-time data updates
+  // Simulate real-time data updates with faster intervals and time-based changes
   useEffect(() => {
     if (!mounted) return;
     
     const interval = setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString());
+      
+      // Update metrics more frequently
       setMetrics(prev => prev.map(metric => {
         let newValue = metric.value;
         if (metric.label === 'Portfolio Risk (VaR)') {
-          newValue = Math.max(0.5, Math.min(8.0, metric.value + (Math.random() - 0.5) * 0.2));
+          newValue = Math.max(0.5, Math.min(8.0, metric.value + (Math.random() - 0.5) * 0.3));
         } else if (metric.label === 'Forecast Accuracy') {
-          newValue = Math.max(3.0, Math.min(7.0, metric.value + (Math.random() - 0.5) * 0.1));
+          newValue = Math.max(3.0, Math.min(7.0, metric.value + (Math.random() - 0.5) * 0.15));
         } else {
-          newValue = metric.value + Math.floor(Math.random() * 20 - 10);
+          newValue = metric.value + Math.floor(Math.random() * 30 - 15);
         }
         return {
           ...metric,
           value: newValue,
-          percentage: Math.max(10, Math.min(95, metric.percentage + Math.floor(Math.random() * 6 - 3)))
+          percentage: Math.max(10, Math.min(95, metric.percentage + Math.floor(Math.random() * 10 - 5)))
         };
       }));
-    }, 3000);
+
+      // Update forecast data to simulate time progression
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+      const timeOffset = currentHour + currentMinute / 60;
+
+      setForecastData(prev => ({
+        wind: Array.from({ length: 24 }, (_, i) => {
+          const hour = (i + timeOffset) % 24;
+          const baseWind = 400 + Math.sin(hour * 0.3 + timeOffset * 0.1) * 200;
+          const variance = Math.sin(timeOffset * 0.05) * 50;
+          return {
+            hour: i,
+            forecast: Math.max(0, baseWind + variance + Math.random() * 100),
+            actual: i < 12 ? Math.max(0, baseWind * 0.9 + variance * 0.8 + Math.random() * 80) : null
+          };
+        }),
+        solar: Array.from({ length: 24 }, (_, i) => {
+          const hour = (i + timeOffset) % 24;
+          const solarBase = Math.max(0, 800 * Math.sin((hour - 6) * Math.PI / 12));
+          const timeVariance = Math.sin(timeOffset * 0.08) * 100;
+          return {
+            hour: i,
+            forecast: Math.max(0, solarBase + timeVariance + Math.random() * 100),
+            actual: i < 12 ? Math.max(0, solarBase * 0.85 + timeVariance * 0.7 + Math.random() * 80) : null
+          };
+        })
+      }));
+    }, 1500); // Faster updates: every 1.5 seconds instead of 3
 
     return () => clearInterval(interval);
   }, [mounted]);
@@ -141,11 +187,29 @@ export default function EnergyDashboard() {
             ))}
           </svg>
           
-          {/* Time labels */}
+          {/* Time labels - Dynamic based on current time */}
           <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-dark-400 px-2">
-            <span>00:00</span>
-            <span>12:00</span>
-            <span>24:00</span>
+            {mounted && (() => {
+              const now = new Date();
+              const currentHour = now.getHours();
+              const startTime = `${currentHour.toString().padStart(2, '0')}:00`;
+              const midTime = `${((currentHour + 12) % 24).toString().padStart(2, '0')}:00`;
+              const endTime = `${((currentHour + 24) % 24).toString().padStart(2, '0')}:00`;
+              return (
+                <>
+                  <span>{startTime}</span>
+                  <span>{midTime}</span>
+                  <span>{endTime}</span>
+                </>
+              );
+            })()}
+            {!mounted && (
+              <>
+                <span>00:00</span>
+                <span>12:00</span>
+                <span>24:00</span>
+              </>
+            )}
           </div>
         </div>
         
