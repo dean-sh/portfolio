@@ -29,7 +29,7 @@ export default function GoogleCalendarWidget() {
         targetRef.current.innerHTML = '';
         
         window.calendar.schedulingButton.load({
-          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1FNGEsrn4DPL4_EkcnKhDXUnyyG0Rqluwnf6D9_a2vaF35hcUg0DaMTjDOE_0AbGIPT1F7iz_6?gv=true',
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2LsrFlKpeuHNe-SEJlQfLQMcQhvFMYP9ZJBmU50-Di_gozmmWnlvTbv_iPcWHNTiyZWFfKm95s?gv=true',
           color: '#059669', // energy-600 color to match our theme
           label: 'Book Appointment',
           target: targetRef.current,
