@@ -6,7 +6,13 @@ import { OrbitControls, Environment, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Wind Turbine Component
-function WindTurbine({ position, rotation = [0, 0, 0], scale = 1 }) {
+interface WindTurbineProps {
+  position: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: number;
+}
+
+function WindTurbine({ position, rotation = [0, 0, 0], scale = 1 }: WindTurbineProps) {
   const turbineRef = useRef<THREE.Group>(null);
   const bladesRef = useRef<THREE.Group>(null);
   
@@ -63,7 +69,13 @@ function WindTurbine({ position, rotation = [0, 0, 0], scale = 1 }) {
 }
 
 // Solar Panel Component
-function SolarPanel({ position, rotation = [0, 0, 0], scale = 1 }) {
+interface SolarPanelProps {
+  position: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: number;
+}
+
+function SolarPanel({ position, rotation = [0, 0, 0], scale = 1 }: SolarPanelProps) {
   // Completely static panels - no animation at all
   return (
     <group position={position} rotation={rotation} scale={scale}>
@@ -133,7 +145,11 @@ function SolarPanel({ position, rotation = [0, 0, 0], scale = 1 }) {
 }
 
 // Energy Particles Component
-function EnergyParticles({ count = 100 }) {
+interface EnergyParticlesProps {
+  count?: number;
+}
+
+function EnergyParticles({ count = 100 }: EnergyParticlesProps) {
   const pointsRef = useRef<THREE.Points>(null);
   
   const positions = useMemo(() => {
