@@ -58,138 +58,112 @@ export default function About() {
             transition={{ duration: 0.5 }}
             className="text-left"
           >
-            <div className="space-y-16">
-              {/* Clean Header */}
+            <div className="space-y-12">
+              {/* Compelling Introduction */}
               <div className="text-center">
                 <p className="text-xl text-dark-200 max-w-3xl mx-auto leading-relaxed">
-                  AI engineer specializing in <strong className="text-energy-400">UK and European energy markets</strong>. 
-                  <strong className="text-white">6+ years</strong> building production systems for renewable energy trading and forecasting.
+                  <strong className="text-white">AI Engineer & Data Scientist</strong> specializing in <strong className="text-energy-400 font-bold">UK/EU energy markets</strong> with <strong className="text-white">6+ years</strong> helping <strong className="text-energy-400 font-bold">early-stage, seed, and Series A startups</strong> build production AI systems for renewable energy trading and forecasting.
                 </p>
               </div>
 
-              {/* Visual Cards Grid */}
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
+              {/* Strategic Cards Grid - Better desktop structure */}
+              <div className="space-y-8">
                 
-                {/* Market Expertise Card */}
-                <motion.div 
-                  className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  {...cardVariants}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
+                {/* Top Row: Two Wide Cards */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  
+                  {/* Energy Markets & Business Impact */}
+                  <motion.div 
+                    className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
+                    {...cardVariants}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
+                        <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h4 className="text-2xl font-bold text-white">UK & EU Energy Markets</h4>
                     </div>
-                    <h4 className="text-xl font-bold text-white">UK & EU Energy Markets</h4>
-                  </div>
-                  <p className="text-dark-200 mb-4 leading-relaxed">
-                    Deep expertise in European energy regulations and trading frameworks.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Ofgem Regulations</span>
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">REGOs</span>
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Balancing Mechanism</span>
-                  </div>
-                </motion.div>
-
-                {/* Technical Expertise Card */}
-                <motion.div 
-                  className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  {...cardVariants}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
+                    <p className="text-dark-200 mb-6 leading-relaxed text-lg">
+                      Deep expertise in European energy regulations, trading frameworks, and market mechanisms. Specializing in renewable energy integration and grid optimization strategies.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Ofgem Regulations</span>
+                      <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">REGOs</span>
+                      <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Balancing Mechanism</span>
+                      <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Trading Frameworks</span>
                     </div>
-                    <h4 className="text-xl font-bold text-white">AI & Forecasting</h4>
-                  </div>
-                  <p className="text-dark-200 mb-4 leading-relaxed">
-                    Production ML systems for energy forecasting, trading, and grid optimization.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Wind & Solar</span>
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Price Prediction</span>
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Risk Management</span>
-                  </div>
-                </motion.div>
+                  </motion.div>
 
-                {/* Business Impact Card */}
+                  {/* Proven Impact & Results */}
+                  <motion.div 
+                    className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
+                    {...cardVariants}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
+                        <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                      </div>
+                      <h4 className="text-2xl font-bold text-white">Proven Results</h4>
+                    </div>
+                    <div className="grid grid-cols-2 gap-6 mb-6">
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-energy-400 mb-1">+57%</div>
+                        <div className="text-dark-200 text-sm">Wind Forecasting Accuracy</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-energy-400 mb-1">£50/MWh</div>
+                        <div className="text-dark-200 text-sm">Supply Matching Savings</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-energy-400 mb-1">Millions £</div>
+                        <div className="text-dark-200 text-sm">Revenue Impact</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-3xl font-bold text-energy-400 mb-1">6+</div>
+                        <div className="text-dark-200 text-sm">Years Production Systems</div>
+                      </div>
+                    </div>
+                    <p className="text-dark-300 leading-relaxed">
+                      Production systems deployed across European energy companies with quantified business results and measurable ROI.
+                    </p>
+                  </motion.div>
+                </div>
+
+                {/* Bottom Row: Full-width Technical Excellence */}
                 <motion.div 
                   className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
                   {...cardVariants}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center">
+                      <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
+                        <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <h4 className="text-2xl font-bold text-white">Technical Excellence</h4>
+                    </div>
+                    <Link 
+                      href="/resume" 
+                      className="btn btn-secondary inline-flex items-center"
+                    >
+                      <span>View Full Resume</span>
+                      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
-                    </div>
-                    <h4 className="text-xl font-bold text-white">Proven Results</h4>
+                    </Link>
                   </div>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-dark-200">Wind Forecasting Improvement</span>
-                      <span className="text-energy-400 font-bold">57% Accuracy</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-dark-200">Supply Matching Savings</span>
-                      <span className="text-energy-400 font-bold">£50/MWh</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-dark-200">Revenue Impact</span>
-                      <span className="text-energy-400 font-bold">Millions £</span>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Experience Card */}
-                <motion.div 
-                  className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  {...cardVariants}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                      </svg>
-                    </div>
-                    <h4 className="text-xl font-bold text-white">Industry Experience</h4>
-                  </div>
-                  <p className="text-dark-200 mb-4 leading-relaxed">
-                    Worked with energy-tech companies across Europe building mission-critical AI systems.
+                  <p className="text-dark-200 mb-6 leading-relaxed text-lg">
+                    Advanced mathematical and AI techniques for energy systems optimization, forecasting, and trading algorithms.
                   </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Production Systems</span>
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Live Trading</span>
-                    <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Multi-million £ Impact</span>
-                  </div>
-                </motion.div>
-
-                {/* Technologies Card */}
-                <motion.div 
-                  className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300 md:col-span-2"
-                  {...cardVariants}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                >
-                  <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                      </svg>
-                    </div>
-                    <h4 className="text-xl font-bold text-white">Core Technologies</h4>
-                  </div>
-                  <p className="text-dark-200 mb-6 leading-relaxed">
-                    Advanced mathematical and AI techniques for energy systems optimization and trading algorithms.
-                  </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
                     <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Deep Learning</span>
                     <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Physical Modeling</span>
                     <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Linear Programming</span>
@@ -206,30 +180,6 @@ export default function About() {
                 </motion.div>
               </div>
             </div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-16 text-center"
-            >
-              <Link 
-                href="/resume" 
-                className="btn btn-primary inline-flex items-center"
-              >
-                <span>View Full Resume</span>
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className="h-4 w-4 ml-2" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
       </div>
