@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     siteName: 'Dean Shabi Portfolio',
     images: [
       {
-        url: '/images/bloome.png',
+        url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Dean Shabi - AI Founder & Senior Data Scientist',
+        alt: 'Dean Shabi - Renewable Energy AI Expert',
       }
     ],
     type: 'website',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Dean Shabi | AI Founder & Senior Data Scientist',
     description: 'AI Founder of Bloome AI. Senior Data Scientist building high-impact ML products for UK/EU energy markets.',
-    images: ['/images/bloome.png'],
+    images: ['/images/og-image.png'],
     creator: '@deanshabi',
   },
   robots: {
