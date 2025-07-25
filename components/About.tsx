@@ -62,7 +62,7 @@ export default function About() {
               {/* Compelling Introduction */}
               <div className="text-center">
                 <p className="text-xl text-dark-200 max-w-3xl mx-auto leading-relaxed">
-                  <strong className="text-white">AI Engineer & Data Scientist</strong> specializing in <strong className="text-energy-400 font-bold">UK/EU energy markets</strong> with <strong className="text-white">6+ years</strong> helping <strong className="text-energy-400 font-bold">early-stage, seed, and Series A startups</strong> build production AI systems for renewable energy trading and forecasting.
+                  <strong className="text-white">AI Engineer & Data Scientist</strong> with a background in <strong className="text-energy-400 font-bold">physics and electrical engineering</strong>, specializing in <strong className="text-energy-400 font-bold">UK/EU energy markets</strong> with <strong className="text-white">6+ years</strong> helping <strong className="text-energy-400 font-bold">early-stage, seed, and Series A startups</strong> build production AI systems for renewable energy trading and forecasting.
                 </p>
               </div>
 
