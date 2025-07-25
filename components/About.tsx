@@ -187,21 +187,21 @@ export default function About() {
                     <h4 className="text-xl font-bold text-white">Core Technologies</h4>
                   </div>
                   <p className="text-dark-200 mb-6 leading-relaxed">
-                    Production-grade technology stack for scalable AI systems and energy market applications.
+                    Advanced mathematical and AI techniques for energy systems optimization and trading algorithms.
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Python</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">TensorFlow</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Scikit-learn</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Streamlit</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">MLOps</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">AWS SageMaker</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">MLflow</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Computer Vision</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Time Series</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Optimization</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Agent-Based Models</span>
-                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">CrewAI</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Deep Learning</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Physical Modeling</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Linear Programming</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Stochastic Optimization</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Time Series Forecasting</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Weather Modeling</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Anomaly Detection</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Risk Modeling</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Grid Simulation</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Monte Carlo Methods</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Price Optimization</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Load Balancing</span>
                   </div>
                 </motion.div>
               </div>
