@@ -125,7 +125,7 @@
   }
   
   .section-dark {
-    @apply bg-gradient-to-b from-dark-900 to-dark-950;
+    @apply bg-transparent;
   }
   
   .section-energy {
