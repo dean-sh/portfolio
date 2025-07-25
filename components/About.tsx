@@ -18,7 +18,12 @@ export default function About() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const cardVariants = isMobile ? {} : {
+  const cardVariants = isMobile ? {
+    initial: { opacity: 0 },
+    whileInView: { opacity: 1 },
+    viewport: { once: true },
+    transition: { duration: 0.5, ease: "easeOut" }
+  } : {
     initial: { opacity: 0 },
     whileInView: { opacity: 1 },
     viewport: { once: true },
