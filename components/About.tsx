@@ -3,8 +3,28 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 export default function About() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const cardVariants = isMobile ? {} : {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    whileHover: { y: -4 }
+  };
+
   return (
     <section id="about" className="section section-dark">
       <div className="container">
@@ -42,11 +62,8 @@ export default function About() {
                 {/* Market Expertise Card */}
                 <motion.div 
                   className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  {...cardVariants}
                   transition={{ duration: 0.5 }}
-                  whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
@@ -69,11 +86,8 @@ export default function About() {
                 {/* Technical Expertise Card */}
                 <motion.div 
                   className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  {...cardVariants}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
@@ -96,11 +110,8 @@ export default function About() {
                 {/* Business Impact Card */}
                 <motion.div 
                   className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  {...cardVariants}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
@@ -129,11 +140,8 @@ export default function About() {
                 {/* Experience Card */}
                 <motion.div 
                   className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  {...cardVariants}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  whileHover={{ y: -4 }}
                 >
                   <div className="flex items-center mb-6">
                     <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">

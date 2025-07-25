@@ -251,16 +251,16 @@ function EnergyScene() {
       <CameraController />
       
       {/* Lighting */}
-      <ambientLight intensity={0.3} color="#1e293b" />
+      <ambientLight intensity={0.4} color="#1e293b" />
       <directionalLight 
         position={[10, 10, 5]} 
-        intensity={1} 
+        intensity={1.2} 
         color="#fbbf24"
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
       />
-      <pointLight position={[-10, 5, -10]} intensity={0.5} color="#059669" />
+      <pointLight position={[-10, 5, -10]} intensity={0.3} color="#059669" />
       
       {/* Wind Turbines - All facing same direction */}
       <WindTurbine position={[-4, 0, -2]} rotation={[0, 0.5, 0]} scale={0.8} />
