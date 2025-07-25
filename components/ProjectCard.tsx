@@ -65,7 +65,7 @@ export default function ProjectCard({ title, description, tags, image, link, ind
         boxShadow: "0 10px 20px -5px rgba(0, 0, 0, 0.1), 0 6px 12px -6px rgba(0, 0, 0, 0.08)",
         transition: { duration: 0.2, ease: "easeOut" } 
       }}
-      className="card overflow-hidden group flex flex-col"
+      className="glass-card-readable overflow-hidden group flex flex-col rounded-xl border border-dark-700/60 hover:border-energy-600/40 shadow-professional hover:shadow-professional-lg"
     >
       <div className="relative aspect-video w-full overflow-hidden">
         {/* Placeholder or image */}
@@ -79,7 +79,7 @@ export default function ProjectCard({ title, description, tags, image, link, ind
           />
         ) : (
           <div className={`absolute inset-0 bg-gradient-to-br ${getColorFromTitle(title)} flex flex-col items-center justify-center`}>
-            <span className="text-primary font-medium text-lg opacity-80">{title}</span>
+            <span className="text-white font-medium text-lg opacity-80">{title}</span>
             <div className="mt-2 text-4xl">
               {getEmoji(title)}
             </div>
@@ -88,14 +88,14 @@ export default function ProjectCard({ title, description, tags, image, link, ind
       </div>
       
       <div className="p-6 relative flex flex-col flex-grow">
-        <h3 className="text-xl font-semibold text-primary mb-2 relative">{title}</h3>
-        <p className="text-secondary mb-4 text-sm relative flex-grow">{description}</p>
+        <h3 className="text-xl font-semibold text-white mb-2 relative">{title}</h3>
+        <p className="text-dark-200 mb-4 text-sm relative flex-grow">{description}</p>
         
         <div className="flex flex-wrap gap-2 mb-5 relative">
           {tags.map((tag, i) => (
             <span 
               key={i} 
-              className="text-xs font-medium px-2 py-0.5 rounded bg-slate-100 text-secondary transition-colors duration-200"
+              className="text-xs font-medium px-2 py-0.5 rounded bg-dark-700 text-dark-200 border border-dark-600 transition-colors duration-200"
             >
               {tag}
             </span>
@@ -106,7 +106,7 @@ export default function ProjectCard({ title, description, tags, image, link, ind
           <div className="relative mt-auto">
             <Link 
               href={link} 
-              className="inline-flex items-center text-accent font-medium group"
+              className="inline-flex items-center text-energy-400 font-medium group"
             >
               <span className="mr-1">View Project</span>
               <svg 

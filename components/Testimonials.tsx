@@ -73,7 +73,7 @@ export default function Testimonials() {
   }, [testimonials.length]);
 
   return (
-    <section className="py-24 overflow-hidden bg-light">
+    <section className="py-24 overflow-hidden section-dark">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -82,8 +82,8 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">Client Success Stories</h2>
-          <div className="mt-3 h-1 w-20 bg-accent mx-auto"></div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Client Success Stories</h2>
+          <div className="mt-3 h-1 w-20 bg-energy-600 mx-auto"></div>
         </motion.div>
         
         <div className="relative max-w-5xl mx-auto overflow-visible">
@@ -92,10 +92,10 @@ export default function Testimonials() {
           {/* Left arrow navigation */}
           <button 
             onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-16 w-12 h-12 rounded-full glass-card-readable border border-dark-700/50 flex items-center justify-center hover:border-energy-600/40 transition-colors z-10"
             aria-label="Previous testimonial"
           >
-            <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -103,10 +103,10 @@ export default function Testimonials() {
           {/* Right arrow navigation */}
           <button
             onClick={() => handleNext()}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-gray-100 transition-colors z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-16 w-12 h-12 rounded-full glass-card-readable border border-dark-700/50 flex items-center justify-center hover:border-energy-600/40 transition-colors z-10"
             aria-label="Next testimonial"
           >
-            <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -115,7 +115,7 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             <motion.div 
               key={currentTestimonial}
-              className="relative bg-white rounded-lg shadow-lg p-8 md:p-10"
+              className="relative glass-card-readable rounded-lg shadow-professional border border-dark-700/50 p-8 md:p-10"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
@@ -134,15 +134,15 @@ export default function Testimonials() {
                     </div>
                     
                     <div>
-                      <h3 className="text-xl font-bold text-primary">{testimonials[currentTestimonial].name}</h3>
-                      <p className="text-secondary mt-1">{testimonials[currentTestimonial].role}</p>
+                      <h3 className="text-xl font-bold text-white">{testimonials[currentTestimonial].name}</h3>
+                      <p className="text-dark-200 mt-1">{testimonials[currentTestimonial].role}</p>
                     </div>
                   </div>
                 </div>
                 
                 {/* Testimonial text */}
                 <div className="md:col-span-3">
-                  <p className="text-lg md:text-xl text-primary/90 italic leading-relaxed">
+                  <p className="text-lg md:text-xl text-dark-100 italic leading-relaxed">
                     {testimonials[currentTestimonial].text}
                   </p>
                 </div>
@@ -156,8 +156,8 @@ export default function Testimonials() {
                     onClick={() => goToTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
                       currentTestimonial === index
-                        ? 'bg-accent scale-125'
-                        : 'bg-secondary/20 hover:bg-secondary/40'
+                        ? 'bg-energy-400 scale-125'
+                        : 'bg-dark-600 hover:bg-dark-500'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />

@@ -12,7 +12,7 @@ const projects = [
     description: 'Led the development of long-term load, generation, and price forecasting models—including PV generation, battery degradation, and price forecasting. These models power core product features, support trading decisions, and reduce balancing costs.',
     tags: ['Energy-Tech', 'Forecasting', 'ML'],
     image: '/images/energy-demand.jpg',
-    category: 'Energy',
+    category: 'Renewable Energy AI',
     link: '/projects/forecasting-models',
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     description: 'Built a risk-based pricing optimisation algorithm that enables energy companies to grow rapidly while balancing risk and competitiveness—a critical edge in volatile energy markets.',
     tags: ['Energy-Tech', 'Optimization', 'Risk Analysis'],
     image: '/images/financial-analytics.jpg',
-    category: 'Energy',
+    category: 'Energy Trading',
     link: '/projects/portfolio-pricing',
   },
   {
@@ -30,7 +30,7 @@ const projects = [
     description: 'Created a unique matching algorithm under UK regulations that optimally pairs SME energy consumers with local generators, unlocking ~£50/MWh in cost savings—generating millions in new revenue.',
     tags: ['Algorithm', 'Energy', 'Optimization'],
     image: '/images/equity-copilot.jpg',
-    category: 'Energy',
+    category: 'Energy Trading',
     link: '/projects/exempt-supply-matching',
   },
   {
@@ -39,7 +39,7 @@ const projects = [
     description: 'Developed a modular, agent-based simulator to model heterogeneous electric vehicle charging behaviours across diverse driver populations, with an interactive Streamlit dashboard for scenario testing.',
     tags: ['Simulation', 'Energy', 'Python'],
     image: '/images/ev-simulator.jpg',
-    category: 'Energy',
+    category: 'Grid Optimization',
     link: '/projects/ev-simulator',
   },
   {
@@ -48,7 +48,7 @@ const projects = [
     description: 'Implemented anomaly detection algorithms to identify and predict robot failures in automotive manufacturing.',
     tags: ['Anomaly Detection', 'Manufacturing', 'Automotive'],
     image: '/images/robot-failure.jpg',
-    category: 'Industrial',
+    category: 'Other AI',
     link: '/projects/robot-failure',
   },
   {
@@ -57,7 +57,7 @@ const projects = [
     description: 'Developed computer vision models to detect fruit ripeness and reduce waste in the food supply chain.',
     tags: ['Computer Vision', 'AgriTech', 'Sustainability'],
     image: '/images/fruit-waste.jpg',
-    category: 'AgriFood',
+    category: 'Other AI',
     link: '/projects/fruit-waste',
   },
   {
@@ -66,7 +66,7 @@ const projects = [
     description: "Developed an advanced machine learning model for day-ahead wind power forecasting with remarkable improvements in accuracy, exceeding existing solutions by up to 57%.",
     tags: ['Energy', 'Forecasting', 'ML'],
     image: '/images/wind-energy.jpg',
-    category: 'Energy',
+    category: 'Renewable Energy AI',
     link: '/projects/wind-forecasting',
   },
   {
@@ -75,7 +75,7 @@ const projects = [
     description: 'Created an Equity Analyst Copilot using CrewAI agents framework to revolutionize stock analysis, leveraging specialized AI agents with access to SEC filings, financial documents, and latest stock values.',
     tags: ['AI', 'Agents', 'Finance'],
     image: '/images/stock-analysis.jpg',
-    category: 'AI',
+    category: 'Other AI',
     link: '/projects/equity-copilot',
   },
   {
@@ -84,7 +84,7 @@ const projects = [
     description: 'Comparative analysis of open-source MLOps tools including TensorFlow Serving, MLflow, AWS SageMaker, Seldon Core, and BentoML for efficient deployment and serving of ML models.',
     tags: ['MLOps', 'Tools', 'AI'],
     image: '/images/mlops-tools.jpg',
-    category: 'AI',
+    category: 'Other AI',
     link: '/projects/mlops-tools',
   },
   {
@@ -93,12 +93,12 @@ const projects = [
     description: 'Exploration of advanced Streamlit features and tips for maximizing its utility, covering topics like multipage apps, logo integration, third-party libraries, data caching, and query parameter usage.',
     tags: ['Streamlit', 'Tools', 'Data Science'],
     image: '/images/streamlit-guide.jpg',
-    category: 'AI',
+    category: 'Other AI',
     link: '/projects/streamlit-guide',
   },
 ];
 
-const categories = ['All', 'AI', 'Energy', 'Industrial', 'AgriFood'];
+const categories = ['All', 'Renewable Energy AI', 'Energy Trading', 'Grid Optimization', 'Other AI'];
 
 export default function Works() {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -117,16 +117,16 @@ export default function Works() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">My Work</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Portfolio</h2>
           <motion.div 
-            className="mt-3 h-1 w-20 bg-accent mx-auto"
+            className="mt-3 h-1 w-20 bg-energy-600 mx-auto"
             initial={{ width: 0 }}
             whileInView={{ width: "5rem" }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
           ></motion.div>
-          <p className="mt-6 text-secondary max-w-2xl mx-auto">
-            Impactful ML products in the energy-tech space with a focus on forecasting, optimization, and AI applications
+          <p className="mt-6 text-dark-200 max-w-2xl mx-auto">
+            AI-powered solutions for renewable energy forecasting, grid optimization, and energy trading with quantified business impact
           </p>
         </motion.div>
 
@@ -153,7 +153,7 @@ export default function Works() {
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeCategory === category
                   ? 'bg-accent text-white'
-                  : 'bg-gray-100 text-secondary hover:bg-gray-200'
+                  : 'bg-dark-800 text-dark-200 hover:bg-dark-700 border border-dark-600'
               }`}
             >
               {category}

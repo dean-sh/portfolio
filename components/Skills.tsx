@@ -30,27 +30,27 @@ const GenerativeAiIcon = () => (
 
 const skillCategories = [
   {
-    title: 'Business Analysis',
-    description: 'Understanding domain-specific needs and translating them into technical requirements',
-    skills: ['Domain understanding', 'Business Problem Identification', 'Stakeholder Management'],
-    icon: <BusinessAnalysisSvg />,
-  },
-  {
-    title: 'Data Analysis & Visualization',
-    description: 'Exploring data to uncover patterns and presenting insights through compelling visualizations',
-    skills: ['Data Exploration', 'Data Engineering', 'Insights & Visualization', 'Data Storytelling'],
-    icon: <DataAnalysisSvg />,
-  },
-  {
-    title: 'Machine Learning & AI',
-    description: 'Building and deploying sophisticated ML models that solve complex business problems',
-    skills: ['Time Series Forecasting', 'Energy Price Prediction', 'Load & Generation Forecasting', 'Exempt Supply Matching', 'Portfolio Optimization'],
+    title: 'Renewable Energy AI',
+    description: 'Specialized AI systems for forecasting and optimizing renewable energy generation, trading, and grid operations',
+    skills: ['Wind & Solar Forecasting', 'Energy Price Prediction', 'Load & Generation Forecasting', 'Battery Degradation Modeling', 'Grid Optimization'],
     icon: <MachineLearningIcon />,
   },
   {
-    title: 'Generative AI',
-    description: 'Implementing cutting-edge generative AI solutions for practical business applications',
-    skills: ['Large Language Models', 'LLM-based Agents', 'Voice AI', 'Text-to-Speech'],
+    title: 'Energy Trading & Risk',
+    description: 'Portfolio optimization and risk management systems for volatile energy markets',
+    skills: ['Portfolio Pricing', 'Risk Assessment (VaR/ES)', 'Supply Matching Algorithms', 'Trading Strategy Optimization', 'Market Analysis'],
+    icon: <BusinessAnalysisSvg />,
+  },
+  {
+    title: 'Data Engineering & Visualization',
+    description: 'Robust data pipelines and compelling visualizations for energy market insights',
+    skills: ['Time Series Processing', 'Weather Data Integration', 'Real-time Analytics', 'Interactive Dashboards', 'Data Storytelling'],
+    icon: <DataAnalysisSvg />,
+  },
+  {
+    title: 'MLOps & Deployment',
+    description: 'Production-ready ML systems with monitoring, versioning, and automated retraining capabilities',
+    skills: ['Model Deployment', 'MLflow & Experiment Tracking', 'Automated Retraining', 'Performance Monitoring', 'Scalable Infrastructure'],
     icon: <GenerativeAiIcon />,
   },
 ];
@@ -87,17 +87,17 @@ export default function Skills() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">My Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Energy-AI Expertise</h2>
           <motion.div 
-            className="mt-3 h-1 w-20 bg-accent mx-auto"
+            className="mt-3 h-1 w-20 bg-energy-600 mx-auto"
             initial={{ width: 0 }}
             whileInView={{ width: "5rem" }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
           ></motion.div>
-          <p className="mt-6 text-secondary max-w-2xl mx-auto">
-            A comprehensive set of technical and analytical skills refined over years of
-            practical experience
+          <p className="mt-6 text-dark-200 max-w-2xl mx-auto">
+            Specialized expertise in AI-powered forecasting and optimization systems for 
+            renewable energy markets, grid operations, and trading strategies
           </p>
         </motion.div>
 
@@ -112,11 +112,11 @@ export default function Skills() {
             <motion.div
               key={category.title}
               variants={itemVariants}
-              className="bg-white rounded-lg shadow-sm p-8 transition-shadow duration-300 hover:shadow-md"
+              className="glass-card-readable rounded-lg shadow-professional p-8 transition-shadow duration-300 hover:shadow-professional-lg border border-dark-700/50"
             >
               <div className="flex items-start">
                 <motion.div 
-                  className="flex-shrink-0 text-accent mr-4"
+                  className="flex-shrink-0 text-energy-400 mr-4"
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5 }}
@@ -124,8 +124,8 @@ export default function Skills() {
                   {category.icon}
                 </motion.div>
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-3">{category.title}</h3>
-                  <p className="text-secondary mb-4">{category.description}</p>
+                  <h3 className="text-xl font-semibold text-white mb-3">{category.title}</h3>
+                  <p className="text-dark-200 mb-4">{category.description}</p>
                   
                   <div className="flex flex-wrap gap-2 mt-4">
                     {category.skills.map((skill, skillIndex) => (
@@ -134,7 +134,7 @@ export default function Skills() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3 }}
-                        className="text-xs font-medium px-3 py-1 rounded-full bg-accent/10 text-accent"
+                        className="text-xs font-medium px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 border border-energy-600/20"
                       >
                         {skill}
                       </motion.span>
@@ -153,7 +153,7 @@ export default function Skills() {
           transition={{ duration: 0.7 }}
           className="mt-16 text-center"
         >
-          <h3 className="text-xl font-semibold text-primary mb-6">Tech Stack</h3>
+          <h3 className="text-xl font-semibold text-white mb-6">Tech Stack</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {[
               { name: 'Python', icon: 'python' },
@@ -175,12 +175,12 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-lg"
+                className="flex flex-col items-center justify-center p-4 glass-card-readable rounded-lg border border-dark-700/50 transition-all duration-300 hover:border-energy-600/30 hover:shadow-professional-lg"
               >
                 <div className="flex items-center justify-center h-14">
                   <TechStackIcon name={tech.icon} className="w-10 h-10" />
                 </div>
-                <span className="text-primary font-medium text-sm mt-2">{tech.name}</span>
+                <span className="text-white font-medium text-sm mt-2">{tech.name}</span>
               </motion.div>
             ))}
           </div>

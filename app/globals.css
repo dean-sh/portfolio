@@ -4,162 +4,278 @@
 
 @layer base {
   html {
-    font-size: 125%; /* Increase base font size from 16px to 20px (125%) */
+    font-size: 100%; /* Use standard 16px base for better accessibility */
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-gradient-to-b from-bg-start to-bg-end text-primary min-h-screen;
+    @apply bg-primary text-dark-50 min-h-screen antialiased;
+    background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+  }
+  
+  /* Professional typography hierarchy - Enhanced readability */
+  h1 {
+    @apply text-white font-bold tracking-tight;
+  }
+  
+  h2 {
+    @apply text-dark-50 font-semibold tracking-tight;
+  }
+  
+  h3 {
+    @apply text-dark-100 font-medium;
+  }
+  
+  h4 {
+    @apply text-dark-150 font-medium;
   }
   
   p {
-    @apply text-secondary; /* Default paragraph color */
+    @apply text-dark-200 leading-relaxed;
   }
   
+  /* Improved text contrast classes */
+  .text-primary {
+    @apply text-white;
+  }
+  
+  .text-secondary {
+    @apply text-dark-100;
+  }
+  
+  .text-muted {
+    @apply text-dark-300;
+  }
+  
+  .text-subtle {
+    @apply text-dark-400;
+  }
+  
+  /* Selection styling */
   ::selection {
-    @apply bg-accent/20 text-accent;
+    @apply bg-energy-600/30 text-energy-100;
+  }
+  
+  ::-moz-selection {
+    @apply bg-energy-600/30 text-energy-100;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-8xl mx-auto px-6 sm:px-8 lg:px-12; /* Using larger max-width */
+    @apply max-w-8xl mx-auto px-6 sm:px-8 lg:px-12;
   }
   
-  /* Modern button styling */
+  /* Professional glass-morphism card - Enhanced readability */
+  .glass-card {
+    @apply relative overflow-hidden;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* High contrast glass card for better readability */
+  .glass-card-readable {
+    @apply relative overflow-hidden;
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
+  
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+  }
+  
+  .glass-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Energy-themed buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-7 py-3.5 rounded-md text-base font-medium 
-           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 
-           focus:ring-accent disabled:opacity-50 tracking-wide;
+    @apply relative inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold 
+           transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-energy-600/50 
+           focus:ring-offset-2 focus:ring-offset-primary disabled:opacity-50 overflow-hidden;
   }
   
   .btn-primary {
-    @apply bg-accent text-white hover:bg-accent-dark shadow-sm hover:shadow-md 
-           hover:translate-y-[-1px];
+    @apply bg-gradient-to-r from-energy-600 to-energy-500 text-white shadow-energy-glow 
+           hover:shadow-energy-glow-lg hover:scale-105 active:scale-95
+           focus:ring-2 focus:ring-energy-400 focus:ring-opacity-75;
   }
   
   .btn-secondary {
-    @apply bg-bg-light text-secondary border border-slate-200 hover:bg-slate-100 
-           hover:text-primary hover:border-slate-300 shadow-sm hover:shadow-md
-           hover:translate-y-[-1px];
+    @apply glass-card-readable text-dark-100 hover:text-white border-dark-600 hover:border-energy-600/50
+           shadow-professional hover:shadow-professional-lg hover:scale-105 active:scale-95
+           focus:ring-2 focus:ring-dark-400 focus:ring-opacity-75;
   }
   
-  .btn-small {
-    @apply px-4 py-2 text-sm;
+  .btn-glass {
+    @apply glass-card-readable text-dark-50 hover:text-white border-dark-500 hover:border-energy-500/50
+           shadow-glass hover:shadow-glass-lg hover:scale-105 active:scale-95
+           focus:ring-2 focus:ring-energy-500 focus:ring-opacity-50;
   }
   
+  /* Professional section styling */
   .section {
-    @apply py-20;
+    @apply py-24 lg:py-32 relative;
   }
   
-  .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300;
+  .section-dark {
+    @apply bg-gradient-to-b from-dark-900 to-dark-950;
+  }
+  
+  .section-energy {
+    background: radial-gradient(ellipse at center, rgba(5, 150, 105, 0.05) 0%, transparent 70%);
+  }
+  
+  /* Wind turbine animation */
+  .wind-turbine-blade {
+    @apply absolute;
+    transform-origin: center bottom;
+  }
+  
+  /* Energy metrics card */
+  .energy-metric {
+    @apply glass-card p-6 text-center relative overflow-hidden;
+  }
+  
+  .energy-metric::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-energy-600 to-solar-500;
+  }
+  
+  /* Professional text styles */
+  .text-gradient-energy {
+    @apply bg-gradient-to-r from-energy-400 to-solar-500 bg-clip-text text-transparent;
+  }
+  
+  .text-professional {
+    @apply text-dark-200 leading-relaxed;
+  }
+  
+  .text-highlight {
+    @apply text-energy-400 font-semibold;
   }
 }
 
-/* Removed unused animations */
-/* Animation for code typing cursor
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+@layer utilities {
+  /* Energy flow animation utilities */
+  .animate-energy-flow {
+    animation: energy-flow 3s ease-in-out infinite;
+  }
+  
+  .animate-wind-spin {
+    animation: wind-turbine-realistic 4s linear infinite;
+  }
+  
+  .animate-wind-spin-slow {
+    animation: wind-turbine-realistic 8s linear infinite;
+  }
+  
+  .animate-wind-turbine-fast {
+    animation: wind-turbine-realistic 2s linear infinite;
+  }
+  
+  .animate-solar-track {
+    animation: solar-track 20s ease-in-out infinite;
+  }
+  
+  /* Glass shimmer effect */
+  .glass-shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .glass-shimmer::before {
+    content: '';
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: transform 0.6s;
+  }
+  
+  .glass-shimmer:hover::before {
+    @apply translate-x-full;
+  }
+  
+  /* Professional spacing utilities */
+  .space-professional {
+    @apply space-y-8;
+  }
+  
+  .gap-professional {
+    @apply gap-8 lg:gap-12;
+  }
 }
 
-.animate-blink {
-  animation: blink 0.8s infinite;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-// Gradient text animation
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-purple-600;
-  background-size: 200% 200%;
-  animation: gradientMove 6s ease infinite;
+::-webkit-scrollbar-track {
+  background: theme('colors.dark.900');
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+::-webkit-scrollbar-thumb {
+  background: theme('colors.energy.600');
+  border-radius: 4px;
 }
 
-// Horizontal gradient animation
-.animate-gradient-x {
-  background-size: 300% 100%;
-  animation: gradientX 8s ease infinite;
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.energy.500');
 }
 
-@keyframes gradientX {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Loading states */
+.loading-skeleton {
+  @apply animate-pulse bg-dark-800 rounded;
 }
 
-// Subtle float animation
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+/* Responsive text utilities */
+@responsive {
+  .text-responsive-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
+  .text-responsive-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
+  .text-responsive-base { font-size: clamp(1rem, 3vw, 1.125rem); }
+  .text-responsive-lg { font-size: clamp(1.125rem, 3.5vw, 1.25rem); }
+  .text-responsive-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+  .text-responsive-2xl { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .text-responsive-3xl { font-size: clamp(2rem, 6vw, 2.5rem); }
+  .text-responsive-4xl { font-size: clamp(2.5rem, 7vw, 3.5rem); }
+  .text-responsive-5xl { font-size: clamp(3rem, 8vw, 4.5rem); }
+  .text-responsive-6xl { font-size: clamp(3.5rem, 9vw, 5.5rem); }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-*/
-
-/* Removed commented-out enhanced button styles */
-
-/* Add styles for the animated gradient */
-.animate-gradient-flow {
-  background-size: 200% 200%; /* Needs size larger than 100% for position animation */
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
 }
 
-/* Styles for Vanta container */
-#vanta-bg {
-  width: 100%;
-  height: 100%;
-  position: absolute; /* Already set via className, but good for clarity */
-  top: 0;
-  left: 0;
-  z-index: -1; /* Already set via className, but good for clarity */
+.will-change-opacity {
+  will-change: opacity;
 }
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  /* Define spotlight properties as CSS variables */
-  --spotlight-size: 250px; /* Size of the spotlight gradient */
-  --spotlight-color: rgba(255, 255, 255, 0.1); /* Color of the spotlight (light with low opacity) */
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .animate-wind-spin,
+  .animate-wind-spin-slow,
+  .animate-energy-flow,
+  .animate-solar-track,
+  .animate-float,
+  .animate-float-delayed {
+    animation: none;
+  }
 }
 
-/* === RAG Container Spotlight Border Effect === */
-.rag-container-spotlight-border { /* Renamed class for clarity */
-  position: relative; 
-  overflow: hidden; 
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .text-dark-400 {
+    @apply text-dark-200;
+  }
 }
-
-.rag-container-spotlight-border::before {
-  content: '';
-  position: absolute;
-  /* Positioned using inset and translate for centering based on variables */
-  left: var(--spotlight-x, 50%); /* Default to center if var not set */
-  top: var(--spotlight-y, 50%);
-  /* Make it cover the parent, adjusted by transform later */
-  width: var(--spotlight-size);
-  height: var(--spotlight-size);
-  /* Center the gradient origin */
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle,
-    var(--spotlight-color) 0%,
-    rgba(255, 255, 255, 0) 70% /* Fade to transparent */
-  );
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s ease-in-out; /* Smooth fade */
-  z-index: 0; /* Place it behind the content but above the container background */
-  pointer-events: none; /* Make sure it doesn't interfere with mouse events on content */
-  border-radius: 50%; /* Keep it circular */
-}
-
-/* Show the spotlight on hover of the parent container */
-.rag-container-spotlight-border:hover::before {
-  opacity: 1;
-}
-
-/* === End RAG Container Spotlight Border Effect === */

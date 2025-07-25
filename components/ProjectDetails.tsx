@@ -30,7 +30,7 @@ export function ProjectDetails({
   children 
 }: ProjectDetailsProps) {
   return (
-    <div className="pt-28 pb-16 bg-gradient-to-b from-background to-background/50">
+    <div className="pt-28 pb-16 bg-gradient-to-b from-primary to-dark-900/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back button */}
         <motion.div 
@@ -39,7 +39,7 @@ export function ProjectDetails({
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/#works" className="inline-flex items-center text-accent hover:text-accent/80 transition-colors">
+          <Link href="/#works" className="inline-flex items-center text-energy-400 hover:text-energy-300 transition-colors">
             <FaArrowLeft className="mr-2" />
             <span>Back to projects</span>
           </Link>
@@ -92,27 +92,27 @@ export function ProjectDetails({
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="bg-card rounded-xl shadow-lg p-6 sticky top-24">
-              <h2 className="text-xl font-bold mb-6 text-primary border-b border-border pb-3">Project Details</h2>
+            <div className="glass-card-readable rounded-xl shadow-professional p-6 sticky top-24 border border-dark-700/50">
+              <h2 className="text-xl font-bold mb-6 text-white border-b border-dark-700 pb-3">Project Details</h2>
               
               {/* Project metadata */}
               <div className="space-y-4 mb-8">
                 {industry && (
                   <div className="flex items-center">
-                    <FaIndustry className="text-accent mr-3" />
+                    <FaIndustry className="text-energy-400 mr-3" />
                     <div>
-                      <h3 className="text-sm uppercase font-medium text-secondary/60">Industry</h3>
-                      <p className="text-primary font-medium">{industry}</p>
+                      <h3 className="text-sm uppercase font-medium text-dark-300">Industry</h3>
+                      <p className="text-white font-medium">{industry}</p>
                     </div>
                   </div>
                 )}
                 
                 {client && (
                   <div className="flex items-center">
-                    <FaUser className="text-accent mr-3" />
+                    <FaUser className="text-energy-400 mr-3" />
                     <div>
-                      <h3 className="text-sm uppercase font-medium text-secondary/60">Client</h3>
-                      <p className="text-primary font-medium">{client}</p>
+                      <h3 className="text-sm uppercase font-medium text-dark-300">Client</h3>
+                      <p className="text-white font-medium">{client}</p>
                     </div>
                   </div>
                 )}
@@ -125,7 +125,7 @@ export function ProjectDetails({
                     href={liveUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center text-accent hover:text-accent/80 transition-colors"
+                    className="flex items-center text-energy-400 hover:text-energy-300 transition-colors"
                   >
                     <FaLink className="mr-2" />
                     <span>View Live Project</span>
@@ -137,7 +137,7 @@ export function ProjectDetails({
                     href={githubUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center text-accent hover:text-accent/80 transition-colors"
+                    className="flex items-center text-energy-400 hover:text-energy-300 transition-colors"
                   >
                     <FaGithub className="mr-2" />
                     <span>View Source Code</span>
@@ -147,12 +147,12 @@ export function ProjectDetails({
               
               {/* Tags */}
               <div>
-                <h3 className="text-sm uppercase font-medium text-secondary/60 mb-3">Technologies</h3>
+                <h3 className="text-sm uppercase font-medium text-dark-300 mb-3">Technologies</h3>
                 <div className="flex flex-wrap gap-2">
                   {tags.map((tag, index) => (
                     <span 
                       key={index} 
-                      className="px-3 py-1 rounded-full text-sm font-medium bg-accent/10 text-accent"
+                      className="px-3 py-1 rounded-full text-sm font-medium bg-energy-600/10 text-energy-400 border border-energy-600/20"
                     >
                       {tag}
                     </span>
@@ -169,7 +169,7 @@ export function ProjectDetails({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <div className="bg-card rounded-xl shadow-lg p-6 md:p-8">
+            <div className="glass-card-readable rounded-xl shadow-professional p-6 md:p-8 border border-dark-700/50">
               {children}
             </div>
           </motion.div>

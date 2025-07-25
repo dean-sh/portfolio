@@ -111,7 +111,7 @@ export default function Navbar() {
     <motion.header 
       className={`fixed w-full z-50 transition-all duration-500 ${
         scrollPosition > 50 
-          ? 'bg-white/95 backdrop-blur-sm shadow-sm py-3 border-b border-slate-200'
+          ? 'bg-dark-950/95 backdrop-blur-md shadow-professional py-3 border-b border-dark-700'
           : 'bg-transparent py-6'
       }`}
       initial={{ y: -100, opacity: 0 }}
@@ -130,7 +130,7 @@ export default function Navbar() {
           whileHover={{ scale: isHeroVisible ? 1 : 1.05 }}
           whileTap={{ scale: isHeroVisible ? 1 : 0.95 }}
         >
-          <Link href="/" className="text-2xl font-bold text-primary">
+          <Link href="/" className="text-2xl font-bold text-white">
             DS
           </Link>
         </motion.div>
@@ -152,15 +152,15 @@ export default function Navbar() {
               >
                 <Link 
                   href={link.href}
-                  className={`relative group transition-all duration-300 hover:text-accent text-primary ${
+                  className={`relative group transition-all duration-300 hover:text-energy-400 text-dark-100 ${
                     isActive 
-                      ? 'text-accent font-medium bg-slate-100 px-3 py-1 rounded-md' 
+                      ? 'text-energy-400 font-medium bg-dark-800/50 px-3 py-1 rounded-md' 
                       : ''
                   }`}
                 >
                   {link.name}
                   
-                  <span className={`absolute left-0 w-0 h-0.5 bg-accent transition-all duration-300 ${
+                  <span className={`absolute left-0 w-0 h-0.5 bg-energy-400 transition-all duration-300 ${
                     isActive ? 'w-full -bottom-1' : 'group-hover:w-full -bottom-1'
                   }`} />
                 </Link>
@@ -172,7 +172,7 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <motion.button 
           type="button"
-          className="md:hidden text-primary rounded-full p-2 hover:bg-gray-100 transition-colors"
+          className="md:hidden text-dark-100 rounded-full p-2 hover:bg-dark-800/50 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -190,7 +190,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="md:hidden bg-white/95 backdrop-blur-sm mt-3 mx-4 rounded-xl shadow-lg border border-slate-200"
+            className="md:hidden bg-dark-950/95 backdrop-blur-md mt-3 mx-4 rounded-xl shadow-professional border border-dark-700"
             initial={{ opacity: 0, y: -20, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: -20, height: 0 }}
@@ -215,8 +215,8 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`block py-2 text-primary hover:text-accent transition-all duration-300 relative rounded-md hover:bg-slate-100 ${
-                        isActive ? 'text-accent font-medium bg-slate-100 px-3' : 'px-3'
+                      className={`block py-2 text-dark-100 hover:text-energy-400 transition-all duration-300 relative rounded-md hover:bg-dark-800/50 ${
+                        isActive ? 'text-energy-400 font-medium bg-dark-800/50 px-3' : 'px-3'
                       }`}
                       onClick={() => setIsOpen(false)}
                     >

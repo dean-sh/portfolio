@@ -226,7 +226,7 @@ export default function Resume() {
             <motion.div className="mb-8" variants={itemVariants}>
               <Link
                 href="/"
-                className="inline-flex items-center text-secondary hover:text-accent transition-all duration-300 mb-4"
+                className="inline-flex items-center text-dark-200 hover:text-energy-400 transition-all duration-300 mb-4"
               >
                 <ArrowLeftIcon className="w-4 h-4 mr-2" />
                 Back to Home
@@ -235,10 +235,10 @@ export default function Resume() {
 
             <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-8">
               <motion.div variants={itemVariants}>
-                <h1 className="text-3xl md:text-5xl font-bold text-primary mb-2">
+                <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
                   Resume
                 </h1>
-                <p className="text-secondary text-base md:text-lg">
+                <p className="text-dark-200 text-base md:text-lg">
                   My professional background and experience
                 </p>
               </motion.div>
@@ -258,16 +258,16 @@ export default function Resume() {
 
             {/* Experience Section */}
             <motion.div
-              className="mb-12 bg-white p-8 rounded-lg shadow-md"
+              className="mb-12 glass-card-readable p-8 rounded-lg shadow-professional border border-dark-700/50"
               variants={itemVariants}
             >
-              <h2 className="text-2xl font-bold mb-8">
+              <h2 className="text-2xl font-bold text-white mb-8">
                 Professional Experience
               </h2>
 
               <div className="space-y-8 md:space-y-16 relative">
                 {/* Timeline line - hidden on mobile */}
-                <div className="hidden md:block absolute left-[76px] top-6 bottom-6 w-px bg-gradient-to-b from-accent/10 via-accent/40 to-accent/10"></div>
+                <div className="hidden md:block absolute left-[76px] top-6 bottom-6 w-px bg-gradient-to-b from-energy-600/10 via-energy-600/40 to-energy-600/10"></div>
 
                 {experiences.map((exp, index) => {
                   // Extract years from period
@@ -280,19 +280,19 @@ export default function Resume() {
                       <div className="flex items-start">
                         {/* Year column - mobile and desktop */}
                         <div className="w-auto md:w-[76px] flex-shrink-0 pr-3 md:pr-6 pt-1 md:text-right">
-                          <span className="text-sm font-medium text-accent/90 bg-accent/10 px-2 py-1 rounded md:bg-transparent md:p-0">
+                          <span className="text-sm font-medium text-energy-400/90 bg-energy-600/10 px-2 py-1 rounded md:bg-transparent md:p-0 border border-energy-600/20">
                             {startYear}
                           </span>
                         </div>
 
                         {/* Timeline dot - hidden on mobile */}
-                        <div className="hidden md:block absolute left-[76px] top-1.5 -ml-[5px] w-[10px] h-[10px] rounded-full bg-accent/80"></div>
+                        <div className="hidden md:block absolute left-[76px] top-1.5 -ml-[5px] w-[10px] h-[10px] rounded-full bg-energy-600/80"></div>
 
                         {/* Content area */}
                         <div className="flex-1 md:pl-10">
                           <div className="flex flex-col md:flex-row md:items-start md:gap-6">
                             {/* Company logo - mobile position at top */}
-                            <div className="w-16 h-16 md:hidden flex-shrink-0 rounded-md overflow-hidden bg-accent/5 p-2 flex items-center justify-center backdrop-blur-sm border border-accent/10 mb-3">
+                            <div className="w-16 h-16 md:hidden flex-shrink-0 rounded-md overflow-hidden bg-energy-600/5 p-2 flex items-center justify-center backdrop-blur-sm border border-energy-600/20 mb-3">
                               <Image
                                 src={exp.image}
                                 alt={exp.company}
@@ -303,17 +303,17 @@ export default function Resume() {
                               />
                             </div>
                             <div className="flex-1">
-                              <h3 className="text-lg md:text-xl font-semibold">
+                              <h3 className="text-lg md:text-xl font-semibold text-white">
                                 {exp.title}
                               </h3>
-                              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-2 text-secondary mb-3 mt-1 text-sm md:text-base">
+                              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-2 text-dark-200 mb-3 mt-1 text-sm md:text-base">
                                 <span className="font-medium">
                                   {exp.company}
                                 </span>
                                 <span className="hidden sm:inline opacity-50">•</span>
                                 <span className="text-sm">{exp.location}</span>
                               </div>
-                              <div className="text-secondary text-sm leading-relaxed mb-3">
+                              <div className="text-dark-200 text-sm leading-relaxed mb-3">
                                 {exp.description
                                   .split("\n")
                                   .map((line, index) => (
@@ -322,7 +322,7 @@ export default function Resume() {
                                       className="flex items-start mb-1"
                                     >
                                       {index > 0 && (
-                                        <span className="text-accent mr-2 mt-0.5">
+                                        <span className="text-energy-400 mr-2 mt-0.5">
                                           •
                                         </span>
                                       )}
@@ -339,7 +339,7 @@ export default function Resume() {
                                   {exp.skills.map((skill, i) => (
                                     <span
                                       key={i}
-                                      className="px-2 py-0.5 md:py-1 bg-accent/10 text-accent rounded-md text-xs font-medium"
+                                      className="px-2 py-0.5 md:py-1 bg-energy-600/10 text-energy-400 rounded-md text-xs font-medium border border-energy-600/20"
                                     >
                                       {skill}
                                     </span>
@@ -348,7 +348,7 @@ export default function Resume() {
                               )}
                             </div>
                             {/* Company logo - desktop position */}
-                            <div className="hidden md:flex w-20 h-20 flex-shrink-0 rounded-md overflow-hidden bg-accent/5 p-2 items-center justify-center backdrop-blur-sm border border-accent/10">
+                            <div className="hidden md:flex w-20 h-20 flex-shrink-0 rounded-md overflow-hidden bg-energy-600/5 p-2 items-center justify-center backdrop-blur-sm border border-energy-600/20">
                               <Image
                                 src={exp.image}
                                 alt={exp.company}
@@ -369,14 +369,14 @@ export default function Resume() {
 
             {/* Education Section */}
             <motion.div
-              className="mb-8 md:mb-12 bg-white p-4 md:p-8 rounded-lg shadow-md"
+              className="mb-8 md:mb-12 glass-card-readable p-4 md:p-8 rounded-lg shadow-professional border border-dark-700/50"
               variants={itemVariants}
             >
-              <h2 className="text-xl md:text-2xl font-bold mb-6 md:mb-8">Education</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8">Education</h2>
 
               <div className="space-y-8 md:space-y-16 relative">
                 {/* Timeline line - hidden on mobile */}
-                <div className="hidden md:block absolute left-[76px] top-6 bottom-6 w-px bg-gradient-to-b from-accent/10 via-accent/40 to-accent/10"></div>
+                <div className="hidden md:block absolute left-[76px] top-6 bottom-6 w-px bg-gradient-to-b from-energy-600/10 via-energy-600/40 to-energy-600/10"></div>
 
                 {education.map((edu) => {
                   // Extract years from period
@@ -389,27 +389,27 @@ export default function Resume() {
                       <div className="flex items-start">
                         {/* Year column - mobile and desktop */}
                         <div className="w-auto md:w-[76px] flex-shrink-0 pr-3 md:pr-6 pt-1 md:text-right">
-                          <span className="text-sm font-medium text-accent/90 bg-accent/10 px-2 py-1 rounded md:bg-transparent md:p-0">
+                          <span className="text-sm font-medium text-energy-400/90 bg-energy-600/10 px-2 py-1 rounded md:bg-transparent md:p-0 border border-energy-600/20">
                             {startYear}
                           </span>
                         </div>
 
                         {/* Timeline dot - hidden on mobile */}
-                        <div className="hidden md:block absolute left-[76px] top-1.5 -ml-[5px] w-[10px] h-[10px] rounded-full bg-accent/80"></div>
+                        <div className="hidden md:block absolute left-[76px] top-1.5 -ml-[5px] w-[10px] h-[10px] rounded-full bg-energy-600/80"></div>
 
                         {/* Content area */}
                         <div className="flex-1 md:pl-10">
-                          <h3 className="text-lg md:text-xl font-semibold">
+                          <h3 className="text-lg md:text-xl font-semibold text-white">
                             {edu.degree}
                           </h3>
-                          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-2 text-secondary mb-3 mt-1 text-sm md:text-base">
+                          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-2 text-dark-200 mb-3 mt-1 text-sm md:text-base">
                             <span className="font-medium">
                               {edu.institution}
                             </span>
                             <span className="hidden sm:inline opacity-50">•</span>
                             <span className="text-sm">{edu.location}</span>
                           </div>
-                          <p className="text-secondary text-sm leading-relaxed">
+                          <p className="text-dark-200 text-sm leading-relaxed">
                             {edu.description}
                           </p>
                         </div>
@@ -422,22 +422,22 @@ export default function Resume() {
 
             {/* Skills Section */}
             <motion.div
-              className="mb-8 md:mb-12 bg-white p-4 md:p-8 rounded-lg shadow-md"
+              className="mb-8 md:mb-12 glass-card-readable p-4 md:p-8 rounded-lg shadow-professional border border-dark-700/50"
               variants={itemVariants}
             >
-              <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6">Skills & Expertise</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Skills & Expertise</h2>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {skills.map((skillGroup, index) => (
                   <div key={index} className="space-y-2 md:space-y-3">
-                    <h3 className="font-semibold text-base md:text-lg">
+                    <h3 className="font-semibold text-base md:text-lg text-white">
                       {skillGroup.category}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {skillGroup.skills.map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="px-2 md:px-3 py-0.5 md:py-1 bg-accent/10 text-accent rounded-full text-xs md:text-sm"
+                          className="px-2 md:px-3 py-0.5 md:py-1 bg-energy-600/10 text-energy-400 rounded-full text-xs md:text-sm border border-energy-600/20"
                         >
                           {skill}
                         </span>
@@ -450,10 +450,10 @@ export default function Resume() {
 
             {/* CTA Section */}
             <motion.div className="text-center mt-8 md:mt-12" variants={itemVariants}>
-              <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
                 Interested in working together?
               </h2>
-              <p className="text-secondary mb-4 md:mb-6 text-sm md:text-base">
+              <p className="text-dark-200 mb-4 md:mb-6 text-sm md:text-base">
                 Feel free to reach out to discuss potential opportunities.
               </p>
               <Link href="/#contact" className="btn btn-primary">
