@@ -374,8 +374,8 @@ export default function Hero() {
             {/* Main Headline */}
             <motion.h1 
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
               <span className="text-white">Dean Shabi</span>
@@ -388,8 +388,8 @@ export default function Hero() {
             {/* Subtitle */}
             <motion.p 
               className="text-lg md:text-xl lg:text-2xl text-dark-200 font-medium mb-12 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               6+ years developing AI-powered forecasting systems that optimize renewable energy trading and grid operations
@@ -398,8 +398,8 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div 
               className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <Link href="/#works" className="btn btn-primary group text-lg px-8 py-4">

@@ -126,8 +126,8 @@ export default function Works() {
     <section id="works" className="section">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-center mb-16"
@@ -148,8 +148,8 @@ export default function Works() {
         {/* Filter categories with improved animations */}
         <motion.div 
           className="flex flex-wrap justify-center gap-2 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
@@ -197,8 +197,8 @@ export default function Works() {
         {!showAllProjects && categoryFilteredProjects.length > filteredProjects.length && (
           <motion.div 
             className="flex justify-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
@@ -225,8 +225,8 @@ export default function Works() {
         {showAllProjects && categoryFilteredProjects.length > energyProjectIds.length && (
           <motion.div 
             className="flex justify-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
             <motion.button

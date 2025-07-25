@@ -200,10 +200,9 @@ export default function Resume() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
       transition: {
         duration: 0.5,
         ease: "easeOut",
@@ -292,7 +291,7 @@ export default function Resume() {
                         <div className="flex-1 md:pl-10">
                           <div className="flex flex-col md:flex-row md:items-start md:gap-6">
                             {/* Company logo - mobile position at top */}
-                            <div className="w-16 h-16 md:hidden flex-shrink-0 rounded-md overflow-hidden bg-energy-600/5 p-2 flex items-center justify-center backdrop-blur-sm border border-energy-600/20 mb-3">
+                            <div className="w-16 h-16 md:hidden flex-shrink-0 rounded-md overflow-hidden bg-white p-2 flex items-center justify-center border border-dark-700/20 mb-3">
                               <Image
                                 src={exp.image}
                                 alt={exp.company}
@@ -348,7 +347,7 @@ export default function Resume() {
                               )}
                             </div>
                             {/* Company logo - desktop position */}
-                            <div className="hidden md:flex w-20 h-20 flex-shrink-0 rounded-md overflow-hidden bg-energy-600/5 p-2 items-center justify-center backdrop-blur-sm border border-energy-600/20">
+                            <div className="hidden md:flex w-20 h-20 flex-shrink-0 rounded-md overflow-hidden bg-white p-2 items-center justify-center border border-dark-700/20">
                               <Image
                                 src={exp.image}
                                 alt={exp.company}
