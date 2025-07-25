@@ -68,7 +68,7 @@ export default function About() {
               </div>
 
               {/* Visual Cards Grid */}
-              <div className="grid md:grid-cols-2 gap-10">
+              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
                 
                 {/* Market Expertise Card */}
                 <motion.div 
@@ -169,6 +169,39 @@ export default function About() {
                     <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Production Systems</span>
                     <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Live Trading</span>
                     <span className="px-3 py-1 rounded-full bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20">Multi-million £ Impact</span>
+                  </div>
+                </motion.div>
+
+                {/* Technologies Card */}
+                <motion.div 
+                  className="glass-card p-8 rounded-xl border border-dark-700/50 hover:border-energy-600/30 transition-all duration-300 md:col-span-2"
+                  {...cardVariants}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 rounded-lg bg-energy-600/10 flex items-center justify-center mr-4">
+                      <svg className="w-6 h-6 text-energy-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                      </svg>
+                    </div>
+                    <h4 className="text-xl font-bold text-white">Core Technologies</h4>
+                  </div>
+                  <p className="text-dark-200 mb-6 leading-relaxed">
+                    Production-grade technology stack for scalable AI systems and energy market applications.
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Python</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">TensorFlow</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Scikit-learn</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Streamlit</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">MLOps</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">AWS SageMaker</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">MLflow</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Computer Vision</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Time Series</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Optimization</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">Agent-Based Models</span>
+                    <span className="px-3 py-2 rounded-lg bg-energy-600/10 text-energy-400 text-sm border border-energy-600/20 text-center font-medium">CrewAI</span>
                   </div>
                 </motion.div>
               </div>
