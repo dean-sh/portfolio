@@ -126,8 +126,8 @@ export default function ResumePage() {
           <p className="eyebrow">Résumé</p>
           <h1 className="text-4xl text-highlight dark:text-white md:text-5xl">Dean Shabi</h1>
           <p className="max-w-3xl text-lg text-copy-muted">
-            AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and
-            automation systems with UK/EU traders, grid operators, and founders — currently building{' '}
+            AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and automation systems with UK/EU traders, grid
+            operators, and founders — currently building{' '}
             <Link
               href="https://www.bloome.ai"
               target="_blank"
@@ -138,19 +138,9 @@ export default function ResumePage() {
             </Link>
             , the calmest way to discover and apply to new roles.
           </p>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <a
-              href="/dean-shabi-cv.pdf"
-              className="btn-primary"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Download PDF
-            </a>
-            <Link href="mailto:deanshabi@gmail.com" className="btn-ghost">
-              deanshabi@gmail.com
-            </Link>
-          </div>
+          <Link href="mailto:deanshabi@gmail.com" className="btn-ghost inline-flex text-sm">
+            deanshabi@gmail.com
+          </Link>
         </div>
       </section>
 
