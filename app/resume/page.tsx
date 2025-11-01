@@ -13,7 +13,7 @@ const EXPERIENCE = [
     location: 'Remote',
     period: 'May 2025 – present',
     description:
-      '\nThe first AI agent that finds jobs, researches companies & applies for you.\nGrow your career, not frustration.',
+      '\nLaunched Bloome AI (https://www.bloome.ai), an AI job-matching assistant delivering five perfect roles every morning.\nShipped Apply Pro for one-click, human-sounding outreach and polished résumés tailored to each opportunity.\nPiloting Hands-Free, a transparent agent that researches companies and applies end-to-end under user supervision.\nBuilt an adaptive calibration engine that keeps matches high-signal with just a few approvals.\nDesigned a human-calm UX so job searches become a one-minute morning ritual instead of daily churn.',
     skills: ['AI Agents', 'Product Development', 'Entrepreneurship', 'Full-Stack Development'],
   },
   {
@@ -127,7 +127,16 @@ export default function ResumePage() {
           <h1 className="text-4xl text-white md:text-5xl">Dean Shabi</h1>
           <p className="max-w-3xl text-lg text-copy-muted">
             AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and
-            automation systems with UK/EU traders, grid operators, and founders.
+            automation systems with UK/EU traders, grid operators, and founders — currently building{' '}
+            <Link
+              href="https://www.bloome.ai"
+              target="_blank"
+              rel="noreferrer"
+              className="underline decoration-dotted underline-offset-4 transition hover:text-white"
+            >
+              Bloome AI
+            </Link>
+            , the calmest way to discover and apply to new roles.
           </p>
           <div className="flex flex-wrap gap-4 text-sm">
             <a
