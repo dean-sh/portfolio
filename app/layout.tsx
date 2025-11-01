@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth overflow-x-hidden" data-theme="light" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://deanshabi.com" />
@@ -92,8 +92,7 @@ export default function RootLayout({
                 } catch (error) {
                   console.warn('Unable to access theme storage:', error);
                 }
-                const mql = window.matchMedia('(prefers-color-scheme: dark)');
-                setTheme(mql.matches ? 'dark' : 'light');
+                setTheme('light');
               })();
             `,
           }}
