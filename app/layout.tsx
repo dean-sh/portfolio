@@ -3,9 +3,7 @@ import { Outfit } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import VantaScripts from '@/components/VantaScripts';
 import { Analytics } from "@vercel/analytics/react";
-import PageTransitionWrapper from '@/components/PageTransitionWrapper';
 
 const outfit = Outfit({ 
   subsets: ['latin'], 
@@ -15,15 +13,15 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'Dean Shabi | AI Founder & Senior Data Scientist',
-  description: 'AI Founder of Bloome AI. Senior Data Scientist building high-impact ML products for UK/EU energy markets. Expertise in forecasting, pricing engines, and renewable energy algorithms.',
-  keywords: ['Data Scientist', 'AI', 'Machine Learning', 'Energy Tech', 'Forecasting', 'Portfolio', 'Dean Shabi', 'Bloome AI', 'Renewable Energy'],
+  title: 'Dean Shabi | AI Founder & Energy Data Scientist',
+  description: 'Dean Shabi partners with energy leaders to build forecasting, optimisation, and automation systems that deliver measurable impact.',
+  keywords: ['Dean Shabi', 'AI founder', 'energy data scientist', 'renewable energy forecasting', 'pricing engine', 'energy trading', 'Bloome AI'],
   authors: [{ name: 'Dean Shabi' }],
   creator: 'Dean Shabi',
   metadataBase: new URL('https://deanshabi.com'),
   openGraph: {
-    title: 'Dean Shabi | AI Founder & Senior Data Scientist',
-    description: 'AI Founder of Bloome AI. Senior Data Scientist building high-impact ML products for UK/EU energy markets.',
+    title: 'Dean Shabi | AI Founder & Energy Data Scientist',
+    description: 'AI founder and senior data scientist delivering forecasting, pricing, and automation systems for modern energy markets.',
     url: 'https://deanshabi.com',
     siteName: 'Dean Shabi Portfolio',
     images: [
@@ -39,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dean Shabi | AI Founder & Senior Data Scientist',
-    description: 'AI Founder of Bloome AI. Senior Data Scientist building high-impact ML products for UK/EU energy markets.',
+    title: 'Dean Shabi | AI Founder & Energy Data Scientist',
+    description: 'Forecasting, optimisation, and automation for renewable energy and trading teams.',
     images: ['/images/og-image.png'],
     creator: '@deanshabi',
   },
@@ -82,8 +80,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Dean Shabi",
-              "jobTitle": "AI Founder & Senior Data Scientist",
-              "description": "AI Founder of Bloome AI. Senior Data Scientist building high-impact ML products for UK/EU energy markets.",
+              "jobTitle": "AI Founder & Energy Data Scientist",
+              "description": "Dean Shabi builds forecasting, pricing, and automation systems for UK/EU energy markets.",
               "url": "https://deanshabi.com",
               "image": "https://deanshabi.com/images/profile.png",
               "sameAs": [
@@ -103,20 +101,19 @@ export default function RootLayout({
               "worksFor": {
                 "@type": "Organization",
                 "name": "Bloome AI",
-                "description": "AI-powered job application automation platform"
+                "description": "AI automation workflows for energy operations"
               }
             })
           }}
         />
       </head>
-      <body className={`${outfit.variable} font-sans bg-bg-light text-primary antialiased overflow-x-hidden`}>
+      <body className={`${outfit.variable} font-sans min-h-screen overflow-x-hidden`}> 
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <PageTransitionWrapper>
+        <main id="main-content" className="flex min-h-[calc(100vh-12rem)] flex-col">
           {children}
-        </PageTransitionWrapper>
+        </main>
         <Footer />
-
-        <VantaScripts />
         <Analytics />
       </body>
     </html>

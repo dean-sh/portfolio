@@ -1,10 +1,6 @@
-'use client';
-
-import React, { ReactNode } from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaArrowLeft, FaIndustry, FaUser, FaLink, FaGithub } from 'react-icons/fa';
+import Image from "next/image";
+import Link from "next/link";
+import { ReactNode } from "react";
 
 interface ProjectDetailsProps {
   title: string;
@@ -18,163 +14,135 @@ interface ProjectDetailsProps {
   children: ReactNode;
 }
 
-export function ProjectDetails({ 
-  title, 
-  subtitle, 
-  image, 
-  industry, 
-  client, 
-  tags = [], 
+const ctaBase =
+  "inline-flex items-center justify-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition";
+
+export function ProjectDetails({
+  title,
+  subtitle,
+  image,
+  industry,
+  client,
+  tags = [],
   liveUrl,
   githubUrl,
-  children 
+  children,
 }: ProjectDetailsProps) {
   return (
-    <div className="pt-28 pb-16 bg-gradient-to-b from-primary to-dark-900/50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Back button */}
-        <motion.div 
-          className="mb-8"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+    <article className="relative isolate overflow-hidden bg-[rgba(2,6,23,0.92)]">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -left-20 top-[-10%] h-72 w-72 rounded-full bg-[rgba(56,189,248,0.16)] blur-[120px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] h-96 w-96 rounded-full bg-[rgba(129,140,248,0.14)] blur-[140px]" />
+      </div>
+
+      <div className="container space-y-16 py-24">
+        <Link
+          href="/#works"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-accent-soft transition hover:text-white"
         >
-          <Link href="/#works" className="inline-flex items-center text-energy-400 hover:text-energy-300 transition-colors">
-            <FaArrowLeft className="mr-2" />
-            <span>Back to projects</span>
-          </Link>
-        </motion.div>
-        
-        {/* Hero section */}
-        <div className="relative mb-16">
-          <motion.div 
-            className="rounded-2xl overflow-hidden shadow-2xl relative aspect-video mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <div className="p-4 md:p-6 lg:p-10 w-full">
-                <motion.h1 
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
+          ← Back to selected work
+        </Link>
+
+        <section className="rounded-[2.5rem] border border-white/10 bg-surface/70 p-10 shadow-[0_35px_120px_rgba(15,23,42,0.55)]">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] xl:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)]">
+            <div className="space-y-8">
+              <header className="space-y-5">
+                <p className="eyebrow">Case Study</p>
+                <h1 className="text-balance text-4xl text-white md:text-5xl">
                   {title}
-                </motion.h1>
-                
-                <motion.p 
-                  className="text-base sm:text-lg md:text-xl text-white/90 mb-4 md:mb-6 max-w-3xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  {subtitle}
-                </motion.p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {/* Sidebar with project metadata */}
-          <motion.div 
-            className="lg:col-span-1"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="glass-card-readable rounded-xl shadow-professional p-6 sticky top-24 border border-dark-700/50">
-              <h2 className="text-xl font-bold mb-6 text-white border-b border-dark-700 pb-3">Project Details</h2>
-              
-              {/* Project metadata */}
-              <div className="space-y-4 mb-8">
-                {industry && (
-                  <div className="flex items-center">
-                    <FaIndustry className="text-energy-400 mr-3" />
-                    <div>
-                      <h3 className="text-sm uppercase font-medium text-dark-300">Industry</h3>
-                      <p className="text-white font-medium">{industry}</p>
-                    </div>
-                  </div>
-                )}
-                
-                {client && (
-                  <div className="flex items-center">
-                    <FaUser className="text-energy-400 mr-3" />
-                    <div>
-                      <h3 className="text-sm uppercase font-medium text-dark-300">Client</h3>
-                      <p className="text-white font-medium">{client}</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              {/* Links */}
-              <div className="space-y-3 mb-8">
-                {liveUrl && (
-                  <a 
-                    href={liveUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center text-energy-400 hover:text-energy-300 transition-colors"
-                  >
-                    <FaLink className="mr-2" />
-                    <span>View Live Project</span>
-                  </a>
-                )}
-                
-                {githubUrl && (
-                  <a 
-                    href={githubUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center text-energy-400 hover:text-energy-300 transition-colors"
-                  >
-                    <FaGithub className="mr-2" />
-                    <span>View Source Code</span>
-                  </a>
-                )}
-              </div>
-              
-              {/* Tags */}
-              <div>
-                <h3 className="text-sm uppercase font-medium text-dark-300 mb-3">Technologies</h3>
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag, index) => (
-                    <span 
-                      key={index} 
-                      className="px-3 py-1 rounded-full text-sm font-medium bg-energy-600/10 text-energy-400 border border-energy-600/20"
+                </h1>
+                <p className="max-w-2xl text-lg text-copy-muted">{subtitle}</p>
+              </header>
+
+              {(liveUrl || githubUrl) && (
+                <div className="flex flex-wrap gap-3">
+                  {liveUrl && (
+                    <a
+                      href={liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`${ctaBase} border-accent/60 bg-accent/15 text-white hover:border-accent hover:bg-accent/25`}
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      Launch the product ↗
+                    </a>
+                  )}
+                  {githubUrl && (
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`${ctaBase} border-white/15 text-copy-muted hover:border-white/35 hover:text-white`}
+                    >
+                      View the source ↗
+                    </a>
+                  )}
+                </div>
+              )}
+
+              {(industry || client) && (
+                <dl className="grid gap-6 text-sm text-copy-muted sm:grid-cols-2">
+                  {industry && (
+                    <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">
+                        Industry
+                      </dt>
+                      <dd className="mt-2 text-base text-white/90">
+                        {industry}
+                      </dd>
+                    </div>
+                  )}
+                  {client && (
+                    <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                      <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">
+                        Partner
+                      </dt>
+                      <dd className="mt-2 text-base text-white/90">{client}</dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+
+              {tags.length > 0 && (
+                <div className="space-y-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">
+                    Capabilities & tooling
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs">
+                    {tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-copy-muted transition hover:border-accent/60 hover:text-white"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="relative flex items-start justify-center">
+              <div className="group relative w-full overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/40 shadow-[0_25px_70px_rgba(15,23,42,0.6)]">
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-transparent to-transparent opacity-60 transition duration-500 group-hover:opacity-80" />
+                <div className="relative aspect-[5/4] w-full">
+                  <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    sizes="(min-width: 1280px) 500px, (min-width: 768px) 45vw, 90vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                    priority
+                  />
                 </div>
               </div>
             </div>
-          </motion.div>
-          
-          {/* Project content */}
-          <motion.div
-            className="lg:col-span-2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="glass-card-readable rounded-xl shadow-professional p-6 md:p-8 border border-dark-700/50">
-              {children}
-            </div>
-          </motion.div>
+          </div>
+        </section>
+
+        <div className="space-y-14 text-base leading-relaxed text-copy-muted">
+          {children}
         </div>
       </div>
-    </div>
+    </article>
   );
-} 
+}

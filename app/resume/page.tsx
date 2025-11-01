@@ -1,468 +1,230 @@
-"use client";
+import Link from 'next/link';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import {
-  DocumentArrowDownIcon,
-  ArrowTopRightOnSquareIcon,
-  ArrowLeftIcon,
-} from "@heroicons/react/24/outline";
+export const metadata = {
+  title: 'Résumé | Dean Shabi',
+  description:
+    'Résumé for Dean Shabi – AI founder and senior data scientist building forecasting, pricing, and automation systems for renewable energy markets.',
+};
 
-// Experience data
-const experiences = [
+const EXPERIENCE = [
   {
-    id: 1,
-    title: "Founder",
-    company: "Bloome AI",
-    location: "Remote",
-    period: "May 2025-present",
+    role: 'Founder',
+    company: 'Bloome AI',
+    location: 'Remote',
+    period: 'May 2025 – present',
     description:
-      "\nThe first AI agent that finds jobs, researches companies & applies for you. \n Grow your career, not frustration.",
-    image: "/images/bloome.png",
-    skills: [
-      "AI Agents",
-      "Product Development",
-      "Entrepreneurship",
-      "Full-Stack Development",
-    ],
+      '\nThe first AI agent that finds jobs, researches companies & applies for you.\nGrow your career, not frustration.',
+    skills: ['AI Agents', 'Product Development', 'Entrepreneurship', 'Full-Stack Development'],
   },
   {
-    id: 2,
-    title: "Senior Data Scientist",
-    company: "Renewcast",
-    location: "Italy (Remote)",
-    period: "2025-present",
+    role: 'Senior Data Scientist',
+    company: 'Renewcast',
+    location: 'Italy · Remote',
+    period: '2025 – present',
     description:
-      "\nBuilding high-precision forecasting models for renewable (wind, solar) energy production using machine learning, numerical weather prediction, and satellite data. \n Improving forecast accuracy and reliability by integrating real-time meteorological data, telemetry, and spatial modeling at scale. \n Delivering scalable, API-driven forecast products that support energy traders, grid operators, and renewable asset managers in optimizing operations and reducing imbalance penalties.",
-    image: "/images/renewcast.png",
-    skills: [
-      "Machine Learning",
-      "Weather Prediction",
-      "Satellite Data",
-      "Python",
-      "API Development",
-      "Spatial Modeling",
-    ],
+      '\nBuilding high-precision forecasting models for renewable (wind, solar) energy production using machine learning, numerical weather prediction, and satellite data.\nImproving forecast accuracy and reliability by integrating real-time meteorological data, telemetry, and spatial modeling at scale.\nDelivering scalable, API-driven forecast products that support energy traders, grid operators, and renewable asset managers in optimizing operations and reducing imbalance penalties.',
+    skills: ['Machine Learning', 'Weather Prediction', 'Satellite Data', 'Python', 'API Development', 'Spatial Modeling'],
   },
   {
-    id: 3,
-    title: "Founding Data Scientist",
-    company: "tem.energy",
-    location: "London (Remote)",
-    period: "2024-May 2025",
+    role: 'Founding Data Scientist',
+    company: 'tem.energy',
+    location: 'London · Remote',
+    period: '2024 – May 2025',
     description:
-      "\nLeading the AI backbone of RED, our flagship product for renewable energy. \n Built Rosso, an automated pricing engine that optimizes portfolio risk while ensuring growth. \n Delivered precise half-hourly, multi-year horizon forecasts and developed a modern ML stack for rapid iteration and scaling.",
-    image: "/images/tem.png",
-    skills: ["AWS", "Python", "Grafana", "PyTorch", "dbt"],
+      '\nLeading the AI backbone of RED, our flagship product for renewable energy.\nBuilt Rosso, an automated pricing engine that optimizes portfolio risk while ensuring growth.\nDelivered precise half-hourly, multi-year horizon forecasts and developed a modern ML stack for rapid iteration and scaling.',
+    skills: ['AWS', 'Python', 'Grafana', 'PyTorch', 'dbt'],
   },
   {
-    id: 4,
-    title: "Data Scientist for Energy",
-    company: "AmpX",
-    location: "Prague, London (Remote)",
-    period: "2023-2024",
+    role: 'Data Scientist for Energy',
+    company: 'AmpX',
+    location: 'Prague & London · Remote',
+    period: '2023 – 2024',
     description:
-      "\nDeveloped advanced time series models for generation, load, and market price forecasting. \n Created battery degradation estimation models for hundreds of assets. \n Pioneered an end-to-end MLOps framework on AWS with Kubernetes. \n Led development of a novel PV power generation forecasting product and mentored colleagues in data science.",
-    image: "/images/ampx.webp",
-    skills: ["AWS", "Kubernetes", "Python", "Airflow", "Grafana"],
+      '\nDeveloped advanced time series models for generation, load, and market price forecasting.\nCreated battery degradation estimation models for hundreds of assets.\nPioneered an end-to-end MLOps framework on AWS with Kubernetes.\nLed development of a novel PV power generation forecasting product and mentored colleagues in data science.',
+    skills: ['AWS', 'Kubernetes', 'Python', 'Airflow', 'Grafana'],
   },
   {
-    id: 5,
-    title: "Data Scientist",
-    company: "Datamole AI",
-    location: "Prague",
-    period: "2019-2022",
+    role: 'Data Scientist',
+    company: 'Datamole AI',
+    location: 'Prague',
+    period: '2019 – 2022',
     description:
-      "\nDelivered tailored, end-to-end ML projects with domain expert collaboration. \n Projects included animal sickness detection, predictive maintenance, anomaly detection, and time series applications. \n Built data pipelines using real-world data from robots, sensors, IIoT devices, and more across manufacturing, automotive, and agritech sectors.",
-    image: "/images/datamole.avif",
-    skills: ["SQL", "Docker", "Python", "Azure", "Scikit-Learn"],
+      '\nDelivered tailored, end-to-end ML projects with domain expert collaboration.\nProjects included animal sickness detection, predictive maintenance, anomaly detection, and time series applications.\nBuilt data pipelines using real-world data from robots, sensors, IIoT devices, and more across manufacturing, automotive, and agritech sectors.',
+    skills: ['SQL', 'Docker', 'Python', 'Azure', 'Scikit-Learn'],
   },
   {
-    id: 6,
-    title: "Project Lead in Aerospace Defense",
-    company: "Israeli Air Force",
-    location: "Israel",
-    period: "2015-2019",
+    role: 'Project Lead · Captain',
+    company: 'Israeli Air Force',
+    location: 'Israel',
+    period: '2015 – 2019',
     description:
-      "\nLed engineering teams in designing high-budget technological projects for F16 and F15 jet fighters. \n Managed collaboration with Israeli military industries, conducting R&D in RF, signal processing, and aviation. \n Created ML models for computer vision and data analysis.",
-    image: "/images/iaf.avif",
-    skills: ["Python", "TensorFlow", "MatLab", "Scikit-Learn", "Keras"],
+      '\nLed engineering teams in designing high-budget technological projects for F16 and F15 jet fighters.\nManaged collaboration with Israeli military industries, conducting R&D in RF, signal processing, and aviation.\nCreated ML models for computer vision and data analysis.',
+    skills: ['Python', 'TensorFlow', 'MATLAB', 'Scikit-Learn', 'Keras'],
   },
   {
-    id: 7,
-    title: "Flight Researcher and Analyst",
-    company: "Israeli Air Force",
-    location: "Israel",
-    period: "2014-2015",
+    role: 'Flight Researcher & Analyst',
+    company: 'Israeli Air Force',
+    location: 'Israel',
+    period: '2014 – 2015',
     description:
-      "\nManaged high-end, real-time RF systems for protection of Israeli jet fighters during missions. \n Analyzed and researched vast amounts of data collected by these systems. \n Conducted field testing, research, and evaluation via flight and laboratory tests.",
-    image: "/images/iaf.avif",
-    skills: ["Data Analysis", "RF Systems", "Field Testing", "Research"],
+      '\nManaged high-end, real-time RF systems for protection of Israeli jet fighters during missions.\nAnalyzed and researched vast amounts of data collected by these systems.\nConducted field testing, research, and evaluation via flight and laboratory tests.',
+    skills: ['Data Analysis', 'RF Systems', 'Field Testing', 'Research'],
   },
 ];
 
-// Education data
-const education = [
+const EDUCATION = [
   {
-    id: 1,
-    degree: "Machine Learning and AI Specialization",
-    institution: "Technion - Israel Institute of Technology",
-    location: "Israel",
-    period: "2018-2019",
-    description:
-      "Intensive program covering Python, R, SQL, Statistics, and Machine Learning. Final project (100% grade): Movie Recommender System using Singular Value Decomposition.",
+    degree: 'Machine Learning and AI Specialization',
+    institution: 'Technion – Israel Institute of Technology',
+    period: '2018 – 2019',
+    details: 'Intensive programme covering Python, R, SQL, statistics, and machine learning. Final project: Movie recommender system using SVD (100% grade).',
   },
   {
-    id: 2,
     degree: "Officers' Training",
-    institution: "Israel Defence Force",
-    location: "Israel",
-    period: "2014",
-    description:
-      "Completed rigorous military leadership training. Achieved rank of Captain through demonstrated leadership and technical expertise.",
+    institution: 'Israel Defence Force',
+    period: '2014',
+    details: 'Rigorous military leadership training; achieved rank of Captain through demonstrated technical leadership.',
   },
   {
-    id: 3,
-    degree: "B.Sc. Electrical and Electronics Engineering",
-    institution: "Tel Aviv University",
-    location: "Israel",
-    period: "2010-2014",
-    description:
-      "Specialized in electro-optical systems, control engineering, and bio-engineering. Thesis on Segmentation and Real-Time Video Tracking in Medical Imaging.",
+    degree: 'B.Sc. Electrical & Electronics Engineering',
+    institution: 'Tel Aviv University',
+    period: '2010 – 2014',
+    details: 'Specialised in electro-optical systems, control engineering, and bio-engineering.',
   },
   {
-    id: 4,
-    degree: "B.Sc. Physics",
-    institution: "Tel Aviv University",
-    location: "Israel",
-    period: "2010-2014",
-    description: "Focused on astrophysics and theory of relativity.",
+    degree: 'B.Sc. Physics',
+    institution: 'Tel Aviv University',
+    period: '2010 – 2014',
+    details: 'Focused on astrophysics and theory of relativity.',
   },
 ];
 
-// Skills data
-const skills = [
+const SKILL_GROUPS = [
   {
-    category: "Data Science & ML",
-    skills: [
-      "Machine Learning",
-      "Time Series Forecasting",
-      "Deep Learning",
-      "NLP",
-      "Computer Vision",
-      "Predictive Modeling",
-      "Optimization",
-    ],
+    label: 'Data Science & ML',
+    items: ['Machine Learning', 'Time Series Forecasting', 'Deep Learning', 'NLP', 'Computer Vision', 'Predictive Modelling', 'Optimisation'],
   },
   {
-    category: "Programming",
-    skills: ["Python", "SQL", "R", "MATLAB", "JavaScript", "React", "FastAPI"],
+    label: 'Programming',
+    items: ['Python', 'SQL', 'R', 'MATLAB', 'JavaScript', 'React', 'FastAPI'],
   },
   {
-    category: "Cloud & DevOps",
-    skills: [
-      "AWS",
-      "Azure",
-      "Kubernetes",
-      "Docker",
-      "MLflow",
-      "Airflow",
-      "dbt",
-    ],
+    label: 'Cloud & DevOps',
+    items: ['AWS', 'Azure', 'Kubernetes', 'Docker', 'MLflow', 'Airflow', 'dbt'],
   },
   {
-    category: "Libraries & Frameworks",
-    skills: [
-      "TensorFlow",
-      "PyTorch",
-      "scikit-learn",
-      "Pandas",
-      "Keras",
-      "Grafana",
-      "Streamlit",
-    ],
+    label: 'Libraries & Frameworks',
+    items: ['TensorFlow', 'PyTorch', 'scikit-learn', 'Pandas', 'Keras', 'Grafana', 'Streamlit'],
   },
 ];
 
-export default function Resume() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
+export default function ResumePage() {
   return (
-    <main>
-      <Navbar />
-
-      <section className="pt-24 md:pt-32 pb-20">
-        <div className="container">
-          <motion.div
-            className="max-w-4xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div className="mb-8" variants={itemVariants}>
-              <Link
-                href="/"
-                className="inline-flex items-center text-dark-200 hover:text-energy-400 transition-all duration-300 mb-4"
-              >
-                <ArrowLeftIcon className="w-4 h-4 mr-2" />
-                Back to Home
-              </Link>
-            </motion.div>
-
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 mb-8">
-              <motion.div variants={itemVariants}>
-                <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
-                  Resume
-                </h1>
-                <p className="text-dark-200 text-base md:text-lg">
-                  My professional background and experience
-                </p>
-              </motion.div>
-
-              <motion.div variants={itemVariants}>
-                <a
-                  href="https://www.linkedin.com/in/dean-shabi/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary flex items-center justify-center text-sm md:text-base"
-                >
-                  <ArrowTopRightOnSquareIcon className="w-5 h-5 mr-2" />
-                  View LinkedIn Profile
-                </a>
-              </motion.div>
-            </div>
-
-            {/* Experience Section */}
-            <motion.div
-              className="mb-12 glass-card-readable p-8 rounded-lg shadow-professional border border-dark-700/50"
-              variants={itemVariants}
+    <div className="bg-[rgba(5,7,15,0.9)] pb-24">
+      <section className="section pb-12">
+        <div className="container space-y-6 text-balance">
+          <p className="eyebrow">Résumé</p>
+          <h1 className="text-4xl text-white md:text-5xl">Dean Shabi</h1>
+          <p className="max-w-3xl text-lg text-copy-muted">
+            AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and
+            automation systems with UK/EU traders, grid operators, and founders.
+          </p>
+          <div className="flex flex-wrap gap-4 text-sm">
+            <a
+              href="/dean-shabi-cv.pdf"
+              className="btn-primary"
+              target="_blank"
+              rel="noreferrer"
             >
-              <h2 className="text-2xl font-bold text-white mb-8">
-                Professional Experience
-              </h2>
-
-              <div className="space-y-8 md:space-y-16 relative">
-                {/* Timeline line - hidden on mobile */}
-                <div className="hidden md:block absolute left-[76px] top-6 bottom-6 w-px bg-gradient-to-b from-energy-600/10 via-energy-600/40 to-energy-600/10"></div>
-
-                {experiences.map((exp, index) => {
-                  // Extract years from period
-                  const years = exp.period.split("-");
-                  const startYear = years[0];
-                  const endYear = years.length > 1 ? years[1] : "present";
-
-                  return (
-                    <motion.div key={exp.id} className="relative">
-                      <div className="flex items-start">
-                        {/* Year column - mobile and desktop */}
-                        <div className="w-auto md:w-[76px] flex-shrink-0 pr-3 md:pr-6 pt-1 md:text-right">
-                          <span className="text-sm font-medium text-energy-400/90 bg-energy-600/10 px-2 py-1 rounded md:bg-transparent md:p-0 border border-energy-600/20">
-                            {startYear}
-                          </span>
-                        </div>
-
-                        {/* Timeline dot - hidden on mobile */}
-                        <div className="hidden md:block absolute left-[76px] top-1.5 -ml-[5px] w-[10px] h-[10px] rounded-full bg-energy-600/80"></div>
-
-                        {/* Content area */}
-                        <div className="flex-1 md:pl-10">
-                          <div className="flex flex-col md:flex-row md:items-start md:gap-6">
-                            {/* Company logo - mobile position at top */}
-                            <div className="w-16 h-16 md:hidden flex-shrink-0 rounded-md overflow-hidden bg-white p-2 flex items-center justify-center border border-dark-700/20 mb-3">
-                              <Image
-                                src={exp.image}
-                                alt={exp.company}
-                                width={56}
-                                height={56}
-                                className="object-contain"
-                                priority
-                              />
-                            </div>
-                            <div className="flex-1">
-                              <h3 className="text-lg md:text-xl font-semibold text-white">
-                                {exp.title}
-                              </h3>
-                              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-2 text-dark-200 mb-3 mt-1 text-sm md:text-base">
-                                <span className="font-medium">
-                                  {exp.company}
-                                </span>
-                                <span className="hidden sm:inline opacity-50">•</span>
-                                <span className="text-sm">{exp.location}</span>
-                              </div>
-                              <div className="text-dark-200 text-sm leading-relaxed mb-3">
-                                {exp.description
-                                  .split("\n")
-                                  .map((line, index) => (
-                                    <div
-                                      key={index}
-                                      className="flex items-start mb-1"
-                                    >
-                                      {index > 0 && (
-                                        <span className="text-energy-400 mr-2 mt-0.5">
-                                          •
-                                        </span>
-                                      )}
-                                      <span
-                                        className={index === 0 ? "" : "flex-1"}
-                                      >
-                                        {line.trim()}
-                                      </span>
-                                    </div>
-                                  ))}
-                              </div>
-                              {exp.skills && (
-                                <div className="flex flex-wrap gap-1.5 md:gap-2 mt-3">
-                                  {exp.skills.map((skill, i) => (
-                                    <span
-                                      key={i}
-                                      className="px-2 py-0.5 md:py-1 bg-energy-600/10 text-energy-400 rounded-md text-xs font-medium border border-energy-600/20"
-                                    >
-                                      {skill}
-                                    </span>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                            {/* Company logo - desktop position */}
-                            <div className="hidden md:flex w-20 h-20 flex-shrink-0 rounded-md overflow-hidden bg-white p-2 items-center justify-center border border-dark-700/20">
-                              <Image
-                                src={exp.image}
-                                alt={exp.company}
-                                width={64}
-                                height={64}
-                                className="object-contain"
-                                priority
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-
-            {/* Education Section */}
-            <motion.div
-              className="mb-8 md:mb-12 glass-card-readable p-4 md:p-8 rounded-lg shadow-professional border border-dark-700/50"
-              variants={itemVariants}
-            >
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8">Education</h2>
-
-              <div className="space-y-8 md:space-y-16 relative">
-                {/* Timeline line - hidden on mobile */}
-                <div className="hidden md:block absolute left-[76px] top-6 bottom-6 w-px bg-gradient-to-b from-energy-600/10 via-energy-600/40 to-energy-600/10"></div>
-
-                {education.map((edu) => {
-                  // Extract years from period
-                  const years = edu.period.split("-");
-                  const startYear = years[0];
-                  const endYear = years.length > 1 ? years[1] : "present";
-
-                  return (
-                    <motion.div key={edu.id} className="relative">
-                      <div className="flex items-start">
-                        {/* Year column - mobile and desktop */}
-                        <div className="w-auto md:w-[76px] flex-shrink-0 pr-3 md:pr-6 pt-1 md:text-right">
-                          <span className="text-sm font-medium text-energy-400/90 bg-energy-600/10 px-2 py-1 rounded md:bg-transparent md:p-0 border border-energy-600/20">
-                            {startYear}
-                          </span>
-                        </div>
-
-                        {/* Timeline dot - hidden on mobile */}
-                        <div className="hidden md:block absolute left-[76px] top-1.5 -ml-[5px] w-[10px] h-[10px] rounded-full bg-energy-600/80"></div>
-
-                        {/* Content area */}
-                        <div className="flex-1 md:pl-10">
-                          <h3 className="text-lg md:text-xl font-semibold text-white">
-                            {edu.degree}
-                          </h3>
-                          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-2 text-dark-200 mb-3 mt-1 text-sm md:text-base">
-                            <span className="font-medium">
-                              {edu.institution}
-                            </span>
-                            <span className="hidden sm:inline opacity-50">•</span>
-                            <span className="text-sm">{edu.location}</span>
-                          </div>
-                          <p className="text-dark-200 text-sm leading-relaxed">
-                            {edu.description}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-
-            {/* Skills Section */}
-            <motion.div
-              className="mb-8 md:mb-12 glass-card-readable p-4 md:p-8 rounded-lg shadow-professional border border-dark-700/50"
-              variants={itemVariants}
-            >
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Skills & Expertise</h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                {skills.map((skillGroup, index) => (
-                  <div key={index} className="space-y-2 md:space-y-3">
-                    <h3 className="font-semibold text-base md:text-lg text-white">
-                      {skillGroup.category}
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {skillGroup.skills.map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className="px-2 md:px-3 py-0.5 md:py-1 bg-energy-600/10 text-energy-400 rounded-full text-xs md:text-sm border border-energy-600/20"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* CTA Section */}
-            <motion.div className="text-center mt-8 md:mt-12" variants={itemVariants}>
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
-                Interested in working together?
-              </h2>
-              <p className="text-dark-200 mb-4 md:mb-6 text-sm md:text-base">
-                Feel free to reach out to discuss potential opportunities.
-              </p>
-              <Link href="/#contact" className="btn btn-primary">
-                Get in Touch
-              </Link>
-            </motion.div>
-          </motion.div>
+              Download PDF
+            </a>
+            <Link href="mailto:deanshabi@gmail.com" className="btn-ghost">
+              deanshabi@gmail.com
+            </Link>
+          </div>
         </div>
       </section>
 
-    </main>
+      <section className="section pt-0">
+        <div className="container space-y-8">
+          <h2 className="text-2xl font-semibold text-white">Experience</h2>
+          <div className="space-y-6">
+            {EXPERIENCE.map((item) => {
+              const points = item.description
+                .split('\n')
+                .map((line) => line.trim())
+                .filter(Boolean);
+
+              return (
+                <article key={`${item.role}-${item.company}`} className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+                  <header className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">{item.role}</h3>
+                      <p className="text-sm text-copy-muted">{item.company}</p>
+                    </div>
+                    <div className="text-xs uppercase tracking-[0.3em] text-copy-muted text-right">
+                      {item.period}
+                      <span className="mx-2">·</span>
+                      {item.location}
+                    </div>
+                  </header>
+                  <ul className="mt-4 space-y-2 text-sm text-copy-muted">
+                    {points.map((highlight) => (
+                      <li key={highlight} className="flex gap-3">
+                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 flex flex-wrap gap-2 text-xs text-copy-muted">
+                    {item.skills.map((skill) => (
+                      <span key={skill} className="rounded-full border border-white/12 px-3 py-1">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section pt-0">
+        <div className="container grid-gap-lg lg:grid-cols-[1.5fr,1fr]">
+          <div className="space-y-6">
+            <h2 className="text-2xl font-semibold text-white">Education</h2>
+            <div className="space-y-5">
+              {EDUCATION.map((item) => (
+                <div key={item.degree} className="rounded-3xl border border-white/10 bg-surface-muted/60 p-6">
+                  <p className="text-sm font-semibold text-white">{item.degree}</p>
+                  <p className="text-sm text-copy-muted">{item.institution}</p>
+                  <p className="text-xs uppercase tracking-[0.3em] text-copy-muted mt-2">{item.period}</p>
+                  <p className="mt-3 text-sm text-copy-muted">{item.details}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            <h2 className="text-2xl font-semibold text-white">Skills</h2>
+            <div className="space-y-5">
+              {SKILL_GROUPS.map((group) => (
+                <div key={group.label} className="rounded-3xl border border-white/10 bg-surface-muted/60 p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">{group.label}</p>
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-copy-muted">
+                    {group.items.map((skill) => (
+                      <span key={skill} className="rounded-full border border-white/12 px-3 py-1">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

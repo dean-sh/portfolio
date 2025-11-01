@@ -3,388 +3,127 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
   html {
-    font-size: 100%; /* Use standard 16px base for better accessibility */
+    font-size: 125%;
     scroll-behavior: smooth;
   }
 
+  @media (max-width: 640px) {
+    html {
+      font-size: 112.5%;
+    }
+  }
+
   body {
-    @apply bg-primary text-dark-50 min-h-screen antialiased;
-    background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+    @apply bg-canvas text-copy antialiased min-h-screen;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.2), transparent 45%),
+      radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.12), transparent 55%),
+      linear-gradient(150deg, #05070f 0%, #0b1220 55%, #04070d 100%);
   }
-  
-  /* Professional typography hierarchy - Enhanced readability */
-  h1 {
-    @apply text-white font-bold tracking-tight;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold text-white tracking-tight;
   }
-  
-  h2 {
-    @apply text-dark-50 font-semibold tracking-tight;
-  }
-  
-  h3 {
-    @apply text-dark-100 font-medium;
-  }
-  
-  h4 {
-    @apply text-dark-150 font-medium;
-  }
-  
+
   p {
-    @apply text-dark-200 leading-relaxed;
+    @apply leading-relaxed text-copy-muted;
   }
-  
-  /* Improved text contrast classes */
-  .text-primary {
-    @apply text-white;
-  }
-  
-  .text-secondary {
-    @apply text-dark-100;
-  }
-  
-  .text-muted {
-    @apply text-dark-300;
-  }
-  
-  .text-subtle {
-    @apply text-dark-400;
-  }
-  
-  /* Selection styling */
+
   ::selection {
-    @apply bg-energy-600/30 text-energy-100;
-  }
-  
-  ::-moz-selection {
-    @apply bg-energy-600/30 text-energy-100;
+    background: rgba(20, 184, 166, 0.25);
+    color: #f8fafc;
   }
 }
 
 @layer components {
   .container {
-    @apply max-w-8xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-12;
   }
-  
-  /* Professional glass-morphism card - Enhanced readability */
-  .glass-card {
-    @apply relative overflow-hidden;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  }
-  
-  /* High contrast glass card for better readability */
-  .glass-card-readable {
-    @apply relative overflow-hidden;
-    background: rgba(15, 23, 42, 0.9);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  }
-  
-  .glass-card::before {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
-  }
-  
-  .glass-card:hover::before {
-    @apply opacity-100;
-  }
-  
-  /* Energy-themed buttons */
-  .btn {
-    @apply relative inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold 
-           transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-energy-600/50 
-           focus:ring-offset-2 focus:ring-offset-primary disabled:opacity-50 overflow-hidden;
-  }
-  
-  .btn-primary {
-    @apply bg-gradient-to-r from-energy-600 to-energy-500 text-white shadow-energy-glow 
-           hover:shadow-energy-glow-lg hover:scale-105 active:scale-95
-           focus:ring-2 focus:ring-energy-400 focus:ring-opacity-75;
-  }
-  
-  .btn-secondary {
-    @apply glass-card-readable text-dark-100 hover:text-white border-dark-600 hover:border-energy-600/50
-           shadow-professional hover:shadow-professional-lg hover:scale-105 active:scale-95
-           focus:ring-2 focus:ring-dark-400 focus:ring-opacity-75;
-  }
-  
-  .btn-glass {
-    @apply glass-card-readable text-dark-50 hover:text-white border-dark-500 hover:border-energy-500/50
-           shadow-glass hover:shadow-glass-lg hover:scale-105 active:scale-95
-           focus:ring-2 focus:ring-energy-500 focus:ring-opacity-50;
-  }
-  
-  /* Professional section styling */
+
   .section {
-    @apply py-24 lg:py-32 relative;
+    @apply py-24 md:py-32;
   }
-  
-  .section-dark {
-    @apply bg-transparent;
+
+  .card {
+    @apply rounded-3xl border border-white/10 bg-surface/70 p-10 shadow-layered backdrop-blur;
   }
-  
-  .section-energy {
-    background: radial-gradient(ellipse at center, rgba(5, 150, 105, 0.05) 0%, transparent 70%);
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
   }
-  
-  /* Wind turbine animation */
-  .wind-turbine-blade {
-    @apply absolute;
-    transform-origin: center bottom;
+
+  .btn-primary {
+    @apply btn bg-accent text-canvas hover:bg-accent-soft focus-visible:ring-accent;
   }
-  
-  /* Energy metrics card */
-  .energy-metric {
-    @apply glass-card p-6 text-center relative overflow-hidden;
+
+  .btn-ghost {
+    @apply btn border border-white/20 text-white hover:border-white/40 focus-visible:ring-white/40;
   }
-  
-  .energy-metric::after {
-    content: '';
-    @apply absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-energy-600 to-solar-500;
+
+  .btn-muted {
+    @apply btn border border-white/10 text-copy-muted hover:text-white hover:border-white/25 focus-visible:ring-white/20;
   }
-  
-  /* Professional text styles */
-  .text-gradient-energy {
-    @apply bg-gradient-to-r from-energy-400 to-solar-500 bg-clip-text text-transparent;
+
+  .btn-glass {
+    @apply btn-ghost;
   }
-  
-  .text-professional {
-    @apply text-dark-200 leading-relaxed;
-  }
-  
-  .text-highlight {
-    @apply text-energy-400 font-semibold;
+
+  .eyebrow {
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-accent-soft;
   }
 }
 
 @layer utilities {
-  /* Energy flow animation utilities */
-  .animate-energy-flow {
-    animation: energy-flow 3s ease-in-out infinite;
+  .grid-gap-lg {
+    @apply gap-14 lg:gap-18;
   }
-  
-  .animate-wind-spin {
-    animation: wind-turbine-realistic 4s linear infinite;
-  }
-  
-  .animate-wind-spin-slow {
-    animation: wind-turbine-realistic 8s linear infinite;
-  }
-  
-  .animate-wind-turbine-fast {
-    animation: wind-turbine-realistic 2s linear infinite;
-  }
-  
-  .animate-solar-track {
-    animation: solar-track 20s ease-in-out infinite;
-  }
-  
-  /* Glass shimmer effect */
-  .glass-shimmer {
-    @apply relative overflow-hidden;
-  }
-  
-  .glass-shimmer::before {
-    content: '';
-    @apply absolute inset-0 -translate-x-full;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: transform 0.6s;
-  }
-  
-  .glass-shimmer:hover::before {
-    @apply translate-x-full;
-  }
-  
-  /* Professional spacing utilities */
-  .space-professional {
-    @apply space-y-8;
-  }
-  
-  .gap-professional {
-    @apply gap-8 lg:gap-12;
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
-/* Custom scrollbar */
+.skip-link {
+  position: fixed;
+  inset-block-start: 1.25rem;
+  inset-inline-start: 1.25rem;
+  transform: translateY(-200%);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.95);
+  color: #f8fafc;
+  z-index: 50;
+  transition: transform 0.2s ease;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: theme('colors.dark.900');
+  background: rgba(15, 23, 42, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.energy.600');
-  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.energy.500');
-}
-
-/* Loading states */
-.loading-skeleton {
-  @apply animate-pulse bg-dark-800 rounded;
-}
-
-/* Responsive text utilities */
-@responsive {
-  .text-responsive-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
-  .text-responsive-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
-  .text-responsive-base { font-size: clamp(1rem, 3vw, 1.125rem); }
-  .text-responsive-lg { font-size: clamp(1.125rem, 3.5vw, 1.25rem); }
-  .text-responsive-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
-  .text-responsive-2xl { font-size: clamp(1.5rem, 5vw, 2rem); }
-  .text-responsive-3xl { font-size: clamp(2rem, 6vw, 2.5rem); }
-  .text-responsive-4xl { font-size: clamp(2.5rem, 7vw, 3.5rem); }
-  .text-responsive-5xl { font-size: clamp(3rem, 8vw, 4.5rem); }
-  .text-responsive-6xl { font-size: clamp(3.5rem, 9vw, 5.5rem); }
-}
-
-/* Performance optimizations */
-.will-change-transform {
-  will-change: transform;
-}
-
-.will-change-opacity {
-  will-change: opacity;
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .animate-wind-spin,
-  .animate-wind-spin-slow,
-  .animate-energy-flow,
-  .animate-solar-track,
-  .animate-float,
-  .animate-float-delayed {
-    animation: none;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-  }
-  
-  .text-dark-400 {
-    @apply text-dark-200;
-  }
-}
-
-/* Google Calendar Button Styling - Match Energy Theme */
-.google-calendar-widget {
-  max-width: 280px;
-  margin: 0 auto;
-}
-
-/* Multiple selectors to ensure we override Google's styles */
-.google-calendar-scheduling-button,
-button[data-calendar-button],
-div[data-calendar-button] button,
-.google-calendar-widget button,
-.google-calendar-widget > div > button {
-  /* Advanced gradient with energy theme */
-  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%) !important;
-  background-color: #059669 !important;
-  border: 1px solid rgba(5, 150, 105, 0.3) !important;
-  color: white !important;
-  font-weight: 600 !important;
-  font-size: 16px !important;
-  padding: 16px 32px !important;
-  border-radius: 12px !important;
-  font-family: var(--font-outfit), -apple-system, BlinkMacSystemFont, sans-serif !important;
-  letter-spacing: 0.025em !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  
-  /* Enhanced shadows */
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-    0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-  
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  position: relative !important;
-  overflow: hidden !important;
-  cursor: pointer !important;
-  
-  /* Reset any Google styles */
-  min-height: auto !important;
-  height: auto !important;
-  line-height: 1.5 !important;
-}
-
-.google-calendar-scheduling-button::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: -100% !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
-  transition: left 0.5s ease !important;
-}
-
-.google-calendar-scheduling-button:hover::before {
-  left: 100% !important;
-}
-
-/* Hover states for all button selectors */
-.google-calendar-scheduling-button:hover,
-button[data-calendar-button]:hover,
-div[data-calendar-button] button:hover,
-.google-calendar-widget button:hover,
-.google-calendar-widget > div > button:hover {
-  background: linear-gradient(135deg, #047857 0%, #065f46 50%, #064e3b 100%) !important;
-  background-color: #047857 !important;
-  border-color: rgba(4, 120, 87, 0.4) !important;
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-    0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15),
-    0 0 0 1px rgba(5, 150, 105, 0.2) !important;
-}
-
-.google-calendar-scheduling-button:active {
-  transform: translateY(-1px) scale(1.01) !important;
-  transition: all 0.1s ease !important;
-}
-
-.google-calendar-scheduling-button:focus {
-  outline: none !important;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-    0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    0 0 0 3px rgba(5, 150, 105, 0.3) !important;
-}
-
-/* Add icon space if needed */
-.google-calendar-scheduling-button svg {
-  margin-right: 8px !important;
-  width: 18px !important;
-  height: 18px !important;
-}
-
-/* Prevent multiple calendar widgets from loading */
-.google-calendar-widget > .google-calendar-scheduling-button:not(:first-child) {
-  display: none !important;
-}
-
-/* Mobile responsive */
-@media (max-width: 640px) {
-  .google-calendar-scheduling-button {
-    padding: 14px 24px !important;
-    font-size: 15px !important;
-  }
+  background: rgba(148, 163, 184, 0.8);
 }

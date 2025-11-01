@@ -1,239 +1,94 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { usePathname } from 'next/navigation';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-const navLinks = [
-  { name: 'Home', href: '/', isSection: false },
-  { name: 'About', href: '/#about', isSection: true },
-  { name: 'Works', href: '/#works', isSection: true },
-  { name: 'Skills', href: '/#skills', isSection: true },
-  { name: 'Resume', href: '/resume', isSection: false },
-  { name: 'Contact', href: '/#contact', isSection: true },
+const LINKS = [
+  { label: 'About', href: '/#about' },
+  { label: 'Work', href: '/#works' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'Résumé', href: '/resume' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const observerRefs = useRef<Map<string, IntersectionObserver | null>>(new Map());
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentPosition = window.scrollY;
-      setScrollPosition(currentPosition);
-      setIsHeroVisible(currentPosition <= 10);
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 12);
     };
 
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => {
-    if (pathname !== '/') {
-      observerRefs.current.forEach(observer => observer?.disconnect());
-      observerRefs.current.clear();
-      setActiveSection(null);
-      return;
-    }
-
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute('id');
-        if (entry.isIntersecting && id) {
-           const rect = entry.boundingClientRect;
-           const viewportHeight = window.innerHeight;
-           const isCentered = rect.top <= viewportHeight * 0.5 && rect.bottom >= viewportHeight * 0.5;
-
-           if (isCentered) {
-             setActiveSection(id);
-           }
-        }
-      });
-    };
-
-    const observerOptions: IntersectionObserverInit = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0,
-    };
-
-    observerRefs.current.forEach(observer => observer?.disconnect());
-    observerRefs.current.clear();
-
-    navLinks.forEach((link) => {
-      if (link.isSection && link.href.startsWith('/#')) {
-        const sectionId = link.href.substring(2);
-        const sectionElement = document.getElementById(sectionId);
-
-        if (sectionElement) {
-          const observer = new IntersectionObserver(observerCallback, observerOptions);
-          observer.observe(sectionElement);
-          observerRefs.current.set(sectionId, observer);
-        } else {
-          console.warn(`Navbar: Section element with ID "${sectionId}" not found.`);
-        }
-      }
-    });
-
-    return () => {
-      observerRefs.current.forEach(observer => observer?.disconnect());
-    };
+    setMobileOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    if (pathname === '/' && isHeroVisible) {
-      setActiveSection(null);
-    }
-  }, [isHeroVisible, pathname]);
+  const renderLinks = (className: string) => (
+    <ul className={className}>
+      {LINKS.map((link) => {
+        const isSectionLink = link.href.startsWith('/#');
+        const isActive = !isSectionLink && (pathname === link.href || pathname.startsWith(link.href + '/'));
 
-  const isActivePage = (href: string, isSection?: boolean) => {
-    if (isSection && href.startsWith('/#') && pathname === '/') {
-       const sectionId = href.substring(2);
-       return sectionId === activeSection && !isHeroVisible;
-    }
-    if (href === '/' && pathname === '/') {
-        return isHeroVisible;
-    }
-    return href === pathname;
-  };
+        return (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={`text-sm font-medium transition-colors hover:text-white ${
+                isActive ? 'text-white' : 'text-copy-muted'
+              }`}
+            >
+              {link.label}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
 
   return (
-    <motion.header 
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        scrollPosition > 50 
-          ? 'bg-dark-950/95 backdrop-blur-md shadow-professional py-3 border-b border-dark-700'
-          : 'bg-transparent py-6'
+    <header
+      className={`sticky top-0 z-40 border-b border-transparent transition-all duration-300 ${
+        isScrolled ? 'border-white/10 bg-[rgba(2,6,23,0.92)] backdrop-blur' : 'bg-transparent'
       }`}
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ 
-        duration: 0.7, 
-        ease: "easeOut",
-        opacity: { duration: 0.5 }
-      }}
     >
-      <div className="container flex justify-between items-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isHeroVisible ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
-          whileHover={{ scale: isHeroVisible ? 1 : 1.05 }}
-          whileTap={{ scale: isHeroVisible ? 1 : 0.95 }}
-        >
-          <Link href="/" className="text-2xl font-bold text-white">
-            DS
-          </Link>
-        </motion.div>
+      <div className="container flex items-center justify-between py-5">
+        <Link href="/" className="text-sm font-semibold uppercase tracking-[0.35em] text-copy-muted hover:text-white">
+          Dean Shabi
+        </Link>
 
-        {/* Desktop navigation */}
-        <nav className="hidden md:flex space-x-8">
-          {navLinks.map((link, index) => {
-            const isActive = isActivePage(link.href, link.isSection);
-              
-            return (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.5,
-                  ease: "easeOut"
-                }}
-              >
-                <Link 
-                  href={link.href}
-                  className={`relative group transition-all duration-300 hover:text-energy-400 text-dark-100 ${
-                    isActive 
-                      ? 'text-energy-400 font-medium bg-dark-800/50 px-3 py-1 rounded-md' 
-                      : ''
-                  }`}
-                >
-                  {link.name}
-                  
-                  <span className={`absolute left-0 w-0 h-0.5 bg-energy-400 transition-all duration-300 ${
-                    isActive ? 'w-full -bottom-1' : 'group-hover:w-full -bottom-1'
-                  }`} />
-                </Link>
-              </motion.div>
-            );
-          })}
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+          {renderLinks('flex items-center gap-8')}
         </nav>
 
-        {/* Mobile menu button */}
-        <motion.button 
+        <button
           type="button"
-          className="md:hidden text-dark-100 rounded-full p-2 hover:bg-dark-800/50 transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ duration: 0.2 }}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-copy-muted transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/40 md:hidden"
+          onClick={() => setMobileOpen((prev) => !prev)}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-nav"
         >
-          {isOpen ? (
-            <XMarkIcon className="h-6 w-6" />
-          ) : (
-            <Bars3Icon className="h-6 w-6" />
-          )}
-        </motion.button>
+          {mobileOpen ? <XMarkIcon className="h-5 w-5" /> : <Bars3Icon className="h-5 w-5" />}
+        </button>
       </div>
 
-      {/* Mobile navigation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="md:hidden bg-dark-950/95 backdrop-blur-md mt-3 mx-4 rounded-xl shadow-professional border border-dark-700"
-            initial={{ opacity: 0, y: -20, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -20, height: 0 }}
-            transition={{ 
-              duration: 0.4,
-              ease: "easeOut"
-            }}
-          >
-            <div className="py-4 px-6 space-y-3">
-              {navLinks.map((link, index) => {
-                const isActive = isActivePage(link.href, link.isSection);
-                  
-                return (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ 
-                      duration: 0.3,
-                      ease: "easeOut"
-                    }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={`block py-2 text-dark-100 hover:text-energy-400 transition-all duration-300 relative rounded-md hover:bg-dark-800/50 ${
-                        isActive ? 'text-energy-400 font-medium bg-dark-800/50 px-3' : 'px-3'
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {isActive && (
-                        <span
-                          className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-accent rounded-full"
-                        />
-                      )}
-                      <span className={`${isActive ? 'ml-3': ''}`}>{link.name}</span>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+      <nav
+        id="mobile-nav"
+        aria-label="Mobile navigation"
+        className={`md:hidden transition-all duration-300 ${mobileOpen ? 'max-h-96 border-t border-white/10 bg-canvas/90 backdrop-blur' : 'max-h-0 overflow-hidden'}`}
+      >
+        <div className="container py-6">
+          {renderLinks('flex flex-col gap-4')}
+        </div>
+      </nav>
+    </header>
   );
-} 
+}
