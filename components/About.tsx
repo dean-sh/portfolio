@@ -115,7 +115,7 @@ export default function About() {
           <header className="max-w-3xl space-y-4 text-balance">
             <p className="eyebrow">Current Work</p>
             <h2 className="text-3xl text-white md:text-4xl">Recent products and outcomes.</h2>
-            <p className="text-sm text-copy-muted">A snapshot of founder builds and delivery wins shaping my work this year.</p>
+            <p className="text-sm text-copy-muted">Spotlighting my new product and recent delivery wins that shaped this year's work.</p>
           </header>
 
           <div className="grid gap-6 lg:grid-cols-[1.3fr,0.7fr]">
