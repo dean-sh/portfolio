@@ -4,7 +4,7 @@ const TESTIMONIALS = [
     role: 'Product Manager, tem.',
     highlight: 'Turns complex roadmaps into clear, actionable plans.',
     quote:
-      'Dean structures complex work at the right altitude, keeps everyone aligned, and iterates quickly on feedback. Projects feel calm and well run.',
+      'Dean\'s work has been consistently impressive — his ability to structure complex information at the right level of depth, focus on insights over raw metrics, and adapt quickly to feedback really stood out. His first project was managed with care and clarity, and I always felt well informed throughout. He\'s shown great initiative by improving his approach between updates and being open to more efficient async workflows. All in all, he\'s doing brilliantly — I\'ve been consistently impressed with his execution and thoughtfulness.',
     persona: 'Product leadership',
   },
   {
@@ -12,7 +12,7 @@ const TESTIMONIALS = [
     role: 'Head of Data, tem.',
     highlight: 'Makes data-heavy work understandable.',
     quote:
-      'Dean translates dense analytics into narratives the whole room can follow. His communication is inclusive, concise, and keeps decisions moving.',
+      'Dean has a real talent for clarity — the way he presents information makes even complex, data-heavy content easy to follow. It\'s clear he puts in the effort to make things digestible for people without a statistical background, which is incredibly valuable in cross-functional teams. His communication style is clear, inclusive, and well considered.',
     persona: 'Data & analytics leadership',
   },
   {
@@ -20,7 +20,7 @@ const TESTIMONIALS = [
     role: 'CEO at AmpX',
     highlight: 'Trusted operator for executive-level problems.',
     quote:
-      'Smart, thoughtful, and collaborative. Dean tackles complex challenges with calm focus and reliably ships results for the business.',
+      'Dean has been a super member of our team, consistently impressing me with every interaction. His smart and thoughtful approach to complex problems set him apart. His intelligence combined with his collaborative spirit makes him an exceptional asset to any organization. I have no doubt he will go far in his career — he\'s proven it time and again.',
     persona: 'Executive sponsor',
   },
   {
@@ -28,7 +28,7 @@ const TESTIMONIALS = [
     role: 'AI Department Lead, Datamole',
     highlight: 'Raises the technical bar and brings the team along.',
     quote:
-      'Dean goes beyond the brief, leveling up his toolkit and sharing it. His explanations became the reference point for our time-series work.',
+      'I can always rely on Dean to go the extra mile. He consistently delivers more than expected, often studying new techniques to enhance his work. His ability to quickly transform from a developer to a data scientist through self-learning is remarkable. What truly sets Dean apart is his talent for explaining complex concepts to colleagues — his survey of time series methods became our team\'s foundational reference for all related projects.',
     persona: 'Technical leadership',
   },
 ];
