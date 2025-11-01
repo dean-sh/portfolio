@@ -74,7 +74,7 @@ export default function Contact() {
           </ul>
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-surface/70 p-10">
+        <div className="card border-white/10 bg-surface/70 p-10">
           {state.succeeded ? (
             <div className="space-y-4 text-center">
               <p className="text-lg font-semibold text-white">Thank you!</p>
@@ -135,6 +135,23 @@ export default function Contact() {
               </button>
             </form>
           )}
+        </div>
+      </div>
+
+      <div className="container mt-16">
+        <div className="card border-white/12 text-center dark:border-white/20 dark:bg-surface/70">
+          <h3 className="text-2xl font-semibold text-highlight dark:text-white">Want to sync live?</h3>
+          <p className="mt-4 text-sm text-copy-muted">
+            Schedule a quick call to scope work, timelines, and impact together.
+          </p>
+          <a
+            href="https://calendar.app.google/WfxUTtTh5aXpijdL6"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-primary mt-6 inline-flex"
+          >
+            Book a call
+          </a>
         </div>
       </div>
     </section>

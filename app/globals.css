@@ -181,7 +181,59 @@
   }
 
   .card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     @apply rounded-3xl border border-border/20 bg-surface/80 p-10 shadow-layered backdrop-blur;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: -1.5rem;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 20% -10%, rgb(var(--color-accent) / 0.16), transparent 55%),
+      radial-gradient(circle at 85% 110%, rgb(var(--color-ring) / 0.12), transparent 60%);
+    filter: blur(26px);
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: -1;
+  }
+
+  .card:hover::before,
+  .card:focus-within::before {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  :is(.rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl).border:is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl):not(.card) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    @apply backdrop-blur;
+  }
+
+  :is(.rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl).border:is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl):not(.card)::before {
+    content: '';
+    position: absolute;
+    inset: -1.5rem;
+    border-radius: inherit;
+    background:
+      radial-gradient(circle at 20% -10%, rgb(var(--color-accent) / 0.14), transparent 55%),
+      radial-gradient(circle at 85% 110%, rgb(var(--color-ring) / 0.1), transparent 60%);
+    filter: blur(22px);
+    opacity: 0.75;
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: -1;
+  }
+
+  :is(.rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl).border:is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl):not(.card):hover::before,
+  :is(.rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl).border:is(.shadow-sm, .shadow-md, .shadow-lg, .shadow-xl):not(.card):focus-within::before {
+    opacity: 1;
+    transform: scale(1.03);
   }
 
   .btn {

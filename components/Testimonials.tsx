@@ -44,7 +44,7 @@ export default function Testimonials() {
 
         <div className="grid gap-8 md:grid-cols-2">
           {TESTIMONIALS.map((testimonial) => (
-            <figure key={testimonial.name} className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+            <figure key={testimonial.name} className="card border-white/10 bg-surface/70 p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">{testimonial.persona}</p>
               <p className="mt-4 text-lg font-medium text-white">{testimonial.highlight}</p>
               <blockquote className="mt-3 text-sm text-copy-muted leading-relaxed">

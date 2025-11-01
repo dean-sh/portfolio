@@ -157,7 +157,7 @@ export default function ResumePage() {
               return (
                 <article
                   key={`${item.role}-${item.company}`}
-                  className="rounded-3xl border border-border/20 bg-surface p-8 shadow-sm dark:border-white/10 dark:bg-surface/70"
+                  className="card bg-surface p-8 dark:border-white/10 dark:bg-surface/70"
                 >
                   <header className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
                     <div>
@@ -200,7 +200,7 @@ export default function ResumePage() {
               {EDUCATION.map((item) => (
                 <div
                   key={item.degree}
-                  className="rounded-3xl border border-border/20 bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
+                  className="card bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
                 >
                   <p className="text-sm font-semibold text-highlight dark:text-white">{item.degree}</p>
                   <p className="text-sm text-copy-muted">{item.institution}</p>
@@ -217,7 +217,7 @@ export default function ResumePage() {
               {SKILL_GROUPS.map((group) => (
                 <div
                   key={group.label}
-                  className="rounded-3xl border border-border/20 bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
+                  className="card bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">{group.label}</p>
                   <div className="mt-3 flex flex-wrap gap-2 text-xs text-copy-muted">

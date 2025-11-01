@@ -46,7 +46,7 @@ export default function Hero() {
           </dl>
         </div>
 
-        <aside className="flex flex-col gap-8 rounded-3xl border border-border/20 bg-surface-muted p-8 dark:border-white/12 dark:bg-surface-muted/70">
+        <aside className="card flex flex-col gap-8 bg-surface-muted p-8 dark:border-white/12 dark:bg-surface-muted/70">
           <figure className="relative flex flex-col items-center gap-4 text-center">
             <div className="relative h-36 w-36 overflow-hidden rounded-2xl border border-border/20 bg-gradient-to-br from-surface to-surface-muted dark:border-white/10">
               <Image

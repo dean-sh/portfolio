@@ -168,7 +168,7 @@ export default function Works() {
           {visibleProjects.map((project) => (
             <article
               key={project.id}
-              className="group flex flex-col gap-6 rounded-3xl border border-border/20 bg-surface p-8 shadow-sm transition hover:border-accent hover:shadow-md dark:border-white/10 dark:bg-surface/70 dark:hover:bg-surface"
+              className="card group flex flex-col gap-6 bg-surface p-8 transition hover:border-accent dark:border-white/10 dark:bg-surface/70 dark:hover:bg-surface"
             >
               <div className="relative h-52 overflow-hidden rounded-2xl border border-border/20 dark:border-white/10">
                 <Image
@@ -206,7 +206,7 @@ export default function Works() {
         </div>
 
         {activeFilter === 'Featured' && (
-          <div className="space-y-4 rounded-3xl border border-border/20 bg-surface-muted/70 p-8 shadow-sm dark:border-white/10 dark:bg-surface-muted/60">
+          <div className="card space-y-4 bg-surface-muted/70 p-8 dark:border-white/10 dark:bg-surface-muted/60">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">More projects</p>
             <ul className="space-y-3 text-sm text-copy-muted">
               {PROJECTS.filter((project) => !FEATURED_IDS.includes(project.id)).map((project) => (

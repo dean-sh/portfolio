@@ -47,11 +47,11 @@ export default function ForecastingModelsPage() {
         </section>
 
         {/* The Challenge Section - REFACTORED with Cards */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+        <section className="card rounded-xl bg-surface-muted/70 p-6 border-border/20 dark:border-white/10">
           <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">The Challenge</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Card 1: Volatility */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -79,7 +79,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 2: Data Integration */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -107,7 +107,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 3: Scalability */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -134,7 +134,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 4: Granularity */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -161,7 +161,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 5: Robustness */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -203,7 +203,7 @@ export default function ForecastingModelsPage() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {/* Existing cards slightly restyled */}
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
+            <div className="card rounded-lg bg-surface-muted/80 p-5 border-border/20 dark:border-white/10 transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Advanced Load Forecasting
               </h3>
@@ -212,7 +212,7 @@ export default function ForecastingModelsPage() {
                 factors for diverse customer segments.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
+            <div className="card rounded-lg bg-surface-muted/80 p-5 border-border/20 dark:border-white/10 transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Weather-Aware PV Generation
               </h3>
@@ -221,7 +221,7 @@ export default function ForecastingModelsPage() {
                 for precise solar predictions.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
+            <div className="card rounded-lg bg-surface-muted/80 p-5 border-border/20 dark:border-white/10 transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Battery State Modeling
               </h3>
@@ -230,7 +230,7 @@ export default function ForecastingModelsPage() {
                 storage assets.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
+            <div className="card rounded-lg bg-surface-muted/80 p-5 border-border/20 dark:border-white/10 transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Granular Price Forecasting
               </h3>
@@ -253,7 +253,7 @@ export default function ForecastingModelsPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Innovation 1: Transfer Learning */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -281,7 +281,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Innovation 2: Global Models */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -309,7 +309,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Innovation 3: MLflow */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -337,7 +337,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Innovation 4: Hybrid Models */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -365,7 +365,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Technique 5: Diverse Models Evaluated */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
+            <div className="card rounded-lg bg-surface-muted/80 p-4 border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -396,7 +396,7 @@ export default function ForecastingModelsPage() {
         </section>
 
         {/* Technical Diagram Section - REMAINS */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+        <section className="card rounded-xl bg-surface-muted/70 p-6 border-border/20 dark:border-white/10">
           <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             Model Architecture
           </h2>
@@ -463,7 +463,7 @@ export default function ForecastingModelsPage() {
           </p>
 
           {/* Highlight Metric */}
-          <div className="bg-energy-600/10 rounded-xl p-6 border border-energy-600/30 mb-8 text-center shadow-lg">
+          <div className="card rounded-xl bg-energy-600/10 p-6 border-energy-600/30 mb-8 text-center">
             <h3 className="text-lg font-semibold text-energy-400 mb-2">
               Key Performance Gain
             </h3>

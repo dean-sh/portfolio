@@ -38,7 +38,7 @@ export default function About() {
 
           <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="space-y-8">
-              <div className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+              <div className="card border-white/10 bg-surface/70 p-8">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-copy-muted">Where I create value</h3>
                 <ul className="mt-4 space-y-3 text-sm text-copy-muted">
                   <li className="flex gap-3">
@@ -56,7 +56,7 @@ export default function About() {
                 </ul>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-surface-muted/60 p-8">
+              <div className="card border-white/10 bg-surface-muted/60 p-8">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-copy-muted">Energy market fluency</h3>
                 <div className="mt-4 flex flex-wrap gap-3 text-xs text-copy-muted">
                   {['Ofgem regulations', 'REGOs', 'Balancing mechanism', 'Trading frameworks'].map((item) => (
@@ -69,7 +69,7 @@ export default function About() {
             </div>
 
             <aside className="space-y-8">
-              <div className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+              <div className="card border-white/10 bg-surface/70 p-8">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-copy-muted">Measured outcomes</h3>
                 <dl className="mt-6 grid grid-cols-2 gap-6">
                   {[{ value: '+57%', label: 'Wind forecasting accuracy lift' }, { value: '£50/MWh', label: 'Supply matching savings' }, { value: 'Millions £', label: 'Revenue impact documented' }, { value: '6+ years', label: 'Production systems delivered' }].map(
@@ -83,7 +83,7 @@ export default function About() {
                 </dl>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+              <div className="card border-white/10 bg-surface/70 p-8">
                 <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-copy-muted">Toolbox</h3>
                 <div className="mt-4 grid grid-cols-2 gap-3 text-xs text-copy-muted">
                   {[
@@ -119,7 +119,7 @@ export default function About() {
           </header>
 
           <div className="grid gap-6 lg:grid-cols-[1.3fr,0.7fr]">
-            <article className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+            <article className="card border-white/10 bg-surface/70 p-8">
               <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-copy-muted">Founder · Current</p>
@@ -155,7 +155,7 @@ export default function About() {
               </div>
             </article>
 
-            <article className="rounded-3xl border border-white/10 bg-surface-muted/60 p-8">
+            <article className="card border-white/10 bg-surface-muted/60 p-8">
               <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-copy-muted">Select delivery</h3>
               <ul className="mt-5 space-y-4 text-sm text-copy-muted">
                 <li>
