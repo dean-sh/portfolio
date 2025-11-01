@@ -23,11 +23,11 @@ export default function StreamlitGuideProject() {
     >
       <div className="space-y-8">
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               Created a comprehensive guide for developing data applications
               with Streamlit, showcasing best practices and implementation
               techniques.

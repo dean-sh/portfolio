@@ -33,11 +33,11 @@ export default function ExemptSupplyMatchingProject() {
       <div className="space-y-8">
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               Created a unique matching algorithm operating under the UK's
               Supplier Exempt Class A and BSC Modification P442 regulations.
               This innovative solution optimally pairs SME energy consumers with
@@ -54,10 +54,10 @@ export default function ExemptSupplyMatchingProject() {
         </section>
 
         {/* Results & Metrics Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-6">Benefits</h2>
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">Benefits</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-white/10">
+            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border/20 dark:border-white/10">
               <div className="mb-4 flex justify-center">
                 <div className="rounded-full bg-accent/10 p-3">
                   <svg
@@ -91,7 +91,7 @@ export default function ExemptSupplyMatchingProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-white/10">
+            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border/20 dark:border-white/10">
               <div className="mb-4 flex justify-center">
                 <div className="rounded-full bg-accent/10 p-3">
                   <svg
@@ -127,7 +127,7 @@ export default function ExemptSupplyMatchingProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-white/10">
+            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border/20 dark:border-white/10">
               <div className="mb-4 flex justify-center">
                 <div className="rounded-full bg-accent/10 p-3">
                   <svg
@@ -164,7 +164,7 @@ export default function ExemptSupplyMatchingProject() {
             </div>
           </div>
 
-          <div className="mt-8 bg-surface/55 rounded-xl p-6 border border-white/10">
+          <div className="mt-8 bg-surface/55 rounded-xl p-6 border border-border/20 dark:border-white/10">
             <div className="flex items-center mb-4">
               <div className="rounded-full bg-accent/10 p-2 mr-3">
                 <svg
@@ -182,7 +182,7 @@ export default function ExemptSupplyMatchingProject() {
                   />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white">
                 Annual Savings Calculation
               </h3>
             </div>
@@ -195,7 +195,7 @@ export default function ExemptSupplyMatchingProject() {
 
               <div className="flex items-center justify-center">
                 <div className="bg-surface-muted/80 rounded-lg p-4 flex items-center justify-center">
-                  <span className="text-xl font-bold text-white">×</span>
+                  <span className="text-xl font-bold text-highlight dark:text-white">×</span>
                 </div>
               </div>
 
@@ -234,8 +234,8 @@ export default function ExemptSupplyMatchingProject() {
         </section>
 
         {/* The Challenge Section */}
-        <section className="rounded-xl p-6 border border-white/10 bg-surface-muted/70 mb-8">
-          <h2 className="text-2xl font-bold text-white mb-4">The Challenge</h2>
+        <section className="rounded-xl p-6 border border-border/20 dark:border-white/10 bg-surface-muted/70 mb-8">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">The Challenge</h2>
           <p className="mb-4 text-copy-muted">
             UK renewable energy regulations offer significant cost-saving
             opportunities through "exempt supply" arrangements, but establishing
@@ -244,7 +244,7 @@ export default function ExemptSupplyMatchingProject() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
                 Regulatory Complexity
               </h3>
               <p className="text-copy-muted">
@@ -256,7 +256,7 @@ export default function ExemptSupplyMatchingProject() {
             </div>
 
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
                 Matching Difficulty
               </h3>
               <p className="text-copy-muted">
@@ -267,7 +267,7 @@ export default function ExemptSupplyMatchingProject() {
             </div>
 
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
                 Scale & Efficiency
               </h3>
               <p className="text-copy-muted">
@@ -278,7 +278,7 @@ export default function ExemptSupplyMatchingProject() {
             </div>
 
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-white mb-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
                 Data Integration
               </h3>
               <p className="text-copy-muted">
@@ -292,8 +292,8 @@ export default function ExemptSupplyMatchingProject() {
         </section>
 
         {/* Solution Overview Section */}
-        <section className="rounded-xl p-6 border border-white/10 bg-surface-muted/70">
-          <h2 className="text-2xl font-bold text-white mb-4">Solution</h2>
+        <section className="rounded-xl p-6 border border-border/20 dark:border-white/10 bg-surface-muted/70">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">Solution</h2>
           <p className="mb-4 text-copy-muted">
             I developed a comprehensive solution to address the complex
             challenge of matching exempt renewable generators with nearby
@@ -302,7 +302,7 @@ export default function ExemptSupplyMatchingProject() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white flex items-center gap-2 mb-3">
                 <CodeBracketIcon className="h-5 w-5 text-accent" />
                 Technical Approach
               </h3>
@@ -337,7 +337,7 @@ export default function ExemptSupplyMatchingProject() {
             </div>
 
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2 mb-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white flex items-center gap-2 mb-3">
                 <ChartBarIcon className="h-5 w-5 text-accent" />
                 Key Innovations
               </h3>
@@ -382,8 +382,8 @@ export default function ExemptSupplyMatchingProject() {
         </section>
 
         {/* Regulatory Framework Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             Regulatory Framework
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -446,8 +446,8 @@ export default function ExemptSupplyMatchingProject() {
         </section>
 
         {/* System Architecture Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             System Architecture
           </h2>
           <div className="aspect-video relative rounded-lg overflow-hidden bg-surface/60 flex items-center justify-center">
@@ -568,8 +568,8 @@ export default function ExemptSupplyMatchingProject() {
         </section>
 
         {/* Case Study Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             Application Scenario
           </h2>
 
@@ -582,7 +582,7 @@ export default function ExemptSupplyMatchingProject() {
                 <div className="flex items-start">
                   <div className="bg-primary/10 rounded-full h-8 w-8 flex items-center justify-center mr-3 shrink-0">
                     <svg
-                      className="w-4 h-4 text-white"
+                      className="w-4 h-4 text-highlight dark:text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -607,7 +607,7 @@ export default function ExemptSupplyMatchingProject() {
                 <div className="flex items-start">
                   <div className="bg-primary/10 rounded-full h-8 w-8 flex items-center justify-center mr-3 shrink-0">
                     <svg
-                      className="w-4 h-4 text-white"
+                      className="w-4 h-4 text-highlight dark:text-white"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -665,7 +665,7 @@ export default function ExemptSupplyMatchingProject() {
                     <span className="text-accent">✓</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="font-medium text-white block text-sm">
+                    <span className="font-medium text-highlight dark:text-white block text-sm">
                       Cost Reduction
                     </span>
                     <p className="text-xs text-copy-muted mt-1 break-words">
@@ -678,7 +678,7 @@ export default function ExemptSupplyMatchingProject() {
                     <span className="text-accent">✓</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="font-medium text-white block text-sm">
+                    <span className="font-medium text-highlight dark:text-white block text-sm">
                       Efficient Energy Use
                     </span>
                     <p className="text-xs text-copy-muted mt-1 break-words">
@@ -691,7 +691,7 @@ export default function ExemptSupplyMatchingProject() {
                     <span className="text-accent">✓</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="font-medium text-white block text-sm">
+                    <span className="font-medium text-highlight dark:text-white block text-sm">
                       Revenue Stability
                     </span>
                     <p className="text-xs text-copy-muted mt-1 break-words">
@@ -704,7 +704,7 @@ export default function ExemptSupplyMatchingProject() {
                     <span className="text-accent">✓</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="font-medium text-white block text-sm">
+                    <span className="font-medium text-highlight dark:text-white block text-sm">
                       Environmental Impact
                     </span>
                     <p className="text-xs text-copy-muted mt-1 break-words">
@@ -720,7 +720,7 @@ export default function ExemptSupplyMatchingProject() {
 
         {/* Business Impact Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Business Impact
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -782,11 +782,11 @@ export default function ExemptSupplyMatchingProject() {
 
         {/* Future Developments Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Future Developments
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -812,7 +812,7 @@ export default function ExemptSupplyMatchingProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -838,7 +838,7 @@ export default function ExemptSupplyMatchingProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"

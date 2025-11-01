@@ -21,11 +21,11 @@ const FruitWasteContent = () => {
       <div className="space-y-8">
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               This project addresses the critical challenge of food waste in the
               produce industry by implementing Fresco's innovative microwave
               sensing technology that can non-destructively assess internal
@@ -43,8 +43,8 @@ const FruitWasteContent = () => {
         </section>
 
         {/* Food Waste Context */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             The Food Waste Challenge
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -100,7 +100,7 @@ const FruitWasteContent = () => {
 
         {/* The Challenge Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             The Challenges of Ripeness Detection
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -111,7 +111,7 @@ const FruitWasteContent = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -137,7 +137,7 @@ const FruitWasteContent = () => {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -163,7 +163,7 @@ const FruitWasteContent = () => {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -201,7 +201,7 @@ const FruitWasteContent = () => {
 
         {/* Our Solution Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Our Solution: Fresco Microwave Sensing
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
@@ -215,7 +215,7 @@ const FruitWasteContent = () => {
                 measurement.
               </p>
 
-              <div className="bg-surface-muted rounded-lg p-6 shadow-md border border-white/10 mb-6">
+              <div className="bg-surface-muted rounded-lg p-6 shadow-md border border-border/20 dark:border-white/10 mb-6">
                 <h3 className="text-xl font-semibold text-accent mb-4">
                   Key Advantages
                 </h3>
@@ -261,14 +261,14 @@ const FruitWasteContent = () => {
             </div>
 
             <div className="lg:col-span-2">
-              <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10 text-center">
+              <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10 text-center">
                 <h3 className="text-xl font-semibold mb-3">Impact Metrics</h3>
                 <div className="text-5xl font-bold text-accent mb-2">94%</div>
                 <p className="text-sm text-copy-muted">
                   Accuracy in assessing internal fruit quality
                 </p>
 
-                <div className="mt-8 pt-6 border-t border-white/10">
+                <div className="mt-8 pt-6 border-t border-border/20 dark:border-white/10">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm">Waste Reduction</span>
                     <span className="text-sm">32%</span>
@@ -302,7 +302,7 @@ const FruitWasteContent = () => {
 
         {/* Implementation Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Implementation Across the Value Chain
           </h2>
           <p className="mb-6">
@@ -312,7 +312,7 @@ const FruitWasteContent = () => {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-surface-muted p-5 rounded-lg shadow border border-white/10">
+            <div className="bg-surface-muted p-5 rounded-lg shadow border border-border/20 dark:border-white/10">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Farming & Breeding
               </h3>
@@ -322,7 +322,7 @@ const FruitWasteContent = () => {
               </p>
             </div>
 
-            <div className="bg-surface-muted p-5 rounded-lg shadow border border-white/10">
+            <div className="bg-surface-muted p-5 rounded-lg shadow border border-border/20 dark:border-white/10">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Fruit Trading
               </h3>
@@ -332,7 +332,7 @@ const FruitWasteContent = () => {
               </p>
             </div>
 
-            <div className="bg-surface-muted p-5 rounded-lg shadow border border-white/10">
+            <div className="bg-surface-muted p-5 rounded-lg shadow border border-border/20 dark:border-white/10">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Distribution & Retail
               </h3>
@@ -342,7 +342,7 @@ const FruitWasteContent = () => {
               </p>
             </div>
 
-            <div className="bg-surface-muted p-5 rounded-lg shadow border border-white/10">
+            <div className="bg-surface-muted p-5 rounded-lg shadow border border-border/20 dark:border-white/10">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Processing
               </h3>

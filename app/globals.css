@@ -4,7 +4,63 @@
 
 @layer base {
   :root {
+    color-scheme: light;
+    --color-canvas: 248 250 252;
+    --color-surface: 255 255 255;
+    --color-surface-muted: 241 245 249;
+    --color-outline: 226 232 240;
+    --color-page: 220 228 244;
+    --color-border: 203 213 225;
+    --color-ring: 148 163 184;
+    --color-accent: 56 189 248;
+    --color-accent-soft: 59 130 246;
+    --color-accent-strong: 37 99 235;
+    --color-accent-contrast: 15 23 42;
+    --color-copy: 15 23 42;
+    --color-copy-subtle: 71 85 105;
+    --color-copy-muted: 100 116 139;
+    --color-highlight: 15 23 42;
+    --shadow-layered: 0 35px 70px -45px rgba(15, 23, 42, 0.28);
+    --shadow-outline: 0 0 0 1px rgba(148, 163, 184, 0.18);
+    --shadow-glow: 0 0 32px rgba(14, 165, 233, 0.22);
+    --selection-bg: rgba(14, 165, 233, 0.18);
+    --selection-color: #0f172a;
+    --skip-bg: rgba(255, 255, 255, 0.92);
+    --skip-border: rgba(203, 213, 225, 0.85);
+    --skip-text: #0f172a;
+    --scrollbar-track: rgba(226, 232, 240, 0.85);
+    --scrollbar-thumb: rgba(148, 163, 184, 0.55);
+    --scrollbar-thumb-hover: rgba(100, 116, 139, 0.7);
+  }
+
+  .dark {
     color-scheme: dark;
+    --color-canvas: 5 7 15;
+    --color-surface: 11 18 32;
+    --color-surface-muted: 18 26 43;
+    --color-outline: 27 35 52;
+    --color-page: 5 7 15;
+    --color-border: 148 163 184;
+    --color-ring: 56 189 248;
+    --color-accent: 56 189 248;
+    --color-accent-soft: 125 211 252;
+    --color-accent-strong: 14 165 233;
+    --color-accent-contrast: 4 17 29;
+    --color-copy: 248 250 252;
+    --color-copy-subtle: 203 213 245;
+    --color-copy-muted: 142 162 192;
+    --color-highlight: 249 250 251;
+    --shadow-layered: 0 50px 90px -45px rgba(12, 18, 31, 0.65);
+    --shadow-outline: 0 0 0 1px rgba(148, 163, 184, 0.18);
+    --shadow-glow: 0 0 35px rgba(14, 165, 233, 0.35);
+    --selection-bg: rgba(20, 184, 166, 0.25);
+    --selection-color: #f8fafc;
+    --skip-bg: rgba(15, 23, 42, 0.95);
+    --skip-border: rgba(148, 163, 184, 0.35);
+    --skip-text: #f8fafc;
+    --scrollbar-track: rgba(15, 23, 42, 0.6);
+    --scrollbar-thumb: rgba(148, 163, 184, 0.5);
+    --scrollbar-thumb-hover: rgba(148, 163, 184, 0.8);
   }
 
   html {
@@ -19,11 +75,8 @@
   }
 
   body {
-    @apply bg-canvas text-copy antialiased min-h-screen;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.2), transparent 45%),
-      radial-gradient(circle at 85% 10%, rgba(14, 165, 233, 0.12), transparent 55%),
-      linear-gradient(150deg, #05070f 0%, #0b1220 55%, #04070d 100%);
+    @apply bg-page text-copy antialiased min-h-screen;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   h1,
@@ -32,7 +85,7 @@
   h4,
   h5,
   h6 {
-    @apply font-semibold text-white tracking-tight;
+    @apply font-semibold text-highlight tracking-tight;
   }
 
   p {
@@ -40,8 +93,81 @@
   }
 
   ::selection {
-    background: rgba(20, 184, 166, 0.25);
-    color: #f8fafc;
+    background: var(--selection-bg);
+    color: var(--selection-color);
+  }
+
+  html:not(.dark) .text-white {
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-copy) / var(--tw-text-opacity));
+  }
+
+  html:not(.dark) .text-white\/90 {
+    color: rgb(var(--color-copy) / 0.9);
+  }
+
+  html:not(.dark) .hover\:text-white:hover {
+    color: rgb(var(--color-copy) / var(--tw-text-opacity, 1));
+  }
+
+  html:not(.dark) .border-white\/10 {
+    border-color: rgb(15 23 42 / 0.08);
+  }
+
+  html:not(.dark) .border-white\/12 {
+    border-color: rgb(15 23 42 / 0.12);
+  }
+
+  html:not(.dark) .border-white\/15 {
+    border-color: rgb(15 23 42 / 0.15);
+  }
+
+  html:not(.dark) .border-white\/20 {
+    border-color: rgb(15 23 42 / 0.18);
+  }
+
+  html:not(.dark) .border-white\/25 {
+    border-color: rgb(15 23 42 / 0.2);
+  }
+
+  html:not(.dark) .border-white\/30 {
+    border-color: rgb(15 23 42 / 0.24);
+  }
+
+  html:not(.dark) .border-white\/35 {
+    border-color: rgb(15 23 42 / 0.28);
+  }
+
+  html:not(.dark) .border-white\/40 {
+    border-color: rgb(15 23 42 / 0.32);
+  }
+
+  html:not(.dark) .hover\:border-white\/25:hover {
+    border-color: rgb(15 23 42 / 0.28);
+  }
+
+  html:not(.dark) .hover\:border-white\/30:hover {
+    border-color: rgb(15 23 42 / 0.32);
+  }
+
+  html:not(.dark) .hover\:border-white\/35:hover {
+    border-color: rgb(15 23 42 / 0.36);
+  }
+
+  html:not(.dark) .hover\:border-white\/40:hover {
+    border-color: rgb(15 23 42 / 0.4);
+  }
+
+  html:not(.dark) .bg-white\/5 {
+    background-color: rgb(15 23 42 / 0.05);
+  }
+
+  html:not(.dark) .bg-white\/50 {
+    background-color: rgb(15 23 42 / 0.12);
+  }
+
+  html:not(.dark) .bg-white\/80 {
+    background-color: rgb(15 23 42 / 0.18);
   }
 }
 
@@ -55,31 +181,62 @@
   }
 
   .card {
-    @apply rounded-3xl border border-white/10 bg-surface/70 p-10 shadow-layered backdrop-blur;
+    @apply rounded-3xl border border-border/20 bg-surface/80 p-10 shadow-layered backdrop-blur;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:ring-offset-2 focus-visible:ring-offset-surface;
   }
 
   .btn-primary {
-    @apply btn bg-accent text-canvas hover:bg-accent-soft focus-visible:ring-accent;
+    @apply btn bg-accent text-accent-contrast hover:bg-accent-soft focus-visible:ring-accent/60;
+  }
+
+  .theme-toggle {
+    position: relative;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .theme-toggle::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 50% 50%, rgb(var(--color-accent) / 0.45), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .theme-toggle:is(:hover, :focus-visible)::after,
+  .theme-toggle-active::after {
+    opacity: 1;
+  }
+
+  .theme-toggle:is(:hover, :focus-visible),
+  .theme-toggle-active {
+    box-shadow: 0 0 0 2px rgb(var(--color-accent) / 0.25), 0 18px 30px -12px rgb(var(--color-accent) / 0.45);
+  }
+
+  .btn-secondary {
+    @apply btn border border-border/30 bg-surface text-highlight hover:bg-surface-muted/80 hover:text-highlight focus-visible:ring-ring/20 dark:border-white/15 dark:bg-surface/70 dark:text-white dark:hover:bg-surface/60;
   }
 
   .btn-ghost {
-    @apply btn border border-white/20 text-white hover:border-white/40 focus-visible:ring-white/40;
+    @apply btn border border-border/40 text-copy hover:border-border/60 hover:text-highlight focus-visible:ring-ring/30 dark:border-white/20 dark:text-white dark:hover:border-white/40 dark:hover:text-white dark:focus-visible:ring-white/30;
   }
 
   .btn-muted {
-    @apply btn border border-white/10 text-copy-muted hover:text-white hover:border-white/25 focus-visible:ring-white/20;
+    @apply btn border border-border/30 text-copy-muted hover:text-highlight hover:border-border/50 focus-visible:ring-ring/20 dark:border-white/15 dark:hover:border-white/30 dark:hover:text-white dark:focus-visible:ring-white/20;
   }
 
   .btn-glass {
-    @apply btn-ghost;
+    @apply btn border border-border/30 bg-surface/60 text-copy hover:border-border/60 hover:bg-surface focus-visible:ring-ring/20 dark:border-white/20 dark:bg-white/5 dark:text-white dark:hover:border-white/35 dark:hover:bg-white/10 dark:focus-visible:ring-white/20;
   }
 
   .eyebrow {
-    @apply text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-accent-soft;
+    @apply text-[0.65rem] font-semibold uppercase tracking-[0.4em] text-accent-strong;
   }
 }
 
@@ -100,11 +257,11 @@
   transform: translateY(-200%);
   padding: 0.75rem 1.25rem;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.95);
-  color: #f8fafc;
+  background: var(--skip-bg);
+  color: var(--skip-text);
   z-index: 50;
   transition: transform 0.2s ease;
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border: 1px solid var(--skip-border);
 }
 
 .skip-link:focus {
@@ -116,14 +273,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.5);
+  background: var(--scrollbar-thumb);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.8);
+  background: var(--scrollbar-thumb-hover);
 }

@@ -27,11 +27,11 @@ export default function WindForecastingProject() {
       <div className="space-y-8">
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               This project tackles the challenge of forecasting wind power
               generation in the UK, encompassing both offshore and onshore wind
               farms to support the country's clean energy transition.
@@ -46,8 +46,8 @@ export default function WindForecastingProject() {
         </section>
 
         {/* UK Wind Energy Context */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             UK Wind Energy Landscape
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -102,7 +102,7 @@ export default function WindForecastingProject() {
 
         {/* The Challenge Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             The Challenge of Wind Power Prediction
           </h2>
           <div className="prose prose-lg max-w-none">
@@ -114,7 +114,7 @@ export default function WindForecastingProject() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -140,7 +140,7 @@ export default function WindForecastingProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -172,7 +172,7 @@ export default function WindForecastingProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -210,7 +210,7 @@ export default function WindForecastingProject() {
 
         {/* Our Solution Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Our Solution
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
@@ -223,7 +223,7 @@ export default function WindForecastingProject() {
                 bias-correcting linear model.
               </p>
 
-              <div className="bg-surface-muted rounded-lg p-6 shadow-md border border-white/10 mb-6">
+              <div className="bg-surface-muted rounded-lg p-6 shadow-md border border-border/20 dark:border-white/10 mb-6">
                 <h3 className="text-xl font-semibold text-accent mb-4">
                   Technical Approach
                 </h3>
@@ -267,7 +267,7 @@ export default function WindForecastingProject() {
             </div>
 
             <div className="lg:col-span-2">
-              <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10 text-center">
+              <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10 text-center">
                 <h3 className="text-xl font-semibold mb-3">
                   Performance Improvement
                 </h3>
@@ -276,7 +276,7 @@ export default function WindForecastingProject() {
                   Accuracy improvement over Elexon's forecasting system
                 </p>
 
-                <div className="mt-8 pt-6 border-t border-white/10">
+                <div className="mt-8 pt-6 border-t border-border/20 dark:border-white/10">
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-sm">Standard Forecasting</span>
                     <span className="text-sm">Our Solution</span>

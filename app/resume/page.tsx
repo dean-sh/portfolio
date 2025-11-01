@@ -120,11 +120,11 @@ const SKILL_GROUPS = [
 
 export default function ResumePage() {
   return (
-    <div className="bg-[rgba(5,7,15,0.9)] pb-24">
+    <div className="pb-24 bg-page dark:bg-[rgba(5,7,15,0.9)]">
       <section className="section pb-12">
         <div className="container space-y-6 text-balance">
           <p className="eyebrow">Résumé</p>
-          <h1 className="text-4xl text-white md:text-5xl">Dean Shabi</h1>
+          <h1 className="text-4xl text-highlight dark:text-white md:text-5xl">Dean Shabi</h1>
           <p className="max-w-3xl text-lg text-copy-muted">
             AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and
             automation systems with UK/EU traders, grid operators, and founders — currently building{' '}
@@ -132,7 +132,7 @@ export default function ResumePage() {
               href="https://www.bloome.ai"
               target="_blank"
               rel="noreferrer"
-              className="underline decoration-dotted underline-offset-4 transition hover:text-white"
+              className="underline decoration-dotted underline-offset-4 transition hover:text-highlight dark:hover:text-white"
             >
               Bloome AI
             </Link>
@@ -156,7 +156,7 @@ export default function ResumePage() {
 
       <section className="section pt-0">
         <div className="container space-y-8">
-          <h2 className="text-2xl font-semibold text-white">Experience</h2>
+          <h2 className="text-2xl font-semibold text-highlight dark:text-white">Experience</h2>
           <div className="space-y-6">
             {EXPERIENCE.map((item) => {
               const points = item.description
@@ -165,10 +165,13 @@ export default function ResumePage() {
                 .filter(Boolean);
 
               return (
-                <article key={`${item.role}-${item.company}`} className="rounded-3xl border border-white/10 bg-surface/70 p-8">
+                <article
+                  key={`${item.role}-${item.company}`}
+                  className="rounded-3xl border border-border/20 bg-surface p-8 shadow-sm dark:border-white/10 dark:bg-surface/70"
+                >
                   <header className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
                     <div>
-                      <h3 className="text-xl font-semibold text-white">{item.role}</h3>
+                      <h3 className="text-xl font-semibold text-highlight dark:text-white">{item.role}</h3>
                       <p className="text-sm text-copy-muted">{item.company}</p>
                     </div>
                     <div className="text-xs uppercase tracking-[0.3em] text-copy-muted text-right">
@@ -187,7 +190,7 @@ export default function ResumePage() {
                   </ul>
                   <div className="mt-5 flex flex-wrap gap-2 text-xs text-copy-muted">
                     {item.skills.map((skill) => (
-                      <span key={skill} className="rounded-full border border-white/12 px-3 py-1">
+                      <span key={skill} className="rounded-full border border-border/30 px-3 py-1 dark:border-white/12">
                         {skill}
                       </span>
                     ))}
@@ -202,11 +205,14 @@ export default function ResumePage() {
       <section className="section pt-0">
         <div className="container grid-gap-lg lg:grid-cols-[1.5fr,1fr]">
           <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-white">Education</h2>
+            <h2 className="text-2xl font-semibold text-highlight dark:text-white">Education</h2>
             <div className="space-y-5">
               {EDUCATION.map((item) => (
-                <div key={item.degree} className="rounded-3xl border border-white/10 bg-surface-muted/60 p-6">
-                  <p className="text-sm font-semibold text-white">{item.degree}</p>
+                <div
+                  key={item.degree}
+                  className="rounded-3xl border border-border/20 bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
+                >
+                  <p className="text-sm font-semibold text-highlight dark:text-white">{item.degree}</p>
                   <p className="text-sm text-copy-muted">{item.institution}</p>
                   <p className="text-xs uppercase tracking-[0.3em] text-copy-muted mt-2">{item.period}</p>
                   <p className="mt-3 text-sm text-copy-muted">{item.details}</p>
@@ -216,14 +222,17 @@ export default function ResumePage() {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-white">Skills</h2>
+            <h2 className="text-2xl font-semibold text-highlight dark:text-white">Skills</h2>
             <div className="space-y-5">
               {SKILL_GROUPS.map((group) => (
-                <div key={group.label} className="rounded-3xl border border-white/10 bg-surface-muted/60 p-6">
+                <div
+                  key={group.label}
+                  className="rounded-3xl border border-border/20 bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
+                >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">{group.label}</p>
                   <div className="mt-3 flex flex-wrap gap-2 text-xs text-copy-muted">
                     {group.items.map((skill) => (
-                      <span key={skill} className="rounded-full border border-white/12 px-3 py-1">
+                      <span key={skill} className="rounded-full border border-border/30 px-3 py-1 dark:border-white/12">
                         {skill}
                       </span>
                     ))}

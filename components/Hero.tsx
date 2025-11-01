@@ -18,7 +18,7 @@ export default function Hero() {
             <p className="eyebrow text-xs uppercase tracking-[0.28em] text-copy-muted">
               Dean Shabi · AI Founder &amp; Senior Data Scientist
             </p>
-            <h1 className="text-4xl text-white md:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
+            <h1 className="text-4xl text-highlight dark:text-white md:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
               I build AI-powered forecasting, pricing, and automation systems for UK/EU renewable energy markets.
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-copy-muted">
@@ -38,17 +38,17 @@ export default function Hero() {
 
           <dl className="grid gap-3 sm:grid-cols-3">
             {STATS.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-white/10 bg-surface/70 p-5">
-                <dt className="text-xl font-semibold text-white">{stat.value}</dt>
+              <div key={stat.label} className="rounded-2xl border border-border/20 bg-surface p-5 shadow-sm dark:border-white/10 dark:bg-surface/70">
+                <dt className="text-xl font-semibold text-highlight dark:text-white">{stat.value}</dt>
                 <dd className="mt-2 text-xs uppercase tracking-[0.28em] text-copy-muted">{stat.label}</dd>
               </div>
             ))}
           </dl>
         </div>
 
-        <aside className="flex flex-col gap-8 rounded-3xl border border-white/12 bg-surface-muted/70 p-8">
+        <aside className="flex flex-col gap-8 rounded-3xl border border-border/20 bg-surface-muted p-8 dark:border-white/12 dark:bg-surface-muted/70">
           <figure className="relative flex flex-col items-center gap-4 text-center">
-            <div className="relative h-36 w-36 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface to-surface-muted">
+            <div className="relative h-36 w-36 overflow-hidden rounded-2xl border border-border/20 bg-gradient-to-br from-surface to-surface-muted dark:border-white/10">
               <Image
                 src="/images/profile.png"
                 alt="Dean Shabi"
@@ -58,11 +58,11 @@ export default function Hero() {
                 priority
               />
             </div>
-            <p className="text-sm font-medium text-white">Dean Shabi</p>
+            <p className="text-sm font-medium text-highlight dark:text-white">Dean Shabi</p>
             <p className="text-xs uppercase tracking-[0.28em] text-copy-muted">Based in Prague · Remote</p>
           </figure>
 
-          <div className="space-y-3 rounded-2xl border border-accent/35 bg-surface p-6">
+          <div className="space-y-3 rounded-2xl border border-accent/35 bg-surface p-6 shadow-sm dark:bg-surface/80">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-soft">
               Collaboration Spotlight
             </p>

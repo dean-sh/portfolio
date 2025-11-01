@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ['class'],
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -9,22 +10,25 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: '#05070f',
-        surface: '#0b1220',
-        'surface-muted': '#121a2b',
-        outline: '#1b2334',
+        canvas: 'rgb(var(--color-canvas) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        'surface-muted': 'rgb(var(--color-surface-muted) / <alpha-value>)',
+        outline: 'rgb(var(--color-outline) / <alpha-value>)',
+        page: 'rgb(var(--color-page) / <alpha-value>)',
         accent: {
-          DEFAULT: '#38bdf8',
-          soft: '#7dd3fc',
-          strong: '#0ea5e9',
-          contrast: '#04111d',
+          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+          soft: 'rgb(var(--color-accent-soft) / <alpha-value>)',
+          strong: 'rgb(var(--color-accent-strong) / <alpha-value>)',
+          contrast: 'rgb(var(--color-accent-contrast) / <alpha-value>)',
         },
         copy: {
-          DEFAULT: '#f8fafc',
-          subtle: '#cbd5f5',
-          muted: '#8ea2c0',
+          DEFAULT: 'rgb(var(--color-copy) / <alpha-value>)',
+          subtle: 'rgb(var(--color-copy-subtle) / <alpha-value>)',
+          muted: 'rgb(var(--color-copy-muted) / <alpha-value>)',
         },
-        highlight: '#f9fafb',
+        highlight: 'rgb(var(--color-highlight) / <alpha-value>)',
+        border: 'rgb(var(--color-border) / <alpha-value>)',
+        ring: 'rgb(var(--color-ring) / <alpha-value>)',
       },
       borderRadius: {
         xl: '1.25rem',
@@ -33,9 +37,9 @@ module.exports = {
         pill: '999px',
       },
       boxShadow: {
-        layered: '0 50px 90px -45px rgba(12, 18, 31, 0.65)',
-        outline: '0 0 0 1px rgba(148, 163, 184, 0.18)',
-        glow: '0 0 35px rgba(14, 165, 233, 0.35)',
+        layered: 'var(--shadow-layered)',
+        outline: 'var(--shadow-outline)',
+        glow: 'var(--shadow-glow)',
       },
       fontFamily: {
         sans: ['var(--font-outfit)', ...defaultTheme.fontFamily.sans],

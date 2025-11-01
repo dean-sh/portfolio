@@ -30,11 +30,11 @@ export default function EVSimulatorPage() {
       <div className="space-y-12">
         {/* Project Overview Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90 mb-4">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90 mb-4">
               Developed a modular, agent-based simulator to model heterogeneous
               electric vehicle (EV) charging behaviours across diverse driver
               populations.
@@ -53,8 +53,8 @@ export default function EVSimulatorPage() {
         </section>
 
         {/* Interactive Dashboard Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-6">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">
             Interactive Dashboard & Demo
           </h2>
 
@@ -73,7 +73,7 @@ export default function EVSimulatorPage() {
                   href="https://ev-sim.streamlit.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-accent/90 hover:bg-accent text-white px-4 py-2 rounded-md transition-colors whitespace-nowrap"
+                  className="inline-flex items-center justify-center bg-accent/90 hover:bg-accent text-highlight dark:text-white px-4 py-2 rounded-md transition-colors whitespace-nowrap"
                 >
                   <svg
                     className="w-5 h-5 mr-2"
@@ -95,7 +95,7 @@ export default function EVSimulatorPage() {
                   href="https://github.com/dean-sh/ev-sim"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-surface hover:bg-surface/80 text-white px-4 py-2 rounded-md transition-colors whitespace-nowrap"
+                  className="inline-flex items-center justify-center bg-surface hover:bg-surface/80 text-highlight dark:text-white px-4 py-2 rounded-md transition-colors whitespace-nowrap"
                 >
                   <svg
                     className="w-5 h-5 mr-2"
@@ -166,7 +166,7 @@ export default function EVSimulatorPage() {
 
         {/* Challenge Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             The Challenge
           </h2>
           <p className="mb-6 text-lg">
@@ -175,7 +175,7 @@ export default function EVSimulatorPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Driver Heterogeneity
               </h3>
@@ -185,7 +185,7 @@ export default function EVSimulatorPage() {
                 battery sizes, and charger types.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Behavioural Stochasticity
               </h3>
@@ -195,7 +195,7 @@ export default function EVSimulatorPage() {
                 sessions.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Realism vs. Simplicity
               </h3>
@@ -205,7 +205,7 @@ export default function EVSimulatorPage() {
                 understandable simulation core.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Insight Accessibility
               </h3>
@@ -219,8 +219,8 @@ export default function EVSimulatorPage() {
         </section>
 
         {/* Simulation Approach Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-6">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">
             Simulation Approach
           </h2>
 
@@ -258,8 +258,8 @@ export default function EVSimulatorPage() {
             </ol>
 
             <div className="aspect-auto relative rounded-lg overflow-hidden bg-surface-muted p-4 text-center mt-6">
-              <div className="bg-surface/60 p-5 rounded-lg shadow-inner border border-white/10">
-                <h3 className="font-medium text-base mb-3 text-white">
+              <div className="bg-surface/60 p-5 rounded-lg shadow-inner border border-border/20 dark:border-white/10">
+                <h3 className="font-medium text-base mb-3 text-highlight dark:text-white">
                   Process Flow Diagram
                 </h3>
                 <Image
@@ -280,8 +280,8 @@ export default function EVSimulatorPage() {
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-white/10">
-                <h4 className="text-base font-semibold text-white mb-2">
+              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-border/20 dark:border-white/10">
+                <h4 className="text-base font-semibold text-highlight dark:text-white mb-2">
                   Daily Driving Energy Model
                 </h4>
                 <p className="text-sm">
@@ -290,8 +290,8 @@ export default function EVSimulatorPage() {
                   simplifying the model while retaining variability.
                 </p>
               </div>
-              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-white/10">
-                <h4 className="text-base font-semibold text-white mb-2">
+              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-border/20 dark:border-white/10">
+                <h4 className="text-base font-semibold text-highlight dark:text-white mb-2">
                   Stochastic Charging Behavior
                 </h4>
                 <p className="text-sm">
@@ -300,8 +300,8 @@ export default function EVSimulatorPage() {
                   realism.
                 </p>
               </div>
-              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-white/10">
-                <h4 className="text-base font-semibold text-white mb-2">
+              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-border/20 dark:border-white/10">
+                <h4 className="text-base font-semibold text-highlight dark:text-white mb-2">
                   Modularity Focus
                 </h4>
                 <p className="text-sm">
@@ -309,8 +309,8 @@ export default function EVSimulatorPage() {
                   charging) for clarity, testability, and easier modification.
                 </p>
               </div>
-              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-white/10">
-                <h4 className="text-base font-semibold text-white mb-2">
+              <div className="bg-surface-muted/80 rounded-lg p-4 shadow-md border border-border/20 dark:border-white/10">
+                <h4 className="text-base font-semibold text-highlight dark:text-white mb-2">
                   Scope Prioritization
                 </h4>
                 <p className="text-sm">
@@ -324,7 +324,7 @@ export default function EVSimulatorPage() {
 
         {/* Key Outcomes Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Key Outcomes
           </h2>
           <p className="mb-6 text-lg">
@@ -375,8 +375,8 @@ export default function EVSimulatorPage() {
         </section>
 
         {/* Extensibility Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             Future Directions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

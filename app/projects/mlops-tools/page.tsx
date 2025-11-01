@@ -29,11 +29,11 @@ export default function MLOpsToolsProject() {
       <div className="space-y-8">
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               The world of machine learning (ML) is as dynamic and diverse as it
               is complex, with numerous tools and practices aimed at
               streamlining and enhancing the deployment and serving of ML
@@ -58,8 +58,8 @@ export default function MLOpsToolsProject() {
         </section>
 
         {/* Problem Statement Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">The Challenge</h2>
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">The Challenge</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-surface-muted rounded-lg p-5 shadow-md">
               <h3 className="text-lg font-semibold text-accent mb-3">
@@ -107,7 +107,7 @@ export default function MLOpsToolsProject() {
 
         {/* Solutions Explored Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Solutions Explored
           </h2>
           <p className="mb-6">
@@ -119,7 +119,7 @@ export default function MLOpsToolsProject() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -155,7 +155,7 @@ export default function MLOpsToolsProject() {
               </ul>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -186,7 +186,7 @@ export default function MLOpsToolsProject() {
               </ul>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -220,7 +220,7 @@ export default function MLOpsToolsProject() {
               </ul>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -255,7 +255,7 @@ export default function MLOpsToolsProject() {
             </div>
           </div>
 
-          <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+          <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
             <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
               <svg
                 className="w-6 h-6 text-accent"
@@ -300,82 +300,82 @@ export default function MLOpsToolsProject() {
         </section>
 
         {/* Comparison & Analysis Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             Comparative Analysis
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-accent/10">
-                  <th className="border border-white/10 p-2 text-left">Tool</th>
-                  <th className="border border-white/10 p-2 text-left">
+                  <th className="border border-border/20 dark:border-white/10 p-2 text-left">Tool</th>
+                  <th className="border border-border/20 dark:border-white/10 p-2 text-left">
                     Best For
                   </th>
-                  <th className="border border-white/10 p-2 text-left">
+                  <th className="border border-border/20 dark:border-white/10 p-2 text-left">
                     Learning Curve
                   </th>
-                  <th className="border border-white/10 p-2 text-left">
+                  <th className="border border-border/20 dark:border-white/10 p-2 text-left">
                     Ecosystem Integration
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-white/10 p-2 font-medium">
+                  <td className="border border-border/20 dark:border-white/10 p-2 font-medium">
                     TensorFlow Serving
                   </td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     TensorFlow-focused projects requiring high performance
                   </td>
-                  <td className="border border-white/10 p-2">Steep</td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">Steep</td>
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     TensorFlow-centric
                   </td>
                 </tr>
                 <tr className="bg-surface-muted/80">
-                  <td className="border border-white/10 p-2 font-medium">
+                  <td className="border border-border/20 dark:border-white/10 p-2 font-medium">
                     MLflow
                   </td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     End-to-end ML lifecycle management
                   </td>
-                  <td className="border border-white/10 p-2">Moderate</td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">Moderate</td>
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     Highly versatile
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-white/10 p-2 font-medium">
+                  <td className="border border-border/20 dark:border-white/10 p-2 font-medium">
                     AWS SageMaker
                   </td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     All-in-one managed service
                   </td>
-                  <td className="border border-white/10 p-2">Moderate</td>
-                  <td className="border border-white/10 p-2">AWS-focused</td>
+                  <td className="border border-border/20 dark:border-white/10 p-2">Moderate</td>
+                  <td className="border border-border/20 dark:border-white/10 p-2">AWS-focused</td>
                 </tr>
                 <tr className="bg-surface-muted/80">
-                  <td className="border border-white/10 p-2 font-medium">
+                  <td className="border border-border/20 dark:border-white/10 p-2 font-medium">
                     Seldon Core
                   </td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     Complex inference pipelines in Kubernetes
                   </td>
-                  <td className="border border-white/10 p-2">Very Steep</td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">Very Steep</td>
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     Kubernetes-native
                   </td>
                 </tr>
                 <tr>
-                  <td className="border border-white/10 p-2 font-medium">
+                  <td className="border border-border/20 dark:border-white/10 p-2 font-medium">
                     BentoML
                   </td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     Streamlined model packaging and serving
                   </td>
-                  <td className="border border-white/10 p-2">Gentle</td>
-                  <td className="border border-white/10 p-2">
+                  <td className="border border-border/20 dark:border-white/10 p-2">Gentle</td>
+                  <td className="border border-border/20 dark:border-white/10 p-2">
                     Framework-agnostic
                   </td>
                 </tr>
@@ -386,7 +386,7 @@ export default function MLOpsToolsProject() {
 
         {/* Conclusion Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Key Takeaways
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

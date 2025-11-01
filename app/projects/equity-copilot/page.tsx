@@ -30,11 +30,11 @@ export default function EquityCopilotProject() {
       <div className="space-y-8">
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               Equity Copilot is an AI-powered platform that transforms how
               analysts and fund managers conduct investment research. By
               leveraging large language models and domain-specific fine-tuning,
@@ -55,7 +55,7 @@ export default function EquityCopilotProject() {
 
         {/* Technical Solution Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Technical Solution
           </h2>
           <p className="mb-6">
@@ -64,7 +64,7 @@ export default function EquityCopilotProject() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -90,7 +90,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -117,7 +117,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -144,7 +144,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
                 <svg
                   className="w-6 h-6 text-accent"
@@ -174,8 +174,8 @@ export default function EquityCopilotProject() {
         </section>
 
         {/* System Architecture Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             System Architecture
           </h2>
           <div className="relative rounded-lg overflow-hidden bg-surface/60 flex items-center justify-center py-8">
@@ -295,11 +295,11 @@ export default function EquityCopilotProject() {
 
         {/* Use Cases Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Key Capabilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Earnings Call Analysis
               </h3>
@@ -310,7 +310,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 SEC Filing Summarization
               </h3>
@@ -321,7 +321,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Competitive Intelligence
               </h3>
@@ -331,7 +331,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Red Flag Detection
               </h3>
@@ -342,7 +342,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Thematic Research
               </h3>
@@ -352,7 +352,7 @@ export default function EquityCopilotProject() {
               </p>
             </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-accent mb-3">
                 Event-Driven Alerts
               </h3>
@@ -366,7 +366,7 @@ export default function EquityCopilotProject() {
 
         {/* Business Impact Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Business Impact
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

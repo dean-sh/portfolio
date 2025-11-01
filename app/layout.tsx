@@ -61,12 +61,43 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden">
+    <html lang="en" className="scroll-smooth overflow-x-hidden" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://deanshabi.com" />
-        <meta name="theme-color" content="#0f172a" />
+        <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const storageKey = 'theme';
+                const classNameDark = 'dark';
+                const root = document.documentElement;
+                const setTheme = (theme) => {
+                  if (theme === 'dark') {
+                    root.classList.add(classNameDark);
+                  } else {
+                    root.classList.remove(classNameDark);
+                  }
+                  root.dataset.theme = theme;
+                };
+                try {
+                  const stored = window.localStorage.getItem(storageKey);
+                  if (stored === 'light' || stored === 'dark') {
+                    setTheme(stored);
+                    return;
+                  }
+                } catch (error) {
+                  console.warn('Unable to access theme storage:', error);
+                }
+                const mql = window.matchMedia('(prefers-color-scheme: dark)');
+                setTheme(mql.matches ? 'dark' : 'light');
+              })();
+            `,
+          }}
+        />
         
         {/* Google Calendar Scheduling */}
         <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />

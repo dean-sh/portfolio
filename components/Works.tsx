@@ -131,11 +131,11 @@ export default function Works() {
   }, [activeFilter]);
 
   return (
-    <section id="works" className="section">
+    <section id="works" className="section bg-page/80 dark:bg-transparent">
       <div className="container space-y-12">
         <header className="max-w-3xl space-y-5 text-balance">
           <p className="eyebrow">Selected Work</p>
-          <h2 className="text-3xl text-white md:text-4xl">
+          <h2 className="text-3xl text-highlight dark:text-white md:text-4xl">
             AI-powered projects for energy, trading, and beyond.
           </h2>
           <p className="text-lg text-copy-muted">
@@ -154,8 +154,8 @@ export default function Works() {
                 onClick={() => setActiveFilter(filter)}
                 className={`rounded-full border px-4 py-2 text-sm transition ${
                   isActive
-                    ? 'border-accent bg-[rgba(56,189,248,0.12)] text-white shadow-glow'
-                    : 'border-white/12 text-copy-muted hover:border-white/25 hover:text-white'
+                    ? 'border-accent bg-accent/15 text-accent-contrast shadow-sm dark:text-white dark:bg-[rgba(56,189,248,0.12)] dark:shadow-glow'
+                    : 'border-border/30 text-copy-muted hover:border-border/60 hover:text-highlight dark:border-white/12 dark:hover:border-white/25 dark:hover:text-white'
                 }`}
               >
                 {filter}
@@ -168,9 +168,9 @@ export default function Works() {
           {visibleProjects.map((project) => (
             <article
               key={project.id}
-              className="group flex flex-col gap-6 rounded-3xl border border-white/10 bg-surface/70 p-8 transition hover:border-accent hover:bg-surface"
+              className="group flex flex-col gap-6 rounded-3xl border border-border/20 bg-surface p-8 shadow-sm transition hover:border-accent hover:shadow-md dark:border-white/10 dark:bg-surface/70 dark:hover:bg-surface"
             >
-              <div className="relative h-52 overflow-hidden rounded-2xl border border-white/10">
+              <div className="relative h-52 overflow-hidden rounded-2xl border border-border/20 dark:border-white/10">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -182,14 +182,14 @@ export default function Works() {
 
               <div className="space-y-3">
                 <span className="text-xs uppercase tracking-[0.3em] text-copy-muted">{project.category}</span>
-                <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+                <h3 className="text-2xl font-semibold text-highlight dark:text-white">{project.title}</h3>
                 <p className="text-sm text-copy-muted">{project.description}</p>
-                <p className="text-sm font-semibold text-white">{project.metric}</p>
+                <p className="text-sm font-semibold text-highlight dark:text-white">{project.metric}</p>
               </div>
 
               <div className="flex flex-wrap gap-2 text-xs text-copy-muted">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="rounded-full border border-white/10 px-3 py-1">
+                  <span key={tag} className="rounded-full border border-border/25 px-3 py-1 dark:border-white/10">
                     {tag}
                   </span>
                 ))}
@@ -197,7 +197,7 @@ export default function Works() {
 
               <Link
                 href={project.link}
-                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-accent-soft transition hover:text-white"
+                className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-accent-soft transition hover:text-accent dark:hover:text-white"
               >
                 View project →
               </Link>
@@ -206,12 +206,12 @@ export default function Works() {
         </div>
 
         {activeFilter === 'Featured' && (
-          <div className="space-y-4 rounded-3xl border border-white/10 bg-surface-muted/60 p-8">
+          <div className="space-y-4 rounded-3xl border border-border/20 bg-surface-muted/70 p-8 shadow-sm dark:border-white/10 dark:bg-surface-muted/60">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">More projects</p>
             <ul className="space-y-3 text-sm text-copy-muted">
               {PROJECTS.filter((project) => !FEATURED_IDS.includes(project.id)).map((project) => (
                 <li key={project.id}>
-                  <Link href={project.link} className="text-white transition hover:text-accent-soft">
+                  <Link href={project.link} className="text-highlight transition hover:text-accent dark:text-white">
                     {project.title}
                   </Link>
                   <span className="ml-2 text-copy-muted">— {project.description}</span>

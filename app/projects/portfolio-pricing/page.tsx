@@ -201,11 +201,11 @@ export default function PortfolioPricingPage() {
         {/* Increased spacing */}
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               Developed a modular and portfolio-aware pricing engine for a
               leading energy provider. This tool integrates risk-adjusted
               pricing strategies and supports real-time scenario testing for
@@ -214,8 +214,8 @@ export default function PortfolioPricingPage() {
           </div>
         </section>
         {/* The Challenge Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">The Challenge</h2>
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">The Challenge</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <p className="mb-4">
@@ -263,16 +263,16 @@ export default function PortfolioPricingPage() {
         </section>
         {/* What I Delivered Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6 border-b border-border/20 dark:border-white/10 pb-2">
             What I Delivered
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-white/10 space-y-3">
+            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-border/20 dark:border-white/10 space-y-3">
               <div className="flex items-center space-x-3 mb-2">
                 <div className="bg-accent/10 p-2 rounded-full">
                   <Layers />
                 </div>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-highlight dark:text-white">
                   Simulation Framework Design
                 </h3>
               </div>
@@ -281,12 +281,12 @@ export default function PortfolioPricingPage() {
                 decisions impact risk across evolving energy portfolios.
               </p>
             </div>
-            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-white/10 space-y-3">
+            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-border/20 dark:border-white/10 space-y-3">
               <div className="flex items-center space-x-3 mb-2">
                 <div className="bg-accent/10 p-2 rounded-full">
                   <GitMerge />
                 </div>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-highlight dark:text-white">
                   Risk Metric Integration
                 </h3>
               </div>
@@ -296,12 +296,12 @@ export default function PortfolioPricingPage() {
                 quantify uncertainty.
               </p>
             </div>
-            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-white/10 space-y-3">
+            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-border/20 dark:border-white/10 space-y-3">
               <div className="flex items-center space-x-3 mb-2">
                 <div className="bg-accent/10 p-2 rounded-full">
                   <Activity />
                 </div>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-highlight dark:text-white">
                   Interactive Analysis App
                 </h3>
               </div>
@@ -311,12 +311,12 @@ export default function PortfolioPricingPage() {
                 strategies.
               </p>
             </div>
-            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-white/10 space-y-3">
+            <div className="bg-surface-muted rounded-lg p-6 shadow-sm border border-border/20 dark:border-white/10 space-y-3">
               <div className="flex items-center space-x-3 mb-2">
                 <div className="bg-accent/10 p-2 rounded-full">
                   <CheckCircle />
                 </div>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-highlight dark:text-white">
                   Strategic Input
                 </h3>
               </div>
@@ -328,8 +328,8 @@ export default function PortfolioPricingPage() {
           </div>
         </section>
         {/* Key Innovations Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-6">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">
             Key Innovations
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -338,7 +338,7 @@ export default function PortfolioPricingPage() {
                 <div className="bg-accent/10 p-1.5 rounded-full">
                   <Layers />
                 </div>
-                <h3 className="font-semibold text-white">
+                <h3 className="font-semibold text-highlight dark:text-white">
                   Portfolio-Aware Modeling
                 </h3>
               </div>
@@ -352,7 +352,7 @@ export default function PortfolioPricingPage() {
                 <div className="bg-accent/10 p-1.5 rounded-full">
                   <Zap />
                 </div>
-                <h3 className="font-semibold text-white">
+                <h3 className="font-semibold text-highlight dark:text-white">
                   Flexible Strategy Evaluation
                 </h3>
               </div>
@@ -365,7 +365,7 @@ export default function PortfolioPricingPage() {
                 <div className="bg-accent/10 p-1.5 rounded-full">
                   <Activity />
                 </div>
-                <h3 className="font-semibold text-white">
+                <h3 className="font-semibold text-highlight dark:text-white">
                   Scenario-Based Testing
                 </h3>
               </div>
@@ -378,7 +378,7 @@ export default function PortfolioPricingPage() {
         </section>
         {/* Methodological Exploration Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6 border-b border-border/20 dark:border-white/10 pb-2">
             Methodological Exploration
           </h2>
           <p className="mb-6 prose prose-lg max-w-none">
@@ -387,12 +387,12 @@ export default function PortfolioPricingPage() {
             depth.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10 space-y-4">
+            <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10 space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="bg-accent/10 p-2 rounded-full">
                   <BarChart2 />
                 </div>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-highlight dark:text-white">
                   Statistical Approaches
                 </h3>
               </div>
@@ -402,12 +402,12 @@ export default function PortfolioPricingPage() {
                 profiling and efficient calculation for standard scenarios.
               </p>
             </div>
-            <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10 space-y-4">
+            <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10 space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="bg-accent/10 p-2 rounded-full">
                   <Cpu />
                 </div>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-highlight dark:text-white">
                   Monte Carlo Simulations
                 </h3>
               </div>
@@ -422,16 +422,16 @@ export default function PortfolioPricingPage() {
         </section>
         {/* VaR and ES Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Key Risk Concepts: VaR & ES (CVaR)
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10 space-y-4">
+            <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10 space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="bg-accent/10 rounded-full h-10 w-10 flex items-center justify-center shrink-0">
                   <span className="text-accent font-bold">VaR</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-highlight dark:text-white">
                   Value at Risk (VaR)
                 </h3>
               </div>
@@ -446,12 +446,12 @@ export default function PortfolioPricingPage() {
                 its threshold.
               </p>
             </div>
-            <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10 space-y-4">
+            <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10 space-y-4">
               <div className="flex items-center space-x-3">
                 <div className="bg-accent/10 rounded-full h-10 w-10 flex items-center justify-center shrink-0">
                   <span className="text-accent font-bold">ES</span>
                 </div>
-                <h3 className="text-xl font-semibold text-white">
+                <h3 className="text-xl font-semibold text-highlight dark:text-white">
                   Expected Shortfall (ES / CVaR)
                 </h3>
               </div>
@@ -476,12 +476,12 @@ export default function PortfolioPricingPage() {
         </section>
         {/* Business Impact Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Business Impact & Outcomes
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-              <h3 className="text-xl font-semibold text-white mb-6">
+            <div className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+              <h3 className="text-xl font-semibold text-highlight dark:text-white mb-6">
                 Key Metrics Achieved
               </h3>
               <div className="grid grid-cols-3 gap-4 text-center">
@@ -491,7 +491,7 @@ export default function PortfolioPricingPage() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 text-accent mb-3">
                     <span className="text-2xl font-bold">95%</span>
                   </div>
-                  <p className="text-sm font-medium text-white/90">
+                  <p className="text-sm font-medium text-highlight/90 dark:text-white/90">
                     Speed Increase
                   </p>
                   <p className="text-xs text-copy-muted">in Pricing Time</p>
@@ -501,7 +501,7 @@ export default function PortfolioPricingPage() {
                     <span className="text-2xl font-bold">20%</span>{" "}
                     {/* Updated */}
                   </div>
-                  <p className="text-sm font-medium text-white/90">
+                  <p className="text-sm font-medium text-highlight/90 dark:text-white/90">
                     Target Reduction
                   </p>
                   <p className="text-xs text-copy-muted">in Portfolio Risk</p>
@@ -511,14 +511,14 @@ export default function PortfolioPricingPage() {
                     <span className="text-2xl font-bold">10x</span>{" "}
                     {/* Updated */}
                   </div>
-                  <p className="text-sm font-medium text-white/90">Growth</p>
+                  <p className="text-sm font-medium text-highlight/90 dark:text-white/90">Growth</p>
                   <p className="text-xs text-copy-muted">in tested scenarios</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">
+              <h3 className="text-xl font-semibold text-highlight dark:text-white mb-4">
                 Strategic Value Delivered
               </h3>
               <div className="space-y-4">

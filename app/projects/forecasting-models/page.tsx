@@ -28,11 +28,11 @@ export default function ForecastingModelsPage() {
       <div className="space-y-8">
         {/* Introduction Section */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-4 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
             Project Overview
           </h2>
           <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-white/90">
+            <p className="lead text-xl text-highlight/90 dark:text-white/90">
               Led the development of advanced long-term load, generation, and
               price forecasting models for UK energy-tech firms. These systems
               power core features, support trading decisions, and reduce
@@ -47,11 +47,11 @@ export default function ForecastingModelsPage() {
         </section>
 
         {/* The Challenge Section - REFACTORED with Cards */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-6">The Challenge</h2>
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">The Challenge</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Card 1: Volatility */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -69,7 +69,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Volatility & Seasonality
                 </h3>
               </div>
@@ -79,7 +79,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 2: Data Integration */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -97,7 +97,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Diverse Data Sources
                 </h3>
               </div>
@@ -107,7 +107,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 3: Scalability */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -125,7 +125,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Scalability
                 </h3>
               </div>
@@ -134,7 +134,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 4: Granularity */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -152,7 +152,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   High Granularity
                 </h3>
               </div>
@@ -161,7 +161,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Card 5: Robustness */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -179,7 +179,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Robustness & Efficiency
                 </h3>
               </div>
@@ -193,17 +193,17 @@ export default function ForecastingModelsPage() {
 
         {/* Methodological Exploration & Innovations Section - REFACTORED */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6 border-b border-border/20 dark:border-white/10 pb-2">
             Methodological Exploration & Innovations
           </h2>
 
           {/* Model Types Grid */}
-          <h3 className="text-xl font-semibold text-white mb-4">
+          <h3 className="text-xl font-semibold text-highlight dark:text-white mb-4">
             Specialized Model Components
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             {/* Existing cards slightly restyled */}
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Advanced Load Forecasting
               </h3>
@@ -212,7 +212,7 @@ export default function ForecastingModelsPage() {
                 factors for diverse customer segments.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Weather-Aware PV Generation
               </h3>
@@ -221,7 +221,7 @@ export default function ForecastingModelsPage() {
                 for precise solar predictions.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Battery State Modeling
               </h3>
@@ -230,7 +230,7 @@ export default function ForecastingModelsPage() {
                 storage assets.
               </p>
             </div>
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-white/10 hover:shadow-lg transition-shadow">
+            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-semibold text-energy-400 mb-2">
                 Granular Price Forecasting
               </h3>
@@ -242,7 +242,7 @@ export default function ForecastingModelsPage() {
           </div>
 
           {/* Methodologies & Innovations Grid */}
-          <h3 className="text-xl font-semibold text-white mb-4">
+          <h3 className="text-xl font-semibold text-highlight dark:text-white mb-4">
             Modeling Techniques & Innovations
           </h3>
           <p className="mb-6 text-copy-muted">
@@ -253,7 +253,7 @@ export default function ForecastingModelsPage() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Innovation 1: Transfer Learning */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -271,7 +271,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Transfer Learning
                 </h3>
               </div>
@@ -281,7 +281,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Innovation 2: Global Models */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -299,7 +299,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Global Modeling
                 </h3>
               </div>
@@ -309,7 +309,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Innovation 3: MLflow */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -327,7 +327,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   MLflow Integration
                 </h3>
               </div>
@@ -337,7 +337,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Innovation 4: Hybrid Models */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -355,7 +355,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Hybrid Approaches
                 </h3>
               </div>
@@ -365,7 +365,7 @@ export default function ForecastingModelsPage() {
               </p>
             </div>
             {/* Technique 5: Diverse Models Evaluated */}
-            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-white/10 space-y-2">
+            <div className="bg-surface-muted/80 rounded-lg p-4 shadow-sm border border-border/20 dark:border-white/10 space-y-2">
               <div className="flex items-center space-x-2 mb-2">
                 <div className="bg-energy-600/10 p-1.5 rounded-full">
                   <svg
@@ -383,7 +383,7 @@ export default function ForecastingModelsPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="font-semibold text-white text-base">
+                <h3 className="font-semibold text-highlight dark:text-white text-base">
                   Diverse Techniques
                 </h3>
               </div>
@@ -396,8 +396,8 @@ export default function ForecastingModelsPage() {
         </section>
 
         {/* Technical Diagram Section - REMAINS */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-white/10">
-          <h2 className="text-2xl font-bold text-white mb-4">
+        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
             Model Architecture
           </h2>
           <div className="relative rounded-lg overflow-hidden bg-surface-muted/80 flex items-center justify-center py-8">
@@ -407,7 +407,7 @@ export default function ForecastingModelsPage() {
               </div>
               <div className="flex justify-center items-center gap-4 flex-wrap">
                 <div className="flex flex-col items-center">
-                  <div className="w-32 h-24 border border-white/10 rounded p-2 flex items-center justify-center bg-black/35">
+                  <div className="w-32 h-24 border border-border/20 dark:border-white/10 rounded p-2 flex items-center justify-center bg-surface-muted/80 dark:bg-black/35">
                     <p className="text-sm text-center">Weather Data</p>
                   </div>
                   <div className="h-8 flex items-center">
@@ -416,7 +416,7 @@ export default function ForecastingModelsPage() {
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <div className="w-32 h-24 border border-white/10 rounded p-2 flex items-center justify-center bg-black/35">
+                  <div className="w-32 h-24 border border-border/20 dark:border-white/10 rounded p-2 flex items-center justify-center bg-surface-muted/80 dark:bg-black/35">
                     <p className="text-sm text-center">
                       Historical Energy Data
                     </p>
@@ -427,7 +427,7 @@ export default function ForecastingModelsPage() {
                 </div>
 
                 <div className="flex flex-col items-center">
-                  <div className="w-32 h-24 border border-white/10 rounded p-2 flex items-center justify-center bg-black/35">
+                  <div className="w-32 h-24 border border-border/20 dark:border-white/10 rounded p-2 flex items-center justify-center bg-surface-muted/80 dark:bg-black/35">
                     <p className="text-sm text-center">Market Signals</p>
                   </div>
                   <div className="h-8 flex items-center">
@@ -453,7 +453,7 @@ export default function ForecastingModelsPage() {
 
         {/* Business Impact Section - REVISED EMPHASIS + 30% HIGHLIGHT */}
         <section>
-          <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2">
+          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6 border-b border-border/20 dark:border-white/10 pb-2">
             Business Impact & Outcomes
           </h2>
           <p className="mb-6 prose prose-lg max-w-none text-copy-muted">
@@ -471,7 +471,7 @@ export default function ForecastingModelsPage() {
               {" "}
               &gt;30%{" "}
             </div>
-            <p className="text-white/90 font-medium">
+            <p className="text-highlight/90 dark:text-white/90 font-medium">
               MAPE Improvement vs. Benchmark
             </p>
             <p className="text-sm text-copy-muted mt-1">
@@ -540,7 +540,7 @@ export default function ForecastingModelsPage() {
                 <p className="text-copy-muted text-sm">
                   Provided a distinct competitive advantage for energy suppliers
                   by leveraging superior forecasting technology, achieving over{" "}
-                  <strong className="text-white/90">
+                  <strong className="text-highlight/90 dark:text-white/90">
                     30% MAPE improvement
                   </strong>
                   .
