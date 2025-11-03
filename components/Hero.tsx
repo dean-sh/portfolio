@@ -32,7 +32,7 @@ export default function Hero() {
               Explore my work
             </Link>
             <Link href="/resume" className="btn-ghost">
-              Download résumé
+              View résumé
             </Link>
           </div>
 

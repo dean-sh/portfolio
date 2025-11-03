@@ -118,36 +118,100 @@ const SKILL_GROUPS = [
   },
 ];
 
+const PROFILE_DETAILS = [
+  {
+    label: 'Location',
+    value: 'Prague, Czech Republic · collaborating remotely with UK/EU teams',
+  },
+  {
+    label: 'Email',
+    value: 'deanshabi@gmail.com',
+    href: 'mailto:deanshabi@gmail.com',
+  },
+  {
+    label: 'Focus Areas',
+    value: 'Forecasting systems, pricing engines, operational automation, advisory leadership',
+  },
+];
+
 export default function ResumePage() {
   return (
-    <div className="pb-24 bg-page dark:bg-[rgba(5,7,15,0.9)]">
-      <section className="section pb-12">
-        <div className="container space-y-6 text-balance">
-          <p className="eyebrow">Résumé</p>
-          <h1 className="text-4xl text-highlight dark:text-white md:text-5xl">Dean Shabi</h1>
-          <p className="max-w-3xl text-lg text-copy-muted">
-            AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and automation systems with UK/EU traders, grid
-            operators, and founders — currently building{' '}
-            <Link
-              href="https://www.bloome.ai"
-              target="_blank"
-              rel="noreferrer"
-              className="underline decoration-dotted underline-offset-4 transition hover:text-highlight dark:hover:text-white"
-            >
-              Bloome AI
-            </Link>
-            , the calmest way to discover and apply to new roles.
-          </p>
-          <Link href="mailto:deanshabi@gmail.com" className="btn-ghost inline-flex text-sm">
-            deanshabi@gmail.com
-          </Link>
+    <main className="bg-page pb-24 dark:bg-[rgba(5,7,15,0.9)]">
+      <section className="section pb-20">
+        <div className="container grid gap-12 text-balance lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)]">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <p className="eyebrow">Résumé</p>
+              <h1 className="text-4xl text-highlight dark:text-white md:text-5xl">Dean Shabi</h1>
+              <p className="max-w-3xl text-lg leading-relaxed text-copy-muted">
+                AI founder and senior data scientist specialising in renewable energy markets. I build forecasting, pricing, and automation systems with UK/EU traders, grid
+                operators, and founders — currently building{' '}
+                <Link
+                  href="https://www.bloome.ai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline decoration-dotted underline-offset-4 transition hover:text-highlight dark:hover:text-white"
+                >
+                  Bloome AI
+                </Link>
+                , the calmest way to discover and apply to new roles.
+              </p>
+            </div>
+
+            <div className="grid gap-3 text-sm text-copy-muted sm:grid-cols-2">
+              {['Forecasting systems', 'Energy trading strategy', 'Applied AI research', 'Fractional leadership'].map((focus) => (
+                <div
+                  key={focus}
+                  className="flex items-center gap-3 rounded-2xl border border-border/20 bg-surface/70 px-4 py-3 dark:border-white/12 dark:bg-surface/60"
+                >
+                  <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
+                  <span>{focus}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Link href="/#contact" className="btn-primary">
+                Start a project
+              </Link>
+              <a href="mailto:deanshabi@gmail.com" className="btn-ghost">
+                deanshabi@gmail.com
+              </a>
+            </div>
+          </div>
+
+          <aside className="card h-max space-y-6 border border-border/20 bg-surface/80 p-8 dark:border-white/12 dark:bg-surface/70">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">Quick facts</p>
+            <dl className="space-y-5 text-sm text-copy-muted">
+              {PROFILE_DETAILS.map((item) => (
+                <div key={item.label} className="space-y-1">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">{item.label}</dt>
+                  <dd>
+                    {item.href ? (
+                      <a href={item.href} className="text-white transition hover:text-highlight">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <span className="text-white">{item.value}</span>
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
         </div>
       </section>
 
       <section className="section pt-0">
-        <div className="container space-y-8">
-          <h2 className="text-2xl font-semibold text-highlight dark:text-white">Experience</h2>
-          <div className="space-y-6">
+        <div className="container space-y-12">
+          <header className="space-y-3">
+            <h2 id="experience" className="text-2xl font-semibold text-highlight dark:text-white">Experience</h2>
+            <p className="max-w-3xl text-sm text-copy-muted">
+              Over a decade architecting and scaling AI products across renewable energy portfolios, from grid forecasting and pricing engines to hands-on automation and
+              leadership for founders.
+            </p>
+          </header>
+          <div className="space-y-8">
             {EXPERIENCE.map((item) => {
               const points = item.description
                 .split('\n')
@@ -157,28 +221,28 @@ export default function ResumePage() {
               return (
                 <article
                   key={`${item.role}-${item.company}`}
-                  className="card bg-surface p-8 dark:border-white/10 dark:bg-surface/70"
+                  className="rounded-3xl border border-border/20 bg-surface p-8 shadow-sm transition hover:border-border/35 hover:shadow-md dark:border-white/12 dark:bg-surface/70 dark:hover:border-white/20"
                 >
-                  <header className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
-                    <div>
+                  <header className="flex flex-col gap-4 md:flex-row md:items-baseline md:justify-between">
+                    <div className="space-y-1">
                       <h3 className="text-xl font-semibold text-highlight dark:text-white">{item.role}</h3>
                       <p className="text-sm text-copy-muted">{item.company}</p>
                     </div>
-                    <div className="text-xs uppercase tracking-[0.3em] text-copy-muted text-right">
+                    <div className="text-xs uppercase tracking-[0.3em] text-copy-muted md:text-right">
                       {item.period}
                       <span className="mx-2">·</span>
                       {item.location}
                     </div>
                   </header>
-                  <ul className="mt-4 space-y-2 text-sm text-copy-muted">
+                  <ul className="mt-5 space-y-3 text-sm leading-relaxed text-copy-muted">
                     {points.map((highlight) => (
                       <li key={highlight} className="flex gap-3">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                        <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" aria-hidden />
                         <span>{highlight}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-5 flex flex-wrap gap-2 text-xs text-copy-muted">
+                  <div className="mt-6 flex flex-wrap gap-2 text-xs text-copy-muted">
                     {item.skills.map((skill) => (
                       <span key={skill} className="rounded-full border border-border/30 px-3 py-1 dark:border-white/12">
                         {skill}
@@ -193,19 +257,23 @@ export default function ResumePage() {
       </section>
 
       <section className="section pt-0">
-        <div className="container grid-gap-lg lg:grid-cols-[1.5fr,1fr]">
+        <div className="container grid gap-12 lg:grid-cols-[minmax(0,1.6fr),minmax(0,1fr)]">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-highlight dark:text-white">Education</h2>
-            <div className="space-y-5">
+            <div className="space-y-6">
               {EDUCATION.map((item) => (
                 <div
                   key={item.degree}
-                  className="card bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
+                  className="rounded-3xl border border-border/20 bg-surface p-6 dark:border-white/10 dark:bg-surface/70"
                 >
-                  <p className="text-sm font-semibold text-highlight dark:text-white">{item.degree}</p>
-                  <p className="text-sm text-copy-muted">{item.institution}</p>
-                  <p className="text-xs uppercase tracking-[0.3em] text-copy-muted mt-2">{item.period}</p>
-                  <p className="mt-3 text-sm text-copy-muted">{item.details}</p>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+                    <div>
+                      <p className="text-sm font-semibold text-highlight dark:text-white">{item.degree}</p>
+                      <p className="text-sm text-copy-muted">{item.institution}</p>
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.3em] text-copy-muted">{item.period}</p>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-copy-muted">{item.details}</p>
                 </div>
               ))}
             </div>
@@ -217,7 +285,7 @@ export default function ResumePage() {
               {SKILL_GROUPS.map((group) => (
                 <div
                   key={group.label}
-                  className="card bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-surface-muted/60"
+                  className="rounded-3xl border border-border/20 bg-surface p-6 dark:border-white/10 dark:bg-surface/70"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">{group.label}</p>
                   <div className="mt-3 flex flex-wrap gap-2 text-xs text-copy-muted">
@@ -233,6 +301,6 @@ export default function ResumePage() {
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

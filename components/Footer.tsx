@@ -1,7 +1,7 @@
 const links = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/dean-shabi/' },
   { label: 'GitHub', href: 'https://github.com/dean-sh' },
-  { label: 'Email', href: 'mailto:hello@deanshabi.com' },
+  { label: 'Email', href: 'mailto:deanshabi@gmail.com' },
 ];
 
 export default function Footer() {
