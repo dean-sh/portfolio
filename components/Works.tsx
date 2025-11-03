@@ -33,7 +33,7 @@ const PROJECTS = [
     description:
       'Created a unique matching algorithm under UK regulations that optimally pairs SME energy consumers with local generators, unlocking ~£50/MWh in cost savings—generating millions in new revenue.',
     tags: ['Algorithm', 'Energy', 'Optimization'],
-    image: '/images/renewcast.png',
+    image: '/images/transmission_loss.jpg',
     category: 'Energy Trading',
     link: '/projects/exempt-supply-matching',
     metric: '≈£50/MWh cost savings unlocked',

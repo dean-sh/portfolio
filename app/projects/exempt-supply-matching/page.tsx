@@ -38,12 +38,55 @@ export default function ExemptSupplyMatchingProject() {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="lead text-xl text-highlight/90 dark:text-white/90">
-              Created a unique matching algorithm operating under the UK's
-              Supplier Exempt Class A and BSC Modification P442 regulations.
+              Created a matching platform that keeps SME demand within Great
+              Britain's Supplier Exempt Class A limits, capping exports at 5 MW
+              (2.5 MW for domestic loads), while leveraging BSC Modification
+              P442's February 2025 reforms to strip licence-exempt volumes out
+              of EMR levies via an accredited Exempt Supply Notification Agent.
               This innovative solution optimally pairs SME energy consumers with
               local sub–5 MW generators, unlocking approximately £50/MWh in
               non-commodity cost savings.
             </p>
+
+            <div className="bg-surface-muted/70 border border-border/20 dark:border-white/10 rounded-lg p-5">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
+                In Plain English
+              </h3>
+              <ul className="list-disc pl-6 space-y-2 text-base">
+                <li>
+                  Small generators can legally sell power without a full supply license if
+                  they stay below 5 MW overall and send no more than 2.5 MW to homes.
+                </li>
+                <li>
+                  P442 makes sure those exempt deals are recorded separately, so they do not
+                  trigger the big government levies that drive up bills.
+                </li>
+                <li>
+                  An Exempt Supply Notification Agent handles the settlement admin, letting
+                  SMEs buy cleaner local power without drowning in paperwork.
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-surface/55 border border-border/20 dark:border-white/10 rounded-lg p-5 space-y-3">
+              <h3 className="text-lg font-semibold text-highlight dark:text-white">
+                How the Non-Commodity Savings Land
+              </h3>
+              <p className="text-base">
+                The biggest “non-commodity” line items on a UK business power bill are
+                policy levies such as the Contracts for Difference Supplier Obligation and
+                Capacity Market charges. Together, these can add £40–£60 per MWh during a
+                typical settlement year.
+              </p>
+              <p className="text-base">
+                By routing sub-5 MW generation through a Supplier Exempt Class A
+                structure and registering it with an Exempt Supply Notification Agent,
+                P442 keeps that energy out of the levy calculations. Every exempt MWh
+                avoids those policy surcharges, which flows straight through as savings
+                for the matched SME buyer while still compensating the local generator at
+                an agreed strike price.
+              </p>
+            </div>
 
             <p>
               This algorithm has generated millions in new revenue streams and
