@@ -11,7 +11,7 @@ const PROJECTS = [
     description:
       "Re-architected Renewcast's solar forecasting platform with physics-aware models, Bayesian optimisation, and ML ensembles to slash portfolio error from 15% to 6% nMAE.",
     tags: ["Solar Forecasting", "Physics + ML", "Bayesian Optimisation"],
-    image: "/images/renewcast.png",
+    image: "/images/chelsea-WvusC5M-TM8-unsplash.jpg",
     category: "Renewable Energy AI",
     link: "/projects/renewcast-solar-forecasting",
     metric: "15% → 6% nMAE (2.5× accuracy)",

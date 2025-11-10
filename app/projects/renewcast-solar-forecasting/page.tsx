@@ -1,4 +1,19 @@
 import { ProjectDetails } from "@/components/ProjectDetails";
+import { PerformanceChart } from "@/components/ui/PerformanceChart";
+
+type PerformancePoint = {
+  month: string;
+  value: number;
+};
+
+const performanceTrend: PerformancePoint[] = [
+  { month: "2025-05", value: 15.3 },
+  { month: "2025-06", value: 11.1 },
+  { month: "2025-07", value: 10.1 },
+  { month: "2025-08", value: 9.4 },
+  { month: "2025-09", value: 7.4 },
+  { month: "2025-10", value: 6.2 },
+];
 
 export const metadata = {
   title: "Renewcast · Solar Forecasting Product | Dean Shabi",
@@ -11,7 +26,7 @@ export default function RenewcastSolarForecastingPage() {
     <ProjectDetails
       title="Renewcast · Solar Forecasting Product"
       subtitle="Re-architecting day-ahead and intraday solar forecasts with a physics-aware core, optimisation engine, and ML adapters that delivered a 2.5× accuracy boost."
-      image="/images/renewcast.png"
+      image="/images/chelsea-WvusC5M-TM8-unsplash.jpg"
       industry="Utility-scale & distributed solar"
       client="Renewcast"
       tags={[
@@ -29,7 +44,7 @@ export default function RenewcastSolarForecastingPage() {
       <section className="space-y-6">
         <h2 className="text-2xl font-bold text-highlight dark:text-white">Summary</h2>
         <p className="text-lg text-highlight/90 dark:text-white/90">
-          As the sole AI Engineer and Data Scientist for Renewcast, I rebuilt the solar forecasting stack from the ground up—combining interpretable physical models, mathematically rigorous optimisation, and adaptive machine learning. In five months the platform moved from reactive, error-prone forecasts to a physics-aware system trusted by trading and operations teams.
+          As the sole AI Engineer and Data Scientist for Renewcast, I rebuilt the solar forecasting stack from the ground up—combining interpretable physical models, mathematically rigorous optimisation, and adaptive machine learning. Over a five-month continuous improvement program, each sprint stacked measurable gains until the platform shifted from reactive, error-prone forecasts to a physics-aware system trusted by trading and operations teams.
         </p>
         <div className="grid gap-4 sm:grid-cols-3">
           {[
@@ -48,6 +63,11 @@ export default function RenewcastSolarForecastingPage() {
               value: "100s",
               detail: "Utility & C&I",
             },
+            {
+              label: "Delivery Timeline",
+              value: "5 months",
+              detail: "Concept → production",
+            },
           ].map((metric) => (
             <div
               key={metric.label}
@@ -65,6 +85,9 @@ export default function RenewcastSolarForecastingPage() {
 
       <section className="space-y-4">
         <h2 className="text-2xl font-bold text-highlight dark:text-white">Approach</h2>
+        <p className="text-copy-muted">
+          Each workstream ran in overlapping, two-week sprints so the full physics core, optimisation engine, and ML adapters could hit production inside the five-month rebuild window—treating the engagement as a continuous improvement loop rather than a one-off rebuild.
+        </p>
         <div className="space-y-6">
           <article className="rounded-2xl border border-border/15 bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-white/5">
             <h3 className="text-xl font-semibold text-highlight dark:text-white">1. Physical foundations</h3>
@@ -90,37 +113,36 @@ export default function RenewcastSolarForecastingPage() {
       <section className="space-y-6">
         <h2 className="text-2xl font-bold text-highlight dark:text-white">Performance evolution</h2>
         <p>
-          Within five months, portfolio error dropped from 15% to 6% nMAE. The interactive Plotly chart embedded on the live site lets stakeholders explore gains across individual assets and time horizons.
+          Within five months, portfolio error dropped from 15% to 6% nMAE through an uninterrupted cadence of improvements. Explore the monthly glide path below—the chart highlights how each optimisation sprint compressed error bands and built confidence for traders.
         </p>
-        <div className="overflow-x-auto">
-          <table className="min-w-[480px] divide-y divide-border/30 text-left text-sm dark:divide-white/10">
-            <thead className="text-xs uppercase tracking-[0.2em] text-copy-muted">
-              <tr>
-                <th className="py-3 pr-6">Month</th>
-                <th className="py-3">nMAE (%)</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border/20 dark:divide-white/5">
-              {[
-                { month: "2025-05", value: "15.3" },
-                { month: "2025-06", value: "11.1" },
-                { month: "2025-07", value: "10.1" },
-                { month: "2025-08", value: "9.4" },
-                { month: "2025-09", value: "7.4" },
-                { month: "2025-10", value: "6.2" },
-              ].map((row) => (
-                <tr key={row.month}>
-                  <td className="py-3 pr-6 text-highlight dark:text-white/90">{row.month}</td>
-                  <td className="py-3 text-copy-muted">{row.value}</td>
+        <div className="grid gap-6 lg:grid-cols-[3fr_2fr]">
+          <PerformanceChart data={performanceTrend} />
+          <div className="overflow-x-auto rounded-3xl border border-border/20 bg-surface-muted/70 p-4 dark:border-white/10 dark:bg-white/5">
+            <table className="min-w-[320px] divide-y divide-border/30 text-left text-sm dark:divide-white/10">
+              <thead className="text-xs uppercase tracking-[0.2em] text-copy-muted">
+                <tr>
+                  <th className="py-3 pr-6">Month</th>
+                  <th className="py-3">nMAE (%)</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-border/20 dark:divide-white/5">
+                {performanceTrend.map((row) => (
+                  <tr key={row.month}>
+                    <td className="py-3 pr-6 text-highlight dark:text-white/90">{row.month}</td>
+                    <td className="py-3 text-copy-muted">{row.value.toFixed(1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
       <section className="space-y-6">
         <h2 className="text-2xl font-bold text-highlight dark:text-white">New capabilities in progress</h2>
+        <p className="text-copy-muted">
+          With the five-month continuous-improvement phase live, the next wave targets resilience modules that extend the same tempo to new product surfaces.
+        </p>
         <div className="grid gap-5 lg:grid-cols-2">
           <div className="rounded-2xl border border-border/20 bg-surface-muted/70 p-6 dark:border-white/10 dark:bg-white/5">
             <h3 className="text-lg font-semibold text-highlight dark:text-white">Stow-aware &amp; wind-aware forecasting</h3>
@@ -158,6 +180,10 @@ export default function RenewcastSolarForecastingPage() {
               Python · Xarray · LightGBM · PyTorch · MLflow · Docker · CI/CD
             </span>
           </li>
+          <li className="rounded-2xl border border-border/20 bg-surface-muted/70 p-4 dark:border-white/10 dark:bg-white/5">
+            <span className="block text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">Timeline</span>
+            <span className="mt-2 block text-highlight dark:text-white">Concept to production in 5 months</span>
+          </li>
         </ul>
       </section>
 
@@ -169,6 +195,9 @@ export default function RenewcastSolarForecastingPage() {
           </li>
           <li>
             <span className="font-semibold text-highlight dark:text-white">2.5× accuracy uplift</span> that strengthens trading signals and operational planning confidence.
+          </li>
+          <li>
+            <span className="font-semibold text-highlight dark:text-white">5-month turnaround</span> proving the team can deliver transformational forecasting upgrades without multi-year programmes.
           </li>
           <li>
             <span className="font-semibold text-highlight dark:text-white">Physics + ML synergy</span> delivering explainable forecasts at scale across diverse assets.
@@ -191,4 +220,3 @@ export default function RenewcastSolarForecastingPage() {
     </ProjectDetails>
   );
 }
-

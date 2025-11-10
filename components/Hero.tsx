@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 const STATS = [
   { value: '6+ years', label: 'Building AI for renewable energy trading & grid ops' },
+  { value: '15% → 6%', label: 'Portfolio nMAE cut in 5 months (Renewcast)' },
   { value: '↑57%', label: 'Wind forecasting accuracy uplift delivered' },
   { value: '£50/MWh', label: 'Cost savings unlocked through supply matching' },
 ];
