@@ -6,6 +6,17 @@ import Link from 'next/link';
 
 const PROJECTS = [
   {
+    id: 11,
+    title: "Renewcast · Solar Forecasting Product",
+    description:
+      "Re-architected Renewcast's solar forecasting platform with physics-aware models, Bayesian optimisation, and ML ensembles to slash portfolio error from 15% to 6% nMAE.",
+    tags: ["Solar Forecasting", "Physics + ML", "Bayesian Optimisation"],
+    image: "/images/renewcast.png",
+    category: "Renewable Energy AI",
+    link: "/projects/renewcast-solar-forecasting",
+    metric: "15% → 6% nMAE (2.5× accuracy)",
+  },
+  {
     id: 1,
     title: 'High-Accuracy Forecasting Models',
     description:
@@ -117,7 +128,7 @@ const PROJECTS = [
 
 const FILTERS = ['Featured', 'Renewable Energy AI', 'Energy Trading', 'Grid Optimization', 'Other AI'];
 
-const FEATURED_IDS = [1, 2, 3, 4, 7];
+const FEATURED_IDS = [11, 1, 2, 3, 4, 7];
 
 export default function Works() {
   const [activeFilter, setActiveFilter] = useState<string>('Featured');
