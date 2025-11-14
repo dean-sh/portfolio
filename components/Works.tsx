@@ -17,6 +17,17 @@ const PROJECTS = [
     metric: "15% → 6% nMAE (2.5× accuracy)",
   },
   {
+    id: 12,
+    title: "MLOps Foundation for Forecasting",
+    description:
+      "Rebuilt the forecasting platform's deployment path with a shared model contract, MLflow packaging, and challenger-vs-champion evaluations so research could move fast without destabilising production.",
+    tags: ["MLOps", "Forecasting", "Platform"],
+    image: "/images/mlops-loop-en.jpg",
+    category: "Renewable Energy AI",
+    link: "/projects/mlops-foundation",
+    metric: "<1 day from PR merge to deploy",
+  },
+  {
     id: 1,
     title: 'High-Accuracy Forecasting Models',
     description:
@@ -128,7 +139,7 @@ const PROJECTS = [
 
 const FILTERS = ['Featured', 'Renewable Energy AI', 'Energy Trading', 'Grid Optimization', 'Other AI'];
 
-const FEATURED_IDS = [11, 1, 2, 3, 4, 7];
+const FEATURED_IDS = [11, 12, 1, 2, 3, 4, 7];
 
 export default function Works() {
   const [activeFilter, setActiveFilter] = useState<string>('Featured');
