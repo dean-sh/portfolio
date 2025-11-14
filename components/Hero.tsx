@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const STATS = [
-  { value: '6+ years', label: 'Building AI for renewable energy trading & grid ops' },
+  { value: '6+ years', label: 'Shipping AI systems for renewable trading & grid ops' },
   { value: '15% → 6%', label: 'Portfolio nMAE cut in 5 months (Renewcast)' },
   { value: '↑57%', label: 'Wind forecasting accuracy uplift delivered' },
   { value: '£50/MWh', label: 'Cost savings unlocked through supply matching' },
@@ -17,14 +17,14 @@ export default function Hero() {
         <div className="space-y-10 text-balance">
           <header className="space-y-4">
             <p className="eyebrow text-xs uppercase tracking-[0.28em] text-copy-muted">
-              Dean Shabi · AI Founder &amp; Senior Data Scientist
+              Dean Shabi · AI Engineer &amp; Data Scientist
             </p>
             <h1 className="text-4xl text-highlight dark:text-white md:text-5xl lg:text-[3.4rem] lg:leading-[1.05]">
-              I build AI-powered forecasting, pricing, and automation systems for UK/EU renewable energy markets.
+              I design, build, and deploy AI-powered forecasting, pricing, and automation systems for UK/EU renewable energy markets.
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-copy-muted">
-              Partnering with energy traders, grid operators, and founders to ship measurable uplifts in accuracy, risk
-              control, and revenue resilience across renewables portfolios.
+              Equal parts ML engineer and data scientist, I partner with traders, grid operators, and founders to move ideas
+              from notebooks into reliable production workflows—driving measurable uplifts in accuracy, risk control, and revenue resilience.
             </p>
           </header>
 
