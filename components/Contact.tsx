@@ -31,7 +31,7 @@ export default function Contact() {
               <div className="space-y-2 py-8 text-center">
                 <p className="text-lg font-medium">Thank you!</p>
                 <p className="text-sm text-muted-foreground">
-                  Your message is in my inbox — I&apos;ll get back within two
+                  Your message is in my inbox - I&apos;ll get back within two
                   working days.
                 </p>
               </div>

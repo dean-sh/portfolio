@@ -5,13 +5,13 @@ const TESTIMONIALS = [
     name: 'Imogen',
     role: 'Product Manager, tem.',
     quote:
-      'Dean\'s work has been consistently impressive — his ability to structure complex information at the right level of depth, focus on insights over raw metrics, and adapt quickly to feedback really stood out.',
+      'Dean\'s work has been consistently impressive - his ability to structure complex information at the right level of depth, focus on insights over raw metrics, and adapt quickly to feedback really stood out.',
   },
   {
     name: 'Ross',
     role: 'Head of Data, tem.',
     quote:
-      'Dean has a real talent for clarity — the way he presents information makes even complex, data-heavy content easy to follow. His communication style is clear, inclusive, and well considered.',
+      'Dean has a real talent for clarity - the way he presents information makes even complex, data-heavy content easy to follow. His communication style is clear, inclusive, and well considered.',
   },
   {
     name: 'Irene Di Martino, PhD',

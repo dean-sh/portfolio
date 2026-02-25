@@ -14,7 +14,7 @@ export default function Hero() {
           </h1>
           <p className="max-w-2xl text-muted-foreground">
             I partner with traders, grid operators, and founders to move ideas
-            from research into reliable production workflows — driving measurable
+            from research into reliable production workflows - driving measurable
             uplifts in accuracy, risk control, and revenue.
           </p>
         </div>

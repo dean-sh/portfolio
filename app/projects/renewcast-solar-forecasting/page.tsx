@@ -44,7 +44,7 @@ export default function RenewcastSolarForecastingPage() {
  <section className="space-y-6">
  <h2 className="text-2xl font-bold text-foreground">Summary</h2>
  <p className="text-lg text-foreground">
- As the sole AI Engineer and Data Scientist for Renewcast, I rebuilt the solar forecasting stack from the ground up—combining interpretable physical models, mathematically rigorous optimisation, and adaptive machine learning. Over a five-month continuous improvement program, each sprint stacked measurable gains until the platform shifted from reactive, error-prone forecasts to a physics-aware system trusted by trading and operations teams.
+ As the sole AI Engineer and Data Scientist for Renewcast, I rebuilt the solar forecasting stack from the ground up -combining interpretable physical models, mathematically rigorous optimisation, and adaptive machine learning. Over a five-month continuous improvement program, each sprint stacked measurable gains until the platform shifted from reactive, error-prone forecasts to a physics-aware system trusted by trading and operations teams.
  </p>
  <div className="grid gap-4 sm:grid-cols-3">
  {[
@@ -86,7 +86,7 @@ export default function RenewcastSolarForecastingPage() {
  <section className="space-y-4">
  <h2 className="text-2xl font-bold text-foreground">Approach</h2>
  <p className="text-muted-foreground">
- Each workstream ran in overlapping, two-week sprints so the full physics core, optimisation engine, and ML adapters could hit production inside the five-month rebuild window—treating the engagement as a continuous improvement loop rather than a one-off rebuild.
+ Each workstream ran in overlapping, two-week sprints so the full physics core, optimisation engine, and ML adapters could hit production inside the five-month rebuild window -treating the engagement as a continuous improvement loop rather than a one-off rebuild.
  </p>
  <div className="space-y-6">
  <article className="rounded-lg border border-border bg-muted p-6">
@@ -98,7 +98,7 @@ export default function RenewcastSolarForecastingPage() {
  <article className="rounded-lg border border-border bg-muted p-6">
  <h3 className="text-xl font-semibold text-foreground">2. Optimisation engine</h3>
  <p>
- Built a rolling-origin backtesting framework aligned to trading hours, with loss functions weighted by market penalties. Bayesian optimisation tuned hyperparameters per site, and feature selection routines guarded against weather bias drift—all orchestrated through MLflow tracking and automated reports.
+ Built a rolling-origin backtesting framework aligned to trading hours, with loss functions weighted by market penalties. Bayesian optimisation tuned hyperparameters per site, and feature selection routines guarded against weather bias drift -all orchestrated through MLflow tracking and automated reports.
  </p>
  </article>
  <article className="rounded-lg border border-border bg-muted p-6">
@@ -113,7 +113,7 @@ export default function RenewcastSolarForecastingPage() {
  <section className="space-y-6">
  <h2 className="text-2xl font-bold text-foreground">Performance evolution</h2>
  <p>
- Within five months, portfolio error dropped from 15% to 6% nMAE through an uninterrupted cadence of improvements. Explore the monthly glide path below—the chart highlights how each optimisation sprint compressed error bands and built confidence for traders.
+ Within five months, portfolio error dropped from 15% to 6% nMAE through an uninterrupted cadence of improvements. Explore the monthly glide path below -the chart highlights how each optimisation sprint compressed error bands and built confidence for traders.
  </p>
  <div className="grid gap-6 lg:grid-cols-[3fr_2fr]">
  <PerformanceChart data={performanceTrend} />

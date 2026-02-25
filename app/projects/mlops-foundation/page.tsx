@@ -56,7 +56,7 @@ export default function MLOpsFoundationCaseStudy() {
  As forecasting work scaled across solar, wind, and pricing initiatives, four pressures converged. Data scientists needed freedom to
  iterate, engineering needed reproducible artefacts, pipelines needed a consistent interface, and the business needed measurable
  uplifts deployed safely. Our tooling, however, had grown organically. Every model carried slightly different runtimes, packaging
- rules, and implicit knowledge—meaning a “small” experiment required pipeline surgery.
+ rules, and implicit knowledge -meaning a “small” experiment required pipeline surgery.
  </p>
  <div className="grid gap-4 md:grid-cols-2">
  {[
@@ -74,7 +74,7 @@ export default function MLOpsFoundationCaseStudy() {
  },
  {
  title:"The business",
- text:"Needed measurable improvements—like nMAE reductions—rolled out safely and predictably.",
+ text:"Needed measurable improvements -like nMAE reductions -rolled out safely and predictably.",
  },
  ].map((item) => (
  <article
@@ -94,7 +94,7 @@ export default function MLOpsFoundationCaseStudy() {
  <section className="space-y-5">
  <h2 className="text-2xl font-bold text-foreground">The Turning Point: A Shared Model Contract</h2>
  <p>
- We introduced a Model Contract—an explicit definition of what every model must provide. The contract sits inside the artifact, so
+ We introduced a Model Contract -an explicit definition of what every model must provide. The contract sits inside the artifact, so
  when a model loads, its expectations travel with it. Pipelines stop relying on tribal knowledge; the model describes itself.
  </p>
  <div className="grid gap-4 md:grid-cols-2">
@@ -196,7 +196,7 @@ export default function MLOpsFoundationCaseStudy() {
  </ol>
  <p>
  Because every model shares the contract + MLflow format, we can compare older architectures vs. newer ones, different feature sets,
- alternate weather providers, and even physics-informed hybrids—without rewriting code or pipelines.
+ alternate weather providers, and even physics-informed hybrids -without rewriting code or pipelines.
  </p>
  </section>
 
@@ -225,13 +225,13 @@ export default function MLOpsFoundationCaseStudy() {
  <h2 className="text-2xl font-bold text-foreground">The Result</h2>
  <p>
  We now operate on an MLOps foundation that supports rapid renewable forecasting research without compromising reliability. Models
- can evolve dramatically while the system around them stays stable. The same scaffolding powers ongoing initiatives—from advanced
- physics integrations to multi-model ensembles—ensuring innovation and operational safety move in lockstep.
+ can evolve dramatically while the system around them stays stable. The same scaffolding powers ongoing initiatives -from advanced
+ physics integrations to multi-model ensembles -ensuring innovation and operational safety move in lockstep.
  </p>
  <div className="rounded-lg border border-border bg-muted p-8 text-center">
  <p className="text-lg font-semibold text-foreground">Innovation can happen quickly, and production remains stable.</p>
  <p className="text-sm text-muted-foreground">
- Reliability and experimentation no longer compete—they reinforce each other. Ready to build something similar? Let’s talk.
+ Reliability and experimentation no longer compete -they reinforce each other. Ready to build something similar? Let’s talk.
  </p>
  <a
  href="/#contact"

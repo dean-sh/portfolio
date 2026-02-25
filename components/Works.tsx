@@ -14,7 +14,7 @@ const PROJECTS = [
     id: 11,
     title: 'Renewcast Solar Forecasting',
     description:
-      'Re-architected solar forecasting with physics-aware models and Bayesian optimisation — cut portfolio error from 15% to 6% nMAE.',
+      'Re-architected solar forecasting with physics-aware models and Bayesian optimisation - cut portfolio error from 15% to 6% nMAE.',
     tags: ['Solar Forecasting', 'Physics + ML', 'Bayesian Opt.'],
     image: '/images/chelsea-WvusC5M-TM8-unsplash.jpg',
     link: '/projects/renewcast-solar-forecasting',
