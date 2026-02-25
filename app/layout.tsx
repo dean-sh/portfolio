@@ -1,27 +1,29 @@
 import type { Metadata } from 'next';
-import { Outfit } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Analytics } from "@vercel/analytics/react";
-
-const outfit = Outfit({ 
-  subsets: ['latin'], 
-  variable: '--font-outfit', 
-  display: 'swap',
-  weight: ['300', '400', '500', '600', '700', '800']
-});
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: 'Dean Shabi | AI Founder & Energy Data Scientist',
-  description: 'Dean Shabi partners with energy leaders to build forecasting, optimisation, and automation systems that deliver measurable impact.',
-  keywords: ['Dean Shabi', 'AI founder', 'energy data scientist', 'renewable energy forecasting', 'pricing engine', 'energy trading', 'Bloome AI'],
+  description:
+    'Dean Shabi partners with energy leaders to build forecasting, optimisation, and automation systems that deliver measurable impact.',
+  keywords: [
+    'Dean Shabi',
+    'AI founder',
+    'energy data scientist',
+    'renewable energy forecasting',
+    'pricing engine',
+    'energy trading',
+    'Bloome AI',
+  ],
   authors: [{ name: 'Dean Shabi' }],
   creator: 'Dean Shabi',
   metadataBase: new URL('https://deanshabi.com'),
   openGraph: {
     title: 'Dean Shabi | AI Founder & Energy Data Scientist',
-    description: 'AI founder and senior data scientist delivering forecasting, pricing, and automation systems for modern energy markets.',
+    description:
+      'AI founder and senior data scientist delivering forecasting, pricing, and automation systems for modern energy markets.',
     url: 'https://deanshabi.com',
     siteName: 'Dean Shabi Portfolio',
     images: [
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'Dean Shabi - Renewable Energy AI Expert',
-      }
+      },
     ],
     type: 'website',
     locale: 'en_US',
@@ -38,7 +40,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Dean Shabi | AI Founder & Energy Data Scientist',
-    description: 'Forecasting, optimisation, and automation for renewable energy and trading teams.',
+    description:
+      'Forecasting, optimisation, and automation for renewable energy and trading teams.',
     images: ['/images/og-image.png'],
     creator: '@deanshabi',
   },
@@ -61,86 +64,89 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth overflow-x-hidden" data-theme="light" suppressHydrationWarning>
+    <html
+      lang="en"
+      className="scroll-smooth overflow-x-hidden"
+      data-theme="light"
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://deanshabi.com" />
-        <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#0a0a0a"
+          media="(prefers-color-scheme: dark)"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const storageKey = 'theme';
-                const classNameDark = 'dark';
-                const root = document.documentElement;
-                const setTheme = (theme) => {
-                  if (theme === 'dark') {
-                    root.classList.add(classNameDark);
-                  } else {
-                    root.classList.remove(classNameDark);
-                  }
-                  root.dataset.theme = theme;
-                };
+                var storageKey = 'theme';
+                var root = document.documentElement;
+                function setTheme(t) {
+                  if (t === 'dark') { root.classList.add('dark'); }
+                  else { root.classList.remove('dark'); }
+                  root.dataset.theme = t;
+                }
                 try {
-                  const stored = window.localStorage.getItem(storageKey);
+                  var stored = window.localStorage.getItem(storageKey);
                   if (stored === 'light' || stored === 'dark') {
                     setTheme(stored);
                     return;
                   }
-                } catch (error) {
-                  console.warn('Unable to access theme storage:', error);
-                }
+                } catch (e) {}
                 setTheme('light');
               })();
             `,
           }}
         />
-        
-        {/* Google Calendar Scheduling */}
-        <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet" />
-        <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-        
-        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              "name": "Dean Shabi",
-              "jobTitle": "AI Founder & Energy Data Scientist",
-              "description": "Dean Shabi builds forecasting, pricing, and automation systems for UK/EU energy markets.",
-              "url": "https://deanshabi.com",
-              "image": "https://deanshabi.com/images/profile.png",
-              "sameAs": [
-                "https://linkedin.com/in/dean-shabi",
-                "https://github.com/dean-sh"
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Dean Shabi',
+              jobTitle: 'AI Founder & Energy Data Scientist',
+              description:
+                'Dean Shabi builds forecasting, pricing, and automation systems for UK/EU energy markets.',
+              url: 'https://deanshabi.com',
+              image: 'https://deanshabi.com/images/profile.png',
+              sameAs: [
+                'https://linkedin.com/in/dean-shabi',
+                'https://github.com/dean-sh',
               ],
-              "knowsAbout": [
-                "Artificial Intelligence",
-                "Machine Learning",
-                "Data Science",
-                "Energy Technology",
-                "Renewable Energy",
-                "Forecasting",
-                "Python",
-                "Energy Markets"
+              knowsAbout: [
+                'Artificial Intelligence',
+                'Machine Learning',
+                'Data Science',
+                'Energy Technology',
+                'Renewable Energy',
+                'Forecasting',
               ],
-              "worksFor": {
-                "@type": "Organization",
-                "name": "Bloome AI",
-                "description": "AI automation workflows for energy operations"
-              }
-            })
+              worksFor: {
+                '@type': 'Organization',
+                name: 'Bloome AI',
+              },
+            }),
           }}
         />
       </head>
-      <body className={`${outfit.variable} font-sans min-h-screen overflow-x-hidden`}> 
-        <a href="#main-content" className="skip-link">Skip to content</a>
+      <body className="font-sans min-h-screen overflow-x-hidden antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Navbar />
-        <main id="main-content" className="flex min-h-[calc(100vh-12rem)] flex-col">
+        <main
+          id="main-content"
+          className="flex min-h-[calc(100vh-12rem)] flex-col"
+        >
           {children}
         </main>
         <Footer />
@@ -148,4 +154,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-} 
+}

@@ -1,914 +1,910 @@
-import Image from "next/image";
-import { ProjectDetails } from "@/components/ProjectDetails";
-import {
-  CodeBracketIcon,
-  ChartBarIcon,
-  CheckCircleIcon,
-} from "@heroicons/react/24/outline";
+import Image from"next/image";
+import { ProjectDetails } from"@/components/ProjectDetails";
+import { Code, BarChart3, CheckCircle } from "lucide-react";
 
 export const metadata = {
-  title: "Exempt Supply Matching | Dean Shabi",
-  description:
-    "Matching exempt supply and demand using neural networks and graph optimization algorithms.",
+ title:"Exempt Supply Matching | Dean Shabi",
+ description:
+"Matching exempt supply and demand using neural networks and graph optimization algorithms.",
 };
 
 export default function ExemptSupplyMatchingProject() {
-  return (
-    <ProjectDetails
-      title="Exempt Supply Matching"
-      subtitle="Optimizing energy distribution with ML algorithms"
-      image="/images/equity-copilot.jpg"
-      industry="Energy"
-      client="Confidential Utility Partner"
-      tags={[
-        "Neural Networks",
-        "Optimization",
-        "Graph Algorithms",
-        "Python",
-        "PyTorch",
-        "Energy Trading",
-        "Match-making",
-      ]}
-    >
-      <div className="space-y-8">
-        {/* Introduction Section */}
-        <section>
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
-            Project Overview
-          </h2>
-          <div className="prose prose-lg max-w-none">
-            <p className="lead text-xl text-highlight/90 dark:text-white/90">
-              Created a matching platform that keeps SME demand within Great
-              Britain's Supplier Exempt Class A limits, capping exports at 5 MW
-              (2.5 MW for domestic loads), while leveraging BSC Modification
-              P442's February 2025 reforms to strip licence-exempt volumes out
-              of EMR levies via an accredited Exempt Supply Notification Agent.
-              This innovative solution optimally pairs SME energy consumers with
-              local sub–5 MW generators, unlocking approximately £50/MWh in
-              non-commodity cost savings.
-            </p>
+ return (
+ <ProjectDetails
+ title="Exempt Supply Matching"
+ subtitle="Optimizing energy distribution with ML algorithms"
+ image="/images/equity-copilot.jpg"
+ industry="Energy"
+ client="Confidential Utility Partner"
+ tags={[
+"Neural Networks",
+"Optimization",
+"Graph Algorithms",
+"Python",
+"PyTorch",
+"Energy Trading",
+"Match-making",
+ ]}
+ >
+ <div className="space-y-8">
+ {/* Introduction Section */}
+ <section>
+ <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
+ Project Overview
+ </h2>
+ <div className="prose prose-lg max-w-none">
+ <p className="lead text-xl text-foreground">
+ Created a matching platform that keeps SME demand within Great
+ Britain&apos;s Supplier Exempt Class A limits, capping exports at 5 MW
+ (2.5 MW for domestic loads), while leveraging BSC Modification
+ P442&apos;s February 2025 reforms to strip licence-exempt volumes out
+ of EMR levies via an accredited Exempt Supply Notification Agent.
+ This innovative solution optimally pairs SME energy consumers with
+ local sub–5 MW generators, unlocking approximately £50/MWh in
+ non-commodity cost savings.
+ </p>
 
-            <div className="bg-surface-muted/70 border border-border/20 dark:border-white/10 rounded-lg p-5">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
-                In Plain English
-              </h3>
-              <ul className="list-disc pl-6 space-y-2 text-base">
-                <li>
-                  Small generators can legally sell power without a full supply license if
-                  they stay below 5 MW overall and send no more than 2.5 MW to homes.
-                </li>
-                <li>
-                  P442 makes sure those exempt deals are recorded separately, so they do not
-                  trigger the big government levies that drive up bills.
-                </li>
-                <li>
-                  An Exempt Supply Notification Agent handles the settlement admin, letting
-                  SMEs buy cleaner local power without drowning in paperwork.
-                </li>
-              </ul>
-            </div>
+ <div className="bg-muted border border-border rounded-lg p-5">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ In Plain English
+ </h3>
+ <ul className="list-disc pl-6 space-y-2 text-base">
+ <li>
+ Small generators can legally sell power without a full supply license if
+ they stay below 5 MW overall and send no more than 2.5 MW to homes.
+ </li>
+ <li>
+ P442 makes sure those exempt deals are recorded separately, so they do not
+ trigger the big government levies that drive up bills.
+ </li>
+ <li>
+ An Exempt Supply Notification Agent handles the settlement admin, letting
+ SMEs buy cleaner local power without drowning in paperwork.
+ </li>
+ </ul>
+ </div>
 
-            <div className="bg-surface/55 border border-border/20 dark:border-white/10 rounded-lg p-5 space-y-3">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white">
-                How the Non-Commodity Savings Land
-              </h3>
-              <p className="text-base">
-                The biggest “non-commodity” line items on a UK business power bill are
-                policy levies such as the Contracts for Difference Supplier Obligation and
-                Capacity Market charges. Together, these can add £40–£60 per MWh during a
-                typical settlement year.
-              </p>
-              <p className="text-base">
-                By routing sub-5 MW generation through a Supplier Exempt Class A
-                structure and registering it with an Exempt Supply Notification Agent,
-                P442 keeps that energy out of the levy calculations. Every exempt MWh
-                avoids those policy surcharges, which flows straight through as savings
-                for the matched SME buyer while still compensating the local generator at
-                an agreed strike price.
-              </p>
-            </div>
+ <div className="bg-card/55 border border-border rounded-lg p-5 space-y-3">
+ <h3 className="text-lg font-semibold text-foreground">
+ How the Non-Commodity Savings Land
+ </h3>
+ <p className="text-base">
+ The biggest “non-commodity” line items on a UK business power bill are
+ policy levies such as the Contracts for Difference Supplier Obligation and
+ Capacity Market charges. Together, these can add £40–£60 per MWh during a
+ typical settlement year.
+ </p>
+ <p className="text-base">
+ By routing sub-5 MW generation through a Supplier Exempt Class A
+ structure and registering it with an Exempt Supply Notification Agent,
+ P442 keeps that energy out of the levy calculations. Every exempt MWh
+ avoids those policy surcharges, which flows straight through as savings
+ for the matched SME buyer while still compensating the local generator at
+ an agreed strike price.
+ </p>
+ </div>
 
-            <p>
-              This algorithm has generated millions in new revenue streams and
-              savings for businesses, while promoting more sustainable,
-              localized energy consumption patterns.
-            </p>
-          </div>
-        </section>
+ <p>
+ This algorithm has generated millions in new revenue streams and
+ savings for businesses, while promoting more sustainable,
+ localized energy consumption patterns.
+ </p>
+ </div>
+ </section>
 
-        {/* Results & Metrics Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-6">Benefits</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border/20 dark:border-white/10">
-              <div className="mb-4 flex justify-center">
-                <div className="rounded-full bg-accent/10 p-3">
-                  <svg
-                    className="w-8 h-8 text-accent"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-3">
-                £50/MWh
-              </div>
-              <p className="text-copy-muted font-medium mb-3">Cost Savings</p>
-              <div className="mt-3 h-2.5 bg-surface/60 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-accent rounded-full"
-                  style={{ width: "90%" }}
-                ></div>
-              </div>
-              <p className="text-xs mt-2 text-copy-muted">
-                in non-commodity costs
-              </p>
-            </div>
+ {/* Results & Metrics Section */}
+ <section className="bg-muted rounded-xl p-6 border border-border">
+ <h2 className="text-2xl font-bold text-foreground mb-6">Benefits</h2>
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+ <div className="bg-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border">
+ <div className="mb-4 flex justify-center">
+ <div className="rounded-full bg-muted p-3">
+ <svg
+ className="w-8 h-8 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+ />
+ </svg>
+ </div>
+ </div>
+ <div className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+ £50/MWh
+ </div>
+ <p className="text-muted-foreground font-medium mb-3">Cost Savings</p>
+ <div className="mt-3 h-2.5 bg-card/60 rounded-full overflow-hidden">
+ <div
+ className="h-full bg-accent rounded-full"
+ style={{ width:"90%" }}
+ ></div>
+ </div>
+ <p className="text-xs mt-2 text-muted-foreground">
+ in non-commodity costs
+ </p>
+ </div>
 
-            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border/20 dark:border-white/10">
-              <div className="mb-4 flex justify-center">
-                <div className="rounded-full bg-accent/10 p-3">
-                  <svg
-                    className="w-8 h-8 text-accent"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-3">
-                £3M+
-              </div>
-              <p className="text-copy-muted font-medium mb-3">
-                Value Generated
-              </p>
-              <div className="mt-3 h-2.5 bg-surface/60 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-accent rounded-full"
-                  style={{ width: "75%" }}
-                ></div>
-              </div>
-              <p className="text-xs mt-2 text-copy-muted">
-                Unprecedented revenue stream for SMEs and utilities
-              </p>
-            </div>
+ <div className="bg-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border">
+ <div className="mb-4 flex justify-center">
+ <div className="rounded-full bg-muted p-3">
+ <svg
+ className="w-8 h-8 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+ />
+ </svg>
+ </div>
+ </div>
+ <div className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+ £3M+
+ </div>
+ <p className="text-muted-foreground font-medium mb-3">
+ Value Generated
+ </p>
+ <div className="mt-3 h-2.5 bg-card/60 rounded-full overflow-hidden">
+ <div
+ className="h-full bg-accent rounded-full"
+ style={{ width:"75%" }}
+ ></div>
+ </div>
+ <p className="text-xs mt-2 text-muted-foreground">
+ Unprecedented revenue stream for SMEs and utilities
+ </p>
+ </div>
 
-            <div className="bg-surface-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border/20 dark:border-white/10">
-              <div className="mb-4 flex justify-center">
-                <div className="rounded-full bg-accent/10 p-3">
-                  <svg
-                    className="w-8 h-8 text-accent"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-accent mb-3">
-                60+
-              </div>
-              <p className="text-copy-muted font-medium mb-3">
-                Successful Pairings
-              </p>
-              <div className="mt-3 h-2.5 bg-surface/60 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-accent rounded-full"
-                  style={{ width: "85%" }}
-                ></div>
-              </div>
-              <p className="text-xs mt-2 text-copy-muted">
-                35% match success rate achieved
-              </p>
-            </div>
-          </div>
+ <div className="bg-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border">
+ <div className="mb-4 flex justify-center">
+ <div className="rounded-full bg-muted p-3">
+ <svg
+ className="w-8 h-8 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+ />
+ </svg>
+ </div>
+ </div>
+ <div className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+ 60+
+ </div>
+ <p className="text-muted-foreground font-medium mb-3">
+ Successful Pairings
+ </p>
+ <div className="mt-3 h-2.5 bg-card/60 rounded-full overflow-hidden">
+ <div
+ className="h-full bg-accent rounded-full"
+ style={{ width:"85%" }}
+ ></div>
+ </div>
+ <p className="text-xs mt-2 text-muted-foreground">
+ 35% match success rate achieved
+ </p>
+ </div>
+ </div>
 
-          <div className="mt-8 bg-surface/55 rounded-xl p-6 border border-border/20 dark:border-white/10">
-            <div className="flex items-center mb-4">
-              <div className="rounded-full bg-accent/10 p-2 mr-3">
-                <svg
-                  className="w-6 h-6 text-accent"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-highlight dark:text-white">
-                Annual Savings Calculation
-              </h3>
-            </div>
+ <div className="mt-8 bg-card/55 rounded-xl p-6 border border-border">
+ <div className="flex items-center mb-4">
+ <div className="rounded-full bg-muted p-2 mr-3">
+ <svg
+ className="w-6 h-6 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M13 10V3L4 14h7v7l9-11h-7z"
+ />
+ </svg>
+ </div>
+ <h3 className="text-lg font-semibold text-foreground">
+ Annual Savings Calculation
+ </h3>
+ </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div className="bg-surface-muted/80 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div className="text-2xl font-bold text-accent mb-1">7 GWh</div>
-                <p className="text-sm text-copy-muted">Annual Generation</p>
-              </div>
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+ <div className="bg-muted rounded-lg p-4 flex flex-col items-center justify-center text-center">
+ <div className="text-2xl font-bold text-foreground mb-1">7 GWh</div>
+ <p className="text-sm text-muted-foreground">Annual Generation</p>
+ </div>
 
-              <div className="flex items-center justify-center">
-                <div className="bg-surface-muted/80 rounded-lg p-4 flex items-center justify-center">
-                  <span className="text-xl font-bold text-highlight dark:text-white">×</span>
-                </div>
-              </div>
+ <div className="flex items-center justify-center">
+ <div className="bg-muted rounded-lg p-4 flex items-center justify-center">
+ <span className="text-xl font-bold text-foreground">×</span>
+ </div>
+ </div>
 
-              <div className="bg-surface-muted/80 rounded-lg p-4 flex flex-col items-center justify-center text-center">
-                <div className="text-2xl font-bold text-accent mb-1">
-                  £50/MWh
-                </div>
-                <p className="text-sm text-copy-muted">Cost Savings</p>
-              </div>
-            </div>
+ <div className="bg-muted rounded-lg p-4 flex flex-col items-center justify-center text-center">
+ <div className="text-2xl font-bold text-foreground mb-1">
+ £50/MWh
+ </div>
+ <p className="text-sm text-muted-foreground">Cost Savings</p>
+ </div>
+ </div>
 
-            <div className="flex justify-center items-center my-4">
-              <svg
-                className="w-6 h-6 text-accent"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
-            </div>
+ <div className="flex justify-center items-center my-4">
+ <svg
+ className="w-6 h-6 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M19 14l-7 7m0 0l-7-7m7 7V3"
+ />
+ </svg>
+ </div>
 
-            <div className="bg-accent/10 rounded-lg p-5 flex flex-col items-center justify-center text-center border border-accent/20">
-              <div className="text-3xl font-bold text-accent mb-2">
-                £350,000
-              </div>
-              <p className="text-copy-muted">Total Annual Benefit</p>
-            </div>
-          </div>
-        </section>
+ <div className="bg-muted rounded-lg p-5 flex flex-col items-center justify-center text-center border border-primary/20">
+ <div className="text-3xl font-bold text-foreground mb-2">
+ £350,000
+ </div>
+ <p className="text-muted-foreground">Total Annual Benefit</p>
+ </div>
+ </div>
+ </section>
 
-        {/* The Challenge Section */}
-        <section className="rounded-xl p-6 border border-border/20 dark:border-white/10 bg-surface-muted/70 mb-8">
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">The Challenge</h2>
-          <p className="mb-4 text-copy-muted">
-            UK renewable energy regulations offer significant cost-saving
-            opportunities through "exempt supply" arrangements, but establishing
-            these partnerships presents complex challenges:
-          </p>
+ {/* The Challenge Section */}
+ <section className="rounded-xl p-6 border border-border bg-muted mb-8">
+ <h2 className="text-2xl font-bold text-foreground mb-4">The Challenge</h2>
+ <p className="mb-4 text-muted-foreground">
+ UK renewable energy regulations offer significant cost-saving
+ opportunities through &quot;exempt supply&quot; arrangements, but establishing
+ these partnerships presents complex challenges:
+ </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
-                Regulatory Complexity
-              </h3>
-              <p className="text-copy-muted">
-                UK energy regulations permit exemptions from certain
-                non-commodity costs when generators supply nearby businesses
-                directly, but navigating these regulations requires specialized
-                expertise and careful compliance management.
-              </p>
-            </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ Regulatory Complexity
+ </h3>
+ <p className="text-muted-foreground">
+ UK energy regulations permit exemptions from certain
+ non-commodity costs when generators supply nearby businesses
+ directly, but navigating these regulations requires specialized
+ expertise and careful compliance management.
+ </p>
+ </div>
 
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
-                Matching Difficulty
-              </h3>
-              <p className="text-copy-muted">
-                Finding viable generator-consumer pairs requires analyzing
-                multiple complex factors: compatibility criteria, load profiles,
-                suitable connection points, and technical feasibility.
-              </p>
-            </div>
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ Matching Difficulty
+ </h3>
+ <p className="text-muted-foreground">
+ Finding viable generator-consumer pairs requires analyzing
+ multiple complex factors: compatibility criteria, load profiles,
+ suitable connection points, and technical feasibility.
+ </p>
+ </div>
 
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
-                Scale & Efficiency
-              </h3>
-              <p className="text-copy-muted">
-                Manually identifying and evaluating potential matches across
-                thousands of sites is prohibitively time-consuming and prone to
-                missed opportunities.
-              </p>
-            </div>
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ Scale & Efficiency
+ </h3>
+ <p className="text-muted-foreground">
+ Manually identifying and evaluating potential matches across
+ thousands of sites is prohibitively time-consuming and prone to
+ missed opportunities.
+ </p>
+ </div>
 
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white mb-3">
-                Data Integration
-              </h3>
-              <p className="text-copy-muted">
-                Combining and analyzing fragmented data from generation
-                profiles, consumption records, grid infrastructure, and
-                regulatory requirements presents significant technical
-                challenges.
-              </p>
-            </div>
-          </div>
-        </section>
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ Data Integration
+ </h3>
+ <p className="text-muted-foreground">
+ Combining and analyzing fragmented data from generation
+ profiles, consumption records, grid infrastructure, and
+ regulatory requirements presents significant technical
+ challenges.
+ </p>
+ </div>
+ </div>
+ </section>
 
-        {/* Solution Overview Section */}
-        <section className="rounded-xl p-6 border border-border/20 dark:border-white/10 bg-surface-muted/70">
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">Solution</h2>
-          <p className="mb-4 text-copy-muted">
-            I developed a comprehensive solution to address the complex
-            challenge of matching exempt renewable generators with nearby
-            businesses, creating efficient and cost-effective energy
-            partnerships that leverage UK electricity regulations.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white flex items-center gap-2 mb-3">
-                <CodeBracketIcon className="h-5 w-5 text-accent" />
-                Technical Approach
-              </h3>
-              <ul className="space-y-2 text-copy-muted">
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    Advanced matching algorithm to identify optimal
-                    generator-consumer pairings
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    Real-time regulatory compliance verification system
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    Advanced load profiling to match generation and consumption
-                    patterns
-                  </span>
-                </li>
-              </ul>
-            </div>
+ {/* Solution Overview Section */}
+ <section className="rounded-xl p-6 border border-border bg-muted">
+ <h2 className="text-2xl font-bold text-foreground mb-4">Solution</h2>
+ <p className="mb-4 text-muted-foreground">
+ I developed a comprehensive solution to address the complex
+ challenge of matching exempt renewable generators with nearby
+ businesses, creating efficient and cost-effective energy
+ partnerships that leverage UK electricity regulations.
+ </p>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 mb-3">
+ <Code className="h-5 w-5 text-foreground" />
+ Technical Approach
+ </h3>
+ <ul className="space-y-2 text-muted-foreground">
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ Advanced matching algorithm to identify optimal
+ generator-consumer pairings
+ </span>
+ </li>
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ Real-time regulatory compliance verification system
+ </span>
+ </li>
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ Advanced load profiling to match generation and consumption
+ patterns
+ </span>
+ </li>
+ </ul>
+ </div>
 
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-highlight dark:text-white flex items-center gap-2 mb-3">
-                <ChartBarIcon className="h-5 w-5 text-accent" />
-                Key Innovations
-              </h3>
-              <ul className="space-y-2 text-copy-muted">
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    Proprietary scoring algorithm for optimal matching
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    Dynamic regulatory compliance engine with real-time updates
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    AI-powered consumption forecasting for maximizing exemption
-                    value
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <div className="min-w-4 mt-1">
-                    <CheckCircleIcon className="h-4 w-4 text-accent" />
-                  </div>
-                  <span>
-                    Automated contractual agreement generation with legal
-                    validation
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 mb-3">
+ <BarChart3 className="h-5 w-5 text-foreground" />
+ Key Innovations
+ </h3>
+ <ul className="space-y-2 text-muted-foreground">
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ Proprietary scoring algorithm for optimal matching
+ </span>
+ </li>
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ Dynamic regulatory compliance engine with real-time updates
+ </span>
+ </li>
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ AI-powered consumption forecasting for maximizing exemption
+ value
+ </span>
+ </li>
+ <li className="flex items-start gap-2">
+ <div className="min-w-4 mt-1">
+ <CheckCircle className="h-4 w-4 text-foreground" />
+ </div>
+ <span>
+ Automated contractual agreement generation with legal
+ validation
+ </span>
+ </li>
+ </ul>
+ </div>
+ </div>
+ </section>
 
-        {/* Regulatory Framework Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
-            Regulatory Framework
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-accent mb-3">
-                Supplier Exempt Class A
-              </h3>
-              <p>
-                Regulatory classification that allows for certain exemptions
-                from standard energy supply obligations when specific conditions
-                are met between generators and consumers.
-              </p>
-            </div>
+ {/* Regulatory Framework Section */}
+ <section className="bg-muted rounded-xl p-6 border border-border">
+ <h2 className="text-2xl font-bold text-foreground mb-4">
+ Regulatory Framework
+ </h2>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ Supplier Exempt Class A
+ </h3>
+ <p>
+ Regulatory classification that allows for certain exemptions
+ from standard energy supply obligations when specific conditions
+ are met between generators and consumers.
+ </p>
+ </div>
 
-            <div className="bg-surface-muted rounded-lg p-5 shadow-md">
-              <h3 className="text-lg font-semibold text-accent mb-3">
-                BSC Modification P442
-              </h3>
-              <p>
-                Balancing and Settlement Code modification that enables specific
-                matching arrangements between small-scale generators and
-                consumers, supporting localized energy markets.
-              </p>
-            </div>
-          </div>
+ <div className="bg-muted rounded-lg p-5 shadow-md">
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ BSC Modification P442
+ </h3>
+ <p>
+ Balancing and Settlement Code modification that enables specific
+ matching arrangements between small-scale generators and
+ consumers, supporting localized energy markets.
+ </p>
+ </div>
+ </div>
 
-          <div className="mt-6 bg-accent/5 rounded-lg p-4 border border-accent/20">
-            <h3 className="text-lg font-semibold text-accent mb-2">
-              Key Regulatory Requirements
-            </h3>
-            <ul className="space-y-2">
-              <li className="flex items-start">
-                <span className="text-accent mr-2">•</span>
-                <span>
-                  Generators must be sub-5 MW capacity to qualify for exemptions
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-accent mr-2">•</span>
-                <span>
-                  Supply must meet regulatory requirements for direct supply
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-accent mr-2">•</span>
-                <span>
-                  Matching must be documented and reported to regulatory
-                  authorities
-                </span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-accent mr-2">•</span>
-                <span>
-                  Balancing responsibilities must be properly assigned and
-                  managed
-                </span>
-              </li>
-            </ul>
-          </div>
-        </section>
+ <div className="mt-6 bg-accent/5 rounded-lg p-4 border border-primary/20">
+ <h3 className="text-lg font-semibold text-foreground mb-2">
+ Key Regulatory Requirements
+ </h3>
+ <ul className="space-y-2">
+ <li className="flex items-start">
+ <span className="text-foreground mr-2">•</span>
+ <span>
+ Generators must be sub-5 MW capacity to qualify for exemptions
+ </span>
+ </li>
+ <li className="flex items-start">
+ <span className="text-foreground mr-2">•</span>
+ <span>
+ Supply must meet regulatory requirements for direct supply
+ </span>
+ </li>
+ <li className="flex items-start">
+ <span className="text-foreground mr-2">•</span>
+ <span>
+ Matching must be documented and reported to regulatory
+ authorities
+ </span>
+ </li>
+ <li className="flex items-start">
+ <span className="text-foreground mr-2">•</span>
+ <span>
+ Balancing responsibilities must be properly assigned and
+ managed
+ </span>
+ </li>
+ </ul>
+ </div>
+ </section>
 
-        {/* System Architecture Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
-            System Architecture
-          </h2>
-          <div className="aspect-video relative rounded-lg overflow-hidden bg-surface/60 flex items-center justify-center">
-            <div className="text-center p-8 w-full">
-              <div className="grid grid-cols-3 gap-4 mb-8 relative">
-                <div className="bg-surface-muted/85 rounded-xl p-4">
-                  <h3 className="font-medium mb-2">Data Inputs</h3>
-                  <div className="space-y-2">
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Consumer Profiles
-                    </div>
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Generator Output
-                    </div>
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Location Data
-                    </div>
-                  </div>
-                </div>
+ {/* System Architecture Section */}
+ <section className="bg-muted rounded-xl p-6 border border-border">
+ <h2 className="text-2xl font-bold text-foreground mb-4">
+ System Architecture
+ </h2>
+ <div className="aspect-video relative rounded-lg overflow-hidden bg-card/60 flex items-center justify-center">
+ <div className="text-center p-8 w-full">
+ <div className="grid grid-cols-3 gap-4 mb-8 relative">
+ <div className="bg-muted rounded-xl p-4">
+ <h3 className="font-medium mb-2">Data Inputs</h3>
+ <div className="space-y-2">
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Consumer Profiles
+ </div>
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Generator Output
+ </div>
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Location Data
+ </div>
+ </div>
+ </div>
 
-                {/* Arrow pointing right */}
-                <div className="absolute left-[31%] top-[40%] w-[5%]">
-                  <svg
-                    className="w-full text-accent"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5 12h14m-7-7l7 7-7 7"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
+ {/* Arrow pointing right */}
+ <div className="absolute left-[31%] top-[40%] w-[5%]">
+ <svg
+ className="w-full text-foreground"
+ viewBox="0 0 24 24"
+ fill="none"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ d="M5 12h14m-7-7l7 7-7 7"
+ stroke="currentColor"
+ strokeWidth="2"
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ />
+ </svg>
+ </div>
 
-                <div className="bg-surface-muted/85 rounded-xl p-4">
-                  <h3 className="font-medium mb-2">Processing Layer</h3>
-                  <div className="space-y-2">
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Matching Algorithm
-                    </div>
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Optimization Engine
-                    </div>
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Forecast Models
-                    </div>
-                  </div>
-                </div>
+ <div className="bg-muted rounded-xl p-4">
+ <h3 className="font-medium mb-2">Processing Layer</h3>
+ <div className="space-y-2">
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Matching Algorithm
+ </div>
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Optimization Engine
+ </div>
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Forecast Models
+ </div>
+ </div>
+ </div>
 
-                {/* Arrow pointing right */}
-                <div className="absolute left-[64%] top-[40%] w-[5%]">
-                  <svg
-                    className="w-full text-accent"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5 12h14m-7-7l7 7-7 7"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
+ {/* Arrow pointing right */}
+ <div className="absolute left-[64%] top-[40%] w-[5%]">
+ <svg
+ className="w-full text-foreground"
+ viewBox="0 0 24 24"
+ fill="none"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ d="M5 12h14m-7-7l7 7-7 7"
+ stroke="currentColor"
+ strokeWidth="2"
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ />
+ </svg>
+ </div>
 
-                <div className="bg-surface-muted/85 rounded-xl p-4">
-                  <h3 className="font-medium mb-2">Output Systems</h3>
-                  <div className="space-y-2">
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Match Reports
-                    </div>
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Regulatory Docs
-                    </div>
-                    <div className="bg-surface/60 rounded-lg p-2 text-sm">
-                      Billing Integration
-                    </div>
-                  </div>
-                </div>
-              </div>
+ <div className="bg-muted rounded-xl p-4">
+ <h3 className="font-medium mb-2">Output Systems</h3>
+ <div className="space-y-2">
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Match Reports
+ </div>
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Regulatory Docs
+ </div>
+ <div className="bg-card/60 rounded-lg p-2 text-sm">
+ Billing Integration
+ </div>
+ </div>
+ </div>
+ </div>
 
-              {/* Arrow pointing up in a loop */}
-              <div className="relative w-24 h-12 mx-auto mb-4">
-                <svg
-                  className="w-full text-accent"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 9l4-4 4 4M7 5v14"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M21 15l-4 4-4-4M17 19V5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
+ {/* Arrow pointing up in a loop */}
+ <div className="relative w-24 h-12 mx-auto mb-4">
+ <svg
+ className="w-full text-foreground"
+ viewBox="0 0 24 24"
+ fill="none"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ d="M3 9l4-4 4 4M7 5v14"
+ stroke="currentColor"
+ strokeWidth="2"
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ />
+ <path
+ d="M21 15l-4 4-4-4M17 19V5"
+ stroke="currentColor"
+ strokeWidth="2"
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ />
+ </svg>
+ </div>
 
-              <div className="bg-accent/10 rounded-xl p-4 mb-6 mx-auto max-w-md border border-accent/20">
-                <h3 className="font-medium">Continuous Optimization Loop</h3>
-              </div>
-            </div>
-          </div>
-        </section>
+ <div className="bg-muted rounded-xl p-4 mb-6 mx-auto max-w-md border border-primary/20">
+ <h3 className="font-medium">Continuous Optimization Loop</h3>
+ </div>
+ </div>
+ </div>
+ </section>
 
-        {/* Case Study Section */}
-        <section className="bg-surface-muted/70 rounded-xl p-6 border border-border/20 dark:border-white/10">
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4">
-            Application Scenario
-          </h2>
+ {/* Case Study Section */}
+ <section className="bg-muted rounded-xl p-6 border border-border">
+ <h2 className="text-2xl font-bold text-foreground mb-4">
+ Application Scenario
+ </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-            <div>
-              <h3 className="text-lg font-semibold text-accent mb-3">
-                Example Pairing
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <div className="bg-primary/10 rounded-full h-8 w-8 flex items-center justify-center mr-3 shrink-0">
-                    <svg
-                      className="w-4 h-4 text-highlight dark:text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Solar Installation</h4>
-                    <p className="text-sm text-copy-muted">
-                      ~4.8 MW capacity solar farm with 7 GWh annual generation
-                    </p>
-                  </div>
-                </div>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+ <div>
+ <h3 className="text-lg font-semibold text-foreground mb-3">
+ Example Pairing
+ </h3>
+ <div className="space-y-4">
+ <div className="flex items-start">
+ <div className="bg-primary/10 rounded-full h-8 w-8 flex items-center justify-center mr-3 shrink-0">
+ <svg
+ className="w-4 h-4 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+ />
+ </svg>
+ </div>
+ <div>
+ <h4 className="font-medium">Solar Installation</h4>
+ <p className="text-sm text-muted-foreground">
+ ~4.8 MW capacity solar farm with 7 GWh annual generation
+ </p>
+ </div>
+ </div>
 
-                <div className="flex items-start">
-                  <div className="bg-primary/10 rounded-full h-8 w-8 flex items-center justify-center mr-3 shrink-0">
-                    <svg
-                      className="w-4 h-4 text-highlight dark:text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-medium">Business Complex</h4>
-                    <p className="text-sm text-copy-muted">
-                      A collection of 20-25 SMEs with varied energy needs
-                    </p>
-                  </div>
-                </div>
-              </div>
+ <div className="flex items-start">
+ <div className="bg-primary/10 rounded-full h-8 w-8 flex items-center justify-center mr-3 shrink-0">
+ <svg
+ className="w-4 h-4 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+ />
+ </svg>
+ </div>
+ <div>
+ <h4 className="font-medium">Business Complex</h4>
+ <p className="text-sm text-muted-foreground">
+ A collection of 20-25 SMEs with varied energy needs
+ </p>
+ </div>
+ </div>
+ </div>
 
-              <div className="mt-4 bg-surface/50 rounded-lg p-4">
-                <h4 className="font-medium text-accent mb-2">
-                  Cost Calculation
-                </h4>
-                <p className="text-sm">
-                  Annual generation: 7 GWh × £50/MWh savings = £350,000
-                  potential annual benefit
-                </p>
-              </div>
-            </div>
+ <div className="mt-4 bg-card/50 rounded-lg p-4">
+ <h4 className="font-medium text-foreground mb-2">
+ Cost Calculation
+ </h4>
+ <p className="text-sm">
+ Annual generation: 7 GWh × £50/MWh savings = £350,000
+ potential annual benefit
+ </p>
+ </div>
+ </div>
 
-            <div className="bg-surface/50 rounded-lg p-5">
-              <h3 className="text-lg font-semibold text-accent mb-4 flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2 text-accent"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                Key Benefits
-              </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start bg-surface-muted/70 rounded-lg p-3 hover:bg-surface-muted/80 transition-colors duration-200">
-                  <div className="bg-accent/10 rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
-                    <span className="text-accent">✓</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className="font-medium text-highlight dark:text-white block text-sm">
-                      Cost Reduction
-                    </span>
-                    <p className="text-xs text-copy-muted mt-1 break-words">
-                      Annual savings of £350,000 based on 7 GWh generation
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start bg-surface-muted/70 rounded-lg p-3 hover:bg-surface-muted/80 transition-colors duration-200">
-                  <div className="bg-accent/10 rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
-                    <span className="text-accent">✓</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className="font-medium text-highlight dark:text-white block text-sm">
-                      Efficient Energy Use
-                    </span>
-                    <p className="text-xs text-copy-muted mt-1 break-words">
-                      Up to 85% of generated power consumed locally
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start bg-surface-muted/70 rounded-lg p-3 hover:bg-surface-muted/80 transition-colors duration-200">
-                  <div className="bg-accent/10 rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
-                    <span className="text-accent">✓</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className="font-medium text-highlight dark:text-white block text-sm">
-                      Revenue Stability
-                    </span>
-                    <p className="text-xs text-copy-muted mt-1 break-words">
-                      More stable revenue streams for renewable generators
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start bg-surface-muted/70 rounded-lg p-3 hover:bg-surface-muted/80 transition-colors duration-200">
-                  <div className="bg-accent/10 rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
-                    <span className="text-accent">✓</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className="font-medium text-highlight dark:text-white block text-sm">
-                      Environmental Impact
-                    </span>
-                    <p className="text-xs text-copy-muted mt-1 break-words">
-                      Carbon footprint reduction equivalent to removing 150-200
-                      cars from roads
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
+ <div className="bg-card/50 rounded-lg p-5">
+ <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center">
+ <svg
+ className="w-5 h-5 mr-2 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+ />
+ </svg>
+ Key Benefits
+ </h3>
+ <ul className="space-y-3">
+ <li className="flex items-start bg-muted rounded-lg p-3 hover:bg-muted transition-colors duration-200">
+ <div className="bg-muted rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
+ <span className="text-foreground">✓</span>
+ </div>
+ <div className="flex-1 min-w-0">
+ <span className="font-medium text-foreground block text-sm">
+ Cost Reduction
+ </span>
+ <p className="text-xs text-muted-foreground mt-1 break-words">
+ Annual savings of £350,000 based on 7 GWh generation
+ </p>
+ </div>
+ </li>
+ <li className="flex items-start bg-muted rounded-lg p-3 hover:bg-muted transition-colors duration-200">
+ <div className="bg-muted rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
+ <span className="text-foreground">✓</span>
+ </div>
+ <div className="flex-1 min-w-0">
+ <span className="font-medium text-foreground block text-sm">
+ Efficient Energy Use
+ </span>
+ <p className="text-xs text-muted-foreground mt-1 break-words">
+ Up to 85% of generated power consumed locally
+ </p>
+ </div>
+ </li>
+ <li className="flex items-start bg-muted rounded-lg p-3 hover:bg-muted transition-colors duration-200">
+ <div className="bg-muted rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
+ <span className="text-foreground">✓</span>
+ </div>
+ <div className="flex-1 min-w-0">
+ <span className="font-medium text-foreground block text-sm">
+ Revenue Stability
+ </span>
+ <p className="text-xs text-muted-foreground mt-1 break-words">
+ More stable revenue streams for renewable generators
+ </p>
+ </div>
+ </li>
+ <li className="flex items-start bg-muted rounded-lg p-3 hover:bg-muted transition-colors duration-200">
+ <div className="bg-muted rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
+ <span className="text-foreground">✓</span>
+ </div>
+ <div className="flex-1 min-w-0">
+ <span className="font-medium text-foreground block text-sm">
+ Environmental Impact
+ </span>
+ <p className="text-xs text-muted-foreground mt-1 break-words">
+ Carbon footprint reduction equivalent to removing 150-200
+ cars from roads
+ </p>
+ </div>
+ </li>
+ </ul>
+ </div>
+ </div>
+ </section>
 
-        {/* Business Impact Section */}
-        <section>
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
-            Business Impact
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex">
-              <div className="bg-accent/10 rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
-                <span className="text-2xl text-accent">1</span>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">Cost Savings</h3>
-                <p className="text-copy-muted">
-                  Unlocked approximately £50/MWh in non-commodity cost savings
-                  for participating businesses.
-                </p>
-              </div>
-            </div>
+ {/* Business Impact Section */}
+ <section>
+ <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
+ Business Impact
+ </h2>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div className="flex">
+ <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
+ <span className="text-2xl text-foreground">1</span>
+ </div>
+ <div>
+ <h3 className="font-semibold text-lg mb-1">Cost Savings</h3>
+ <p className="text-muted-foreground">
+ Unlocked approximately £50/MWh in non-commodity cost savings
+ for participating businesses.
+ </p>
+ </div>
+ </div>
 
-            <div className="flex">
-              <div className="bg-accent/10 rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
-                <span className="text-2xl text-accent">2</span>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">
-                  Revenue Generation
-                </h3>
-                <p className="text-copy-muted">
-                  Generated millions in new revenue streams through this
-                  innovative matching service.
-                </p>
-              </div>
-            </div>
+ <div className="flex">
+ <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
+ <span className="text-2xl text-foreground">2</span>
+ </div>
+ <div>
+ <h3 className="font-semibold text-lg mb-1">
+ Revenue Generation
+ </h3>
+ <p className="text-muted-foreground">
+ Generated millions in new revenue streams through this
+ innovative matching service.
+ </p>
+ </div>
+ </div>
 
-            <div className="flex">
-              <div className="bg-accent/10 rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
-                <span className="text-2xl text-accent">3</span>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">Sustainability</h3>
-                <p className="text-copy-muted">
-                  Promoted more sustainable, localized energy consumption
-                  patterns, reducing transmission losses.
-                </p>
-              </div>
-            </div>
+ <div className="flex">
+ <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
+ <span className="text-2xl text-foreground">3</span>
+ </div>
+ <div>
+ <h3 className="font-semibold text-lg mb-1">Sustainability</h3>
+ <p className="text-muted-foreground">
+ Promoted more sustainable, localized energy consumption
+ patterns, reducing transmission losses.
+ </p>
+ </div>
+ </div>
 
-            <div className="flex">
-              <div className="bg-accent/10 rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
-                <span className="text-2xl text-accent">4</span>
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">Market Advantage</h3>
-                <p className="text-copy-muted">
-                  Provided significant competitive advantage in the energy
-                  supply market with this unique offering.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+ <div className="flex">
+ <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
+ <span className="text-2xl text-foreground">4</span>
+ </div>
+ <div>
+ <h3 className="font-semibold text-lg mb-1">Market Advantage</h3>
+ <p className="text-muted-foreground">
+ Provided significant competitive advantage in the energy
+ supply market with this unique offering.
+ </p>
+ </div>
+ </div>
+ </div>
+ </section>
 
-        {/* Future Developments Section */}
-        <section>
-          <h2 className="text-2xl font-bold text-highlight dark:text-white mb-4 border-b border-border/20 dark:border-white/10 pb-2">
-            Future Developments
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
-              <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-accent"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-accent mb-2">
-                Platform Scaling
-              </h3>
-              <p>
-                Expanding the platform to handle larger volumes of participants
-                and more complex matching scenarios.
-              </p>
-            </div>
+ {/* Future Developments Section */}
+ <section>
+ <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
+ Future Developments
+ </h2>
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+ <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
+ <div className="rounded-full bg-muted w-12 h-12 flex items-center justify-center mb-4">
+ <svg
+ className="w-6 h-6 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+ />
+ </svg>
+ </div>
+ <h3 className="text-lg font-semibold text-foreground mb-2">
+ Platform Scaling
+ </h3>
+ <p>
+ Expanding the platform to handle larger volumes of participants
+ and more complex matching scenarios.
+ </p>
+ </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
-              <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-accent"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-accent mb-2">
-                Enhanced AI
-              </h3>
-              <p>
-                Implementing more advanced machine learning algorithms to
-                improve matching efficiency and forecast accuracy.
-              </p>
-            </div>
+ <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
+ <div className="rounded-full bg-muted w-12 h-12 flex items-center justify-center mb-4">
+ <svg
+ className="w-6 h-6 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+ />
+ </svg>
+ </div>
+ <h3 className="text-lg font-semibold text-foreground mb-2">
+ Enhanced AI
+ </h3>
+ <p>
+ Implementing more advanced machine learning algorithms to
+ improve matching efficiency and forecast accuracy.
+ </p>
+ </div>
 
-            <div className="bg-surface-muted/80 rounded-lg p-5 shadow-md border border-border/20 dark:border-white/10 hover:shadow-lg transition-shadow">
-              <div className="rounded-full bg-accent/10 w-12 h-12 flex items-center justify-center mb-4">
-                <svg
-                  className="w-6 h-6 text-accent"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-accent mb-2">
-                Marketplace Expansion
-              </h3>
-              <p>
-                Developing a broader marketplace model that supports additional
-                energy services and participant types.
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
-    </ProjectDetails>
-  );
+ <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
+ <div className="rounded-full bg-muted w-12 h-12 flex items-center justify-center mb-4">
+ <svg
+ className="w-6 h-6 text-foreground"
+ fill="none"
+ stroke="currentColor"
+ viewBox="0 0 24 24"
+ xmlns="http://www.w3.org/2000/svg"
+ >
+ <path
+ strokeLinecap="round"
+ strokeLinejoin="round"
+ strokeWidth={2}
+ d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+ />
+ </svg>
+ </div>
+ <h3 className="text-lg font-semibold text-foreground mb-2">
+ Marketplace Expansion
+ </h3>
+ <p>
+ Developing a broader marketplace model that supports additional
+ energy services and participant types.
+ </p>
+ </div>
+ </div>
+ </section>
+ </div>
+ </ProjectDetails>
+ );
 }
