@@ -18,11 +18,9 @@ const clamp = (value: number, min: number, max: number) => Math.min(Math.max(val
 
 const parseMonthString = (input: string) => {
   const [year, month] = input.split('-').map((part) => Number(part));
-
   if (Number.isFinite(year) && Number.isFinite(month)) {
     return new Date(year, Math.max(0, month - 1), 1);
   }
-
   return new Date(input);
 };
 
@@ -31,16 +29,16 @@ const formatMonth = (value: string, variant: 'short' | 'long' = 'short') => {
   return (variant === 'short' ? shortMonthFormatter : longMonthFormatter).format(parsed);
 };
 
-const axisLabelClasses =
-  'text-sm font-semibold fill-current text-slate-700 dark:text-slate-100 tracking-[0.15em]';
-const monthLabelClasses =
-  'text-sm font-bold fill-current text-slate-700 dark:text-slate-50 uppercase tracking-[0.35em]';
+const axisLabelClasses = 'text-sm font-semibold fill-current text-muted-foreground tracking-wider';
+const monthLabelClasses = 'text-sm font-bold fill-current text-foreground uppercase tracking-wider';
 
 export function PerformanceChart({ data }: PerformanceChartProps) {
   const normalized = useMemo(
     () => data.map((point) => ({ ...point, value: Number(point.value) || 0 })),
     [data],
   );
+
+  const [activeIndex, setActiveIndex] = useState(0);
 
   if (normalized.length === 0) {
     return null;
@@ -64,12 +62,11 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
     const ratio = normalized.length === 1 ? 0.5 : index / (normalized.length - 1);
     const x = margin.left + ratio * innerWidth;
     const y = margin.top + ((maxValue - point.value) / valueRange) * innerHeight;
-
     return { ...point, x, y };
   });
 
-  const [activeIndex, setActiveIndex] = useState(points.length - 1);
-  const activePoint = points[clamp(activeIndex, 0, points.length - 1)];
+  const effectiveIndex = clamp(activeIndex || points.length - 1, 0, points.length - 1);
+  const activePoint = points[effectiveIndex];
   const baselineY = margin.top + innerHeight;
 
   const linePath = points
@@ -97,19 +94,19 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
   };
 
   const handlePointerLeave = () => {
-    setActiveIndex(points.length - 1);
+    setActiveIndex(0);
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-border/20 bg-surface-muted/70 p-6 shadow-xl shadow-black/5 dark:border-white/10 dark:bg-white/5">
+    <div className="relative overflow-hidden rounded-lg border bg-muted p-6">
       <div className="relative flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-copy-muted">Portfolio nMAE</p>
-          <p className="text-5xl font-bold text-highlight dark:text-white">
+          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Portfolio nMAE</p>
+          <p className="text-5xl font-bold text-foreground">
             {activePoint.value.toFixed(1)}%
           </p>
         </div>
-        <div className="rounded-full border border-border/30 px-4 py-1 text-sm text-copy-muted dark:border-white/15">
+        <div className="rounded-full border px-4 py-1 text-sm text-muted-foreground">
           {formatMonth(activePoint.month, 'long')}
         </div>
       </div>
@@ -127,22 +124,13 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
         >
           <defs>
             <linearGradient id="performance-area" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="rgba(251, 191, 36, 0.6)" />
-              <stop offset="40%" stopColor="rgba(255, 153, 0, 0.35)" />
-              <stop offset="100%" stopColor="rgba(37, 99, 235, 0.18)" />
+              <stop offset="0%" stopColor="hsl(var(--foreground) / 0.15)" />
+              <stop offset="100%" stopColor="hsl(var(--foreground) / 0.02)" />
             </linearGradient>
             <linearGradient id="performance-line" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="rgb(250, 204, 21)" />
-              <stop offset="40%" stopColor="rgb(249, 115, 22)" />
-              <stop offset="100%" stopColor="rgb(59, 130, 246)" />
+              <stop offset="0%" stopColor="hsl(var(--foreground) / 0.7)" />
+              <stop offset="100%" stopColor="hsl(var(--foreground) / 0.4)" />
             </linearGradient>
-            <filter id="performance-glow" x="-30%" y="-50%" width="160%" height="220%" filterUnits="objectBoundingBox">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
           </defs>
 
           {yTicks.map((tick) => {
@@ -154,9 +142,8 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
                   x2={width - margin.right}
                   y1={y}
                   y2={y}
-                  stroke="rgba(15, 23, 42, 0.25)"
+                  stroke="hsl(var(--border))"
                   strokeDasharray="2 6"
-                  className="dark:stroke-white/25"
                 />
                 <text x={margin.left - 12} y={y + 4} textAnchor="end" className={axisLabelClasses}>
                   {tick.toFixed(1)}%
@@ -166,15 +153,6 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
           })}
 
           <path d={areaPath} fill="url(#performance-area)" />
-          <path
-            d={linePath}
-            fill="none"
-            stroke="url(#performance-line)"
-            strokeWidth={6}
-            strokeLinecap="round"
-            opacity={0.35}
-            filter="url(#performance-glow)"
-          />
           <path d={linePath} fill="none" stroke="url(#performance-line)" strokeWidth={3} strokeLinecap="round" />
 
           {points.map((point, index) => (
@@ -183,24 +161,22 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
               cx={point.x}
               cy={point.y}
               r={index === activeIndex ? 5 : 3}
-              fill={index === activeIndex ? 'rgb(59,130,246)' : 'white'}
-              stroke={index === activeIndex ? 'rgb(59,130,246)' : 'rgba(148,163,184,0.8)'}
-              strokeWidth={index === activeIndex ? 4 : 2}
+              fill={index === activeIndex ? 'hsl(var(--foreground))' : 'hsl(var(--background))'}
+              stroke="hsl(var(--foreground))"
+              strokeWidth={index === activeIndex ? 3 : 2}
               className="transition-all duration-200"
             />
           ))}
 
           {activePoint && (
-            <g>
-              <line
-                x1={activePoint.x}
-                x2={activePoint.x}
-                y1={margin.top}
-                y2={baselineY}
-                stroke="rgba(59, 130, 246, 0.4)"
-                strokeDasharray="6 6"
-              />
-            </g>
+            <line
+              x1={activePoint.x}
+              x2={activePoint.x}
+              y1={margin.top}
+              y2={baselineY}
+              stroke="hsl(var(--foreground) / 0.2)"
+              strokeDasharray="6 6"
+            />
           )}
 
           {(() => {
@@ -213,9 +189,8 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
                   x2={width - margin.right}
                   y1={axisY}
                   y2={axisY}
-                  stroke="rgba(15, 23, 42, 0.4)"
+                  stroke="hsl(var(--border))"
                   strokeWidth={1.5}
-                  className="dark:stroke-white/40"
                 />
                 {points.map((point) => (
                   <g key={`${point.month}-tick`}>
@@ -224,17 +199,11 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
                       x2={point.x}
                       y1={axisY}
                       y2={axisY - tickHeight}
-                      stroke="rgba(59, 130, 246, 0.8)"
+                      stroke="hsl(var(--foreground) / 0.5)"
                       strokeWidth={3}
                       strokeLinecap="round"
-                      className="dark:stroke-sky-300"
                     />
-                    <text
-                      x={point.x}
-                      y={axisY + 26}
-                      textAnchor="middle"
-                      className={monthLabelClasses}
-                    >
+                    <text x={point.x} y={axisY + 26} textAnchor="middle" className={monthLabelClasses}>
                       {formatMonth(point.month)}
                     </text>
                   </g>
@@ -244,7 +213,6 @@ export function PerformanceChart({ data }: PerformanceChartProps) {
           })()}
         </svg>
       </div>
-
     </div>
   );
 }

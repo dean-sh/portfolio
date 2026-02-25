@@ -10,22 +10,31 @@ import { RunnablePassthrough } from "@langchain/core/runnables";
 
 export const dynamic = 'force-dynamic'; // Prevent caching
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy initialization to avoid build-time errors when env vars are missing
+let openai;
+let chatModel;
+let index;
 
-// Initialize Langchain OpenAI client
-const chatModel = new ChatOpenAI({
-  openAIApiKey: process.env.OPENAI_API_KEY,
-  modelName: "gpt-4o-mini",
-});
-
-// Initialize Upstash Vector client
-const index = new Index({
-  url: process.env.UPSTASH_VECTOR_REST_URL,
-  token: process.env.UPSTASH_VECTOR_REST_TOKEN,
-});
+function getClients() {
+  if (!openai) {
+    openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+  }
+  if (!chatModel) {
+    chatModel = new ChatOpenAI({
+      openAIApiKey: process.env.OPENAI_API_KEY,
+      modelName: "gpt-4o-mini",
+    });
+  }
+  if (!index) {
+    index = new Index({
+      url: process.env.UPSTASH_VECTOR_REST_URL,
+      token: process.env.UPSTASH_VECTOR_REST_TOKEN,
+    });
+  }
+  return { openai, chatModel, index };
+}
 
 const CONTEXT_SCORE_THRESHOLD = 0.70; // Minimum similarity score for context chunks
 const MAX_CONTEXT_CHUNKS = 5; // Number of context chunks to retrieve initially
@@ -33,6 +42,7 @@ const MAX_TOTAL_CHUNKS = 5; // Maximum total chunks to use for final response
 
 // Function to query the vector database
 async function queryVectorStore(query, topK = MAX_CONTEXT_CHUNKS) {
+  const { index } = getClients();
   console.log(`Querying vector database with: "${query}" (topK=${topK})`);
   const results = await index.query({
     data: query,
@@ -47,7 +57,8 @@ async function queryVectorStore(query, topK = MAX_CONTEXT_CHUNKS) {
 }
 
 // Export named POST function for App Router
-export async function POST(req) { 
+export async function POST(req) {
+  const { chatModel } = getClients();
   try {
     const { query, conversationHistory = [] } = await req.json(); 
 

@@ -10,46 +10,57 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        canvas: 'rgb(var(--color-canvas) / <alpha-value>)',
-        surface: 'rgb(var(--color-surface) / <alpha-value>)',
-        'surface-muted': 'rgb(var(--color-surface-muted) / <alpha-value>)',
-        outline: 'rgb(var(--color-outline) / <alpha-value>)',
-        page: 'rgb(var(--color-page) / <alpha-value>)',
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
         accent: {
-          DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
-          soft: 'rgb(var(--color-accent-soft) / <alpha-value>)',
-          strong: 'rgb(var(--color-accent-strong) / <alpha-value>)',
-          contrast: 'rgb(var(--color-accent-contrast) / <alpha-value>)',
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
-        copy: {
-          DEFAULT: 'rgb(var(--color-copy) / <alpha-value>)',
-          subtle: 'rgb(var(--color-copy-subtle) / <alpha-value>)',
-          muted: 'rgb(var(--color-copy-muted) / <alpha-value>)',
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
         },
-        highlight: 'rgb(var(--color-highlight) / <alpha-value>)',
-        border: 'rgb(var(--color-border) / <alpha-value>)',
-        ring: 'rgb(var(--color-ring) / <alpha-value>)',
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
       },
       borderRadius: {
-        xl: '1.25rem',
-        '2xl': '1.85rem',
-        '3xl': '2.75rem',
-        pill: '999px',
-      },
-      boxShadow: {
-        layered: 'var(--shadow-layered)',
-        outline: 'var(--shadow-outline)',
-        glow: 'var(--shadow-glow)',
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['var(--font-outfit)', ...defaultTheme.fontFamily.sans],
-      },
-      spacing: {
-        18: '4.5rem',
-        22: '5.5rem',
-        26: '6.5rem',
+        sans: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'sans-serif',
+        ],
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 };
