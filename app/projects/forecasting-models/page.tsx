@@ -37,7 +37,7 @@ export default function ForecastingModelsPage() {
  price forecasting models for UK energy-tech firms. These systems
  power core features, support trading decisions, and reduce
  balancing costs via sub-hourly predictions, achieving a{""}
- <strong className="text-energy-400">
+ <strong className="text-emerald-400">
  &gt;30% Mean Absolute Percentage Error (MAPE) improvement
  </strong>{""}
  across hundreds of sites and significantly boosting accuracy and
@@ -53,9 +53,9 @@ export default function ForecastingModelsPage() {
  {/* Card 1: Volatility */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -81,9 +81,9 @@ export default function ForecastingModelsPage() {
  {/* Card 2: Data Integration */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -109,9 +109,9 @@ export default function ForecastingModelsPage() {
  {/* Card 3: Scalability */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -136,9 +136,9 @@ export default function ForecastingModelsPage() {
  {/* Card 4: Granularity */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -163,9 +163,9 @@ export default function ForecastingModelsPage() {
  {/* Card 5: Robustness */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -204,7 +204,7 @@ export default function ForecastingModelsPage() {
  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
  {/* Existing cards slightly restyled */}
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
- <h3 className="text-lg font-semibold text-energy-400 mb-2">
+ <h3 className="text-lg font-semibold text-emerald-400 mb-2">
  Advanced Load Forecasting
  </h3>
  <p className="text-sm text-muted-foreground">
@@ -213,7 +213,7 @@ export default function ForecastingModelsPage() {
  </p>
  </div>
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
- <h3 className="text-lg font-semibold text-energy-400 mb-2">
+ <h3 className="text-lg font-semibold text-emerald-400 mb-2">
  Weather-Aware PV Generation
  </h3>
  <p className="text-sm text-muted-foreground">
@@ -222,7 +222,7 @@ export default function ForecastingModelsPage() {
  </p>
  </div>
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
- <h3 className="text-lg font-semibold text-energy-400 mb-2">
+ <h3 className="text-lg font-semibold text-emerald-400 mb-2">
  Battery State Modeling
  </h3>
  <p className="text-sm text-muted-foreground">
@@ -231,7 +231,7 @@ export default function ForecastingModelsPage() {
  </p>
  </div>
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
- <h3 className="text-lg font-semibold text-energy-400 mb-2">
+ <h3 className="text-lg font-semibold text-emerald-400 mb-2">
  Granular Price Forecasting
  </h3>
  <p className="text-sm text-muted-foreground">
@@ -255,9 +255,9 @@ export default function ForecastingModelsPage() {
  {/* Innovation 1: Transfer Learning */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -283,9 +283,9 @@ export default function ForecastingModelsPage() {
  {/* Innovation 2: Global Models */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -311,9 +311,9 @@ export default function ForecastingModelsPage() {
  {/* Innovation 3: MLflow */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -339,9 +339,9 @@ export default function ForecastingModelsPage() {
  {/* Innovation 4: Hybrid Models */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -367,9 +367,9 @@ export default function ForecastingModelsPage() {
  {/* Technique 5: Diverse Models Evaluated */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
+ <div className="bg-emerald-600/10 p-1.5 rounded-full">
  <svg
- className="w-5 h-5 text-energy-400"
+ className="w-5 h-5 text-emerald-400"
  fill="none"
  stroke="currentColor"
  viewBox="0 0 24 24"
@@ -402,8 +402,8 @@ export default function ForecastingModelsPage() {
  </h2>
  <div className="relative rounded-lg overflow-hidden bg-muted flex items-center justify-center py-8">
  <div className="text-center p-8">
- <div className="inline-block mx-auto mb-6 p-4 border-2 border-energy-600 rounded-xl">
- <h3 className="font-medium">Data Processing Pipeline</h3>
+ <div className="inline-block mx-auto mb-6 p-4 border-2 border-emerald-600 rounded-xl">
+ <h3 className="font-medium text-foreground">Data Processing Pipeline</h3>
  </div>
  <div className="flex justify-center items-center gap-4 flex-wrap">
  <div className="flex flex-col items-center">
@@ -411,7 +411,7 @@ export default function ForecastingModelsPage() {
  <p className="text-sm text-center">Weather Data</p>
  </div>
  <div className="h-8 flex items-center">
- <span className="text-energy-400">▼</span>
+ <span className="text-emerald-400">▼</span>
  </div>
  </div>
 
@@ -422,7 +422,7 @@ export default function ForecastingModelsPage() {
  </p>
  </div>
  <div className="h-8 flex items-center">
- <span className="text-energy-400">▼</span>
+ <span className="text-emerald-400">▼</span>
  </div>
  </div>
 
@@ -431,17 +431,17 @@ export default function ForecastingModelsPage() {
  <p className="text-sm text-center">Market Signals</p>
  </div>
  <div className="h-8 flex items-center">
- <span className="text-energy-400">▼</span>
+ <span className="text-emerald-400">▼</span>
  </div>
  </div>
  </div>
 
- <div className="inline-block mx-auto my-2 p-4 border-2 border-energy-600/70 rounded-xl bg-energy-600/10 w-64">
- <h3 className="font-medium">ML Prediction Engine</h3>
+ <div className="inline-block mx-auto my-2 p-4 border-2 border-emerald-600/70 rounded-xl bg-emerald-600/10 w-64">
+ <h3 className="font-medium text-foreground">ML Prediction Engine</h3>
  </div>
 
  <div className="h-8 flex items-center justify-center">
- <span className="text-energy-400">▼</span>
+ <span className="text-emerald-400">▼</span>
  </div>
 
  <div className="inline-block mx-auto p-4 border-2 border-primary/70 rounded-xl">
@@ -463,18 +463,18 @@ export default function ForecastingModelsPage() {
  </p>
 
  {/* Highlight Metric */}
- <div className="card rounded-xl bg-energy-600/10 p-6 border-energy-600/30 mb-8 text-center">
- <h3 className="text-lg font-semibold text-energy-400 mb-2">
+ <div className="card rounded-xl bg-emerald-600/10 p-6 border-emerald-600/30 mb-8 text-center">
+ <h3 className="text-lg font-semibold text-emerald-400 mb-2">
  Key Performance Gain
  </h3>
- <div className="text-5xl font-bold text-energy-400 mb-2">
+ <div className="text-5xl font-bold text-emerald-400 mb-2">
  {""}
  &gt;30%{""}
  </div>
  <p className="text-foreground font-medium">
  MAPE Improvement vs. Benchmark
  </p>
- <p className="text-sm text-muted-foreground mt-1">
+ <p className="text-sm text-foreground/70 mt-1">
  Aggregated across hundreds of production sites (Load & Generation)
  </p>
  </div>
@@ -482,8 +482,8 @@ export default function ForecastingModelsPage() {
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  {/* Revised impact points for clarity and consistency */}
  <div className="flex items-start">
- <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
- <span className="text-xl font-bold text-energy-400">✓</span>
+ <div className="bg-emerald-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
+ <span className="text-xl font-bold text-emerald-400">✓</span>
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
@@ -498,8 +498,8 @@ export default function ForecastingModelsPage() {
  </div>
 
  <div className="flex items-start">
- <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
- <span className="text-xl font-bold text-energy-400">✓</span>
+ <div className="bg-emerald-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
+ <span className="text-xl font-bold text-emerald-400">✓</span>
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
@@ -514,8 +514,8 @@ export default function ForecastingModelsPage() {
  </div>
 
  <div className="flex items-start">
- <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
- <span className="text-xl font-bold text-energy-400">✓</span>
+ <div className="bg-emerald-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
+ <span className="text-xl font-bold text-emerald-400">✓</span>
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
@@ -530,8 +530,8 @@ export default function ForecastingModelsPage() {
  </div>
 
  <div className="flex items-start">
- <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
- <span className="text-xl font-bold text-energy-400">✓</span>
+ <div className="bg-emerald-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
+ <span className="text-xl font-bold text-emerald-400">✓</span>
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
