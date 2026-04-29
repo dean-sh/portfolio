@@ -12,6 +12,7 @@
   "license": "MIT",
   "description": "Dean Shabi's Professional Portfolio",
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@formspree/react": "^3.0.0",
     "@heroicons/react": "^2.1.1",
     "@langchain/core": "^0.3.51",

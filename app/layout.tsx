@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/react';
+import CalFloatingButton from '@/components/CalFloatingButton';
 
 export const metadata: Metadata = {
   title: 'Dean Shabi | AI Founder & Energy Data Scientist',
@@ -150,6 +151,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CalFloatingButton />
         <Analytics />
       </body>
     </html>
