@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode } from 'react';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+import { Fragment, type ReactNode } from 'react';
+import { Arrow } from '@/components/Arrow';
+import { SectionLabel } from '@/components/Section';
 
 interface ProjectDetailsProps {
   title: string;
@@ -30,91 +27,75 @@ export function ProjectDetails({
   githubUrl,
   children,
 }: ProjectDetailsProps) {
+  const outbound = [
+    { label: 'Live', href: liveUrl },
+    { label: 'Source', href: githubUrl },
+  ].filter((link): link is { label: string; href: string } => Boolean(link.href));
+  const meta = [industry, client].filter((value): value is string => Boolean(value));
+
   return (
-    <article className="pb-20">
-      <div className="container max-w-4xl space-y-12 py-20">
-        <Link
-          href="/#works"
-          className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to selected work
-        </Link>
+    <article className="container">
+      <div className="prose-col space-y-12 py-14 md:py-20">
+        <p className="font-mono text-sm">
+          <Link
+            href="/#work"
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Arrow direction="left" className="mr-2" />
+            Selected work
+          </Link>
+        </p>
 
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr]">
-          <div className="space-y-6">
-            <div className="space-y-3">
-              <p className="text-sm text-muted-foreground">Case Study</p>
-              <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-                {title}
-              </h1>
-              <p className="text-muted-foreground">{subtitle}</p>
-            </div>
+        <header className="space-y-6">
+          <SectionLabel>Case study</SectionLabel>
+          <h1 className="text-display-lg">{title}</h1>
+          <p className="measure text-lg leading-relaxed text-muted-foreground md:text-xl">
+            {subtitle}
+          </p>
 
-            {(liveUrl || githubUrl) && (
-              <div className="flex flex-wrap gap-3">
-                {liveUrl && (
-                  <Button asChild>
-                    <a href={liveUrl} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Launch the product
-                    </a>
-                  </Button>
-                )}
-                {githubUrl && (
-                  <Button variant="outline" asChild>
-                    <a href={githubUrl} target="_blank" rel="noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View the source
-                    </a>
-                  </Button>
-                )}
-              </div>
-            )}
+          {outbound.length > 0 && (
+            <p className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
+              {outbound.map((link) => (
+                <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="link">
+                  {link.label}
+                  <Arrow className="ml-1.5" />
+                </a>
+              ))}
+            </p>
+          )}
 
-            {(industry || client) && (
-              <div className="flex gap-6 text-sm">
-                {industry && (
-                  <div>
-                    <p className="text-xs text-muted-foreground">Industry</p>
-                    <p className="font-medium">{industry}</p>
-                  </div>
-                )}
-                {client && (
-                  <div>
-                    <p className="text-xs text-muted-foreground">Partner</p>
-                    <p className="font-medium">{client}</p>
-                  </div>
-                )}
-              </div>
-            )}
+          {meta.length > 0 && (
+            <p className="flex flex-wrap gap-x-2 gap-y-1 font-mono text-sm text-muted-foreground">
+              {meta.map((value, i) => (
+                <Fragment key={value}>
+                  {i > 0 && <span aria-hidden="true">·</span>}
+                  <span>{value}</span>
+                </Fragment>
+              ))}
+            </p>
+          )}
 
-            {tags.length > 0 && (
-              <div className="flex flex-wrap gap-1.5">
-                {tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            )}
-          </div>
+          {tags.length > 0 && (
+            <p className="font-mono text-xs leading-relaxed text-muted-foreground">
+              {tags.join(' · ')}
+            </p>
+          )}
+        </header>
 
-          <div className="relative aspect-[5/4] overflow-hidden rounded-lg border">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              sizes="(min-width: 1024px) 400px, 90vw"
-              className="object-cover"
-              priority
-            />
-          </div>
+        <div className="relative aspect-[16/9] overflow-hidden border border-border">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(min-width: 768px) 720px, 100vw"
+            className="object-cover"
+            priority
+          />
         </div>
 
-        <Separator />
+        <hr />
 
-        <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8 text-muted-foreground">
+        <div className="prose prose-neutral max-w-none space-y-8 text-muted-foreground dark:prose-invert prose-headings:font-serif prose-headings:font-normal prose-a:text-foreground">
           {children}
         </div>
       </div>

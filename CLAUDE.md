@@ -1,170 +1,45 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code when working with code in this repository.
 
-## Development Commands
-
-```bash
-# Development
-npm run dev          # Start development server at http://localhost:3000
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-
-# No test command configured - tests should be added if needed
-```
-
-## Architecture Overview
-
-This is a **Next.js 14 portfolio website** with App Router using **TypeScript**. The site showcases Dean Shabi's professional work and includes an AI-powered RAG (Retrieval-Augmented Generation) chatbot feature.
-
-### Key Architectural Features
-
-**Single-Page Portfolio Structure**: The main homepage (`app/page.tsx`) is composed of section-based components:
-- `Hero` - Landing section with animated text and RAG chatbot interface
-- `About` - About section  
-- `Works` - Project portfolio grid
-- `Skills` - Technical skills showcase
-- `Testimonials` - Client testimonials
-- `Contact` - Contact form
-
-**RAG Chatbot System**: The Hero component includes a sophisticated chat interface that allows users to ask questions about Dean's experience:
-- Uses LangChain.js for RAG orchestration
-- OpenAI GPT-4o-mini for language model processing  
-- Upstash Vector for vector database storage
-- Multi-turn conversation support with context management
-- WhatsApp-style chat UI with real-time messaging
-
-**Component Patterns**: Uses consistent patterns throughout:
-- Framer Motion for animations (`initial`, `whileInView`, `viewport={{ once: true }}`)
-- Dynamic imports for 3D components to prevent SSR issues
-- Client components marked with `'use client'` directive
-- TypeScript interfaces for type safety
-
-### Tech Stack
-
-**Core Framework**:
-- Next.js 14 with App Router and TypeScript 5.8.3
-- React 18 with Framer Motion for animations
-- Tailwind CSS with custom configuration and Outfit font
-
-**AI/RAG System**:
-- LangChain.js (`@langchain/core`, `@langchain/openai`) for RAG pipeline
-- OpenAI API for embeddings and chat completion
-- Upstash Vector (`@upstash/vector`) for vector database
-- Custom conversation management with caching
-
-**Visual Effects**:
-- React Three Fiber (`@react-three/fiber`, `@react-three/drei`) for 3D backgrounds
-- TSParticles (`@tsparticles/react`, `@tsparticles/slim`) for particle effects
-- Three.js for WebGL rendering
-
-**Forms & Analytics**:
-- Formspree (`@formspree/react`) for contact form handling
-- Vercel Analytics for usage tracking
-- Custom emoji picker integration
-
-## Project Structure
-
-```
-app/
-├── layout.tsx              # Root layout with metadata, Navbar, Footer
-├── page.tsx               # Main homepage (Hero + About + Works + Skills + Contact)
-├── resume/page.tsx        # Dedicated resume page
-├── globals.css           # Global styles and Tailwind configuration
-├── not-found.tsx         # 404 page
-└── api/
-    └── rag/route.js      # RAG chatbot API endpoint (POST)
-
-components/
-├── Hero.tsx              # Landing section with RAG chat interface
-├── About.tsx, Skills.tsx, Works.tsx, Contact.tsx, Testimonials.tsx
-├── AIFeatures.tsx        # AI capabilities showcase (separate from Hero chat)
-├── ProjectCard.tsx       # Individual project display component
-├── SpotlightCard.tsx     # Interactive spotlight effect wrapper
-├── R3fBackground.tsx     # React Three Fiber 3D background
-├── ParticleBackground.tsx # TSParticles background component
-├── PopupLink.tsx         # External link popup handler
-├── ClientEmoji.tsx       # Client-side emoji rendering
-└── ui/                   # UI utility components
-
-public/
-├── images/               # Project screenshots and assets
-├── dean-shabi-cv.pdf    # Resume PDF file
-└── projects_summary.pdf  # Project documentation for RAG system
-```
-
-## Environment Variables
-
-Required for full functionality (especially RAG features):
+## Development commands
 
 ```bash
-OPENAI_API_KEY=           # OpenAI API key for RAG chatbot
-UPSTASH_VECTOR_REST_URL=  # Upstash Vector database URL
-UPSTASH_VECTOR_REST_TOKEN=# Upstash Vector database token
+npm run dev     # Development server at http://localhost:3000
+npm run build   # Production build
+npm run start   # Serve the production build
+npm run lint    # ESLint via next lint
 ```
 
-Copy `.env.local.example` to `.env.local` and fill in values (if example file exists).
+There is no test suite. Type-check with `npx tsc --noEmit`.
 
-## RAG System Details
+## Architecture
 
-The portfolio includes a sophisticated conversational AI system integrated into the Hero component:
+Next.js 14 App Router, TypeScript strict, Tailwind 3.
 
-**Data Pipeline**:
-1. PDF documents (resume, project summaries) processed into vector embeddings
-2. Embeddings stored in Upstash Vector database with similarity search
-3. Query processing with context retrieval and response generation
-4. Multi-turn conversation support with conversation history
+- `content/` is the typed content registry. `types.ts` holds the shapes. `work.ts` exports `WORK` (case studies) and `EARLIER` (older projects). `site.ts` exports `HERO`, `TESTIMONIALS`, `QUOTE` and `LINKS`.
+- The home page is `app/page.tsx`. Keep the approved Plain layout: a short introduction, the work index, earlier work, one quote and contact links.
+- Case studies live at `app/work/[slug]` and are generated from `WORK`. `lib/work.ts` resolves the index and the previous and next study.
+- `components/Pipeline.tsx` renders a case study's `pipeline.stages`.
+- `content/charts.ts` holds the five time series. `lib/chart.ts` formats axes and builds SVG paths; `components/Chart.tsx` renders the figure and data table. `ChartHover.tsx` adds pointer, touch and keyboard readouts. Keep shared constants outside client components.
+- Charts name their source and label simulations. Do not invent measured results. Keep mobile readouts within the plot and preserve the expandable data table.
+- Legacy pages under `app/projects/*` wrap `components/ProjectDetails.tsx` and are linked from `EARLIER`.
+- `app/sitemap.ts` lists home, resume and every case study. `next.config.js` redirects `/projects/renewcast-solar-forecasting` to `/work/physics-first-solar`.
+- `app/resume/page.tsx` holds its own experience, education and skills data.
 
-**API Endpoint**: `/app/api/rag/route.js`
-- Handles POST requests with `{ query, conversationHistory }`
-- Implements intelligent context search with score thresholds
-- Two-stage response generation for complex queries
-- Comprehensive error handling and logging
+## Design system
 
-**UI Integration**: 
-- WhatsApp-style chat interface in Hero component
-- Real-time message streaming and conversation management
-- Suggested prompts for common queries
-- Response caching for suggested prompts
-- Mobile-optimized chat experience
+- Tokens live in `app/globals.css` as HSL CSS variables, mapped to Tailwind colours in `tailwind.config.js`. Light and dark themes switch on the `dark` class.
+- Fonts: Instrument Serif via `next/font/google` (`font-serif`, weight 400 only), Geist Sans and Geist Mono via the `geist` package (`font-sans`, `font-mono`).
+- One accent, `signal`, for data marks only: metric ticks, pipeline highlights, link hover underlines. Never for text blocks, buttons or backgrounds.
+- Hairlines, not cards. Separate items with `divide-y divide-border` or `.hairline`. No shadows, gradients or rounded boxes.
+- Type scale: `text-display-xl`, `text-display-lg`, `text-display-md`, `text-display-sm`. Layout helpers: `.container`, `.prose-col`, `.measure`, `.label`, `.link`, `.hairline`.
+- Shared components: `Section` and `SectionLabel` in `components/Section.tsx`, `Arrow` in `components/Arrow.tsx` (the only icon). `components/Nav.tsx` renders the navigation and theme button.
 
-## Styling & Design Patterns
+## Conventions
 
-**Tailwind Configuration**: Custom theme extends with:
-- Custom color palette (primary: #0f172a, accent: #3b82f6)
-- Extended screens for responsive breakpoints (`xs: 480px`)
-- Custom gradient animations and backdrop blur utilities
-- Outfit font family integration
-
-**Animation Patterns**: Consistent Framer Motion usage:
-- `initial={{ opacity: 0, y: 50 }}` for fade-up animations
-- `whileInView` with `viewport={{ once: true }}` for scroll triggers
-- Custom gradient text animations and spotlight effects
-- Dynamic imports for performance optimization
-
-**Component Architecture**:
-- Section-based layout with semantic HTML
-- Client/server component separation
-- TypeScript interfaces for props and state management
-- Custom hooks for viewport detection and window resizing
-
-## Development Notes
-
-**Build Configuration**: Standard Next.js with:
-- TypeScript strict mode enabled
-- Path aliases (`@/*` maps to project root)
-- Image optimization configured for placeholder domains
-- No static export configuration (regular Next.js deployment)
-
-**Performance Optimizations**:
-- Dynamic imports for 3D components (`ssr: false`)
-- Lazy loading for heavy visual effects
-- Response caching for RAG suggested prompts
-- Viewport-based animation triggering
-
-**Mobile Experience**: Mobile-first responsive design with:
-- Touch-optimized interactions
-- Responsive typography scaling
-- Mobile-specific chat interface optimizations
-- Proper viewport meta configuration
+- Content is never hardcoded in components. Visible copy comes from `content/`; only UI chrome (nav labels, section labels) lives in components.
+- No long dash in copy or comments. Use a middot or a slash as a separator.
+- Headings are sentence case. Numbers are mono with `tabular-nums`.
+- Server components by default. `'use client'` only where state is needed.
+- The theme toggle and its no-flash script live in `app/layout.tsx` (inline script that sets the `dark` class before paint) and `components/Nav.tsx` (toggles the class, `data-theme` and `localStorage.theme`). Keep the two in sync.
