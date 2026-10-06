@@ -1,18 +1,16 @@
 # Professional Portfolio
 
-A modern, responsive portfolio website 
+Dean Shabi's portfolio at https://deanshabi.com. Typed content in `content/` drives the home page and the case studies under `/work`.
 
 ## Project Structure
 
 ```
 /
-├── app/              # Next.js App Router pages and API routes
+├── app/              # Next.js App Router pages (home, /work/[slug], /resume, legacy /projects/*)
 ├── components/       # Reusable React components
-├── lib/              # Utility functions, helper modules
+├── content/          # Typed content registry (types.ts, work.ts, site.ts)
+├── lib/              # Helpers (case study lookup, chart axes and paths)
 ├── public/           # Static assets (images, fonts, etc.)
-├── scripts/          # Helper scripts (e.g., preprocessing)
-├── styles/           # Global styles and Tailwind base
-├── .env.local.example # Example environment variables file
 ├── next.config.js    # Next.js configuration
 ├── tailwind.config.js # Tailwind CSS configuration
 ├── package.json      # Project dependencies and scripts
@@ -26,31 +24,15 @@ This project leverages a modern web development stack:
 - **Framework:** [Next.js](https://nextjs.org/) (v14+ with App Router)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/) with PostCSS
-- **Animation:** [Framer Motion](https://www.framer.com/motion/)
-- **Vector Database:** [Upstash Vector](https://upstash.com/vector) (for RAG functionality)
-- **AI/LLM:** [LangChain](https://js.langchain.com/) & [OpenAI API](https://openai.com/api/) (for RAG functionality)
-- **Email:** [EmailJS](https://www.emailjs.com/) / [Formspree](https://formspree.io/) (Check components for implementation)
 - **Linting/Formatting:** Configured via Next.js defaults (ESLint)
 
 ## Features
 
-- Modern and clean design
+- Typographic design with light and dark themes
 - Fully responsive
-- Smooth animations
-- Project showcase with filtering
-- Contact form
-- SEO optimized
-
-## Chat with Portfolio (RAG)
-
-This portfolio includes an experimental Retrieval-Augmented Generation (RAG) feature that allows users to ask questions about Dean Shabi's experience and projects.
-
-- **Functionality:** Users can interact with a chatbot interface to query information contained within the portfolio's data sources (e.g., resume PDF, project descriptions).
-- **Technology:** It utilizes [LangChain.js](https://js.langchain.com/) to orchestrate the process, [OpenAI](https://openai.com/api/) for language model processing, and [Upstash Vector](https://upstash.com/vector) as the vector store for efficient information retrieval.
-- **Setup:**
-  - The data preprocessing (embedding generation) is handled by `scripts/preprocess.mjs`, which needs to be run (e.g., `node scripts/preprocess.mjs`) after setting up the environment variables.
-  - The chat interaction logic is served via the API route `/api/rag`.
-  - This feature heavily relies on the `OPENAI_API_KEY`, `UPSTASH_VECTOR_REST_URL`, and `UPSTASH_VECTOR_REST_TOKEN` environment variables being correctly configured in `.env.local`.
+- Five case studies with time series charts, pointer and keyboard readouts, and expandable data tables
+- Resume page
+- Sitemap and structured metadata for SEO
 
 ## Getting Started
 
@@ -59,22 +41,6 @@ This portfolio includes an experimental Retrieval-Augmented Generation (RAG) fea
 - Node.js (Version specified in `.nvmrc` if present, otherwise >= 18.x recommended)
 - npm or yarn
 - Git
-
-### Environment Variables
-
-This project requires certain environment variables to be set for full functionality, especially for the RAG API and potentially contact forms.
-
-1.  Copy the example environment file:
-    ```bash
-    cp .env.local.example .env.local
-    ```
-2.  Fill in the required values in `.env.local`:
-
-    - `OPENAI_API_KEY`: Your API key from OpenAI.
-    - `UPSTASH_VECTOR_REST_URL`: Your Upstash Vector database REST URL.
-    - `UPSTASH_VECTOR_REST_TOKEN`: Your Upstash Vector database REST token.
-
-    **Note:** `.env.local` is included in `.gitignore` and should _not_ be committed to version control.
 
 ### Installation
 
@@ -112,14 +78,12 @@ yarn build
 
 ## Deployment
 
-After building, you can deploy the `out` directory to any static hosting service like Vercel, Netlify, GitHub Pages, etc.
+The site deploys to Vercel as a standard Next.js app.
 
 ## Customization
 
-- Update personal information, project details, and content primarily within the `app/` and `components/` directories.
-- Configure vector data processing in `scripts/preprocess.mjs` and RAG logic in `app/api/rag/route.js`.
-- Add your images to the `public/images` directory.
-- Modify colors and theme in `tailwind.config.js` and `styles/globals.css`.
+- Edit copy in `content/site.ts`, case studies in `content/work.ts`, and time series in `content/charts.ts`.
+- Tokens and fonts live in `app/globals.css`, `tailwind.config.js` and `app/layout.tsx`.
 
 ## License
 

@@ -1,38 +1,58 @@
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+import { Fragment } from 'react';
+import { Section, SectionLabel } from '@/components/Section';
+import { HERO, LINKS } from '@/content/site';
 
 export const metadata = {
-  title: 'Resume | Dean Shabi',
-  description:
-    'Resume for Dean Shabi – AI founder and senior data scientist building forecasting, pricing, and automation systems for renewable energy markets.',
+  title: 'Resume',
+  description: 'Resume for Dean Shabi, engineering lead, AI engineer and two-time founder.',
+  alternates: { canonical: '/resume' },
 };
 
 const EXPERIENCE = [
   {
+    role: 'Engineering Lead',
+    company: 'Stealth startup',
+    location: 'Europe',
+    period: '2026 – present',
+    bullets: [
+      'Leading engineering for a company building critical European infrastructure across aerospace, defence and robotics.',
+    ],
+    skills: ['Engineering Leadership', 'Systems Architecture', 'AI'],
+  },
+  {
     role: 'Founder',
-    company: 'Bloome AI',
+    company: 'Otty',
     location: 'Remote',
     period: 'May 2025 – present',
     bullets: [
-      'Launched Bloome AI, an AI job-matching assistant delivering five perfect roles every morning.',
-      'Shipped Apply Pro for one-click, human-sounding outreach and polished tailored resumes.',
-      'Piloting Hands-Free, a transparent agent that applies end-to-end under user supervision.',
-      'Built an adaptive calibration engine that keeps matches high-signal with just a few approvals.',
+      'Built a career agent that searches, judges fit and applies for candidates over WhatsApp, inside a mandate they set.',
+      'Split judgment from authority: the model decides, deterministic code revalidates the mandate before any action.',
+      'Cut agent turn cost 5x by fixing prompt-cache routing, trimming tool contracts and capping stale context.',
+      'Ran the product on three agent runtimes in four months without redesigning what the agent is allowed to do.',
     ],
-    skills: ['AI Agents', 'Product Development', 'Full-Stack'],
+    skills: ['AI Agents', 'TypeScript', 'Postgres', 'Product'],
+  },
+  {
+    role: 'AI Lead',
+    company: 'Katalo',
+    location: 'Remote',
+    period: 'Feb 2026 – present',
+    bullets: [
+      'Designed a judge-gated image generation pipeline: a calibrated vision judge decides what ships, and its rejections become repair prompts.',
+      'Built an AIMD rate limiter and nested-cap queue across four AI providers, with database leases so crashed workers free capacity.',
+      'Put prompts and judge versions under the same release discipline as code: snapshots, hashes and staged promotion.',
+    ],
+    skills: ['LLM Evals', 'Convex', 'TypeScript', 'Image Models'],
   },
   {
     role: 'Senior Data Scientist',
     company: 'Renewcast',
     location: 'Italy · Remote',
-    period: '2025 – present',
+    period: '2025 – 2026',
     bullets: [
-      'Building high-precision forecasting models for renewable energy production using ML and NWP data.',
-      'Integrating real-time meteorological data, telemetry, and spatial modeling at scale.',
-      'Delivering scalable, API-driven forecast products for energy traders and grid operators.',
+      'Sole owner of the solar forecasting stack. Cut portfolio nMAE from 15% to 6% in five months with a physics-first residual model.',
+      'Built a fleet-wide GRU nowcasting head that beats persistence on 98% of plant-months in leave-one-client-out backtests.',
+      'Replaced leaderboard promotion with a paired statistical gate against served forecasts, documented in four ADRs.',
     ],
     skills: ['Machine Learning', 'Weather Prediction', 'Python', 'API Development'],
   },
@@ -142,135 +162,103 @@ const SKILL_GROUPS = [
   },
 ];
 
+const LOCATIONS = ['Prague, Czech Republic', 'Remote with UK/EU teams'];
+
 export default function ResumePage() {
   return (
-    <div className="pb-20">
-      <section className="section pb-12">
-        <div className="container max-w-3xl space-y-6">
-          <div className="space-y-3">
-            <p className="text-sm text-muted-foreground">Resume</p>
-            <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
-              Dean Shabi
-            </h1>
-            <p className="text-muted-foreground">
-              AI founder and senior data scientist specialising in renewable
-              energy markets. I build forecasting, pricing, and automation
-              systems with UK/EU traders, grid operators, and founders.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <Button asChild>
-              <Link href="/#contact">Start a project</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="mailto:deanshabi@gmail.com">deanshabi@gmail.com</a>
-            </Button>
-          </div>
-
-          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-            <span>Prague, Czech Republic</span>
-            <span>Remote with UK/EU teams</span>
-          </div>
+    <>
+      <header className="container pb-16 pt-14 md:pb-24 md:pt-20">
+        <div className="prose-col space-y-6">
+          <SectionLabel>Resume</SectionLabel>
+          <h1 className="text-display-lg">{HERO.name}</h1>
+          <p className="measure text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Engineering lead and two-time founder. I spent seven years
+            taking machine learning into production in energy markets, then
+            built two AI products from nothing. Now I lead engineering on
+            critical infrastructure for aerospace, defence and robotics.
+          </p>
+          <p className="flex flex-wrap gap-x-2 gap-y-1 font-mono text-sm text-muted-foreground">
+            <a href={`mailto:${LINKS.email}`} className="link text-foreground">
+              {LINKS.email}
+            </a>
+            <span aria-hidden="true">·</span>
+            <a href="/dean-shabi-cv.pdf" className="link text-foreground">
+              PDF
+            </a>
+            {LOCATIONS.map((location) => (
+              <Fragment key={location}>
+                <span aria-hidden="true">·</span>
+                <span>{location}</span>
+              </Fragment>
+            ))}
+          </p>
         </div>
-      </section>
+      </header>
 
-      <section className="container max-w-3xl space-y-8">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">Experience</h2>
-          <Separator className="mt-3" />
-        </div>
-
-        <div className="space-y-6">
+      <Section index="01" label="Experience">
+        <ol className="divide-y divide-border">
           {EXPERIENCE.map((item) => (
-            <Card key={`${item.role}-${item.company}`}>
-              <CardContent className="pt-6">
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <div>
-                    <h3 className="font-semibold">{item.role}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {item.company}
-                    </p>
-                  </div>
-                  <p className="text-xs text-muted-foreground">
-                    {item.period} · {item.location}
-                  </p>
+            <li
+              key={`${item.role}-${item.company}`}
+              className="space-y-4 py-8 first:pt-0 last:pb-0 md:grid md:grid-cols-[11rem_1fr] md:gap-6 md:space-y-0"
+            >
+              <div className="space-y-1 font-mono text-sm text-muted-foreground">
+                <p className="tabular-nums">{item.period}</p>
+                <p>{item.location}</p>
+              </div>
+              <div className="min-w-0 space-y-4">
+                <div className="space-y-1">
+                  <h2 className="text-display-sm">{item.role}</h2>
+                  <p className="text-sm text-muted-foreground">{item.company}</p>
                 </div>
-                <ul className="mt-4 space-y-2">
+                <ul className="measure list-disc space-y-2 pl-4 text-[0.9375rem] leading-relaxed text-muted-foreground marker:text-border">
                   {item.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex gap-2 text-sm text-muted-foreground"
-                    >
-                      <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-muted-foreground/40" />
-                      <span>{bullet}</span>
-                    </li>
+                    <li key={bullet}>{bullet}</li>
                   ))}
                 </ul>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {item.skills.map((skill) => (
-                    <Badge key={skill} variant="secondary" className="text-xs">
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                <p className="font-mono text-xs text-muted-foreground">
+                  {item.skills.join(' · ')}
+                </p>
+              </div>
+            </li>
           ))}
-        </div>
-      </section>
+        </ol>
+      </Section>
 
-      <section className="container mt-16 max-w-3xl space-y-8">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">Education</h2>
-          <Separator className="mt-3" />
-        </div>
-
-        <div className="space-y-4">
+      <Section index="02" label="Education">
+        <ol className="divide-y divide-border">
           {EDUCATION.map((item) => (
-            <Card key={item.degree}>
-              <CardContent className="pt-6">
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <div>
-                    <p className="font-medium">{item.degree}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {item.institution}
-                    </p>
-                  </div>
-                  <p className="text-xs text-muted-foreground">{item.period}</p>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground">
+            <li
+              key={item.degree}
+              className="space-y-4 py-8 first:pt-0 last:pb-0 md:grid md:grid-cols-[11rem_1fr] md:gap-6 md:space-y-0"
+            >
+              <p className="font-mono text-sm tabular-nums text-muted-foreground">
+                {item.period}
+              </p>
+              <div className="min-w-0 space-y-1">
+                <p className="font-medium">{item.degree}</p>
+                <p className="text-sm text-muted-foreground">{item.institution}</p>
+                <p className="measure pt-2 text-sm leading-relaxed text-muted-foreground">
                   {item.details}
                 </p>
-              </CardContent>
-            </Card>
+              </div>
+            </li>
           ))}
-        </div>
-      </section>
+        </ol>
+      </Section>
 
-      <section className="container mt-16 max-w-3xl space-y-8">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">Skills</h2>
-          <Separator className="mt-3" />
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2">
+      <Section index="03" label="Skills">
+        <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
           {SKILL_GROUPS.map((group) => (
             <div key={group.label} className="space-y-3">
-              <h3 className="text-sm font-medium text-muted-foreground">
-                {group.label}
-              </h3>
-              <div className="flex flex-wrap gap-1.5">
-                {group.items.map((skill) => (
-                  <Badge key={skill} variant="secondary" className="text-xs">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
+              <p className="label">{group.label}</p>
+              <p className="font-mono text-sm leading-relaxed">
+                {group.items.join(' · ')}
+              </p>
             </div>
           ))}
         </div>
-      </section>
-    </div>
+      </Section>
+    </>
   );
 }
