@@ -1,4 +1,4 @@
-import { WORK } from '@/content/work';
+import { EARLIER, WORK } from '@/content/work';
 import type { CaseStudy } from '@/content/types';
 
 export function formatIndex(position: number): string {
@@ -8,17 +8,24 @@ export function formatIndex(position: number): string {
 export type CaseStudyEntry = {
   study: CaseStudy;
   index: string;
-  prev: CaseStudy | null;
-  next: CaseStudy | null;
+  next: CaseStudy;
 };
 
+export const ALL_CASE_STUDIES = [...WORK, ...EARLIER];
+
+export function workImage(slug: string): string {
+  return `/images/work/${slug}.jpg`;
+}
+
 export function findCaseStudy(slug: string): CaseStudyEntry | null {
-  const position = WORK.findIndex((study) => study.slug === slug);
-  if (position === -1) return null;
-  return {
-    study: WORK[position],
-    index: formatIndex(position),
-    prev: WORK[position - 1] ?? null,
-    next: WORK[position + 1] ?? null,
-  };
+  for (const list of [WORK, EARLIER]) {
+    const position = list.findIndex((study) => study.slug === slug);
+    if (position === -1) continue;
+    return {
+      study: list[position],
+      index: formatIndex(position),
+      next: list[(position + 1) % list.length],
+    };
+  }
+  return null;
 }

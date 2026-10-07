@@ -1,4 +1,4 @@
-export type Org = 'Renewcast' | 'Katalo' | 'Otty';
+export type Org = 'Renewcast' | 'Katalo' | 'Otty' | 'tem.' | 'Energy-tech' | 'Datamole';
 
 export type Metric = {
   value: string;
@@ -27,7 +27,6 @@ export type CaseStudy = {
   pipeline: { caption: string; stages: Stage[] };
   decisions: Decision[];
   results: string[];
-  caveat?: string;
   stack: string[];
   chart?: Chart;
 };
@@ -73,14 +72,24 @@ export type JudgeChart = ChartCommon & {
   fail: string;
 };
 
-export type Chart = LineChart | FunnelChart | JudgeChart;
-
-export type EarlierWork = {
-  title: string;
-  org: string;
-  period: string;
-  href: string;
+export type CompareChart = ChartCommon & {
+  kind: 'compare';
+  rows: { label: string; before: number; after: number; beforeLabel: string; afterLabel: string }[];
 };
+
+export type EquationChart = ChartCommon & {
+  kind: 'equation';
+  terms: { value: string; label: string }[];
+  ops: string[];
+};
+
+export type TailChart = ChartCommon & {
+  kind: 'tail';
+  confidence: number;
+};
+
+export type Chart = LineChart | FunnelChart | JudgeChart | CompareChart | EquationChart | TailChart;
+
 
 export type Testimonial = {
   name: string;

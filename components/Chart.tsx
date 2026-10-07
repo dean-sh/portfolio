@@ -1,5 +1,5 @@
-import type { Chart as ChartSpec, FunnelChart, JudgeChart, LineChart } from '@/content/types';
-import { plotChart, TONE_COLOR } from '@/lib/chart';
+import type { Chart as ChartSpec, CompareChart, EquationChart, FunnelChart, JudgeChart, LineChart, TailChart } from '@/content/types';
+import { lossCurve, plotChart, TONE_COLOR } from '@/lib/chart';
 import { Arrow } from './Arrow';
 import { ChartHover } from './ChartHover';
 import { LineKey } from './LineKey';
@@ -27,7 +27,7 @@ function LineChartView({ chart }: { chart: LineChart }) {
       </figcaption>
 
       {multi && (
-        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs text-muted-foreground">
+        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
           {[...plot.series].reverse().map((s) => (
             <li key={s.label} className="flex items-center gap-2">
               <LineKey tone={s.tone} />
@@ -76,10 +76,10 @@ function LineChartView({ chart }: { chart: LineChart }) {
             ))}
           </svg>
 
-          {focus && (
+          {focus && !plot.points.some((point) => point.x === plot.xs[last]) && (
             <span
               aria-hidden="true"
-              className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-background"
+              className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-surface"
               style={{ left: `${plot.xs[last] * 100}%`, bottom: `${focus.ys[last] * 100}%`, background: TONE_COLOR.focus }}
             />
           )}
@@ -92,7 +92,7 @@ function LineChartView({ chart }: { chart: LineChart }) {
               style={{ left: `${point.x * 100}%`, bottom: `${point.y * 100}%` }}
             >
               <span
-                className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-background"
+                className="absolute top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-surface"
                 style={{ background: TONE_COLOR.focus }}
               />
               <span
@@ -124,8 +124,8 @@ function LineChartView({ chart }: { chart: LineChart }) {
       </div>
 
       <div className="mt-4 space-y-2">
-        <p className="font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
-        <details className="group font-mono text-[11px] text-muted-foreground">
+        <p className="text-xs leading-relaxed text-muted-foreground">{chart.source}</p>
+        <details className="group text-xs text-muted-foreground">
           <summary className="hover:text-foreground">
             <span className="group-open:hidden">Show data</span>
             <span className="hidden group-open:inline">Hide data</span>
@@ -257,6 +257,135 @@ function JudgeView({ chart }: { chart: JudgeChart }) {
   );
 }
 
+function Caption({ chart }: { chart: ChartSpec }) {
+  return (
+    <figcaption className="max-w-[62ch]">
+      <p className="text-base font-medium leading-snug">{chart.title}</p>
+      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
+    </figcaption>
+  );
+}
+
+function Source({ chart }: { chart: ChartSpec }) {
+  return <p className="mt-6 text-xs leading-relaxed text-muted-foreground">{chart.source}</p>;
+}
+
+function CompareView({ chart }: { chart: CompareChart }) {
+  return (
+    <figure>
+      <Caption chart={chart} />
+      <ul className="mt-5 flex gap-x-5 text-xs text-muted-foreground">
+        <li className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-[2px]" style={{ background: TONE_COLOR.context }} />
+          Before
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-[2px]" style={{ background: TONE_COLOR.focus }} />
+          After
+        </li>
+      </ul>
+      <div className="mt-6 space-y-7">
+        {chart.rows.map((row) => {
+          const max = Math.max(row.before, row.after);
+          const bars = [
+            { share: row.before / max, label: row.beforeLabel, color: TONE_COLOR.context },
+            { share: row.after / max, label: row.afterLabel, color: TONE_COLOR.focus },
+          ];
+          return (
+            <div key={row.label}>
+              <p className="text-sm">{row.label}</p>
+              <div className="mt-2.5 space-y-1.5">
+                {bars.map((bar) => (
+                  <div key={bar.label} className="relative h-7">
+                    <span
+                      className="absolute inset-y-1 left-0 rounded-r-[4px]"
+                      style={{ width: `max(3px, calc((100% - 11rem) * ${bar.share}))`, background: bar.color }}
+                    />
+                    <span
+                      className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap font-mono text-sm tabular-nums"
+                      style={{ left: `calc(max(3px, calc((100% - 11rem) * ${bar.share})) + 0.6rem)` }}
+                    >
+                      {bar.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <Source chart={chart} />
+    </figure>
+  );
+}
+
+function EquationView({ chart }: { chart: EquationChart }) {
+  const last = chart.terms.length - 1;
+  return (
+    <figure>
+      <Caption chart={chart} />
+      <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:gap-x-6">
+        {chart.terms.map((term, i) => (
+          <div key={term.label} className="flex items-end gap-x-6">
+            <div>
+              <p className={`font-mono text-3xl tracking-tight md:text-4xl ${i === last ? 'text-signal' : 'text-foreground'}`}>
+                {term.value}
+              </p>
+              <p className="mt-1.5 text-xs text-muted-foreground">{term.label}</p>
+            </div>
+            {i < last && (
+              <span aria-hidden="true" className="hidden pb-6 font-mono text-2xl text-muted-foreground sm:inline">
+                {chart.ops[i]}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+      <Source chart={chart} />
+    </figure>
+  );
+}
+
+function TailView({ chart }: { chart: TailChart }) {
+  const loss = lossCurve(chart.confidence);
+  const pct = Math.round(chart.confidence * 100);
+  return (
+    <figure>
+      <Caption chart={chart} />
+      <div aria-hidden="true" className="relative mt-10 h-48 md:h-56">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
+          <path d={loss.area} fill={TONE_COLOR.context} fillOpacity={0.18} stroke="none" />
+          <path d={loss.tail} fill={TONE_COLOR.focus} fillOpacity={0.3} stroke="none" />
+          <path d={loss.curve} fill="none" stroke={TONE_COLOR.context} strokeWidth={1.5} vectorEffect="non-scaling-stroke" />
+          <path d={loss.tailCurve} fill="none" stroke={TONE_COLOR.focus} strokeWidth={2} vectorEffect="non-scaling-stroke" />
+          <line x1="0" x2="1000" y1="1000" y2="1000" stroke="hsl(var(--border))" strokeWidth={1} vectorEffect="non-scaling-stroke" />
+        </svg>
+        {[
+          { at: loss.varAt, label: `VaR ${pct}%`, dashed: false, top: 'top-0' },
+          { at: loss.esAt, label: 'Expected Shortfall', dashed: true, top: 'top-10' },
+        ].map((mark) => (
+          <div key={mark.label} className="absolute inset-y-0" style={{ left: `${mark.at * 100}%` }}>
+            <span
+              className={`absolute bottom-0 ${mark.top} border-l ${mark.dashed ? 'border-dashed' : ''}`}
+              style={{ borderColor: TONE_COLOR.focus }}
+            />
+            <span
+              className={`absolute ${mark.top} -translate-y-full whitespace-nowrap pb-1 font-mono text-[11px] text-foreground ${mark.at > 0.6 ? '-translate-x-full pr-1.5' : 'pl-1.5'}`}
+            >
+              {mark.label}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="mt-2 flex justify-between text-xs text-muted-foreground">
+        <span>Small losses</span>
+        <span>Large losses</span>
+      </div>
+      <Source chart={chart} />
+    </figure>
+  );
+}
+
 export function Chart({ chart }: { chart: ChartSpec }) {
   switch (chart.kind) {
     case 'funnel':
@@ -265,5 +394,11 @@ export function Chart({ chart }: { chart: ChartSpec }) {
       return <JudgeView chart={chart} />;
     case 'line':
       return <LineChartView chart={chart} />;
+    case 'compare':
+      return <CompareView chart={chart} />;
+    case 'equation':
+      return <EquationView chart={chart} />;
+    case 'tail':
+      return <TailView chart={chart} />;
   }
 }
