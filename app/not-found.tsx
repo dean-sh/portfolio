@@ -4,7 +4,8 @@ import { Arrow } from '@/components/Arrow';
 import { StudyRow } from '@/components/StudyRow';
 import { WORK } from '@/content/work';
 
-export const metadata: Metadata = { title: 'Page not found' };
+// Next adds its own noindex to a 404. Clearing the layout's robots and share tags leaves that as the only directive.
+export const metadata: Metadata = { title: 'Page not found', robots: null, openGraph: null, twitter: null };
 
 export default function NotFound() {
   return (
