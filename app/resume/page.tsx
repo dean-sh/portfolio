@@ -164,21 +164,27 @@ const LOCATIONS = ['Prague, Czech Republic', 'Remote with UK and EU teams'];
 
 const HEADING = 'font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:text-[2rem]';
 
+function ResumeLinks({ className }: { className: string }) {
+  return (
+    <div className={className}>
+      <Link href="/#contact" className="link inline-flex min-h-11 items-center">
+        Contact me
+      </Link>
+      <a href="/dean-shabi-cv.pdf" className="link inline-flex min-h-11 items-center">
+        Download as PDF
+      </a>
+    </div>
+  );
+}
+
 export default function ResumePage() {
   return (
     <div className="container pb-24 pt-10">
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-        <aside className="lg:col-span-3">
+        <aside className="hidden lg:col-span-3 lg:block">
           <div className="space-y-8 lg:sticky lg:top-28">
             <p className="meta">Resume</p>
-            <div className="space-y-3 text-sm">
-              <Link href="/#contact" className="link block">
-                Contact me
-              </Link>
-              <a href="/dean-shabi-cv.pdf" className="link block">
-                Download as PDF
-              </a>
-            </div>
+            <ResumeLinks className="flex flex-col items-start text-sm" />
             <div className="space-y-1 text-sm text-muted-foreground">
               {LOCATIONS.map((location) => (
                 <p key={location}>{location}</p>
@@ -194,13 +200,17 @@ export default function ResumePage() {
             forecasting for energy markets, then built the AI behind Otty and Katalo. I now lead engineering at a stealth
             startup building critical infrastructure for aerospace, defence and robotics.
           </p>
+          <div className="mt-6 lg:hidden">
+            <ResumeLinks className="flex flex-wrap gap-x-6 text-sm" />
+            <p className="meta mt-2">{LOCATIONS.join(' · ')}</p>
+          </div>
 
           <section className="mt-16">
             <h2 className={HEADING}>Experience</h2>
             <ol className="mt-8 divide-y divide-border border-y border-border">
               {EXPERIENCE.map((item) => (
-                <li key={`${item.role}-${item.company}`} className="grid gap-4 py-8 md:grid-cols-[11rem_1fr] md:gap-8">
-                  <div className="text-sm text-muted-foreground">
+                <li key={`${item.role}-${item.company}`} className="py-8 md:grid md:grid-cols-[11rem_1fr] md:gap-8">
+                  <div className="hidden text-sm text-muted-foreground md:block">
                     <p className="font-mono text-foreground">{item.period}</p>
                     <p className="mt-1">{item.location}</p>
                   </div>
@@ -209,10 +219,13 @@ export default function ResumePage() {
                       {item.role}
                       <span className="font-normal text-muted-foreground"> · {item.company}</span>
                     </h3>
+                    <p className="meta mt-1.5 md:hidden">
+                      {item.period} · {item.location}
+                    </p>
                     <ul className="mt-4 max-w-[62ch] space-y-2 text-[0.95rem] leading-[1.65] text-muted-foreground">
                       {item.bullets.map((bullet) => (
                         <li key={bullet} className="grid grid-cols-[1rem_1fr]">
-                          <span aria-hidden="true" className="mt-[0.8em] block h-px w-2.5 bg-signal/70" />
+                          <span aria-hidden="true" className="mt-[0.8em] block w-2.5 border-t border-signal/70" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -228,11 +241,14 @@ export default function ResumePage() {
             <h2 className={HEADING}>Education</h2>
             <ol className="mt-8 divide-y divide-border border-y border-border">
               {EDUCATION.map((item) => (
-                <li key={item.degree} className="grid gap-3 py-6 md:grid-cols-[11rem_1fr] md:gap-8">
-                  <p className="font-mono text-sm">{item.period}</p>
+                <li key={item.degree} className="py-6 md:grid md:grid-cols-[11rem_1fr] md:gap-8">
+                  <p className="hidden font-mono text-sm md:block">{item.period}</p>
                   <div className="min-w-0">
                     <p className="font-medium">{item.degree}</p>
-                    <p className="text-sm text-muted-foreground">{item.institution}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.institution}
+                      <span className="md:hidden"> · {item.period}</span>
+                    </p>
                     {item.details && <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">{item.details}</p>}
                   </div>
                 </li>
