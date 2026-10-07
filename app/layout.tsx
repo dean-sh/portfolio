@@ -17,7 +17,6 @@ const serif = Instrument_Serif({
   adjustFontFallback: true,
 });
 
-const SITE_URL = 'https://deanshabi.com';
 const SITE_TITLE = 'Dean Shabi · Engineering lead';
 
 export const metadata: Metadata = {
@@ -28,12 +27,12 @@ export const metadata: Metadata = {
   description: HERO.title,
   authors: [{ name: HERO.name }],
   creator: HERO.name,
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(LINKS.site),
   alternates: { canonical: '/' },
   openGraph: {
     title: SITE_TITLE,
     description: HERO.title,
-    url: SITE_URL,
+    url: LINKS.site,
     siteName: HERO.name,
     images: [
       {
@@ -70,7 +69,7 @@ const personJsonLd = {
   name: HERO.name,
   jobTitle: 'Engineering Lead',
   description: HERO.title,
-  url: SITE_URL,
+  url: LINKS.site,
   email: `mailto:${LINKS.email}`,
   sameAs: [LINKS.linkedin, LINKS.github],
   knowsAbout: [
