@@ -7,7 +7,6 @@ import { Chart } from '@/components/Chart';
 import { Photo } from '@/components/Photo';
 import { Pipeline } from '@/components/Pipeline';
 import { OPEN_GRAPH } from '@/lib/metadata';
-import { cn } from '@/lib/utils';
 import { ALL_CASE_STUDIES, findCaseStudy, formatIndex, workImage, type CaseStudyEntry } from '@/lib/work';
 
 type Params = { slug: string };
@@ -52,9 +51,6 @@ function SectionHeading({ id, index, children }: { id: string; index: number; ch
   );
 }
 
-const PANEL =
-  'rounded-2xl border border-border bg-surface shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_16px_40px_-20px_hsl(var(--foreground)/0.14)]';
-
 function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
   const { study, next } = entry;
   const facts = [
@@ -92,7 +88,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       </header>
 
       <ul
-        className={cn(PANEL, 'rise mt-12 flex flex-wrap gap-x-16 gap-y-8 p-6 md:mt-16 md:p-8 lg:px-10')}
+        className="panel rise mt-12 flex flex-wrap gap-x-16 gap-y-8 p-6 md:mt-16 md:p-8 lg:px-10"
         style={{ '--i': 1 } as CSSProperties}
       >
         {study.metrics.map((m) => (
@@ -149,7 +145,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
               Results
             </SectionHeading>
             {study.chart && (
-              <div className={cn(PANEL, 'mt-8 p-5 md:p-8')}>
+              <div className="panel mt-8 p-5 md:p-8">
                 <Chart chart={study.chart} />
               </div>
             )}

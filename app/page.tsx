@@ -29,13 +29,10 @@ const reveal = (i = 0) => ({ 'data-reveal': '', style: { '--i': i } as CSSProper
 
 const SECTION = 'mt-[clamp(4rem,9vw,7rem)]';
 
-const PANEL =
-  'rounded-2xl border border-border bg-surface shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_16px_40px_-20px_hsl(var(--foreground)/0.14)]';
-
 const LIFT =
   'transition-[transform,background-color,border-color,box-shadow] duration-300 ease-spring hover:-translate-y-0.5';
 
-const CARD = cn(PANEL, LIFT, 'group overflow-hidden hover:border-signal/40');
+const CARD = cn('panel', LIFT, 'group overflow-hidden hover:border-signal/40');
 
 const CARD_GAP = 'gap-6 md:gap-8 lg:gap-10';
 
@@ -143,7 +140,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <ul className={cn(PANEL, 'rise grid gap-px overflow-hidden bg-border sm:grid-cols-2 lg:grid-cols-4')} style={{ '--i': 2 } as CSSProperties}>
+      <ul className="panel rise grid gap-px overflow-hidden bg-border sm:grid-cols-2 lg:grid-cols-4" style={{ '--i': 2 } as CSSProperties}>
         {NOW.map((item, i) => (
           <li key={item.label} className="bg-surface p-5 md:p-6">
             <p className="eyebrow flex items-center gap-2.5">

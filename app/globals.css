@@ -96,6 +96,10 @@
     @apply max-w-[65ch];
   }
 
+  .panel {
+    @apply rounded-2xl border border-border bg-surface shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_16px_40px_-20px_hsl(var(--foreground)/0.14)];
+  }
+
   .meta {
     @apply text-xs text-muted-foreground;
   }

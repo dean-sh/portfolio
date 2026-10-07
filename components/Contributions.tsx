@@ -35,7 +35,7 @@ export async function Contributions({ user }: { user: string }) {
   return (
     <section
       aria-label="GitHub contributions"
-      className="rounded-lg border border-border bg-surface p-5 shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_8px_24px_-12px_hsl(var(--foreground)/0.08)] md:p-6"
+      className="panel p-5 md:p-6"
     >
       <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs text-muted-foreground">
         <p>
