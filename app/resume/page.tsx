@@ -4,7 +4,7 @@ import { HERO, LINKS } from '@/content/site';
 
 export const metadata = {
   title: 'Resume',
-  description: 'Resume for Dean Shabi, engineering lead, AI engineer and two-time founder.',
+  description: 'Dean Shabi. Engineering lead, AI engineer and two-time founder.',
   alternates: { canonical: '/resume' },
 };
 
@@ -13,58 +13,58 @@ const EXPERIENCE = [
     role: 'Engineering Lead',
     company: 'Stealth startup',
     location: 'Europe',
-    period: '2026 – present',
+    period: '2026 to now',
     bullets: [
-      'Leading engineering for a company building critical European infrastructure across aerospace, defence and robotics.',
+      'Lead engineering at a company building critical European infrastructure for aerospace, defence and robotics.',
     ],
-    skills: ['Engineering Leadership', 'Systems Architecture', 'AI'],
+    skills: ['Engineering leadership', 'Systems architecture', 'AI'],
   },
   {
     role: 'Founder',
     company: 'Otty',
     location: 'Remote',
-    period: 'May 2025 – present',
+    period: 'May 2025 to now',
     bullets: [
-      'Built a career agent that searches, judges fit and applies for candidates over WhatsApp, inside a mandate they set.',
-      'Split judgment from authority: the model decides, deterministic code revalidates the mandate before any action.',
-      'Cut agent turn cost 5x by fixing prompt-cache routing, trimming tool contracts and capping stale context.',
-      'Ran the product on three agent runtimes in four months without redesigning what the agent is allowed to do.',
+      'Built a career agent that finds roles, judges fit and applies for candidates over WhatsApp, within rules they approve.',
+      'Kept judgment and permission apart. The model decides what fits, and code re-checks the candidate\'s rules before anything is submitted.',
+      'Cut cost per agent turn 5x by fixing prompt-cache routing, loading tools only when needed and capping stale context.',
+      'Moved the product across three agent runtimes in four months without changing what the agent is allowed to do.',
     ],
-    skills: ['AI Agents', 'TypeScript', 'Postgres', 'Product'],
+    skills: ['AI agents', 'TypeScript', 'Postgres', 'Product'],
   },
   {
     role: 'AI Lead',
     company: 'Katalo',
     location: 'Remote',
-    period: 'Feb 2026 – present',
+    period: 'Feb 2026 to now',
     bullets: [
-      'Designed a judge-gated image generation pipeline: a calibrated vision judge decides what ships, and its rejections become repair prompts.',
-      'Built an AIMD rate limiter and nested-cap queue across four AI providers, with database leases so crashed workers free capacity.',
-      'Put prompts and judge versions under the same release discipline as code: snapshots, hashes and staged promotion.',
+      'Built an image-editing pipeline where a calibrated vision judge decides what ships and its rejections become repair prompts.',
+      'Built a shared queue and adaptive rate limiter for four AI providers. Capacity leases expire, so a crashed worker frees its slot.',
+      'Released prompts and judge versions the way code ships, with snapshots, hashes and a staging step.',
     ],
-    skills: ['LLM Evals', 'Convex', 'TypeScript', 'Image Models'],
+    skills: ['LLM evals', 'Convex', 'TypeScript', 'Image models'],
   },
   {
     role: 'Senior Data Scientist',
     company: 'Renewcast',
     location: 'Italy · Remote',
-    period: '2025 – 2026',
+    period: '2025 to 2026',
     bullets: [
-      'Sole owner of the solar forecasting stack. Cut portfolio nMAE from 15% to 6% in five months with a physics-first residual model.',
-      'Built a fleet-wide GRU nowcasting head that beats persistence on 98% of plant-months in leave-one-client-out backtests.',
-      'Replaced leaderboard promotion with a paired statistical gate against served forecasts, documented in four ADRs.',
+      'Owned the solar forecasting stack. Cut portfolio forecast error from 15% to 6% in five months by pairing plant physics with a learned correction.',
+      'Built one model per fleet that corrects the next four hours from live plant data. It beat persistence on 98% of solar plant-months in backtests.',
+      'Replaced hand-picked model releases with a statistical test against the forecasts customers received, documented in four ADRs.',
     ],
-    skills: ['Machine Learning', 'Weather Prediction', 'Python', 'API Development'],
+    skills: ['Machine learning', 'Weather prediction', 'Python', 'API development'],
   },
   {
     role: 'Founding Data Scientist',
     company: 'tem.energy',
     location: 'London · Remote',
-    period: '2024 – May 2025',
+    period: '2024 to May 2025',
     bullets: [
-      'Led the AI backbone of RED, the flagship product for renewable energy.',
-      'Built Rosso, an automated pricing engine that optimizes portfolio risk while ensuring growth.',
-      'Delivered precise half-hourly, multi-year horizon forecasts with a modern ML stack.',
+      'Led the AI behind RED, tem.\'s main product for renewable energy.',
+      'Built Rosso, a pricing engine that trades portfolio risk off against growth.',
+      'Built half-hourly forecasts with horizons of several years.',
     ],
     skills: ['AWS', 'Python', 'PyTorch', 'dbt'],
   },
@@ -72,11 +72,11 @@ const EXPERIENCE = [
     role: 'Data Scientist for Energy',
     company: 'AmpX',
     location: 'Prague & London · Remote',
-    period: '2023 – 2024',
+    period: '2023 to 2024',
     bullets: [
-      'Developed advanced time series models for generation, load, and market price forecasting.',
-      'Created battery degradation estimation models for hundreds of assets.',
-      'Pioneered an end-to-end MLOps framework on AWS with Kubernetes.',
+      'Built time series models for generation, load and market price forecasting.',
+      'Built battery degradation models for hundreds of assets.',
+      'Set up the company\'s MLOps platform on AWS and Kubernetes, from training to monitoring.',
     ],
     skills: ['AWS', 'Kubernetes', 'Airflow', 'Grafana'],
   },
@@ -84,11 +84,11 @@ const EXPERIENCE = [
     role: 'Data Scientist',
     company: 'Datamole AI',
     location: 'Prague',
-    period: '2019 – 2022',
+    period: '2019 to 2022',
     bullets: [
-      'Delivered tailored, end-to-end ML projects across manufacturing, automotive, and agritech.',
-      'Projects included predictive maintenance, anomaly detection, and time series applications.',
-      'Built data pipelines using data from robots, sensors, and IIoT devices.',
+      'Delivered ML projects end to end for manufacturing, automotive and agritech clients.',
+      'Worked on predictive maintenance, anomaly detection and time series forecasting.',
+      'Built data pipelines for robot, sensor and IIoT data.',
     ],
     skills: ['SQL', 'Docker', 'Python', 'Azure'],
   },
@@ -96,11 +96,11 @@ const EXPERIENCE = [
     role: 'Project Lead · Captain',
     company: 'Israeli Air Force',
     location: 'Israel',
-    period: '2014 – 2019',
+    period: '2014 to 2019',
     bullets: [
-      'Led engineering teams designing high-budget technological projects for F16 and F15 fighters.',
-      'Managed collaboration with military industries, conducting R&D in RF and signal processing.',
-      'Created ML models for computer vision and data analysis.',
+      'Led engineering teams on large technology projects for F-16 and F-15 fighter jets.',
+      'Ran RF and signal processing R&D with Israeli defence companies.',
+      'Built ML models for computer vision and data analysis.',
     ],
     skills: ['Python', 'TensorFlow', 'MATLAB'],
   },
@@ -108,36 +108,36 @@ const EXPERIENCE = [
 
 const EDUCATION = [
   {
-    degree: 'Machine Learning and AI Specialization',
-    institution: 'Technion – Israel Institute of Technology',
-    period: '2018 – 2019',
+    degree: 'Machine learning and AI specialisation',
+    institution: 'Technion, Israel Institute of Technology',
+    period: '2018 to 2019',
     details:
-      'Intensive programme covering Python, R, SQL, statistics, and machine learning.',
+      'Python, R, SQL, statistics and machine learning.',
   },
   {
-    degree: 'B.Sc. Electrical & Electronics Engineering',
+    degree: 'BSc Electrical and Electronics Engineering',
     institution: 'Tel Aviv University',
-    period: '2010 – 2014',
+    period: '2010 to 2014',
     details:
-      'Specialised in electro-optical systems, control engineering, and bio-engineering.',
+      'Electro-optics, control engineering and bioengineering.',
   },
   {
-    degree: 'B.Sc. Physics',
+    degree: 'BSc Physics',
     institution: 'Tel Aviv University',
-    period: '2010 – 2014',
-    details: 'Focused on astrophysics and theory of relativity.',
+    period: '2010 to 2014',
+    details: 'Astrophysics and relativity.',
   },
 ];
 
 const SKILL_GROUPS = [
   {
-    label: 'Data Science & ML',
+    label: 'Data science and ML',
     items: [
-      'Machine Learning',
-      'Time Series Forecasting',
-      'Deep Learning',
+      'Machine learning',
+      'Time series forecasting',
+      'Deep learning',
       'NLP',
-      'Computer Vision',
+      'Computer vision',
       'Optimisation',
     ],
   },
@@ -146,7 +146,7 @@ const SKILL_GROUPS = [
     items: ['Python', 'SQL', 'R', 'MATLAB', 'JavaScript', 'React', 'FastAPI'],
   },
   {
-    label: 'Cloud & DevOps',
+    label: 'Cloud and DevOps',
     items: ['AWS', 'Azure', 'Kubernetes', 'Docker', 'MLflow', 'Airflow', 'dbt'],
   },
   {
@@ -162,7 +162,7 @@ const SKILL_GROUPS = [
   },
 ];
 
-const LOCATIONS = ['Prague, Czech Republic', 'Remote with UK/EU teams'];
+const LOCATIONS = ['Prague, Czech Republic', 'Remote with UK and EU teams'];
 
 export default function ResumePage() {
   return (
@@ -172,10 +172,11 @@ export default function ResumePage() {
           <SectionLabel>Resume</SectionLabel>
           <h1 className="text-display-lg">{HERO.name}</h1>
           <p className="measure text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Engineering lead and two-time founder. I spent seven years
-            taking machine learning into production in energy markets, then
-            built two AI products from nothing. Now I lead engineering on
-            critical infrastructure for aerospace, defence and robotics.
+            Engineering lead and two-time founder. I spent seven years putting
+            machine learning into production, mostly forecasting for energy
+            markets, then built the AI behind Otty and Katalo. I now lead
+            engineering at a stealth startup building critical infrastructure
+            for aerospace, defence and robotics.
           </p>
           <p className="flex flex-wrap gap-x-2 gap-y-1 font-mono text-sm text-muted-foreground">
             <a href={`mailto:${LINKS.email}`} className="link text-foreground">

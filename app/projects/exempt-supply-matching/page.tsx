@@ -3,16 +3,16 @@ import { ProjectDetails } from"@/components/ProjectDetails";
 import { Code, BarChart3, CheckCircle } from "lucide-react";
 
 export const metadata = {
- title:"Exempt Supply Matching | Dean Shabi",
+ title:"Exempt supply matching | Dean Shabi",
  description:
-"Matching exempt supply and demand using neural networks and graph optimization algorithms.",
+"A platform that pairs SMEs with local generators under 5 MW and saves approximately £50/MWh in non-commodity costs.",
 };
 
 export default function ExemptSupplyMatchingProject() {
  return (
  <ProjectDetails
- title="Exempt Supply Matching"
- subtitle="Optimizing energy distribution with ML algorithms"
+ title="Exempt supply matching"
+ subtitle="Pairing SMEs with local generators under 5 MW to save approximately £50/MWh in non-commodity costs."
  image="/images/equity-copilot.jpg"
  industry="Energy"
  client="Confidential Utility Partner"
@@ -30,71 +30,63 @@ export default function ExemptSupplyMatchingProject() {
  {/* Introduction Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Project Overview
+ Overview
  </h2>
  <div className="prose prose-lg max-w-none">
  <p className="lead text-xl text-foreground">
- Created a matching platform that keeps SME demand within Great
- Britain&apos;s Supplier Exempt Class A limits, capping exports at 5 MW
- (2.5 MW for domestic loads), while leveraging BSC Modification
- P442&apos;s February 2025 reforms to strip licence-exempt volumes out
- of EMR levies via an accredited Exempt Supply Notification Agent.
- This innovative solution optimally pairs SME energy consumers with
- local sub–5 MW generators, unlocking approximately £50/MWh in
- non-commodity cost savings.
+ I built a platform that pairs SMEs with local generators under 5 MW
+ and keeps each pair inside Great Britain&apos;s Supplier Exempt Class A
+ limits. The matched power skips approximately £50/MWh in
+ non-commodity costs.
  </p>
 
  <div className="bg-muted border border-border rounded-lg p-5">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- In Plain English
+ How the rules work
  </h3>
  <ul className="list-disc pl-6 space-y-2 text-base">
  <li>
- Small generators can legally sell power without a full supply license if
- they stay below 5 MW overall and send no more than 2.5 MW to homes.
+ Supplier Exempt Class A lets a small generator sell power without a
+ full supply licence. It must stay below 5 MW overall and send no more
+ than 2.5 MW to homes.
  </li>
  <li>
- P442 makes sure those exempt deals are recorded separately, so they do not
- trigger the big government levies that drive up bills.
+ BSC Modification P442&apos;s February 2025 reforms record these exempt
+ volumes separately. That keeps them out of EMR levies, the government
+ charges that drive up bills.
  </li>
  <li>
- An Exempt Supply Notification Agent handles the settlement admin, letting
- SMEs buy cleaner local power without drowning in paperwork.
+ An accredited Exempt Supply Notification Agent handles the settlement
+ admin, so SMEs get cleaner local power without the paperwork.
+ </li>
+ <li>
+ Each match must be documented and reported to regulators, with
+ balancing responsibility clearly assigned.
  </li>
  </ul>
  </div>
 
  <div className="bg-card/55 border border-border rounded-lg p-5 space-y-3">
  <h3 className="text-lg font-semibold text-foreground">
- How the Non-Commodity Savings Land
+ Where the £50/MWh comes from
  </h3>
  <p className="text-base">
- The biggest “non-commodity” line items on a UK business power bill are
- policy levies such as the Contracts for Difference Supplier Obligation and
- Capacity Market charges. Together, these can add £40–£60 per MWh during a
+ The biggest non-commodity items on a UK business power bill are policy
+ levies, such as the Contracts for Difference Supplier Obligation and
+ Capacity Market charges. Together they can add £40 to £60 per MWh in a
  typical settlement year.
  </p>
  <p className="text-base">
- By routing sub-5 MW generation through a Supplier Exempt Class A
- structure and registering it with an Exempt Supply Notification Agent,
- P442 keeps that energy out of the levy calculations. Every exempt MWh
- avoids those policy surcharges, which flows straight through as savings
- for the matched SME buyer while still compensating the local generator at
- an agreed strike price.
+ Every exempt MWh avoids those levies. The matched SME keeps the saving,
+ and the local generator still gets its agreed strike price.
  </p>
  </div>
-
- <p>
- This algorithm has generated millions in new revenue streams and
- savings for businesses, while promoting more sustainable,
- localized energy consumption patterns.
- </p>
  </div>
  </section>
 
  {/* Results & Metrics Section */}
  <section className="bg-muted rounded-xl p-6 border border-border">
- <h2 className="text-2xl font-bold text-foreground mb-6">Benefits</h2>
+ <h2 className="text-2xl font-bold text-foreground mb-6">Results</h2>
  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
  <div className="bg-muted rounded-xl p-6 shadow-md text-center hover:shadow-lg transition-all duration-300 border border-border">
  <div className="mb-4 flex justify-center">
@@ -118,7 +110,7 @@ export default function ExemptSupplyMatchingProject() {
  <div className="text-3xl md:text-4xl font-bold text-foreground mb-3">
  £50/MWh
  </div>
- <p className="text-muted-foreground font-medium mb-3">Cost Savings</p>
+ <p className="text-muted-foreground font-medium mb-3">Cost savings</p>
  <div className="mt-3 h-2.5 bg-card/60 rounded-full overflow-hidden">
  <div
  className="h-full bg-accent rounded-full"
@@ -153,7 +145,7 @@ export default function ExemptSupplyMatchingProject() {
  £3M+
  </div>
  <p className="text-muted-foreground font-medium mb-3">
- Value Generated
+ Value generated
  </p>
  <div className="mt-3 h-2.5 bg-card/60 rounded-full overflow-hidden">
  <div
@@ -162,7 +154,7 @@ export default function ExemptSupplyMatchingProject() {
  ></div>
  </div>
  <p className="text-xs mt-2 text-muted-foreground">
- Unprecedented revenue stream for SMEs and utilities
+ Revenue stream for SMEs and utilities
  </p>
  </div>
 
@@ -189,7 +181,7 @@ export default function ExemptSupplyMatchingProject() {
  60+
  </div>
  <p className="text-muted-foreground font-medium mb-3">
- Successful Pairings
+ Successful pairings
  </p>
  <div className="mt-3 h-2.5 bg-card/60 rounded-full overflow-hidden">
  <div
@@ -198,7 +190,7 @@ export default function ExemptSupplyMatchingProject() {
  ></div>
  </div>
  <p className="text-xs mt-2 text-muted-foreground">
- 35% match success rate achieved
+ 35% match success rate
  </p>
  </div>
  </div>
@@ -222,14 +214,14 @@ export default function ExemptSupplyMatchingProject() {
  </svg>
  </div>
  <h3 className="text-lg font-semibold text-foreground">
- Annual Savings Calculation
+ Annual savings for one pairing
  </h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
  <div className="bg-muted rounded-lg p-4 flex flex-col items-center justify-center text-center">
  <div className="text-2xl font-bold text-foreground mb-1">7 GWh</div>
- <p className="text-sm text-muted-foreground">Annual Generation</p>
+ <p className="text-sm text-muted-foreground">Annual generation</p>
  </div>
 
  <div className="flex items-center justify-center">
@@ -242,7 +234,7 @@ export default function ExemptSupplyMatchingProject() {
  <div className="text-2xl font-bold text-foreground mb-1">
  £50/MWh
  </div>
- <p className="text-sm text-muted-foreground">Cost Savings</p>
+ <p className="text-sm text-muted-foreground">Savings</p>
  </div>
  </div>
 
@@ -267,64 +259,46 @@ export default function ExemptSupplyMatchingProject() {
  <div className="text-3xl font-bold text-foreground mb-2">
  £350,000
  </div>
- <p className="text-muted-foreground">Total Annual Benefit</p>
+ <p className="text-muted-foreground">Potential annual benefit</p>
  </div>
  </div>
  </section>
 
  {/* The Challenge Section */}
  <section className="rounded-xl p-6 border border-border bg-muted mb-8">
- <h2 className="text-2xl font-bold text-foreground mb-4">The Challenge</h2>
+ <h2 className="text-2xl font-bold text-foreground mb-4">The challenge</h2>
  <p className="mb-4 text-muted-foreground">
- UK renewable energy regulations offer significant cost-saving
- opportunities through &quot;exempt supply&quot; arrangements, but establishing
- these partnerships presents complex challenges:
+ Exempt supply saves money, but each deal is hard to set up.
  </p>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Regulatory Complexity
+ Matching
  </h3>
  <p className="text-muted-foreground">
- UK energy regulations permit exemptions from certain
- non-commodity costs when generators supply nearby businesses
- directly, but navigating these regulations requires specialized
- expertise and careful compliance management.
+ A viable pair depends on compatibility criteria, load profiles,
+ connection points and technical feasibility.
  </p>
  </div>
 
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Matching Difficulty
+ Scale
  </h3>
  <p className="text-muted-foreground">
- Finding viable generator-consumer pairs requires analyzing
- multiple complex factors: compatibility criteria, load profiles,
- suitable connection points, and technical feasibility.
+ Checking matches by hand across thousands of sites takes too long
+ and misses good pairs.
  </p>
  </div>
 
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Scale & Efficiency
+ Scattered data
  </h3>
  <p className="text-muted-foreground">
- Manually identifying and evaluating potential matches across
- thousands of sites is prohibitively time-consuming and prone to
- missed opportunities.
- </p>
- </div>
-
- <div className="bg-muted rounded-lg p-5 shadow-md">
- <h3 className="text-lg font-semibold text-foreground mb-3">
- Data Integration
- </h3>
- <p className="text-muted-foreground">
- Combining and analyzing fragmented data from generation
- profiles, consumption records, grid infrastructure, and
- regulatory requirements presents significant technical
- challenges.
+ Generation profiles, consumption records, grid infrastructure and
+ regulatory rules all come from different sources.
  </p>
  </div>
  </div>
@@ -332,177 +306,74 @@ export default function ExemptSupplyMatchingProject() {
 
  {/* Solution Overview Section */}
  <section className="rounded-xl p-6 border border-border bg-muted">
- <h2 className="text-2xl font-bold text-foreground mb-4">Solution</h2>
+ <h2 className="text-2xl font-bold text-foreground mb-4">What I built</h2>
  <p className="mb-4 text-muted-foreground">
- I developed a comprehensive solution to address the complex
- challenge of matching exempt renewable generators with nearby
- businesses, creating efficient and cost-effective energy
- partnerships that leverage UK electricity regulations.
+ I built the system that finds viable generator-consumer pairs and
+ keeps each deal compliant.
  </p>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 mb-3">
  <Code className="h-5 w-5 text-foreground" />
- Technical Approach
+ Matching
  </h3>
  <ul className="space-y-2 text-muted-foreground">
- <li className="flex items-start gap-2">
+ {[
+ "A proprietary scoring algorithm that picks the best generator-consumer pairs",
+ "Load profiling that lines up generation with consumption",
+ "AI consumption forecasting to get the most value from each exemption",
+ ].map((item) => (
+ <li key={item} className="flex items-start gap-2">
  <div className="min-w-4 mt-1">
  <CheckCircle className="h-4 w-4 text-foreground" />
  </div>
- <span>
- Advanced matching algorithm to identify optimal
- generator-consumer pairings
- </span>
+ <span>{item}</span>
  </li>
- <li className="flex items-start gap-2">
- <div className="min-w-4 mt-1">
- <CheckCircle className="h-4 w-4 text-foreground" />
- </div>
- <span>
- Real-time regulatory compliance verification system
- </span>
- </li>
- <li className="flex items-start gap-2">
- <div className="min-w-4 mt-1">
- <CheckCircle className="h-4 w-4 text-foreground" />
- </div>
- <span>
- Advanced load profiling to match generation and consumption
- patterns
- </span>
- </li>
+ ))}
  </ul>
  </div>
 
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground flex items-center gap-2 mb-3">
  <BarChart3 className="h-5 w-5 text-foreground" />
- Key Innovations
+ Compliance and contracts
  </h3>
  <ul className="space-y-2 text-muted-foreground">
- <li className="flex items-start gap-2">
+ {[
+ "Real-time compliance checks that stay current with regulatory updates",
+ "Automated contract generation with legal validation",
+ ].map((item) => (
+ <li key={item} className="flex items-start gap-2">
  <div className="min-w-4 mt-1">
  <CheckCircle className="h-4 w-4 text-foreground" />
  </div>
- <span>
- Proprietary scoring algorithm for optimal matching
- </span>
+ <span>{item}</span>
  </li>
- <li className="flex items-start gap-2">
- <div className="min-w-4 mt-1">
- <CheckCircle className="h-4 w-4 text-foreground" />
- </div>
- <span>
- Dynamic regulatory compliance engine with real-time updates
- </span>
- </li>
- <li className="flex items-start gap-2">
- <div className="min-w-4 mt-1">
- <CheckCircle className="h-4 w-4 text-foreground" />
- </div>
- <span>
- AI-powered consumption forecasting for maximizing exemption
- value
- </span>
- </li>
- <li className="flex items-start gap-2">
- <div className="min-w-4 mt-1">
- <CheckCircle className="h-4 w-4 text-foreground" />
- </div>
- <span>
- Automated contractual agreement generation with legal
- validation
- </span>
- </li>
+ ))}
  </ul>
  </div>
- </div>
- </section>
-
- {/* Regulatory Framework Section */}
- <section className="bg-muted rounded-xl p-6 border border-border">
- <h2 className="text-2xl font-bold text-foreground mb-4">
- Regulatory Framework
- </h2>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
- <div className="bg-muted rounded-lg p-5 shadow-md">
- <h3 className="text-lg font-semibold text-foreground mb-3">
- Supplier Exempt Class A
- </h3>
- <p>
- Regulatory classification that allows for certain exemptions
- from standard energy supply obligations when specific conditions
- are met between generators and consumers.
- </p>
- </div>
-
- <div className="bg-muted rounded-lg p-5 shadow-md">
- <h3 className="text-lg font-semibold text-foreground mb-3">
- BSC Modification P442
- </h3>
- <p>
- Balancing and Settlement Code modification that enables specific
- matching arrangements between small-scale generators and
- consumers, supporting localized energy markets.
- </p>
- </div>
- </div>
-
- <div className="mt-6 bg-accent/5 rounded-lg p-4 border border-primary/20">
- <h3 className="text-lg font-semibold text-foreground mb-2">
- Key Regulatory Requirements
- </h3>
- <ul className="space-y-2">
- <li className="flex items-start">
- <span className="text-foreground mr-2">•</span>
- <span>
- Generators must be sub-5 MW capacity to qualify for exemptions
- </span>
- </li>
- <li className="flex items-start">
- <span className="text-foreground mr-2">•</span>
- <span>
- Supply must meet regulatory requirements for direct supply
- </span>
- </li>
- <li className="flex items-start">
- <span className="text-foreground mr-2">•</span>
- <span>
- Matching must be documented and reported to regulatory
- authorities
- </span>
- </li>
- <li className="flex items-start">
- <span className="text-foreground mr-2">•</span>
- <span>
- Balancing responsibilities must be properly assigned and
- managed
- </span>
- </li>
- </ul>
  </div>
  </section>
 
  {/* System Architecture Section */}
  <section className="bg-muted rounded-xl p-6 border border-border">
  <h2 className="text-2xl font-bold text-foreground mb-4">
- System Architecture
+ System architecture
  </h2>
  <div className="aspect-video relative rounded-lg overflow-hidden bg-card/60 flex items-center justify-center">
  <div className="text-center p-8 w-full">
  <div className="grid grid-cols-3 gap-4 mb-8 relative">
  <div className="bg-muted rounded-xl p-4">
- <h3 className="font-medium mb-2">Data Inputs</h3>
+ <h3 className="font-medium mb-2">Data inputs</h3>
  <div className="space-y-2">
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Consumer Profiles
+ Consumer profiles
  </div>
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Generator Output
+ Generator output
  </div>
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Location Data
+ Location data
  </div>
  </div>
  </div>
@@ -526,16 +397,16 @@ export default function ExemptSupplyMatchingProject() {
  </div>
 
  <div className="bg-muted rounded-xl p-4">
- <h3 className="font-medium mb-2">Processing Layer</h3>
+ <h3 className="font-medium mb-2">Processing layer</h3>
  <div className="space-y-2">
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Matching Algorithm
+ Matching algorithm
  </div>
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Optimization Engine
+ Optimization engine
  </div>
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Forecast Models
+ Forecast models
  </div>
  </div>
  </div>
@@ -559,16 +430,16 @@ export default function ExemptSupplyMatchingProject() {
  </div>
 
  <div className="bg-muted rounded-xl p-4">
- <h3 className="font-medium mb-2">Output Systems</h3>
+ <h3 className="font-medium mb-2">Output systems</h3>
  <div className="space-y-2">
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Match Reports
+ Match reports
  </div>
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Regulatory Docs
+ Regulatory docs
  </div>
  <div className="bg-card/60 rounded-lg p-2 text-sm">
- Billing Integration
+ Billing integration
  </div>
  </div>
  </div>
@@ -600,7 +471,7 @@ export default function ExemptSupplyMatchingProject() {
  </div>
 
  <div className="bg-muted rounded-xl p-4 mb-6 mx-auto max-w-md border border-primary/20">
- <h3 className="font-medium">Continuous Optimization Loop</h3>
+ <h3 className="font-medium">Continuous optimization loop</h3>
  </div>
  </div>
  </div>
@@ -609,13 +480,13 @@ export default function ExemptSupplyMatchingProject() {
  {/* Case Study Section */}
  <section className="bg-muted rounded-xl p-6 border border-border">
  <h2 className="text-2xl font-bold text-foreground mb-4">
- Application Scenario
+ Worked example
  </h2>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
  <div>
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Example Pairing
+ The pair
  </h3>
  <div className="space-y-4">
  <div className="flex items-start">
@@ -636,9 +507,9 @@ export default function ExemptSupplyMatchingProject() {
  </svg>
  </div>
  <div>
- <h4 className="font-medium">Solar Installation</h4>
+ <h4 className="font-medium">Solar farm</h4>
  <p className="text-sm text-muted-foreground">
- ~4.8 MW capacity solar farm with 7 GWh annual generation
+ ~4.8 MW of capacity, generating 7 GWh a year
  </p>
  </div>
  </div>
@@ -661,23 +532,14 @@ export default function ExemptSupplyMatchingProject() {
  </svg>
  </div>
  <div>
- <h4 className="font-medium">Business Complex</h4>
+ <h4 className="font-medium">Business complex</h4>
  <p className="text-sm text-muted-foreground">
- A collection of 20-25 SMEs with varied energy needs
+ 20-25 SMEs with different energy needs
  </p>
  </div>
  </div>
  </div>
 
- <div className="mt-4 bg-card/50 rounded-lg p-4">
- <h4 className="font-medium text-foreground mb-2">
- Cost Calculation
- </h4>
- <p className="text-sm">
- Annual generation: 7 GWh × £50/MWh savings = £350,000
- potential annual benefit
- </p>
- </div>
  </div>
 
  <div className="bg-card/50 rounded-lg p-5">
@@ -696,7 +558,7 @@ export default function ExemptSupplyMatchingProject() {
  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
  />
  </svg>
- Key Benefits
+ Other benefits
  </h3>
  <ul className="space-y-3">
  <li className="flex items-start bg-muted rounded-lg p-3 hover:bg-muted transition-colors duration-200">
@@ -705,10 +567,10 @@ export default function ExemptSupplyMatchingProject() {
  </div>
  <div className="flex-1 min-w-0">
  <span className="font-medium text-foreground block text-sm">
- Cost Reduction
+ Local use
  </span>
  <p className="text-xs text-muted-foreground mt-1 break-words">
- Annual savings of £350,000 based on 7 GWh generation
+ Up to 85% of the generated power is used locally
  </p>
  </div>
  </li>
@@ -718,10 +580,10 @@ export default function ExemptSupplyMatchingProject() {
  </div>
  <div className="flex-1 min-w-0">
  <span className="font-medium text-foreground block text-sm">
- Efficient Energy Use
+ Steadier revenue
  </span>
  <p className="text-xs text-muted-foreground mt-1 break-words">
- Up to 85% of generated power consumed locally
+ More stable revenue for renewable generators
  </p>
  </div>
  </li>
@@ -731,176 +593,14 @@ export default function ExemptSupplyMatchingProject() {
  </div>
  <div className="flex-1 min-w-0">
  <span className="font-medium text-foreground block text-sm">
- Revenue Stability
+ Lower emissions
  </span>
  <p className="text-xs text-muted-foreground mt-1 break-words">
- More stable revenue streams for renewable generators
- </p>
- </div>
- </li>
- <li className="flex items-start bg-muted rounded-lg p-3 hover:bg-muted transition-colors duration-200">
- <div className="bg-muted rounded-full h-7 w-7 flex items-center justify-center mr-3 shrink-0">
- <span className="text-foreground">✓</span>
- </div>
- <div className="flex-1 min-w-0">
- <span className="font-medium text-foreground block text-sm">
- Environmental Impact
- </span>
- <p className="text-xs text-muted-foreground mt-1 break-words">
- Carbon footprint reduction equivalent to removing 150-200
- cars from roads
+ A carbon cut equal to taking 150-200 cars off the road
  </p>
  </div>
  </li>
  </ul>
- </div>
- </div>
- </section>
-
- {/* Business Impact Section */}
- <section>
- <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Business Impact
- </h2>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">1</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">Cost Savings</h3>
- <p className="text-muted-foreground">
- Unlocked approximately £50/MWh in non-commodity cost savings
- for participating businesses.
- </p>
- </div>
- </div>
-
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">2</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">
- Revenue Generation
- </h3>
- <p className="text-muted-foreground">
- Generated millions in new revenue streams through this
- innovative matching service.
- </p>
- </div>
- </div>
-
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">3</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">Sustainability</h3>
- <p className="text-muted-foreground">
- Promoted more sustainable, localized energy consumption
- patterns, reducing transmission losses.
- </p>
- </div>
- </div>
-
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">4</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">Market Advantage</h3>
- <p className="text-muted-foreground">
- Provided significant competitive advantage in the energy
- supply market with this unique offering.
- </p>
- </div>
- </div>
- </div>
- </section>
-
- {/* Future Developments Section */}
- <section>
- <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Future Developments
- </h2>
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
- <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
- <div className="rounded-full bg-muted w-12 h-12 flex items-center justify-center mb-4">
- <svg
- className="w-6 h-6 text-foreground"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
- />
- </svg>
- </div>
- <h3 className="text-lg font-semibold text-foreground mb-2">
- Platform Scaling
- </h3>
- <p>
- Expanding the platform to handle larger volumes of participants
- and more complex matching scenarios.
- </p>
- </div>
-
- <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
- <div className="rounded-full bg-muted w-12 h-12 flex items-center justify-center mb-4">
- <svg
- className="w-6 h-6 text-foreground"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
- />
- </svg>
- </div>
- <h3 className="text-lg font-semibold text-foreground mb-2">
- Enhanced AI
- </h3>
- <p>
- Implementing more advanced machine learning algorithms to
- improve matching efficiency and forecast accuracy.
- </p>
- </div>
-
- <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
- <div className="rounded-full bg-muted w-12 h-12 flex items-center justify-center mb-4">
- <svg
- className="w-6 h-6 text-foreground"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
- />
- </svg>
- </div>
- <h3 className="text-lg font-semibold text-foreground mb-2">
- Marketplace Expansion
- </h3>
- <p>
- Developing a broader marketplace model that supports additional
- energy services and participant types.
- </p>
  </div>
  </div>
  </section>

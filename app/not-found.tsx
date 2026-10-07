@@ -8,7 +8,7 @@ export default function NotFound() {
         <p className="label tabular-nums">404</p>
         <h1 className="text-display-lg">Page not found</h1>
         <p className="measure text-muted-foreground">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          There&apos;s nothing at this address. The work is on the home page.
         </p>
         <p className="font-mono text-sm">
           <Link href="/" className="link">
