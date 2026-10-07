@@ -22,6 +22,8 @@ export type CaseStudy = {
   // `seo.title` stays within about 47 characters, so the " · Dean Shabi" template keeps the title tag within 60.
   // `seo.description` runs 120 to 155 characters and leads with the org and the result.
   seo: { title: string; description: string };
+  // Literal description of public/images/work/<slug>.jpg for the full-width photo on the case study page.
+  photoAlt?: string;
   hook: string;
   org: Org;
   period: string;

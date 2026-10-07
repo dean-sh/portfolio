@@ -10,6 +10,7 @@ export const WORK: CaseStudy[] = [
       description:
         'Renewcast\'s fleet models cut median forecast error over the first two hours by 21.9% for solar and 26.6% for wind, correcting from live plant readings.',
     },
+    photoAlt: 'Wind turbines on green hills under a cloudy sky',
     hook: 'A small network reads each plant\'s latest readings and corrects the next four hours. One model covers the whole solar fleet.',
     org: 'Renewcast',
     period: '2026',
@@ -57,6 +58,7 @@ export const WORK: CaseStudy[] = [
       description:
         'Otty applies to jobs over WhatsApp only within rules the candidate approved. Cost per agent turn fell 5× and first response from 6.3 s to about 0.9 s.',
     },
+    photoAlt: 'A hand holding a phone over a café table, beside a cup of coffee and a folder of paper',
     hook: 'Otty finds roles and applies for you over WhatsApp. The model decides what fits. Code checks your rules before anything goes out.',
     org: 'Otty',
     period: '2026',
@@ -109,6 +111,7 @@ export const WORK: CaseStudy[] = [
       description:
         'Renewcast\'s solar portfolio forecast error fell from 15.3% to 6.2% in five months, after a rebuild that pairs plant physics with a learned correction.',
     },
+    photoAlt: 'Rows of ground-mounted solar panels over tall grass, with woodland behind',
     hook: 'Most of a solar plant\'s output comes down to sun angle, panel layout and temperature. Physics handles that part. I trained the model only on what physics gets wrong.',
     org: 'Renewcast',
     period: '2025 to 2026',
@@ -160,6 +163,7 @@ export const WORK: CaseStudy[] = [
       description:
         'Renewcast\'s forecasting framework runs four client portfolios on the same steps instead of a pipeline each, the largest with 1,189 plants.',
     },
+    photoAlt: 'Aerial view of an electrical substation and power lines among green fields and woods',
     hook: 'One client had 1,189 plants behind 1,104 meters. Another needed forecasts for individual zones. A third had meter data for only some sites. Each one used to mean a new pipeline.',
     org: 'Renewcast',
     period: '2026',
@@ -208,6 +212,7 @@ export const WORK: CaseStudy[] = [
       description:
         'Katalo\'s pipeline staged listing photos with image models, and a vision judge caught edits that moved walls at 95% precision against human reviewers.',
     },
+    photoAlt: 'A furnished living room with a sofa, an armchair, a stone coffee table and a glass wall onto a garden',
     hook: 'Image models are good at furniture and bad at architecture. I built the pipeline that checked every edit and repaired the ones that changed the room.',
     org: 'Katalo',
     period: '2026',
@@ -263,6 +268,7 @@ export const EARLIER: CaseStudy[] = [
       description:
         'tem.\'s pricing engine prices industrial energy tenders against the risk of the whole book, in 95% less time and with 10× more scenarios tested.',
     },
+    photoAlt: 'Aerial view of a power station with two chimneys and a switchyard, surrounded by woods and water',
     hook: 'Large industrial tenders were priced by hand, with no view of the rest of the portfolio. I built an engine that prices each tender against the risk of the whole book and cut pricing time by 95%.',
     org: 'tem.',
     period: '2024 to 2025',
@@ -315,6 +321,7 @@ export const EARLIER: CaseStudy[] = [
       description:
         'tem.\'s platform pairs small businesses with local generators under 5 MW, skipping about £50/MWh in levies. More than 60 pairings, at a 35% match rate.',
     },
+    photoAlt: 'Aerial view of a farm building with solar panels on its roof, surrounded by fields',
     hook: 'Great Britain lets generators under 5 MW sell straight to nearby businesses and skip most policy levies. Each deal needs a compatible pair, so I built the system that finds them.',
     org: 'tem.',
     period: '2024 to 2025',
@@ -364,6 +371,7 @@ export const EARLIER: CaseStudy[] = [
       description:
         'For UK energy-tech firms, global models forecast load, solar, battery state and prices for hundreds of sites, with over 30% lower MAPE than the benchmark.',
     },
+    photoAlt: 'Battery storage containers along a gravel track, with the sun low over hills',
     hook: 'Every site had its own weather, market and asset data, and forecasting them one at a time didn\'t scale. Global models that learn across sites cut forecast error by more than 30% against the benchmark.',
     org: 'Energy-tech',
     period: '2023 to 2025',
@@ -416,6 +424,7 @@ export const EARLIER: CaseStudy[] = [
       description:
         'Renewcast\'s forecasting models share one contract and MLflow package. Deploy prep fell from 4-5 days to under one, with 3× more challengers a week.',
     },
+    photoAlt: 'Server racks with bundled cables and green status lights in a dim data centre',
     hook: 'Solar, wind and pricing models each had their own packaging and runtime, so a small experiment meant pipeline surgery. A shared model contract and one package format cut deploy prep from days to under one.',
     org: 'Renewcast',
     period: '2025',
@@ -469,6 +478,7 @@ export const EARLIER: CaseStudy[] = [
       description:
         'At Datamole, anomaly detection on live sensor data flagged robot failures on automotive production lines early and cut unplanned downtime by more than 35%.',
     },
+    photoAlt: 'Robot arms around a bare car body on an automotive production line',
     hook: 'Robots on automotive production lines failed without warning, and an unplanned stop holds up the whole line. Anomaly detection on live sensor data flagged problems early and cut unplanned downtime by more than 35%.',
     org: 'Datamole',
     period: '2020 to 2022',

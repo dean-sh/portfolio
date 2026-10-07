@@ -104,6 +104,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       <div className="mt-6 md:mt-8" data-reveal="">
         <Photo
           src={workImage(study.slug)}
+          alt={study.photoAlt}
           priority
           sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1215px) calc(100vw - 4rem), 1088px"
           className="aspect-[16/10] md:aspect-[21/9]"

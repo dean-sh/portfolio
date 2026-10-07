@@ -14,6 +14,7 @@ export const HERO = {
   name: 'Dean Shabi',
   headline: HEADLINE,
   photo: '/images/hero.jpg',
+  photoAlt: 'Aerial view of rows of solar panels beside a pine forest',
   title: HEADLINE.map((s) => ('text' in s ? s.text : ' ')).join('').replace(/\s+/g, ' ').trim(),
   // Meta description for the home page, at most 155 characters.
   description:
