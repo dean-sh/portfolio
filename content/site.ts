@@ -21,7 +21,7 @@ export type NowItem = { label: string; value: string; href?: string; detail: str
 
 export const NOW: NowItem[] = [
   { label: 'Now', value: 'Engineering lead', detail: 'Stealth startup in aerospace, defence and robotics' },
-  { label: 'Founder', value: 'Otty', href: 'https://heyotty.com', detail: 'Co-founded Katalo in 2026' },
+  { label: 'Founder', value: 'Otty', href: 'https://heyotty.com', detail: 'Previously co-founded Katalo' },
   { label: 'Before', value: 'Machine learning', detail: 'Renewcast, tem. and AmpX' },
   { label: 'Based in', value: 'Prague', detail: 'Remote with UK and EU teams' },
 ];
