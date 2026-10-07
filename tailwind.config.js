@@ -32,12 +32,6 @@ module.exports = {
       transitionTimingFunction: {
         spring: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
-      fontSize: {
-        'display-xl': ['clamp(2.75rem, 2rem + 3.2vw, 4.5rem)', { lineHeight: '1.02', letterSpacing: '-0.015em' }],
-        'display-lg': ['clamp(2.25rem, 1.7rem + 2.2vw, 3.5rem)', { lineHeight: '1.06', letterSpacing: '-0.015em' }],
-        'display-md': ['clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem)', { lineHeight: '1.12', letterSpacing: '-0.01em' }],
-        'display-sm': ['clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem)', { lineHeight: '1.2', letterSpacing: '-0.005em' }],
-      },
     },
   },
 };

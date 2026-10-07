@@ -7,6 +7,7 @@ import { Arrow } from '@/components/Arrow';
 import { CallButton, Contact } from '@/components/Contact';
 import { Contributions } from '@/components/Contributions';
 import { Photo } from '@/components/Photo';
+import { StudyRow, titleId } from '@/components/StudyRow';
 import { SparkBody, Sparkline } from '@/components/Sparkline';
 import { physicsFirstSolar } from '@/content/charts';
 import type { CaseStudy, Chart, Metric } from '@/content/types';
@@ -59,8 +60,6 @@ function HeadlineVisual({ visual }: { visual: 'portrait' | 'chart' }) {
     </span>
   );
 }
-
-const titleId = (study: CaseStudy) => `title-${study.slug}`;
 
 function StudyMeta({ study }: { study: CaseStudy }) {
   return (
@@ -302,31 +301,7 @@ export default function Home() {
         <ul className="mt-8 grid gap-x-10 lg:grid-cols-2">
           {EARLIER.map((study, i) => (
             <li key={study.slug} {...reveal(i + 1)}>
-              <Link
-                href={`/work/${study.slug}`}
-                aria-labelledby={titleId(study)}
-                className="group flex items-center gap-4 border-t border-border py-5 transition-colors duration-300 hover:border-signal/40"
-              >
-                <Photo src={workImage(study.slug)} sizes="80px" className="h-14 w-20 shrink-0 rounded-lg" />
-                <span className="min-w-0 flex-1">
-                  <span className="meta block">
-                    {study.org} · {study.period}
-                  </span>
-                  <span
-                    id={titleId(study)}
-                    className="mt-1 block text-[0.95rem] leading-snug transition-colors duration-200 group-hover:text-signal"
-                  >
-                    {study.title}
-                  </span>
-                  {study.metrics[0] && (
-                    <span className="mt-1.5 block text-xs leading-snug">
-                      <span className="font-mono text-signal">{study.metrics[0].value}</span>
-                      <span className="ml-2 text-muted-foreground">{study.metrics[0].label}</span>
-                    </span>
-                  )}
-                </span>
-                <Arrow className={cn(NUDGE, 'text-muted-foreground')} />
-              </Link>
+              <StudyRow study={study} />
             </li>
           ))}
         </ul>

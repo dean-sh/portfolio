@@ -1,22 +1,40 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Arrow } from '@/components/Arrow';
+import { StudyRow } from '@/components/StudyRow';
+import { WORK } from '@/content/work';
+
+export const metadata: Metadata = { title: 'Page not found' };
 
 export default function NotFound() {
   return (
-    <div className="container py-32 md:py-48">
-      <div className="prose-col space-y-6">
-        <p className="label tabular-nums">404</p>
-        <h1 className="text-display-lg">Page not found</h1>
-        <p className="measure text-muted-foreground">
-          There&apos;s nothing at this address. The work is on the home page.
-        </p>
-        <p className="font-mono text-sm">
-          <Link href="/" className="link">
-            <Arrow direction="left" className="mr-2" />
-            Home
-          </Link>
-        </p>
+    <div className="container grid gap-14 pb-24 pt-16 md:pt-24 lg:grid-cols-12 lg:gap-10">
+      <div className="lg:col-span-5">
+        <p className="meta font-mono">404</p>
+        <h1 className="mt-4 font-serif text-[clamp(2.4rem,1.5rem+3.4vw,4.4rem)] leading-[1.04] tracking-[-0.015em]">
+          Page not found
+        </h1>
+        <p className="mt-6 text-muted-foreground">There&apos;s nothing at this address.</p>
+        <Link
+          href="/"
+          className="group mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-medium transition-colors hover:text-signal"
+        >
+          <Arrow direction="left" className="transition-transform duration-300 group-hover:-translate-x-1" />
+          Home
+        </Link>
       </div>
+      <section aria-labelledby="selected-work" className="lg:col-span-7 lg:pt-2">
+        <h2 id="selected-work" className="eyebrow font-sans">
+          Selected work
+        </h2>
+        <ul className="mt-4 border-b border-border">
+          {WORK.map((study) => (
+            <li key={study.slug}>
+              <StudyRow study={study} />
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }
