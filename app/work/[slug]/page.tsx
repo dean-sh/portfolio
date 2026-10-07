@@ -20,13 +20,13 @@ export function generateStaticParams(): Params[] {
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const entry = findCaseStudy(params.slug);
   if (!entry) return {};
-  const { study } = entry;
-  const url = `/work/${study.slug}`;
+  const { title, description } = entry.study.seo;
+  const url = `/work/${entry.study.slug}`;
   return {
-    title: study.title,
-    description: study.hook,
+    title,
+    description,
     alternates: { canonical: url },
-    openGraph: { ...OPEN_GRAPH, type: 'article', url, title: study.title, description: study.hook },
+    openGraph: { ...OPEN_GRAPH, type: 'article', url, title, description },
   };
 }
 

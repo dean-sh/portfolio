@@ -5,7 +5,8 @@ import { HERO } from '@/content/site';
 import { OPEN_GRAPH } from '@/lib/metadata';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
 
-const DESCRIPTION = `${HERO.name}. Engineering lead, AI engineer and two-time founder.`;
+const DESCRIPTION =
+  'Resume of Dean Shabi, an engineering lead and two-time founder in Prague with seven years of machine learning in production, mostly energy forecasting.';
 
 export const metadata: Metadata = {
   title: 'Resume',

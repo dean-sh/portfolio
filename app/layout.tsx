@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     default: SITE_TITLE,
     template: '%s · Dean Shabi',
   },
-  description: HERO.title,
+  description: HERO.description,
   authors: [{ name: HERO.name }],
   creator: HERO.name,
   metadataBase: new URL(LINKS.site),
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: '/',
     title: SITE_TITLE,
-    description: HERO.title,
+    description: HERO.description,
   },
   // Title, description and image come from each page's openGraph.
   twitter: { card: 'summary_large_image' },
