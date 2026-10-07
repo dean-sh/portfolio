@@ -20,6 +20,9 @@ export const metadata: Metadata = { alternates: { canonical: '/' } };
 const GITHUB_USER = LINKS.github.split('/').pop() ?? '';
 const [featured, panelled, offset, ...closing] = WORK;
 const heroStudy = WORK.find((study) => study.slug === 'physics-first-solar')!;
+const [heroMetric] = heroStudy.metrics;
+// The caption has room for what the number measures, not the date range after the comma.
+const heroMetricLabel = heroMetric.label.split(',')[0];
 
 const reveal = (i = 0) => ({ 'data-reveal': '', style: { '--i': i } as CSSProperties });
 
@@ -118,13 +121,16 @@ export default function Home() {
             sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(100vw - 4rem), 440px"
             className="aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/5]"
           />
-          <span className="mt-1 flex min-h-11 items-center justify-between gap-4 text-xs">
-            <span className="text-muted-foreground transition-colors duration-200 group-hover:text-signal">
+          <span className="mt-3 flex items-start justify-between gap-4 text-xs">
+            <span className="inline-flex min-w-0 items-center gap-2 text-muted-foreground transition-colors duration-200 group-hover:text-signal">
               Solar forecasting at Renewcast
-            </span>
-            <span className="inline-flex items-center gap-2 font-mono text-foreground transition-colors duration-200 group-hover:text-signal">
-              {heroStudy.metrics[0].value}
               <Arrow className="transition-transform duration-300 group-hover:translate-x-0.5" />
+            </span>
+            <span className="shrink-0 text-right">
+              <span className="block font-mono text-foreground transition-colors duration-200 group-hover:text-signal">
+                {heroMetric.value}
+              </span>
+              <span className="mt-1 block text-muted-foreground">{heroMetricLabel}</span>
             </span>
           </span>
         </Link>
