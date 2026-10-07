@@ -9,7 +9,7 @@ import { Contributions } from '@/components/Contributions';
 import { Photo } from '@/components/Photo';
 import { SparkBody, Sparkline } from '@/components/Sparkline';
 import { physicsFirstSolar } from '@/content/charts';
-import type { CaseStudy, Metric } from '@/content/types';
+import type { CaseStudy, Chart, Metric } from '@/content/types';
 import { EARLIER, WORK } from '@/content/work';
 import { formatIndex, workImage } from '@/lib/work';
 import { cn } from '@/lib/utils';
@@ -88,8 +88,13 @@ function ReadMore() {
   );
 }
 
-function TitleArrow() {
-  return <Arrow className={cn(NUDGE, 'ml-2 h-[0.5em] w-[0.5em] text-muted-foreground')} />;
+function MiniChart({ chart, size, className }: { chart: Chart; size: string; className?: string }) {
+  return (
+    <figure className={className}>
+      <figcaption className="meta">{chart.sparkLabel}</figcaption>
+      <SparkBody chart={chart} className={cn('mt-3 w-full', size)} />
+    </figure>
+  );
 }
 
 export default function Home() {
@@ -201,7 +206,7 @@ export default function Home() {
               </h3>
               <p className={cn(HOOK, 'mt-4 text-[0.975rem]')}>{featured.hook}</p>
               <Stat metric={featured.metrics[0]} size="text-5xl" className="mt-8" />
-              {featured.chart && <SparkBody chart={featured.chart} className="mt-7 h-20 w-full md:h-24" />}
+              {featured.chart && <MiniChart chart={featured.chart} size="h-20 md:h-24" className="mt-8" />}
               <ReadMore />
             </div>
           </Link>
@@ -210,7 +215,7 @@ export default function Home() {
             <Link
               href={`/work/${panelled.slug}`}
               aria-labelledby={titleId(panelled)}
-              className={cn(CARD, 'block p-3 md:col-span-7')}
+              className={cn(CARD, 'block p-3 md:col-span-7 md:self-start')}
               {...reveal(0)}
             >
               <Photo
@@ -222,7 +227,6 @@ export default function Home() {
                 <StudyMeta study={panelled} />
                 <h3 id={titleId(panelled)} className={cn(TITLE, 'mt-3')}>
                   {panelled.title}
-                  <TitleArrow />
                 </h3>
                 <p className={cn(HOOK, 'mt-3')}>{panelled.hook}</p>
                 <div className="mt-7 grid grid-cols-2 gap-6 border-t border-border pt-6">
@@ -230,12 +234,8 @@ export default function Home() {
                     <Stat key={metric.label} metric={metric} size="text-2xl md:text-3xl" />
                   ))}
                 </div>
-                {panelled.chart && (
-                  <div className="mt-8">
-                    <p className="meta">{panelled.chart.sparkLabel}</p>
-                    <SparkBody chart={panelled.chart} className="mt-4 h-16 w-full" />
-                  </div>
-                )}
+                {panelled.chart && <MiniChart chart={panelled.chart} size="h-16" className="mt-8" />}
+                <ReadMore />
               </div>
             </Link>
 
@@ -256,6 +256,8 @@ export default function Home() {
                   {offset.title}
                 </h3>
                 <p className={cn(HOOK, 'mt-3')}>{offset.hook}</p>
+                <Stat metric={offset.metrics[0]} size="text-3xl md:text-4xl" className="mt-8" />
+                {offset.chart && <MiniChart chart={offset.chart} size="h-16" className="mt-7" />}
                 <ReadMore />
               </div>
             </Link>
@@ -278,13 +280,13 @@ export default function Home() {
                     <StudyMeta study={study} />
                     <h3 id={titleId(study)} className={cn(TITLE, 'mt-3')}>
                       {study.title}
-                      <TitleArrow />
                     </h3>
                     <p className={cn(HOOK, 'mt-3')}>{study.hook}</p>
                   </div>
                   <div className="mt-auto px-3 pb-4 pt-8 md:px-5 md:pb-6">
                     <Stat metric={study.metrics[0]} size="text-4xl md:text-[2.75rem]" />
-                    {study.chart && <SparkBody chart={study.chart} className="mt-6 h-16 w-full md:h-20" />}
+                    {study.chart && <MiniChart chart={study.chart} size="h-16 md:h-20" className="mt-7" />}
+                    <ReadMore />
                   </div>
                 </Link>
               </li>
