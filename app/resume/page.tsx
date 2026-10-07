@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { HERO } from '@/content/site';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
@@ -41,15 +42,17 @@ export default function ResumePage() {
           </div>
         </aside>
 
-        <div className="min-w-0 lg:col-span-9" data-reveal="">
-          <h1 className="font-serif text-[clamp(2.2rem,1.5rem+2.6vw,3.6rem)] leading-[1.05] tracking-[-0.015em]">{HERO.name}</h1>
-          <p className="mt-6 max-w-[62ch] text-[1.0625rem] leading-[1.7] text-muted-foreground">{SUMMARY}</p>
-          <div className="mt-6 lg:hidden">
-            <ResumeLinks className="flex flex-wrap gap-x-6 text-sm" />
-            <p className="meta mt-2">{LOCATIONS.join(' · ')}</p>
+        <div className="min-w-0 lg:col-span-9">
+          <div className="rise">
+            <h1 className="font-serif text-[clamp(2.2rem,1.5rem+2.6vw,3.6rem)] leading-[1.05] tracking-[-0.015em]">{HERO.name}</h1>
+            <p className="mt-6 max-w-[62ch] text-[1.0625rem] leading-[1.7] text-muted-foreground">{SUMMARY}</p>
+            <div className="mt-6 lg:hidden">
+              <ResumeLinks className="flex flex-wrap gap-x-6 text-sm" />
+              <p className="meta mt-2">{LOCATIONS.join(' · ')}</p>
+            </div>
           </div>
 
-          <section className="mt-16">
+          <section className="rise mt-16" style={{ '--i': 1 } as CSSProperties}>
             <h2 className={HEADING}>Experience</h2>
             <ol className="mt-8 divide-y divide-border border-y border-border">
               {EXPERIENCE.map((item) => (
@@ -81,7 +84,7 @@ export default function ResumePage() {
             </ol>
           </section>
 
-          <section className="mt-16">
+          <section className="mt-16" data-reveal="">
             <h2 className={HEADING}>Education</h2>
             <ol className="mt-8 divide-y divide-border border-y border-border">
               {EDUCATION.map((item) => (
@@ -100,7 +103,7 @@ export default function ResumePage() {
             </ol>
           </section>
 
-          <section className="mt-16">
+          <section className="mt-16" data-reveal="">
             <h2 className={HEADING}>Skills</h2>
             <dl className="mt-8 grid gap-x-12 gap-y-6 sm:grid-cols-2">
               {SKILL_GROUPS.map((group) => (

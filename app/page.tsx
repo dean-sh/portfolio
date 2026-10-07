@@ -97,7 +97,7 @@ export default function Home() {
   return (
     <div className="container">
       <section className="grid gap-10 pb-12 pt-12 md:pt-16 lg:grid-cols-12 lg:items-center lg:gap-10 lg:pb-14">
-        <div className="lg:col-span-7" {...reveal(0)}>
+        <div className="rise lg:col-span-7">
           <h1 className="font-serif text-[clamp(2.4rem,1.5rem+3.4vw,4.4rem)] leading-[1.04] tracking-[-0.015em]">
             {HERO.headline.map((segment, i) =>
               'text' in segment ? <span key={i}>{segment.text}</span> : <HeadlineVisual key={i} visual={segment.visual} />,
@@ -118,7 +118,7 @@ export default function Home() {
           </div>
         </div>
 
-        <Link href={`/work/${heroStudy.slug}`} className="group block lg:col-span-5" {...reveal(2)}>
+        <Link href={`/work/${heroStudy.slug}`} className="rise group block lg:col-span-5" style={{ '--i': 1 } as CSSProperties}>
           <Photo
             src={HERO.photo}
             priority
@@ -137,7 +137,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <ul className={cn(PANEL, 'grid gap-px overflow-hidden bg-border sm:grid-cols-2 lg:grid-cols-4')} {...reveal(3)}>
+      <ul className={cn(PANEL, 'rise grid gap-px overflow-hidden bg-border sm:grid-cols-2 lg:grid-cols-4')} style={{ '--i': 2 } as CSSProperties}>
         {NOW.map((item, i) => (
           <li key={item.label} className="bg-surface p-5 md:p-6">
             <p className="eyebrow flex items-center gap-2.5">

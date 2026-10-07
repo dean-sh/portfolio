@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -79,7 +80,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
         All work
       </Link>
 
-      <header className="mt-8 md:mt-12" data-reveal="">
+      <header className="rise mt-8 md:mt-12">
         <p className="meta">
           {study.org} · {study.period}
         </p>
@@ -100,8 +101,8 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       </header>
 
       <ul
-        className={cn(PANEL, 'mt-12 flex flex-wrap gap-x-16 gap-y-8 p-6 md:mt-16 md:p-8 lg:px-10')}
-        data-reveal=""
+        className={cn(PANEL, 'rise mt-12 flex flex-wrap gap-x-16 gap-y-8 p-6 md:mt-16 md:p-8 lg:px-10')}
+        style={{ '--i': 1 } as CSSProperties}
       >
         {study.metrics.map((m) => (
           <li key={m.label} className="min-w-0 max-w-[17rem]">
