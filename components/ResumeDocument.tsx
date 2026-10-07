@@ -2,6 +2,7 @@ import path from 'node:path';
 import { Children, type ReactNode } from 'react';
 import { Document, Font, Link, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
+import { EMAIL } from '@/content/email';
 import { HERO, LINKS } from '@/content/site';
 
 const font = (file: string) => path.join(process.cwd(), 'assets/fonts', file);
@@ -28,7 +29,7 @@ const MARGIN = 44;
 const bare = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 const CONTACTS = [
-  { href: `mailto:${LINKS.email}`, label: LINKS.email },
+  { href: `mailto:${EMAIL}`, label: EMAIL },
   ...[LINKS.site, LINKS.linkedin, LINKS.github].map((url) => ({ href: url, label: bare(url) })),
 ];
 
