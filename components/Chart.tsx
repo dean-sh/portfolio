@@ -19,10 +19,7 @@ function LineChartView({ chart }: { chart: LineChart }) {
 
   return (
     <figure>
-      <figcaption className="max-w-[62ch]">
-        <p className="text-base font-medium leading-snug">{chart.title}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
-      </figcaption>
+      <Caption chart={chart} />
 
       {multi && (
         <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
@@ -205,12 +202,10 @@ function FunnelView({ chart }: { chart: FunnelChart }) {
   );
 }
 
-const BOX_LABEL = 'font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground';
-
 function JudgeBox({ label, items }: { label: string; items: string[] }) {
   return (
     <div className="rounded-md border border-border bg-background/60 p-4">
-      <p className={BOX_LABEL}>{label}</p>
+      <p className="eyebrow">{label}</p>
       <ul className="mt-3 space-y-1.5 text-sm">
         {items.map((item) => (
           <li key={item}>{item}</li>
@@ -231,17 +226,14 @@ function FlowArrow() {
 function JudgeView({ chart }: { chart: JudgeChart }) {
   return (
     <figure>
-      <figcaption className="max-w-[62ch]">
-        <p className="text-base font-medium leading-snug">{chart.title}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
-      </figcaption>
+      <Caption chart={chart} />
       <div className="mt-8 grid gap-2 md:grid-cols-[1fr_1.5rem_1fr_1.5rem_1.25fr] md:gap-1">
         <JudgeBox label="The judge saw" items={chart.sees} />
         <FlowArrow />
         <JudgeBox label="It returned" items={chart.returns} />
         <FlowArrow />
         <div className="rounded-md border border-signal/50 bg-background/60 p-4">
-          <p className={BOX_LABEL}>Code decided</p>
+          <p className="eyebrow">Code decided</p>
           <p className="mt-3 text-sm">{chart.rule}</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li className="grid grid-cols-[0.75rem_1fr] gap-x-2">
@@ -259,7 +251,7 @@ function JudgeView({ chart }: { chart: JudgeChart }) {
           </ul>
         </div>
       </div>
-      <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
+      <Source chart={chart} />
     </figure>
   );
 }
