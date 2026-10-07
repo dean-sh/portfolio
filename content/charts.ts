@@ -4,19 +4,19 @@ export const physicsFirstSolar: Chart = {
   kind: 'line',
   title: 'Solar forecast error after the rebuild',
   note: 'Monthly average error as a share of plant capacity.',
-  source: 'Renewcast portfolio nMAE, May to October 2025.',
+  source: 'Renewcast solar portfolio, May to October 2025.',
   x: { kind: 'month', values: ["2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10"] },
   y: { format: 'percent', min: 0 },
   series: [{ label: 'Portfolio nMAE', tone: 'focus', values: [15.3, 11.1, 10.1, 9.4, 7.4, 6.2] }],
   points: [{ at: 0, label: '15.3%' }, { at: 5, label: '6.2%' }],
-  spark: { label: 'Portfolio error by month', value: '15.3% → 6.2%' },
+  spark: { label: 'Portfolio error by month, May to October 2025', value: 'lower every month' },
 };
 
 export const portfolioFramework: Chart = {
   kind: 'line',
   title: 'Forecast against metered energy, 107-site portfolio',
-  note: 'Monthly energy in MWh. Each month was forecast by a model that never saw it in training.',
-  source: 'Meter-head backtest, July 2025 to August 2026, 14 monthly folds.',
+  note: 'Monthly energy in MWh. Each month was forecast without seeing that month\'s data.',
+  source: '107-site portfolio, July 2025 to August 2026.',
   x: { kind: 'month', values: ["2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08"] },
   y: { format: 'mwh', min: 0 },
   series: [
@@ -30,7 +30,7 @@ export const fleetNowcasting: Chart = {
   kind: 'line',
   title: 'Solar forecast error over the next four hours',
   note: 'The fleet model halves the error 15 minutes ahead, and the gain fades by four hours. Persistence simply assumes the latest error carries on.',
-  source: 'Leave-one-client-out backtest on served forecasts, fresh readings, 231 plant-months.',
+  source: 'Backtest on Renewcast\'s solar fleet.',
   x: { kind: 'number', values: [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240], unit: ' min' },
   y: { format: 'percent', min: 0 },
   series: [
@@ -45,7 +45,7 @@ export const ottyFunnel: Chart = {
   kind: 'funnel',
   title: 'From roles judged to interviews, first four weeks',
   note: 'Each percentage is the share kept from the stage above. The agent turned down most roles, and every application it sent went through the candidate\'s rules first.',
-  source: 'Otty production data, 7 candidates, 10 August to 7 September 2026.',
+  source: 'Otty production data, first four weeks.',
   stages: [
     { label: 'Roles judged', value: 438 },
     { label: 'Chosen to apply', value: 97 },
@@ -61,7 +61,7 @@ export const kataloJudge: Chart = {
   kind: 'judge',
   title: 'How the judge decides',
   note: 'A vision model compares every edited photo with the original and scores it against the rubric human editors use. The model only reports. Plain code makes the call. Of the edits it approved, 95% were approved by human reviewers too.',
-  source: 'Katalo judge prompt and pipeline code. Precision and accuracy from calibration against human-labelled edits.',
+  source: 'Precision measured against human reviewers.',
   sees: ['Original photo', 'Edited photo', 'Editors\' rubric'],
   returns: ['Score from 1 to 5', 'Structural failures', 'Fix instructions'],
   rule: 'Score of 4 or more and no structural failure',
@@ -70,4 +70,56 @@ export const kataloJudge: Chart = {
   spark: { label: 'How the LLM judge decides', value: '95% precision' },
 };
 
+export const pricingTail: Chart = {
+  kind: 'tail',
+  title: 'What every price accounts for',
+  note: 'An illustrative distribution of portfolio losses. VaR marks the loss exceeded only 5% of the time. Expected Shortfall is the average of those worst cases, which is where volatile energy markets hurt.',
+  source: 'Illustrative shape.',
+  confidence: 0.95,
+  spark: { label: 'Portfolio loss distribution, illustrative', value: 'VaR and ES' },
+};
+
+export const exemptEquation: Chart = {
+  kind: 'equation',
+  title: 'One pairing, one year',
+  note: 'A 4.8 MW solar farm matched with a business complex of 20 to 25 SMEs. Every exempt MWh skips about £50 in policy levies, and up to 85% of the output is used locally.',
+  source: 'Worked example from the project.',
+  terms: [
+    { value: '7 GWh', label: 'Generated a year' },
+    { value: '£50/MWh', label: 'Levies avoided' },
+    { value: '£350,000', label: 'Potential saving a year' },
+  ],
+  ops: ['×', '='],
+  spark: { label: 'One pairing, one year', value: '£350,000' },
+};
+
+export const forecastingCompare: Chart = {
+  kind: 'compare',
+  title: 'Forecast error against the benchmark',
+  note: 'MAPE for load and generation, aggregated across hundreds of production sites and indexed so the benchmark is 100.',
+  source: 'Production evaluation across client sites.',
+  rows: [{ label: 'MAPE, indexed', before: 100, after: 70, beforeLabel: 'Benchmark 100', afterLabel: 'Global models under 70' }],
+  spark: { label: 'Forecast error vs benchmark, indexed', value: 'over 30% lower' },
+};
+
+export const mlopsCompare: Chart = {
+  kind: 'compare',
+  title: 'Before and after the rebuild',
+  note: 'Deploy prep fell from 4 to 5 days to under one, and the team tested three times as many challengers a week.',
+  source: 'Six weeks from concept to rollout.',
+  rows: [
+    { label: 'Deploy prep', before: 4.5, after: 1, beforeLabel: '4-5 days', afterLabel: 'under 1 day' },
+    { label: 'Challengers per week', before: 1, after: 3, beforeLabel: '1×', afterLabel: '3×' },
+  ],
+  spark: { label: 'Before and after the rebuild', value: 'deploys in under a day' },
+};
+
+export const robotCompare: Chart = {
+  kind: 'compare',
+  title: 'Unplanned downtime, before and after',
+  note: 'Indexed so downtime before the system is 100.',
+  source: 'Automotive production lines, Datamole AI.',
+  rows: [{ label: 'Unplanned downtime, indexed', before: 100, after: 65, beforeLabel: 'Before 100', afterLabel: 'After under 65' }],
+  spark: { label: 'Unplanned downtime, indexed', value: 'over 35% lower' },
+};
 

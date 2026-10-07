@@ -4,31 +4,31 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 0 0% 8%;
-    --muted-foreground: 40 4% 42%;
-    --border: 40 10% 88%;
+    --background: 0 0% 98%;
+    --foreground: 240 6% 10%;
+    --muted-foreground: 240 4% 46%;
+    --border: 240 6% 90%;
     --signal: 137 66% 30%;
     --signal-fill: 137 66% 30%;
     --signal-foreground: 0 0% 100%;
-    --primary: 0 0% 8%;
-    --primary-foreground: 40 20% 98%;
-    --muted: 40 12% 94%;
-    --accent: 40 12% 94%;
-    --accent-foreground: 0 0% 8%;
-    --card: 40 20% 98%;
-    --card-foreground: 0 0% 8%;
-    --popover: 40 20% 98%;
-    --popover-foreground: 0 0% 8%;
-    --secondary: 40 12% 94%;
-    --secondary-foreground: 0 0% 8%;
-    --input: 40 10% 88%;
-    --ring: 0 0% 8%;
-    --radius: 0.125rem;
-    --chart-focus: #1a7f37;
-    --chart-context: #c2bfb8;
+    --primary: 240 6% 10%;
+    --primary-foreground: 0 0% 98%;
+    --muted: 240 5% 96%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 6% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 6% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --input: 240 6% 90%;
+    --ring: 240 6% 10%;
     --surface: 0 0% 100%;
-    --gh-0: #eeebe5;
+    --radius: 0.5rem;
+    --chart-focus: #1a7f37;
+    --chart-context: #c4c4cc;
+    --gh-0: #ebedf0;
     --gh-1: #9be9a8;
     --gh-2: #40c463;
     --gh-3: #30a14e;
@@ -36,35 +36,36 @@
   }
 
   .dark {
+    --background: 240 8% 5%;
+    --foreground: 0 0% 98%;
+    --muted-foreground: 240 5% 65%;
+    --border: 240 4% 16%;
+    --signal: 128 49% 49%;
+    --signal-fill: 131 55% 40%;
+    --signal-foreground: 240 8% 5%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 8% 5%;
+    --muted: 240 6% 10%;
+    --accent: 240 6% 10%;
+    --accent-foreground: 0 0% 98%;
+    --card: 240 7% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 7% 8%;
+    --popover-foreground: 0 0% 98%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --input: 240 4% 16%;
+    --ring: 0 0% 98%;
+    --surface: 240 7% 8%;
     --chart-focus: #2ea043;
-    --chart-context: #6b707a;
-    --surface: 222 13% 11%;
-    --gh-0: #1d1f25;
+    --chart-context: #71717a;
+    --gh-0: #1c1c21;
     --gh-1: #0e4429;
     --gh-2: #006d32;
     --gh-3: #26a641;
     --gh-4: #39d353;
-    --background: 220 14% 8%;
-    --foreground: 40 25% 91%;
-    --muted-foreground: 220 8% 64%;
-    --border: 220 10% 18%;
-    --signal: 128 49% 49%;
-    --signal-fill: 131 55% 40%;
-    --signal-foreground: 220 14% 8%;
-    --primary: 40 25% 91%;
-    --primary-foreground: 220 14% 8%;
-    --muted: 220 10% 14%;
-    --accent: 220 10% 14%;
-    --accent-foreground: 40 25% 91%;
-    --card: 220 14% 8%;
-    --card-foreground: 40 25% 91%;
-    --popover: 220 14% 8%;
-    --popover-foreground: 40 25% 91%;
-    --secondary: 220 10% 14%;
-    --secondary-foreground: 40 25% 91%;
-    --input: 220 10% 18%;
-    --ring: 40 25% 91%;
   }
+
 
 
   html {
@@ -125,6 +126,14 @@
 
   .measure {
     @apply max-w-[65ch];
+  }
+
+  .meta {
+    @apply text-xs text-muted-foreground;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium tracking-[0.02em] text-muted-foreground;
   }
 
   .label {
@@ -197,4 +206,54 @@ details > summary {
 }
 details > summary::-webkit-details-marker {
   display: none;
+}
+
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+html.js [data-reveal][data-shown] {
+  opacity: 1;
+  transform: none;
+}
+
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 1.5px solid currentColor;
+  animation: pulse-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse-ring {
+  from {
+    opacity: 0.7;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .pulse-ring::after {
+    animation: none;
+  }
 }

@@ -1,6 +1,5 @@
-import { Fragment } from 'react';
-import { Section, SectionLabel } from '@/components/Section';
-import { HERO, LINKS } from '@/content/site';
+import Link from 'next/link';
+import { HERO } from '@/content/site';
 
 export const metadata = {
   title: 'Resume',
@@ -33,7 +32,7 @@ const EXPERIENCE = [
     skills: ['AI agents', 'TypeScript', 'Postgres', 'Product'],
   },
   {
-    role: 'AI Lead',
+    role: 'Co-founder',
     company: 'Katalo',
     location: 'Remote',
     period: 'Feb 2026 to now',
@@ -108,11 +107,10 @@ const EXPERIENCE = [
 
 const EDUCATION = [
   {
-    degree: 'Machine learning and AI specialisation',
+    degree: 'MSc Artificial Intelligence',
     institution: 'Technion, Israel Institute of Technology',
     period: '2018 to 2019',
-    details:
-      'Python, R, SQL, statistics and machine learning.',
+    details: '',
   },
   {
     degree: 'BSc Electrical and Electronics Engineering',
@@ -164,102 +162,97 @@ const SKILL_GROUPS = [
 
 const LOCATIONS = ['Prague, Czech Republic', 'Remote with UK and EU teams'];
 
+const HEADING = 'font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:text-[2rem]';
+
 export default function ResumePage() {
   return (
-    <>
-      <header className="container pb-16 pt-14 md:pb-24 md:pt-20">
-        <div className="prose-col space-y-6">
-          <SectionLabel>Resume</SectionLabel>
-          <h1 className="text-display-lg">{HERO.name}</h1>
-          <p className="measure text-lg leading-relaxed text-muted-foreground md:text-xl">
-            Engineering lead and two-time founder. I spent seven years putting
-            machine learning into production, mostly forecasting for energy
-            markets, then built the AI behind Otty and Katalo. I now lead
-            engineering at a stealth startup building critical infrastructure
-            for aerospace, defence and robotics.
-          </p>
-          <p className="flex flex-wrap gap-x-2 gap-y-1 font-mono text-sm text-muted-foreground">
-            <a href={`mailto:${LINKS.email}`} className="link text-foreground">
-              {LINKS.email}
-            </a>
-            <span aria-hidden="true">·</span>
-            <a href="/dean-shabi-cv.pdf" className="link text-foreground">
-              PDF
-            </a>
-            {LOCATIONS.map((location) => (
-              <Fragment key={location}>
-                <span aria-hidden="true">·</span>
-                <span>{location}</span>
-              </Fragment>
-            ))}
-          </p>
-        </div>
-      </header>
-
-      <Section index="01" label="Experience">
-        <ol className="divide-y divide-border">
-          {EXPERIENCE.map((item) => (
-            <li
-              key={`${item.role}-${item.company}`}
-              className="space-y-4 py-8 first:pt-0 last:pb-0 md:grid md:grid-cols-[11rem_1fr] md:gap-6 md:space-y-0"
-            >
-              <div className="space-y-1 font-mono text-sm text-muted-foreground">
-                <p className="tabular-nums">{item.period}</p>
-                <p>{item.location}</p>
-              </div>
-              <div className="min-w-0 space-y-4">
-                <div className="space-y-1">
-                  <h2 className="text-display-sm">{item.role}</h2>
-                  <p className="text-sm text-muted-foreground">{item.company}</p>
-                </div>
-                <ul className="measure list-disc space-y-2 pl-4 text-[0.9375rem] leading-relaxed text-muted-foreground marker:text-border">
-                  {item.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
-                <p className="font-mono text-xs text-muted-foreground">
-                  {item.skills.join(' · ')}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section index="02" label="Education">
-        <ol className="divide-y divide-border">
-          {EDUCATION.map((item) => (
-            <li
-              key={item.degree}
-              className="space-y-4 py-8 first:pt-0 last:pb-0 md:grid md:grid-cols-[11rem_1fr] md:gap-6 md:space-y-0"
-            >
-              <p className="font-mono text-sm tabular-nums text-muted-foreground">
-                {item.period}
-              </p>
-              <div className="min-w-0 space-y-1">
-                <p className="font-medium">{item.degree}</p>
-                <p className="text-sm text-muted-foreground">{item.institution}</p>
-                <p className="measure pt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.details}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section index="03" label="Skills">
-        <div className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
-          {SKILL_GROUPS.map((group) => (
-            <div key={group.label} className="space-y-3">
-              <p className="label">{group.label}</p>
-              <p className="font-mono text-sm leading-relaxed">
-                {group.items.join(' · ')}
-              </p>
+    <div className="container pb-24 pt-10">
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <aside className="lg:col-span-3">
+          <div className="space-y-8 lg:sticky lg:top-28">
+            <p className="meta">Resume</p>
+            <div className="space-y-3 text-sm">
+              <Link href="/#contact" className="link block">
+                Contact me
+              </Link>
+              <a href="/dean-shabi-cv.pdf" className="link block">
+                Download as PDF
+              </a>
             </div>
-          ))}
+            <div className="space-y-1 text-sm text-muted-foreground">
+              {LOCATIONS.map((location) => (
+                <p key={location}>{location}</p>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        <div className="min-w-0 lg:col-span-9" data-reveal="">
+          <h1 className="font-serif text-[clamp(2.2rem,1.5rem+2.6vw,3.6rem)] leading-[1.05] tracking-[-0.015em]">{HERO.name}</h1>
+          <p className="mt-6 max-w-[62ch] text-[1.0625rem] leading-[1.7] text-muted-foreground">
+            Engineering lead and two-time founder. I spent seven years putting machine learning into production, mostly
+            forecasting for energy markets, then built the AI behind Otty and Katalo. I now lead engineering at a stealth
+            startup building critical infrastructure for aerospace, defence and robotics.
+          </p>
+
+          <section className="mt-16">
+            <h2 className={HEADING}>Experience</h2>
+            <ol className="mt-8 divide-y divide-border border-y border-border">
+              {EXPERIENCE.map((item) => (
+                <li key={`${item.role}-${item.company}`} className="grid gap-4 py-8 md:grid-cols-[11rem_1fr] md:gap-8">
+                  <div className="text-sm text-muted-foreground">
+                    <p className="font-mono text-foreground">{item.period}</p>
+                    <p className="mt-1">{item.location}</p>
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-sans text-lg font-medium leading-snug">
+                      {item.role}
+                      <span className="font-normal text-muted-foreground"> · {item.company}</span>
+                    </h3>
+                    <ul className="mt-4 max-w-[62ch] space-y-2 text-[0.95rem] leading-[1.65] text-muted-foreground">
+                      {item.bullets.map((bullet) => (
+                        <li key={bullet} className="grid grid-cols-[1rem_1fr]">
+                          <span aria-hidden="true" className="mt-[0.8em] block h-px w-2.5 bg-signal/70" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-4 text-xs text-muted-foreground">{item.skills.join(' · ')}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section className="mt-16">
+            <h2 className={HEADING}>Education</h2>
+            <ol className="mt-8 divide-y divide-border border-y border-border">
+              {EDUCATION.map((item) => (
+                <li key={item.degree} className="grid gap-3 py-6 md:grid-cols-[11rem_1fr] md:gap-8">
+                  <p className="font-mono text-sm">{item.period}</p>
+                  <div className="min-w-0">
+                    <p className="font-medium">{item.degree}</p>
+                    <p className="text-sm text-muted-foreground">{item.institution}</p>
+                    {item.details && <p className="mt-2 max-w-[62ch] text-sm leading-relaxed text-muted-foreground">{item.details}</p>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section className="mt-16">
+            <h2 className={HEADING}>Skills</h2>
+            <dl className="mt-8 grid gap-x-12 gap-y-6 sm:grid-cols-2">
+              {SKILL_GROUPS.map((group) => (
+                <div key={group.label}>
+                  <dt className="text-sm font-medium">{group.label}</dt>
+                  <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{group.items.join(', ')}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
         </div>
-      </Section>
-    </>
+      </div>
+    </div>
   );
 }

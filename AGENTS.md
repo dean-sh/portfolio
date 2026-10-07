@@ -23,8 +23,8 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 - `components/Pipeline.tsx` renders a case study's `pipeline.stages`.
 - `content/charts.ts` holds the five time series. `lib/chart.ts` formats axes and builds SVG paths; `components/Chart.tsx` renders the figure and data table. `ChartHover.tsx` adds pointer, touch and keyboard readouts. Keep shared constants outside client components.
 - Charts name their source and label simulations. Do not invent measured results. Keep mobile readouts within the plot and preserve the expandable data table.
-- Legacy pages under `app/projects/*` wrap `components/ProjectDetails.tsx` and are linked from `EARLIER`.
-- `app/sitemap.ts` lists home, resume and every case study. `next.config.js` redirects `/projects/renewcast-solar-forecasting` to `/work/physics-first-solar`.
+- The remaining legacy pages under `app/projects/*` wrap `components/ProjectDetails.tsx` and are not linked from the site.
+- `app/sitemap.ts` lists home, resume and every case study. `next.config.js` redirects old `/projects/*` and retired `/work/*` URLs to their current case studies.
 - `app/resume/page.tsx` holds its own experience, education and skills data.
 
 ## Design system
@@ -49,4 +49,14 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 The home page shows the GitHub contribution heatmap under the hero. `lib/github.ts` fetches the public calendar at `github.com/users/<user>/contributions` (no token) with `revalidate: 86400`, so the page regenerates at most once a day. A failed refresh throws, which makes Next keep serving the last good page. A failed fetch during `next build` returns `null` and the section is left out. Colours come from the `--gh-0` to `--gh-4` tokens in `app/globals.css` (GitHub's greens, per theme). Levels are the user's own quartiles of active days.
 
 Each work row on the home page draws a sparkline of its case study chart (`components/Sparkline.tsx`), reusing `lib/chart.ts`. A chart with `spark: 'cumulative'` is drawn as running totals.
+
+## Earlier case studies
+
+`content/work.ts` exports `WORK` (current) and `EARLIER` (older projects). Both are `CaseStudy` entries rendered by `app/work/[slug]/page.tsx`; prev/next stays within each list. The old `/projects/<slug>` URLs for the five migrated projects redirect permanently to `/work/<slug>` (`next.config.js`). Chart kinds live in `content/types.ts` (`line`, `funnel`, `judge`, `compare`, `equation`, `tail`), each with a full view in `components/Chart.tsx` and a mini view in `components/Sparkline.tsx`. The `tail` chart is an illustrative loss distribution, labelled as such. The remaining `app/projects/*` pages are unlinked legacy pages that still use `components/ProjectDetails.tsx`.
+
+## Type and share image
+
+`DESIGN.md` is the design system. Monospace is for numbers only. Small labels use the `.meta` (12px muted) and `.eyebrow` (12px medium) utilities in `app/globals.css`, never letterspaced uppercase mono. The global `h1, h2, h3` rule applies the serif, so sans headings must add `font-sans`. The share image `public/images/og-image.png` is rendered from a static template with a snapshot of the heatmap; regenerate it when the hero copy changes.
+
+Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workImage(slug)` in `lib/work.ts` builds the path, and `components/Photo.tsx` renders it. A missing file shows as a broken image rather than a build error, so add the photo in the same change as the study.
 

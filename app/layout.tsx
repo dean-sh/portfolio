@@ -5,6 +5,7 @@ import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import { Nav } from '@/components/Nav';
+import { RevealObserver } from '@/components/RevealObserver';
 import { HERO, LINKS } from '@/content/site';
 
 const serif = Instrument_Serif({
@@ -90,6 +91,8 @@ const themeScript = `
     if (stored === 'light' || stored === 'dark') t = stored;
   } catch (e) {}
   root.classList.toggle('dark', t === 'dark');
+  if (t === 'dark') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0C0C0E');
+  root.classList.add('js');
   root.dataset.theme = t;
 })();
 `;
@@ -108,8 +111,7 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#FAF9F7" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#121418" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#FAFAFA" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
@@ -124,9 +126,10 @@ export default function RootLayout({
         <main id="main-content" className="flex flex-1 flex-col">
           {children}
         </main>
-        <footer className="container max-w-[52rem] pb-16 pt-16 font-mono text-xs text-muted-foreground">
+        <footer className="container pb-16 pt-16 text-xs text-muted-foreground">
           &copy; {new Date().getFullYear()} {HERO.name}
         </footer>
+        <RevealObserver />
         <Analytics />
       </body>
     </html>

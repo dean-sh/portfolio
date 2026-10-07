@@ -71,7 +71,7 @@ function axisX(x: ChartX): { raw: number[]; labels: string[]; ticks: number[]; t
         ticks: evenTicks(raw.length, 7),
         tickLabel: (i) => {
           const [y, m] = parse(x.values[i]);
-          return i === 0 || m === 1 ? `${MONTHS[m - 1]} ${String(y).slice(2)}` : MONTHS[m - 1];
+          return i === 0 || m === 1 ? `${MONTHS[m - 1]} ${y}` : MONTHS[m - 1];
         },
       };
     }
@@ -140,5 +140,48 @@ export function plotChart(chart: LineChart): Plot {
     })),
     series,
     points: (chart.points ?? []).map((p) => ({ x: xs[p.at], y: focus.ys[p.at], label: p.label })),
+  };
+}
+
+export type LossCurve = {
+  curve: string;
+  area: string;
+  tail: string;
+  tailCurve: string;
+  varAt: number;
+  esAt: number;
+};
+
+const LOSS_MAX = 9;
+const LOSS_STEPS = 240;
+
+export function lossCurve(confidence: number): LossCurve {
+  const xs = Array.from({ length: LOSS_STEPS + 1 }, (_, i) => (LOSS_MAX * i) / LOSS_STEPS);
+  const ys = xs.map((x) => x * Math.exp(-x));
+  const total = ys.reduce((a, b) => a + b, 0);
+  let cumulative = 0;
+  let varIndex = xs.length - 1;
+  for (let i = 0; i < ys.length; i++) {
+    cumulative += ys[i] / total;
+    if (cumulative >= confidence) {
+      varIndex = i;
+      break;
+    }
+  }
+  const tailWeight = ys.slice(varIndex).reduce((a, b) => a + b, 0);
+  const es = ys.slice(varIndex).reduce((a, y, k) => a + y * xs[varIndex + k], 0) / tailWeight;
+
+  const peak = Math.max(...ys);
+  const px = (x: number) => ((x / LOSS_MAX) * SIZE).toFixed(1);
+  const py = (y: number) => ((1 - (y / peak) * 0.9) * SIZE).toFixed(1);
+  const points = xs.map((x, i) => `${px(x)} ${py(ys[i])}`);
+  const tailPoints = points.slice(varIndex);
+  return {
+    curve: `M${points.join('L')}`,
+    area: `M${points.join('L')}L${px(LOSS_MAX)} ${SIZE}L0 ${SIZE}Z`,
+    tail: `M${px(xs[varIndex])} ${SIZE}L${tailPoints.join('L')}L${px(LOSS_MAX)} ${SIZE}Z`,
+    tailCurve: `M${tailPoints.join('L')}`,
+    varAt: xs[varIndex] / LOSS_MAX,
+    esAt: es / LOSS_MAX,
   };
 }

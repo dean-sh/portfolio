@@ -1,10 +1,30 @@
 import type { Testimonial } from './types';
 
+export type HeadlineSegment = { text: string } | { visual: 'portrait' | 'chart' };
+
+const HEADLINE: HeadlineSegment[] = [
+  { text: 'Engineering lead.' },
+  { visual: 'portrait' },
+  { text: 'I build machine learning' },
+  { visual: 'chart' },
+  { text: ' systems that run in production.' },
+];
+
 export const HERO = {
   name: 'Dean Shabi',
-  title: 'Engineering lead. I build machine learning systems that run in production.',
-  lede: 'Stealth startup, aerospace and defence · Founder, Otty · Ex Renewcast, tem., AmpX · Prague',
+  headline: HEADLINE,
+  photo: '/images/hero.jpg',
+  title: HEADLINE.map((s) => ('text' in s ? s.text : ' ')).join('').replace(/\s+/g, ' ').trim(),
 };
+
+export type NowItem = { label: string; value: string; href?: string; detail: string };
+
+export const NOW: NowItem[] = [
+  { label: 'Now', value: 'Engineering lead', detail: 'Stealth startup in aerospace, defence and robotics' },
+  { label: 'Founder', value: 'Otty', href: 'https://heyotty.com', detail: 'Co-founder of Katalo' },
+  { label: 'Before', value: 'Machine learning', detail: 'Renewcast, tem. and AmpX' },
+  { label: 'Based in', value: 'Prague', detail: 'Remote with UK and EU teams' },
+];
 
 export const TESTIMONIALS: Testimonial[] = [
   {

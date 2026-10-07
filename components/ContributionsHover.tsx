@@ -37,10 +37,10 @@ export function ContributionsHover({ children }: { children: ReactNode }) {
       {tip && (
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute z-10 whitespace-nowrap border border-border bg-background px-2.5 py-1.5 font-mono text-[11px] shadow-sm"
+          className="pointer-events-none absolute z-10 whitespace-nowrap border border-border bg-background px-2.5 py-1.5 text-xs shadow-sm"
           style={{ left: tip.left, top: tip.top - 8, transform: `translate(${shift}, -100%)` }}
         >
-          <span className="font-medium text-foreground">
+          <span className="font-mono font-medium text-foreground">
             {tip.count === 0 ? 'No' : tip.count.toLocaleString('en-GB')} contribution{tip.count === 1 ? '' : 's'}
           </span>
           <span className="text-muted-foreground"> · {formatDate(tip.date)}</span>
