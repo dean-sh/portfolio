@@ -12,8 +12,8 @@ export const WORK: CaseStudy[] = [
     summary:
       'Renewcast\'s forecasts come from weather models, so they miss what a plant is doing right now. Soiling, a tripped inverter or a cloud bank 20 km off course all show up in the readings first. I trained a small recurrent network that reads the latest readings next to the forecast customers already received and corrects the next four hours. One model covers the solar fleet and another covers the wind fleet.',
     metrics: [
-      { value: '21.9%', label: 'Less short-term solar error, in backtests' },
-      { value: '26.6%', label: 'Less short-term wind error, in backtests' },
+      { value: '21.9%', label: 'Median cut in solar error over the first two hours' },
+      { value: '26.6%', label: 'Median cut in wind error over the first two hours' },
     ],
     pipeline: {
       caption: 'The model reads the forecast customers already got and the latest readings. Anything beyond four hours is left as it was.',
@@ -39,7 +39,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'Across 224 solar and wind plants, the correction cut error in the first two hours by 21.9% for solar and 26.6% for wind.',
+      'In a backtest that held out each client, the median plant-month\'s error over the first two hours fell 21.9% for solar and 26.6% for wind. Carrying the latest error forward managed 16.3% and 25.3%.',
     ],
     chart: charts.fleetNowcasting,
     stack: ['PyTorch', 'Python', 'MLflow', 'Databricks'],
@@ -132,7 +132,7 @@ export const WORK: CaseStudy[] = [
     ],
     results: [
       'Portfolio error fell from 15.3% to 6.2% between May and October 2025, lower every month.',
-      'The new release rule also caught six hand-picked models that were worse than what was already in production.',
+      'Under the new release rule, six of twelve hand-picked models failed to beat what was already in production.',
     ],
     chart: charts.physicsFirstSolar,
     stack: ['Python', 'pvlib', 'LightGBM', 'MLflow', 'Databricks'],
@@ -175,7 +175,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'By October 2026, four client portfolios ran on the framework, the largest with 1,189 plants. On a 107-site portfolio, forecast error averaged 10% over 14 months.',
+      'By October 2026, four client portfolios ran on the framework, the largest with 1,189 plants. On a 107-site portfolio, hourly forecast error came to 10% of metered energy over 14 months. Monthly totals were off by 5% on average.',
     ],
     chart: charts.portfolioFramework,
     stack: ['Python', 'pvlib', 'H3', 'LightGBM', 'MLflow'],
@@ -238,10 +238,10 @@ export const EARLIER: CaseStudy[] = [
     period: '2024-2025',
     role: 'Designed and built the pricing engine',
     summary:
-      'I built a modular pricing engine at tem. Analysts swap pricing strategies and test them against hundreds of simulated markets, with Value at Risk and Expected Shortfall built into every price.',
+      'I built a modular pricing engine at tem. Analysts swap pricing strategies and test them against simulated markets, with Value at Risk and Expected Shortfall built into every price.',
     metrics: [
       { value: '95%', label: 'Less time to price a tender' },
-      { value: '10×', label: 'More scenarios tested per quote' },
+      { value: '10×', label: 'More scenarios tested' },
     ],
     pipeline: {
       caption: 'Every quote is tested in simulated markets alongside the contracts already signed, so the price carries the risk it adds.',
@@ -272,7 +272,7 @@ export const EARLIER: CaseStudy[] = [
       },
     ],
     results: [
-      'Pricing a tender takes 95% less time, with 10 times as many scenarios tested per quote.',
+      'Pricing a tender takes 95% less time, with 10 times as many scenarios tested.',
     ],
     chart: charts.pricingTail,
     stack: ['Python', 'Monte Carlo', 'Streamlit'],
@@ -289,7 +289,7 @@ export const EARLIER: CaseStudy[] = [
     metrics: [
       { value: '£50/MWh', label: 'Levies avoided per matched MWh' },
       { value: '60+', label: 'Generator and business pairings' },
-      { value: '35%', label: 'Of candidate pairs became deals' },
+      { value: '35%', label: 'Match success rate across candidate pairs' },
     ],
     pipeline: {
       caption: 'Every candidate pair is scored on how well generation lines up with demand, then checked against the exemption limits before a contract is drafted.',
@@ -316,7 +316,7 @@ export const EARLIER: CaseStudy[] = [
       },
     ],
     results: [
-      'More than 60 pairings and over £3M of value for SMEs and utilities, with 35% of candidate pairs becoming deals.',
+      'More than 60 pairings and over £3M of value for SMEs and utilities, with a 35% match success rate across candidate pairs.',
     ],
     chart: charts.exemptEquation,
     stack: ['Python', 'PyTorch', 'Optimisation', 'Graph algorithms'],
@@ -363,7 +363,7 @@ export const EARLIER: CaseStudy[] = [
       },
     ],
     results: [
-      'The forecasts power core features in energy management platforms with thousands of users. Sub-hourly forecasts cut balancing costs and penalties, an estimated saving of millions a year.',
+      'The forecasts powered core features in customer-facing energy management platforms. Sub-hourly forecasts cut balancing costs and penalties.',
     ],
     chart: charts.forecastingCompare,
     stack: ['Python', 'PyTorch', 'MLflow', 'AWS', 'Docker'],
@@ -372,8 +372,8 @@ export const EARLIER: CaseStudy[] = [
     slug: 'mlops-foundation',
     title: 'One model contract, so every forecast ships the same way',
     hook: 'Solar, wind and pricing models each had their own packaging and runtime, so a small experiment meant pipeline surgery. A shared model contract and one package format cut deploy prep from days to under one.',
-    org: 'tem.',
-    period: '2024-2025',
+    org: 'Renewcast',
+    period: '2025',
     role: 'Platform R&D',
     summary:
       'Forecasting work had spread across solar, wind and pricing, and the tooling grew one model at a time. We rebuilt the path from notebook to production around a model contract, MLflow packaging and a challenger-versus-champion loop.',

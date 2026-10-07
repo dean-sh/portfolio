@@ -29,8 +29,8 @@ export const portfolioFramework: Chart = {
 export const fleetNowcasting: Chart = {
   kind: 'line',
   title: 'Solar forecast error over the next four hours',
-  note: 'The fleet model halves the error 15 minutes ahead, and the gain fades by four hours. Persistence simply assumes the latest error carries on.',
-  source: 'Backtest on Renewcast\'s solar fleet.',
+  note: 'Average error at each step ahead. Persistence is slightly better for the first 30 minutes and the fleet model is better from 45 minutes. Both hand back to the delivered forecast at four hours.',
+  source: 'Backtest of an earlier version of the fleet model on Renewcast\'s solar fleet.',
   x: { kind: 'number', values: [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240], unit: ' min' },
   y: { format: 'percent', min: 0 },
   series: [
@@ -82,12 +82,12 @@ export const pricingTail: Chart = {
 export const exemptEquation: Chart = {
   kind: 'equation',
   title: 'One pairing, one year',
-  note: 'A 4.8 MW solar farm matched with a business complex of 20 to 25 SMEs. Every exempt MWh skips about £50 in policy levies, and up to 85% of the output is used locally.',
+  note: 'A solar farm generating about 7 GWh a year, matched with a business complex of 20 to 25 SMEs. Up to 85% of the output is used locally, and every exempt MWh skips about £50 in policy levies.',
   source: 'Worked example from the project.',
   terms: [
-    { value: '7 GWh', label: 'Generated a year' },
+    { value: '6 GWh', label: 'Used locally a year' },
     { value: '£50/MWh', label: 'Levies avoided' },
-    { value: '£350,000', label: 'Potential saving a year' },
+    { value: '£300,000', label: 'Potential saving a year' },
   ],
   ops: ['×', '='],
   sparkLabel: 'One pairing, one year',
