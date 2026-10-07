@@ -6,11 +6,12 @@ Dean Shabi's portfolio at https://deanshabi.com. Typed content in `content/` dri
 
 ```
 /
-├── app/              # Next.js App Router pages (home, /work/[slug], /resume, legacy /projects/*)
+├── app/              # App Router pages (home, /work/[slug], /resume, 404), share images, icons, the resume PDF route
 ├── components/       # Reusable React components
-├── content/          # Typed content registry (types.ts, work.ts, site.ts)
-├── lib/              # Helpers (case study lookup, chart axes and paths)
-├── public/           # Static assets (images, fonts, etc.)
+├── content/          # Typed content registry (work, charts, site copy, resume)
+├── lib/              # Helpers (case study lookup, chart axes and paths, metadata, share images, palette)
+├── assets/fonts/     # TTFs for the resume PDF and the share images
+├── public/           # Photos
 ├── next.config.js    # Next.js configuration
 ├── tailwind.config.js # Tailwind CSS configuration
 ├── package.json      # Project dependencies and scripts
@@ -30,9 +31,10 @@ This project leverages a modern web development stack:
 
 - Typographic design with light and dark themes
 - Fully responsive
-- Five case studies with time series charts, pointer and keyboard readouts, and expandable data tables
-- Resume page
-- Sitemap and structured metadata for SEO
+- Ten case studies, each with a chart from its real data. Line charts have pointer, touch and keyboard readouts and an expandable data table
+- A GitHub contribution heatmap that refreshes daily
+- Resume page, plus a resume PDF generated from the same content at build time
+- Share images and icons generated at build time, a sitemap, robots.txt and structured metadata
 
 ## Getting Started
 
@@ -82,8 +84,8 @@ The site deploys to Vercel as a standard Next.js app.
 
 ## Customization
 
-- Edit copy in `content/site.ts`, case studies in `content/work.ts`, and time series in `content/charts.ts`.
-- Tokens and fonts live in `app/globals.css`, `tailwind.config.js` and `app/layout.tsx`.
+- Edit copy in `content/site.ts`, case studies in `content/work.ts`, charts in `content/charts.ts` and the resume in `content/resume.ts`.
+- Tokens and fonts live in `app/globals.css`, `tailwind.config.js` and `app/fonts.ts`. `DESIGN.md` describes the design system.
 
 ## License
 
