@@ -85,7 +85,7 @@ The site deploys to Vercel as a standard Next.js app.
 ## Customization
 
 - Edit copy in `content/site.ts`, case studies in `content/work.ts`, charts in `content/charts.ts` and the resume in `content/resume.ts`.
-- Tokens and fonts live in `app/globals.css`, `tailwind.config.js` and `app/fonts.ts`. `DESIGN.md` describes the design system.
+- Tokens and fonts live in `app/globals.css`, `tailwind.config.js` and `app/layout.tsx`. `DESIGN.md` describes the design system.
 
 ## License
 

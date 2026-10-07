@@ -2,7 +2,6 @@ import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { serifItalic } from './fonts';
 import { Arrow } from '@/components/Arrow';
 import { CallButton, Contact } from '@/components/Contact';
 import { Contributions } from '@/components/Contributions';
@@ -309,7 +308,7 @@ export default function Home() {
 
       <section className={cn(SECTION, 'grid md:grid-cols-12')} {...reveal(0)}>
         <figure className="md:col-span-8 md:col-start-5">
-          <blockquote className={cn(serifItalic.className, 'text-[clamp(1.65rem,1.15rem+1.8vw,2.6rem)] italic leading-[1.18] text-balance')}>
+          <blockquote className="font-serif text-[clamp(1.65rem,1.15rem+1.8vw,2.6rem)] italic leading-[1.18] text-balance">
             &ldquo;{QUOTE.quote}&rdquo;
           </blockquote>
           <figcaption className="meta mt-5">

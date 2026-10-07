@@ -41,7 +41,7 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 ## Design system
 
 - `DESIGN.md` is the design system. Tokens live in `app/globals.css` as HSL CSS variables, mapped to Tailwind colours in `tailwind.config.js`. Light is the default and the `dark` class switches themes.
-- Fonts are set up in `app/fonts.ts`. Instrument Serif (`font-serif`, weight 400) and Geist Sans are preloaded. The italic serif is a separate instance that only the testimonial uses (`serifItalic.className`). Geist Mono (`font-mono`) loads from the geist package's file without a preload.
+- Fonts are set up in `app/layout.tsx`. Instrument Serif comes from `next/font/google` (`font-serif`, weight 400, upright and italic), and Geist Sans and Geist Mono from the `geist` package (`font-sans`, `font-mono`). Keep all four preloaded. Text in every one of them is in the DOM at load, so the browser fetches them at first layout anyway, and dropping the preloads only delayed those requests and added about 600 ms to Lighthouse's mobile FCP.
 - One accent, `signal` (GitHub green). It marks data (metrics, index numbers, the focus series), the primary button and hover states. `signal-hover` is the darker button hover, which keeps white text above 4.5:1.
 - `.panel` (surface, border, 1rem radius, soft shadow) is for the Now strip, the heatmap, charts, the work cards and the metrics band. Everything else is separated by hairlines and space.
 - Utilities: `.container`, `.panel`, `.meta`, `.eyebrow`, `.link`, `.rise`. Small labels use `.meta` (12px muted) and `.eyebrow` (12px medium), never letterspaced uppercase mono. Monospace is for numbers only. The global `h1, h2, h3` rule applies the serif, so sans headings must add `font-sans`.

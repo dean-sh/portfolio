@@ -1,12 +1,22 @@
 import type { Metadata } from 'next';
+import { Instrument_Serif } from 'next/font/google';
 import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
-import { mono, serif } from './fonts';
 import { Nav } from '@/components/Nav';
 import { RevealObserver } from '@/components/RevealObserver';
 import { HERO, LINKS } from '@/content/site';
 import { OPEN_GRAPH } from '@/lib/metadata';
+
+const serif = Instrument_Serif({
+  weight: '400',
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+  adjustFontFallback: true,
+});
 
 const SITE_TITLE = 'Dean Shabi · Engineering lead';
 
@@ -80,7 +90,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${mono.variable} ${serif.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
       data-theme="light"
       suppressHydrationWarning
     >
