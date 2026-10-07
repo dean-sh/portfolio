@@ -40,7 +40,7 @@ const s = StyleSheet.create({
     color: INK,
     fontFamily: 'Geist',
   },
-  name: { ...type(30, 1), fontFamily: 'Instrument Serif', letterSpacing: -0.4 },
+  name: { ...type(30, 1), fontFamily: 'Instrument Serif' },
   summary: { ...type(9.5, 1.5), marginTop: 10, maxWidth: 440, color: MUTED },
   meta: { marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' },
   locations: { ...type(8, 1.4), color: MUTED },
