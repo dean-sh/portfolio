@@ -220,7 +220,7 @@ export default function Home() {
                 </div>
                 {panelled.chart && (
                   <div className="mt-8">
-                    <p className="meta">{panelled.chart.spark?.label ?? panelled.chart.title}</p>
+                    <p className="meta">{panelled.chart.sparkLabel}</p>
                     <SparkBody chart={panelled.chart} className="mt-4 h-16 w-full" />
                   </div>
                 )}

@@ -169,15 +169,3 @@ export function SparkBody({ chart, className = SPARK_SIZE }: { chart: Chart; cla
       return <MiniTail chart={chart} className={className} />;
   }
 }
-
-export function SparkCard({ chart }: { chart: Chart }) {
-  return (
-    <div className="rounded-md border border-border bg-surface px-4 py-3 transition-colors duration-200 group-hover:border-signal/40">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs leading-snug">
-        <span className="text-muted-foreground">{chart.spark?.label ?? chart.title}</span>
-        {chart.spark && <span className="font-mono font-medium text-signal">{chart.spark.value}</span>}
-      </div>
-      <SparkBody chart={chart} />
-    </div>
-  );
-}

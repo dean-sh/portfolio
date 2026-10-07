@@ -9,7 +9,7 @@ export const physicsFirstSolar: Chart = {
   y: { format: 'percent', min: 0 },
   series: [{ label: 'Portfolio nMAE', tone: 'focus', values: [15.3, 11.1, 10.1, 9.4, 7.4, 6.2] }],
   points: [{ at: 0, label: '15.3%' }, { at: 5, label: '6.2%' }],
-  spark: { label: 'Portfolio error by month, May to October 2025', value: 'lower every month' },
+  sparkLabel: 'Portfolio error by month, May to October 2025',
 };
 
 export const portfolioFramework: Chart = {
@@ -23,7 +23,7 @@ export const portfolioFramework: Chart = {
     { label: 'Metered', tone: 'context', values: [2976, 3064, 2228, 1346, 697, 397, 573, 862, 2527, 2649, 3020, 3335, 3266, 2792] },
     { label: 'Forecast', tone: 'focus', values: [2898, 3287, 2162, 1280, 681, 341, 673, 899, 2415, 2667, 2908, 3197, 3244, 2791] },
   ],
-  spark: { label: 'Forecast vs metered energy, by month', value: '10.0% error' },
+  sparkLabel: 'Forecast vs metered energy, by month',
 };
 
 export const fleetNowcasting: Chart = {
@@ -38,7 +38,7 @@ export const fleetNowcasting: Chart = {
     { label: 'Persistence', tone: 'baseline', values: [2.74, 3.67, 4.31, 4.63, 4.95, 5.16, 5.34, 5.57, 5.53, 5.68, 5.76, 5.85, 5.97, 5.99, 6.04, 6.22] },
     { label: 'Fleet GRU', tone: 'focus', values: [3.06, 3.75, 4.09, 4.39, 4.66, 4.93, 5.08, 5.34, 5.25, 5.46, 5.63, 5.71, 5.68, 5.74, 6.0, 6.22] },
   ],
-  spark: { label: 'Fleet model vs delivered forecast, error by minutes ahead', value: '21.9% lower' },
+  sparkLabel: 'Fleet model vs delivered forecast, error by minutes ahead',
 };
 
 export const ottyFunnel: Chart = {
@@ -54,7 +54,7 @@ export const ottyFunnel: Chart = {
     { label: 'Employer responses', value: 10 },
     { label: 'Interviews', value: 4 },
   ],
-  spark: { label: 'Roles judged to interviews, first four weeks', value: '8.5% of applications led to interviews' },
+  sparkLabel: 'Roles judged to interviews, first four weeks',
 };
 
 export const kataloJudge: Chart = {
@@ -67,7 +67,7 @@ export const kataloJudge: Chart = {
   rule: 'Score of 4 or more and no structural failure',
   pass: 'Publish to the listing',
   fail: 'Retry with the fix instructions, up to 3 attempts',
-  spark: { label: 'How the LLM judge decides', value: '95% precision' },
+  sparkLabel: 'How the LLM judge decides',
 };
 
 export const pricingTail: Chart = {
@@ -76,7 +76,7 @@ export const pricingTail: Chart = {
   note: 'An illustrative distribution of portfolio losses. VaR marks the loss exceeded only 5% of the time. Expected Shortfall is the average of those worst cases, which is where volatile energy markets hurt.',
   source: 'Illustrative shape.',
   confidence: 0.95,
-  spark: { label: 'Portfolio loss distribution, illustrative', value: 'VaR and ES' },
+  sparkLabel: 'Portfolio loss distribution, illustrative',
 };
 
 export const exemptEquation: Chart = {
@@ -90,7 +90,7 @@ export const exemptEquation: Chart = {
     { value: '£350,000', label: 'Potential saving a year' },
   ],
   ops: ['×', '='],
-  spark: { label: 'One pairing, one year', value: '£350,000' },
+  sparkLabel: 'One pairing, one year',
 };
 
 export const forecastingCompare: Chart = {
@@ -99,7 +99,7 @@ export const forecastingCompare: Chart = {
   note: 'MAPE for load and generation, aggregated across hundreds of production sites and indexed so the benchmark is 100.',
   source: 'Production evaluation across client sites.',
   rows: [{ label: 'MAPE, indexed', before: 100, after: 70, beforeLabel: 'Benchmark 100', afterLabel: 'Global models under 70' }],
-  spark: { label: 'Forecast error vs benchmark, indexed', value: 'over 30% lower' },
+  sparkLabel: 'Forecast error vs benchmark, indexed',
 };
 
 export const mlopsCompare: Chart = {
@@ -111,7 +111,7 @@ export const mlopsCompare: Chart = {
     { label: 'Deploy prep', before: 4.5, after: 1, beforeLabel: '4-5 days', afterLabel: 'under 1 day' },
     { label: 'Challengers per week', before: 1, after: 3, beforeLabel: '1×', afterLabel: '3×' },
   ],
-  spark: { label: 'Before and after the rebuild', value: 'deploys in under a day' },
+  sparkLabel: 'Before and after the rebuild',
 };
 
 export const robotCompare: Chart = {
@@ -120,6 +120,6 @@ export const robotCompare: Chart = {
   note: 'Indexed so downtime before the system is 100.',
   source: 'Automotive production lines, Datamole AI.',
   rows: [{ label: 'Unplanned downtime, indexed', before: 100, after: 65, beforeLabel: 'Before 100', afterLabel: 'After under 65' }],
-  spark: { label: 'Unplanned downtime, indexed', value: 'over 35% lower' },
+  sparkLabel: 'Unplanned downtime, indexed',
 };
 

@@ -47,7 +47,8 @@ type ChartCommon = {
   title: string;
   note: string;
   source: string;
-  spark?: { label: string; value: string };
+  // Caption for the mini chart on the home page.
+  sparkLabel: string;
 };
 
 export type LineChart = ChartCommon & {
