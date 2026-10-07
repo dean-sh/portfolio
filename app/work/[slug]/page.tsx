@@ -9,6 +9,7 @@ import { Photo } from '@/components/Photo';
 import { Toc } from '@/components/Toc';
 import { Pipeline } from '@/components/Pipeline';
 import { OPEN_GRAPH } from '@/lib/metadata';
+import { JsonLd, caseStudyGraph } from '@/lib/structured-data';
 import { ALL_CASE_STUDIES, findCaseStudy, formatIndex, workImage, type CaseStudyEntry } from '@/lib/work';
 
 type Params = { slug: string };
@@ -33,7 +34,12 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 export default function CaseStudyPage({ params }: { params: Params }) {
   const entry = findCaseStudy(params.slug);
   if (!entry) notFound();
-  return <CaseStudy entry={entry} />;
+  return (
+    <>
+      <JsonLd data={caseStudyGraph(entry.study)} />
+      <CaseStudy entry={entry} />
+    </>
+  );
 }
 
 const SECTIONS = [

@@ -8,6 +8,7 @@ import { Nav } from '@/components/Nav';
 import { RevealObserver } from '@/components/RevealObserver';
 import { HERO, LINKS } from '@/content/site';
 import { OPEN_GRAPH } from '@/lib/metadata';
+import { JsonLd, SITE_GRAPH } from '@/lib/structured-data';
 
 const serif = Instrument_Serif({
   weight: '400',
@@ -50,23 +51,6 @@ export const metadata: Metadata = {
   },
 };
 
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: HERO.name,
-  jobTitle: 'Engineering Lead',
-  description: HERO.title,
-  url: LINKS.site,
-  sameAs: [LINKS.linkedin, LINKS.github],
-  knowsAbout: [
-    'Machine Learning',
-    'Forecasting',
-    'Renewable Energy',
-    'Autonomous Agents',
-    'Data Science',
-  ],
-};
-
 const themeScript = `
 (function () {
   var root = document.documentElement;
@@ -97,10 +81,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#FAFAFA" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        <JsonLd data={SITE_GRAPH} />
       </head>
       <body className="flex min-h-screen flex-col overflow-x-clip">
         <a href="#main-content" className="skip-link">
