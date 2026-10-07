@@ -70,7 +70,6 @@ const personJsonLd = {
   jobTitle: 'Engineering Lead',
   description: HERO.title,
   url: LINKS.site,
-  email: `mailto:${LINKS.email}`,
   sameAs: [LINKS.linkedin, LINKS.github],
   knowsAbout: [
     'Machine Learning',
