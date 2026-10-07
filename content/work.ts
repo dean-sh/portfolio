@@ -145,7 +145,7 @@ export const WORK: CaseStudy[] = [
     period: '2026',
     role: 'Designed the framework and built the pipelines',
     summary:
-      'Renewcast\'s forecasting pipeline assumed one ID per plant, with the data already prepared. Portfolios broke that assumption. I modelled plants, meters and the forecasts we sell as separate things, so each new portfolio reuses the same steps instead of needing its own pipeline.',
+      'Renewcast\'s forecasting pipeline assumed one ID per plant, with the data already prepared. Portfolios broke that assumption. I modelled plants, meters and the forecasts Renewcast sells as separate things, so each new portfolio reuses the same steps instead of needing its own pipeline.',
     metrics: [
       { value: '4', label: 'Client portfolios with different layouts' },
       { value: '1,189', label: 'Plants in the largest portfolio' },
@@ -175,7 +175,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'Four client portfolios now run on one framework, the largest with 1,189 plants. On a 107-site portfolio, forecast error averaged 10% over 14 months.',
+      'By October 2026, four client portfolios ran on the framework, the largest with 1,189 plants. On a 107-site portfolio, forecast error averaged 10% over 14 months.',
     ],
     chart: charts.portfolioFramework,
     stack: ['Python', 'pvlib', 'H3', 'LightGBM', 'MLflow'],
@@ -188,7 +188,7 @@ export const WORK: CaseStudy[] = [
     period: '2026',
     role: 'Co-founder · AI pipeline, evals and infrastructure',
     summary:
-      'Katalo stages, renovates and declutters listing photos for real-estate agencies. Image models are good at furniture and bad at walls, and a photo that misrepresents a property can\'t be published. I built the pipeline that generates each edit, checks it and repairs the ones that fail.',
+      'Katalo staged, renovated and decluttered listing photos for real-estate agencies. Image models are good at furniture and bad at walls, and a photo that misrepresents a property can\'t be published. I built the pipeline that generated each edit, checked it and repaired the ones that failed.',
     metrics: [
       { value: '95%', label: 'Precision against human reviewers' },
       { value: '91%', label: 'Accuracy against human reviewers' },
@@ -214,7 +214,7 @@ export const WORK: CaseStudy[] = [
       },
       {
         title: 'Measure what the agency would see',
-        body: 'I calibrated the judge against human labels and replay each listing to see which image would actually have been published. Wrong approvals and wrong rejections are counted separately, because they cost different things.',
+        body: 'I calibrated the judge against human labels and replayed each listing to see which image would actually have been published. Wrong approvals and wrong rejections are counted separately, because they cost different things.',
       },
       {
         title: 'Share four providers without falling over',
@@ -222,7 +222,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'Agencies can also call the pipeline through an API. A retried request never generates twice, and completion webhooks are signed.',
+      'Agencies could also call the pipeline through an API. A retried request never generated twice, and completion webhooks were signed.',
     ],
     chart: charts.kataloJudge,
     stack: ['TypeScript', 'Convex', 'Gemini', 'FAL', 'OpenRouter'],

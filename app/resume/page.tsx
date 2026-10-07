@@ -35,7 +35,7 @@ const EXPERIENCE = [
     role: 'Co-founder',
     company: 'Katalo',
     location: 'Remote',
-    period: 'Feb 2026 to now',
+    period: 'Feb 2026 to Sep 2026',
     bullets: [
       'Built an image-editing pipeline where a calibrated vision judge decides what ships and its rejections become repair prompts.',
       'Built a shared queue and adaptive rate limiter for four AI providers. Capacity leases expire, so a crashed worker frees its slot.',
@@ -47,7 +47,7 @@ const EXPERIENCE = [
     role: 'Senior Data Scientist',
     company: 'Renewcast',
     location: 'Italy · Remote',
-    period: '2025 to 2026',
+    period: '2025 to Oct 2026',
     bullets: [
       'Owned the solar forecasting stack. Cut portfolio forecast error from 15% to 6% in five months by pairing plant physics with a learned correction.',
       'Built one model per fleet that corrects the next four hours from live plant data. It beat persistence on 98% of solar plant-months in backtests.',
