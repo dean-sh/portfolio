@@ -24,14 +24,6 @@ export const metadata: Metadata = {
     description: HERO.title,
     url: LINKS.site,
     siteName: HERO.name,
-    images: [
-      {
-        url: '/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: HERO.name,
-      },
-    ],
     type: 'website',
     locale: 'en_GB',
   },
@@ -39,7 +31,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_TITLE,
     description: HERO.title,
-    images: ['/images/og-image.png'],
   },
   robots: {
     index: true,

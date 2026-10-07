@@ -29,13 +29,11 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
       url,
       title: study.title,
       description: study.summary,
-      images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: study.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: study.title,
       description: study.summary,
-      images: ['/images/og-image.png'],
     },
   };
 }
