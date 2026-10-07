@@ -66,8 +66,6 @@
     --gh-4: #39d353;
   }
 
-
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -105,8 +103,7 @@
     @apply outline-none ring-1 ring-signal ring-offset-2 ring-offset-background;
   }
 
-  button:active,
-  a.button:active {
+  button:active {
     transform: scale(0.98);
   }
 }
@@ -114,10 +111,6 @@
 @layer components {
   .container {
     @apply mx-auto w-full max-w-[72rem] px-6 sm:px-8;
-  }
-
-  .bleed {
-    @apply -mx-6 sm:-mx-8;
   }
 
   .prose-col {
@@ -146,10 +139,6 @@
       text-decoration-color 200ms ease,
       text-decoration-thickness 200ms ease,
       color 200ms ease;
-  }
-
-  .hairline {
-    @apply border-t border-border;
   }
 
   .rise {

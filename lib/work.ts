@@ -7,7 +7,6 @@ export function formatIndex(position: number): string {
 
 export type CaseStudyEntry = {
   study: CaseStudy;
-  index: string;
   next: CaseStudy;
 };
 
@@ -23,7 +22,6 @@ export function findCaseStudy(slug: string): CaseStudyEntry | null {
     if (position === -1) continue;
     return {
       study: list[position],
-      index: formatIndex(position),
       next: list[(position + 1) % list.length],
     };
   }

@@ -69,10 +69,6 @@ module.exports = {
         'display-md': ['clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem)', { lineHeight: '1.12', letterSpacing: '-0.01em' }],
         'display-sm': ['clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem)', { lineHeight: '1.2', letterSpacing: '-0.005em' }],
       },
-      maxWidth: {
-        prose: '45rem',
-        wide: '72rem',
-      },
     },
   },
   plugins: [require('tailwindcss-animate')],
