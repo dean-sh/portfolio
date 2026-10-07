@@ -63,3 +63,5 @@ Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workIma
 ## Resume PDF
 
 The resume PDF at `/dean-shabi-cv.pdf` is generated at build time from `content/resume.ts` by `app/dean-shabi-cv.pdf/route.ts` and `components/ResumeDocument.tsx`. The route is static, so `next build` renders it once per deploy with `@react-pdf/renderer` and the TTFs in `assets/fonts/`. Never commit a PDF by hand. After a content change, open the PDF and check that it still fits on two pages.
+
+The PDF is also tuned to parse cleanly in resume parsers (OpenResume, pdfminer, pdfplumber, pypdf, pdf.js and poppler). The single-column skills, the gutter offsets, the gaps around the role and company dot, and the footer draw order exist for that, and comments in `components/ResumeDocument.tsx` say why. `patches/@react-pdf+textkit+7.0.1.patch`, applied by `postinstall`, keeps text that starts with a digit in one PDF text run, so parsers read periods like "2026 to now" whole. When `@react-pdf/textkit` is upgraded, check whether the patch still applies or is still needed.
