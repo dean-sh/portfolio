@@ -49,6 +49,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Renders nothing until the Search Console code is set in the environment.
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
 };
 
 const themeScript = `
@@ -73,7 +75,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
       data-theme="light"
       suppressHydrationWarning
