@@ -25,7 +25,7 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 - Charts name their source and label simulations. Do not invent measured results. Keep mobile readouts within the plot and preserve the expandable data table.
 - The remaining legacy pages under `app/projects/*` wrap `components/ProjectDetails.tsx` and are not linked from the site.
 - `app/sitemap.ts` lists home, resume and every case study. `next.config.js` redirects old `/projects/*` and retired `/work/*` URLs to their current case studies.
-- `app/resume/page.tsx` holds its own experience, education and skills data.
+- `content/resume.ts` holds the resume summary, locations, experience, education and skills. `app/resume/page.tsx` and the resume PDF both render it.
 
 ## Design system
 
@@ -60,3 +60,6 @@ Each work row on the home page draws a sparkline of its case study chart (`compo
 
 Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workImage(slug)` in `lib/work.ts` builds the path, and `components/Photo.tsx` renders it. A missing file shows as a broken image rather than a build error, so add the photo in the same change as the study.
 
+## Resume PDF
+
+The resume PDF at `/dean-shabi-cv.pdf` is generated at build time from `content/resume.ts` by `app/dean-shabi-cv.pdf/route.ts` and `components/ResumeDocument.tsx`. The route is static, so `next build` renders it once per deploy with `@react-pdf/renderer` and the TTFs in `assets/fonts/`. Never commit a PDF by hand. After a content change, open the PDF and check that it still fits on two pages.
