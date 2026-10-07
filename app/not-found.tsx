@@ -4,7 +4,9 @@ import { Arrow } from '@/components/Arrow';
 import { StudyRow } from '@/components/StudyRow';
 import { WORK } from '@/content/work';
 
-export const metadata: Metadata = { title: 'Page not found' };
+// Next adds its own noindex to a 404. Clearing robots drops the layout's index, follow, so noindex is the only directive.
+// Clearing openGraph drops the layout's og:url, which points at home.
+export const metadata: Metadata = { title: 'Page not found', robots: null, openGraph: null };
 
 export default function NotFound() {
   return (

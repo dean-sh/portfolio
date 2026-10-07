@@ -8,6 +8,7 @@ import { Nav } from '@/components/Nav';
 import { RevealObserver } from '@/components/RevealObserver';
 import { HERO, LINKS } from '@/content/site';
 import { OPEN_GRAPH } from '@/lib/metadata';
+import { JsonLd, SITE_GRAPH } from '@/lib/structured-data';
 
 const serif = Instrument_Serif({
   weight: '400',
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     default: SITE_TITLE,
     template: '%s · Dean Shabi',
   },
-  description: HERO.title,
+  description: HERO.description,
   authors: [{ name: HERO.name }],
   creator: HERO.name,
   metadataBase: new URL(LINKS.site),
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: '/',
     title: SITE_TITLE,
-    description: HERO.title,
+    description: HERO.description,
   },
   // Title, description and image come from each page's openGraph.
   twitter: { card: 'summary_large_image' },
@@ -48,23 +49,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-};
-
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: HERO.name,
-  jobTitle: 'Engineering Lead',
-  description: HERO.title,
-  url: LINKS.site,
-  sameAs: [LINKS.linkedin, LINKS.github],
-  knowsAbout: [
-    'Machine Learning',
-    'Forecasting',
-    'Renewable Energy',
-    'Autonomous Agents',
-    'Data Science',
-  ],
+  // Renders nothing until the Search Console code is set in the environment.
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
 };
 
 const themeScript = `
@@ -89,7 +75,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
+      lang="en-GB"
       className={`${GeistSans.variable} ${GeistMono.variable} ${serif.variable}`}
       data-theme="light"
       suppressHydrationWarning
@@ -97,10 +83,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#FAFAFA" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        <JsonLd data={SITE_GRAPH} />
       </head>
       <body className="flex min-h-screen flex-col overflow-x-clip">
         <a href="#main-content" className="skip-link">

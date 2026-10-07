@@ -9,6 +9,7 @@ import { Photo } from '@/components/Photo';
 import { Toc } from '@/components/Toc';
 import { Pipeline } from '@/components/Pipeline';
 import { OPEN_GRAPH } from '@/lib/metadata';
+import { JsonLd, caseStudyGraph } from '@/lib/structured-data';
 import { ALL_CASE_STUDIES, findCaseStudy, formatIndex, workImage, type CaseStudyEntry } from '@/lib/work';
 
 type Params = { slug: string };
@@ -20,20 +21,25 @@ export function generateStaticParams(): Params[] {
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const entry = findCaseStudy(params.slug);
   if (!entry) return {};
-  const { study } = entry;
-  const url = `/work/${study.slug}`;
+  const { title, description } = entry.study.seo;
+  const url = `/work/${entry.study.slug}`;
   return {
-    title: study.title,
-    description: study.hook,
+    title,
+    description,
     alternates: { canonical: url },
-    openGraph: { ...OPEN_GRAPH, type: 'article', url, title: study.title, description: study.hook },
+    openGraph: { ...OPEN_GRAPH, type: 'article', url, title, description },
   };
 }
 
 export default function CaseStudyPage({ params }: { params: Params }) {
   const entry = findCaseStudy(params.slug);
   if (!entry) notFound();
-  return <CaseStudy entry={entry} />;
+  return (
+    <>
+      <JsonLd data={caseStudyGraph(entry.study)} />
+      <CaseStudy entry={entry} />
+    </>
+  );
 }
 
 const SECTIONS = [
@@ -104,6 +110,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       <div className="mt-6 md:mt-8" data-reveal="">
         <Photo
           src={workImage(study.slug)}
+          alt={study.photoAlt}
           priority
           sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1215px) calc(100vw - 4rem), 1088px"
           className="aspect-[16/10] md:aspect-[21/9]"

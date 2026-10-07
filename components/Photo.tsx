@@ -3,11 +3,14 @@ import { cn } from '@/lib/utils';
 
 export function Photo({
   src,
+  alt = '',
   sizes,
   priority,
   className,
 }: {
   src: string;
+  // Empty by default. Cards and the next-study link are named by their text, so their photos stay decorative.
+  alt?: string;
   sizes: string;
   priority?: boolean;
   className?: string;
@@ -16,7 +19,7 @@ export function Photo({
     <div className={cn('relative overflow-hidden rounded-2xl bg-muted', className)}>
       <Image
         src={src}
-        alt=""
+        alt={alt}
         fill
         sizes={sizes}
         priority={priority}

@@ -17,12 +17,12 @@ There is no test suite. Type-check with `npx tsc --noEmit`.
 
 Next.js 14 App Router, TypeScript strict, Tailwind 3.
 
-- `content/` is the typed content registry. `types.ts` holds the shapes. `work.ts` exports `WORK` (the five selected case studies) and `EARLIER` (older projects). `charts.ts` holds one chart per study. `site.ts` exports `HERO`, `NOW`, `TESTIMONIALS`, `QUOTE`, `CONTACT_LINE` and `LINKS`. `resume.ts` holds the resume. `email.ts` holds the email address, which only the resume PDF may use.
+- `content/` is the typed content registry. `types.ts` holds the shapes. `work.ts` exports `WORK` (the five selected case studies) and `EARLIER` (older projects). `charts.ts` holds one chart per study. `site.ts` exports `HERO`, `PERSON`, `NOW`, `TESTIMONIALS`, `QUOTE`, `CONTACT_LINE` and `LINKS`. `resume.ts` holds the resume. `email.ts` holds the email address, which only the resume PDF may use.
 - The home page is `app/page.tsx`. Top to bottom it runs the hero, the Now strip, the GitHub heatmap, the selected work cards, earlier work, one testimonial and the contact block. Keep the heatmap where it is, under the hero and the Now strip.
 - Case studies live at `app/work/[slug]` and are generated from `WORK` and `EARLIER`. `lib/work.ts` resolves a study and the next one in the same list. Each page ends with the next case study and the contact block.
 - Each home card shows its study's lead metric and a mini chart captioned with the chart's `sparkLabel`, and ends in "Read the case study". Card links take their accessible name from the title through `aria-labelledby` (`titleId` in `components/StudyRow.tsx`).
 - `components/Contact.tsx` holds the contact block (full on home and case studies, `compact` on the resume) and `CallButton`, the green call to action. `components/StudyRow.tsx` is the thumbnail row for earlier work and the 404 page. `components/Toc.tsx` is the case study table of contents, which marks the current section with `aria-current`.
-- `app/sitemap.ts` lists home, resume and every case study, and `app/robots.ts` allows everything and points at the sitemap. `next.config.js` holds the image settings (AVIF then WebP, 31-day cache), the security headers and the permanent redirects for old `/projects/*` URLs.
+- `app/sitemap.ts` lists home, resume and every case study with no `lastModified` (the build time is not when a page changed), and `app/robots.ts` allows everything and points at the sitemap. `next.config.js` holds the image settings (AVIF then WebP, 31-day cache), the security headers and the permanent redirects for old `/projects/*` URLs.
 
 ## Charts
 
@@ -33,7 +33,10 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 
 ## Metadata and share images
 
-- The layout sets the title template, description, default openGraph and robots. Each page sets its own canonical. A page's `openGraph` replaces the layout's whole object, so pages spread `OPEN_GRAPH` from `lib/metadata.ts` into theirs. Twitter cards take their title, description and image from openGraph.
+- The layout sets the title template, description, default openGraph, robots and the Search Console tag (only when `GOOGLE_SITE_VERIFICATION` is set). Each page sets its own canonical.
+- A case study's h1 is its editorial `title`. Its title tag, meta description and og title come from `seo`. Keep `seo.title` within about 47 characters, so the " · Dean Shabi" template stays within 60, and `seo.description` between 120 and 155, leading with the org and the result. The home description is `HERO.description`.
+- `lib/structured-data.tsx` builds the JSON-LD, typed with `schema-dts` so a wrong shape fails `tsc`. The layout renders a WebSite and the Person (`@id` `/#person`) on every page. The resume adds a ProfilePage and each case study an Article and a BreadcrumbList, all pointing at the Person by id rather than repeating it. One `<script type="application/ld+json">` per graph, rendered by `JsonLd`.
+- The 404 sets `robots` and `openGraph` to null, so Next's own `noindex` is its only robots tag and it never points og:url at home. Its og:title and og:image still come from the title and the root share image, which is harmless. A page's `openGraph` replaces the layout's whole object, so pages spread `OPEN_GRAPH` from `lib/metadata.ts` into theirs. Twitter cards take their title, description and image from openGraph.
 - Share images are generated at build time with `next/og` from the TTFs in `assets/fonts` (helpers in `lib/og.ts`). `app/opengraph-image.tsx` draws the name, the hero headline and the solar sparkline. `app/work/[slug]/opengraph-image.tsx` draws each study's photo, title, org, period and lead metric. `app/resume/opengraph-image.tsx` re-exports the home image, because the resume's openGraph would otherwise drop it. A copy change updates them on the next deploy.
 - `app/icon.tsx` and `app/apple-icon.tsx` draw the mark in `lib/mark.tsx`. `app/favicon.ico` is the same mark at 16 and 32 px, saved from `/icon`. Regenerate it if the mark changes.
 - `lib/palette.ts` holds the light-theme hexes for renderers that can't read CSS variables (the resume PDF, share images and icons). Keep it in sync with `app/globals.css`.
@@ -45,7 +48,7 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 - One accent, `signal` (GitHub green). It marks data (metrics, index numbers, the focus series), the primary button and hover states. `signal-hover` is the darker button hover, which keeps white text above 4.5:1.
 - `.panel` (surface, border, 1rem radius, soft shadow) is for the Now strip, the heatmap, charts, the work cards and the metrics band. Everything else is separated by hairlines and space.
 - Utilities: `.container`, `.panel`, `.meta`, `.eyebrow`, `.link`, `.rise`. Small labels use `.meta` (12px muted) and `.eyebrow` (12px medium), never letterspaced uppercase mono. Monospace is for numbers only. The global `h1, h2, h3` rule applies the serif, so sans headings must add `font-sans`.
-- `components/Arrow.tsx` is the only icon. `components/Nav.tsx` renders the navigation and the theme toggle.
+- `components/Arrow.tsx` and the sun and moon in `components/Nav.tsx` are the only icons, all inline SVG. `components/Nav.tsx` renders the navigation and the theme toggle.
 
 ## Motion
 
@@ -55,7 +58,7 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 
 ## Photos
 
-Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workImage(slug)` in `lib/work.ts` builds the path, and `components/Photo.tsx` renders it at quality 60 with an empty alt. A missing file shows as a broken image rather than a build error, so add the photo in the same change as the study. Give each `sizes` attribute the slot's real width, minus the page gutters, so phones don't download desktop images.
+Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workImage(slug)` in `lib/work.ts` builds the path, and `components/Photo.tsx` renders it at quality 60. The alt is empty unless passed. The full-width photo on a case study page uses the study's `photoAlt` and the home hero uses `HERO.photoAlt`, short literal descriptions of what the photograph shows. Card and next-study photos stay empty, because the title names the link. A missing file shows as a broken image rather than a build error, so add the photo in the same change as the study. Give each `sizes` attribute the slot's real width, minus the page gutters, so phones don't download desktop images.
 
 ## Conventions
 
@@ -63,7 +66,7 @@ Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workIma
 - No long dash in copy or comments. Use a middot or a slash as a separator.
 - Headings are sentence case. Numbers are mono with `tabular-nums`.
 - Server components by default. `'use client'` only where state is needed.
-- The theme toggle and its no-flash script live in `app/layout.tsx` (an inline script that sets the `dark` class before paint) and `components/Nav.tsx` (a "Dark" toggle button with `aria-pressed` that sets the class, `data-theme` and `localStorage.theme`). Keep the two in sync.
+- The theme toggle and its no-flash script live in `app/layout.tsx` (an inline script that sets the `dark` class before paint) and `components/Nav.tsx` (a button that sets the class, `data-theme` and `localStorage.theme`). The button shows a moon and "Dark" in light mode and a sun and "Light" in dark mode. `dark:` classes pick the variant, so the server render is already right. Below `sm` the label is screen-reader only. Keep the two in sync.
 
 ## GitHub contributions
 

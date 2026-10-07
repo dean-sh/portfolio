@@ -14,7 +14,25 @@ export const HERO = {
   name: 'Dean Shabi',
   headline: HEADLINE,
   photo: '/images/hero.jpg',
+  photoAlt: 'Aerial view of rows of solar panels beside a pine forest',
   title: HEADLINE.map((s) => ('text' in s ? s.text : ' ')).join('').replace(/\s+/g, ' ').trim(),
+  // Meta description for the home page, at most 155 characters.
+  description:
+    'Dean Shabi is an engineering lead in Prague who builds machine learning systems for production. Case studies cover energy forecasting and AI agents.',
+};
+
+// The Person in the site's structured data. Never add the email or a phone number here.
+export const PERSON = {
+  description:
+    'Engineering lead and two-time founder in Prague, with seven years of machine learning in production, mostly forecasting for energy markets.',
+  knowsAbout: [
+    'Machine learning',
+    'Time series forecasting',
+    'Renewable energy forecasting',
+    'AI agents',
+    'MLOps',
+    'Engineering leadership',
+  ],
 };
 
 export type NowItem = { label: string; value: string; href?: string; detail: string };

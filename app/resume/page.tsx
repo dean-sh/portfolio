@@ -3,9 +3,11 @@ import type { Metadata } from 'next';
 import { Contact } from '@/components/Contact';
 import { HERO } from '@/content/site';
 import { OPEN_GRAPH } from '@/lib/metadata';
+import { JsonLd, RESUME_GRAPH } from '@/lib/structured-data';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
 
-const DESCRIPTION = `${HERO.name}. Engineering lead, AI engineer and two-time founder.`;
+const DESCRIPTION =
+  'Resume of Dean Shabi, an engineering lead and two-time founder in Prague with seven years of machine learning in production, mostly energy forecasting.';
 
 export const metadata: Metadata = {
   title: 'Resume',
@@ -34,6 +36,7 @@ function ResumeLinks({ className }: { className: string }) {
 export default function ResumePage() {
   return (
     <div className="container pb-24 pt-10">
+      <JsonLd data={RESUME_GRAPH} />
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <aside className="hidden lg:col-span-3 lg:block">
           <div className="space-y-8 lg:sticky lg:top-28">

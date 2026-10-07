@@ -120,6 +120,7 @@ export default function Home() {
         <Link href={`/work/${heroStudy.slug}`} className="rise group block lg:col-span-5" style={{ '--i': 1 } as CSSProperties}>
           <Photo
             src={HERO.photo}
+            alt={HERO.photoAlt}
             priority
             sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(100vw - 4rem), 440px"
             className="aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/5]"
