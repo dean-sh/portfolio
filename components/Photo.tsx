@@ -20,7 +20,7 @@ export function Photo({
         fill
         sizes={sizes}
         priority={priority}
-        quality={70}
+        quality={60}
         className="object-cover transition-transform duration-700 ease-spring group-hover:scale-[1.03] motion-reduce:transition-none"
       />
       <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-foreground/10" />

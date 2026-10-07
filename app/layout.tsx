@@ -7,6 +7,7 @@ import './globals.css';
 import { Nav } from '@/components/Nav';
 import { RevealObserver } from '@/components/RevealObserver';
 import { HERO, LINKS } from '@/content/site';
+import { OPEN_GRAPH } from '@/lib/metadata';
 
 const serif = Instrument_Serif({
   weight: '400',
@@ -28,29 +29,15 @@ export const metadata: Metadata = {
   authors: [{ name: HERO.name }],
   creator: HERO.name,
   metadataBase: new URL(LINKS.site),
-  alternates: { canonical: '/' },
   openGraph: {
-    title: SITE_TITLE,
-    description: HERO.title,
-    url: LINKS.site,
-    siteName: HERO.name,
-    images: [
-      {
-        url: '/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: HERO.name,
-      },
-    ],
+    ...OPEN_GRAPH,
     type: 'website',
-    locale: 'en_GB',
-  },
-  twitter: {
-    card: 'summary_large_image',
+    url: '/',
     title: SITE_TITLE,
     description: HERO.title,
-    images: ['/images/og-image.png'],
   },
+  // Title, description and image come from each page's openGraph.
+  twitter: { card: 'summary_large_image' },
   robots: {
     index: true,
     follow: true,
@@ -108,7 +95,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#FAFAFA" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
@@ -121,7 +107,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Nav name={HERO.name} />
-        <main id="main-content" className="flex flex-1 flex-col">
+        <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col focus-visible:[box-shadow:none]">
           {children}
         </main>
         <footer className="container pb-16 pt-16 text-xs text-muted-foreground">

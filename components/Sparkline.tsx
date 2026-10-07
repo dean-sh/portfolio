@@ -1,15 +1,11 @@
 import type { Chart, CompareChart, EquationChart, FunnelChart, JudgeChart, LineChart, TailChart } from '@/content/types';
 import { Arrow } from './Arrow';
-import { lossCurve, plotChart, TONE_COLOR } from '@/lib/chart';
-
-const TONE_ORDER = { baseline: 0, context: 1, focus: 2 } as const;
+import { inDrawOrder, lossCurve, plotChart, TONE_COLOR, VIEWBOX } from '@/lib/chart';
 
 export function Sparkline({ chart, className }: { chart: LineChart; className?: string }) {
-  const series = [...plotChart({ ...chart, y: { format: chart.y.format } }).series].sort(
-    (a, b) => TONE_ORDER[a.tone] - TONE_ORDER[b.tone],
-  );
+  const series = inDrawOrder(plotChart({ ...chart, y: { format: chart.y.format } }).series);
   return (
-    <svg aria-hidden="true" viewBox="0 0 1000 1000" preserveAspectRatio="none" className={className}>
+    <svg aria-hidden="true" viewBox={VIEWBOX} preserveAspectRatio="none" className={className}>
       {series.map((s) => (
         <g key={s.label}>
           {s.area && <path d={s.area} fill={TONE_COLOR[s.tone]} fillOpacity={0.12} stroke="none" />}
@@ -129,7 +125,7 @@ function MiniTail({ chart, className }: { chart: TailChart; className?: string }
   const loss = lossCurve(chart.confidence);
   return (
     <div aria-hidden="true" className={`relative ${className ?? ''}`}>
-      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
+      <svg viewBox={VIEWBOX} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
         <path d={loss.area} fill={TONE_COLOR.context} fillOpacity={0.18} stroke="none" />
         <path d={loss.tail} fill={TONE_COLOR.focus} fillOpacity={0.35} stroke="none" />
         <path d={loss.curve} fill="none" stroke={TONE_COLOR.context} strokeWidth={1.25} vectorEffect="non-scaling-stroke" />
@@ -168,16 +164,4 @@ export function SparkBody({ chart, className = SPARK_SIZE }: { chart: Chart; cla
     case 'tail':
       return <MiniTail chart={chart} className={className} />;
   }
-}
-
-export function SparkCard({ chart }: { chart: Chart }) {
-  return (
-    <div className="rounded-md border border-border bg-surface px-4 py-3 transition-colors duration-200 group-hover:border-signal/40">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs leading-snug">
-        <span className="text-muted-foreground">{chart.spark?.label ?? chart.title}</span>
-        {chart.spark && <span className="font-mono font-medium text-signal">{chart.spark.value}</span>}
-      </div>
-      <SparkBody chart={chart} />
-    </div>
-  );
 }

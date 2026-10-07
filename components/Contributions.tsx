@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react';
 import { getContributions, type ContributionCalendar } from '@/lib/github';
+import { MONTHS } from '@/lib/chart';
 import { cn } from '@/lib/utils';
 import { ContributionsHover } from './ContributionsHover';
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const MOBILE_WEEKS = 26;
 const LEVELS = [0, 1, 2, 3, 4] as const;
 
@@ -35,7 +35,7 @@ export async function Contributions({ user }: { user: string }) {
   return (
     <section
       aria-label="GitHub contributions"
-      className="rounded-lg border border-border bg-surface p-5 shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_8px_24px_-12px_hsl(var(--foreground)/0.08)] md:p-6"
+      className="panel p-5 md:p-6"
     >
       <div className="mb-5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-xs text-muted-foreground">
         <p>
@@ -79,7 +79,7 @@ export async function Contributions({ user }: { user: string }) {
                     data-count={day.count}
                     className={cn(
                       'aspect-square rounded-[2px] outline outline-1 outline-offset-1 outline-transparent transition-[outline-color] hover:outline-foreground/60',
-                      day.date === latest && 'pulse-ring',
+                      day.date === latest && 'pulse-ring pulse-ring-tight',
                     )}
                     style={{ background: `var(--gh-${day.level})`, color: 'var(--gh-4)' }}
                   />

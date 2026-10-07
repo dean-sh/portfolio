@@ -21,7 +21,7 @@ export type NowItem = { label: string; value: string; href?: string; detail: str
 
 export const NOW: NowItem[] = [
   { label: 'Now', value: 'Engineering lead', detail: 'Stealth startup in aerospace, defence and robotics' },
-  { label: 'Founder', value: 'Otty', href: 'https://heyotty.com', detail: 'Co-founded Katalo in 2026' },
+  { label: 'Founder', value: 'Otty', href: 'https://heyotty.com', detail: 'Previously co-founded Katalo' },
   { label: 'Before', value: 'Machine learning', detail: 'Renewcast, tem. and AmpX' },
   { label: 'Based in', value: 'Prague', detail: 'Remote with UK and EU teams' },
 ];
@@ -55,9 +55,10 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const QUOTE = TESTIMONIALS[2];
 
+export const CONTACT_LINE = "Have a machine learning system that has to hold up in production? I'd like to hear about it.";
+
 export const LINKS = {
   site: 'https://deanshabi.com',
-  email: 'deanshabi@gmail.com',
   linkedin: 'https://www.linkedin.com/in/dean-shabi/',
   github: 'https://github.com/dean-sh',
   cal: 'https://cal.com/deanshabi/30min',

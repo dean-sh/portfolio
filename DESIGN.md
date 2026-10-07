@@ -16,7 +16,7 @@ One neutral family (zinc) in both themes, one accent (GitHub green). No warm and
 Light theme:
 
 - **Canvas Zinc** (#FAFAFA). Page background.
-- **Pure Surface** (#FFFFFF). Raised panels: the heatmap, charts, featured case study, contact.
+- **Pure Surface** (#FFFFFF). Raised panels: the Now strip, the heatmap, charts, case study cards and the metrics band.
 - **Charcoal Ink** (#18181B). Primary text and headlines.
 - **Muted Steel** (#71717A). Secondary text, metadata, captions.
 - **Whisper Border** (#E4E4E7). 1px structural lines and panel borders.
@@ -40,24 +40,24 @@ The GitHub heatmap uses GitHub's own greens per theme (#9BE9A8, #40C463, #30A14E
 
 ## 4. Hero
 
-- Asymmetric split. Left: the headline, with the portrait and a live chart chip set inline at type height, then the primary call to action and one quiet text link to the work. Right: the hero photograph, captioned with a link to the case study it belongs to and its key number.
-- Under the hero, a full-width "Now" strip between two hairlines lists current roles, the first with a soft pulsing status dot.
+- Asymmetric split. Left: the headline, with the portrait and a live chart chip set inline at type height, then the primary call to action and one quiet text link to the work. Right: the hero photograph, captioned with a link to the case study it belongs to, its key number and what that number measures.
+- Under the hero, a full-width "Now" panel lists current roles, the first with a soft pulsing status dot. The GitHub heatmap follows it.
 - No scroll prompts, no bouncing arrows.
 - On phones the split collapses to one column. The inline visuals stay inline at type height and never overlap text.
 
 ## 5. Component stylings
 
-- **Buttons.** Commit Green fill, white text, gently rounded (0.5rem). Pressed state moves down 1px. No glow.
-- **Panels.** Pure Surface, Whisper Border, rounded 1rem, a soft shadow tinted to the ink colour. Panels only where elevation means something: the heatmap, charts, the metrics band on case study pages and one case study card. Everything else is separated by border-top lines and space.
-- **Case study cards.** Each pairs a photograph with the title, the hook, the key metric in large green mono and a mini chart from that study's real data. The lead card splits photo and copy side by side; the others stack photo over copy.
+- **Buttons.** Commit Green fill, white text, gently rounded (0.5rem). Hover darkens the green (`signal-hover`) so white text stays above 4.5:1. Pressed state moves down 1px. No glow.
+- **Panels.** Pure Surface, Whisper Border, rounded 1rem, a soft shadow tinted to the ink colour. Panels only where elevation means something: the Now strip, the heatmap, charts, the case study cards and the metrics band on case study pages. The metrics band is only as wide as its metrics, with hairlines between them. Everything else is separated by border-top lines and space.
+- **Case study cards.** Each pairs a photograph with the title, the hook, the key metric in large green mono and a captioned mini chart from that study's real data, and ends in "Read the case study". The lead card splits photo and copy side by side. The others stack photo over copy, with the photo inset in some and full-bleed in others.
 - **Photography.** One photograph per case study at `public/images/work/<slug>.jpg`, plus `public/images/hero.jpg`. Generated illustrations in a natural green palette that sits with Commit Green. Decorative, so `alt=""`. Never reuse a photograph for a second subject. Rendered through `components/Photo.tsx`: rounded 1rem, a hairline inner ring, and a slow 3% zoom on hover.
-- **Charts.** 2px lines, 4px rounded bar ends, hairline grids, direct labels, a data table on every line chart, and no dual axes.
+- **Charts.** 2px lines, 4px rounded bar ends, hairline grids, direct labels, a data table on every line chart, and no dual axes. A bar's label uses the same measure as its length. On phones the line chart readout sits above the plot, never over it.
 
 ## 6. Layout principles
 
 - Content width 72rem with 1.5-2rem gutters. Reading columns capped at 65ch inside it.
 - CSS grid on a 12-column frame. The hero splits 7/5. The lead case study splits 7/5, the next pair 7/5 with the second offset down, the last pair 6/6.
-- Case study pages run header, summary beside role and stack, metrics band, full-width photograph, then the numbered sections beside a sticky table of contents, ending on a "Next case study" card with its photograph.
+- Case study pages run header, summary beside role and stack, metrics band, full-width photograph, then the numbered sections beside a sticky table of contents, then a "Next case study" card with its photograph and the contact block.
 - Vertical rhythm through `clamp(4rem, 9vw, 7rem)` section gaps.
 - Below 768px every multi-column layout collapses to one column. No horizontal scroll at any width from 320px.
 - Touch targets at least 44px.
@@ -68,7 +68,7 @@ The GitHub heatmap uses GitHub's own greens per theme (#9BE9A8, #40C463, #30A14E
 - Hover states use the same curve over 250ms.
 - One perpetual loop: today's cell in the GitHub heatmap pulses softly.
 - Animate only `transform` and `opacity`. Everything honours `prefers-reduced-motion`.
-- Content is visible without JavaScript. The reveal only arms once the page script has run.
+- Content is visible without JavaScript. What is on screen at load (the hero, the case study header, the resume intro) enters with a CSS-only rise. The scroll reveal only arms once the page script has run, and only for content below the fold.
 
 ## 8. Anti-patterns (banned)
 

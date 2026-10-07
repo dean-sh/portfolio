@@ -1,10 +1,9 @@
 import type { Chart as ChartSpec, CompareChart, EquationChart, FunnelChart, JudgeChart, LineChart, TailChart } from '@/content/types';
-import { lossCurve, plotChart, TONE_COLOR } from '@/lib/chart';
+import { inDrawOrder, lossCurve, plotChart, TONE_COLOR, VIEWBOX } from '@/lib/chart';
+import { cn } from '@/lib/utils';
 import { Arrow } from './Arrow';
 import { ChartHover } from './ChartHover';
 import { LineKey } from './LineKey';
-
-const TONE_ORDER = { baseline: 0, context: 1, focus: 2 } as const;
 
 function edgeShift(at: number): string {
   if (at < 0.04) return 'translateX(0)';
@@ -15,19 +14,18 @@ function edgeShift(at: number): string {
 function LineChartView({ chart }: { chart: LineChart }) {
   const plot = plotChart(chart);
   const multi = plot.series.length > 1;
-  const drawn = [...plot.series].sort((a, b) => TONE_ORDER[a.tone] - TONE_ORDER[b.tone]);
+  const drawn = inDrawOrder(plot.series);
   const focus = plot.series.find((s) => s.tone === 'focus');
   const last = plot.xs.length - 1;
+  // More than four labels collide on a phone-width plot, so phones show every other one.
+  const thinTicks = plot.xTicks.length > 4;
 
   return (
     <figure>
-      <figcaption className="max-w-[62ch]">
-        <p className="text-base font-medium leading-snug">{chart.title}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
-      </figcaption>
+      <Caption chart={chart} />
 
       {multi && (
-        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
+        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground max-md:hidden">
           {[...plot.series].reverse().map((s) => (
             <li key={s.label} className="flex items-center gap-2">
               <LineKey tone={s.tone} />
@@ -37,91 +35,90 @@ function LineChartView({ chart }: { chart: LineChart }) {
         </ul>
       )}
 
-      <div className="mt-6 h-56 pb-7 pl-12 pr-1 pt-3 md:h-64">
-        <div className="relative h-full w-full">
-          {plot.yTicks.map((tick) => (
-            <div
-              key={tick.label}
-              aria-hidden="true"
-              className="absolute inset-x-0 border-t border-border"
-              style={{ bottom: `${tick.at * 100}%` }}
-            >
-              <span className="absolute -left-12 w-10 -translate-y-1/2 text-right font-mono text-[11px] tabular-nums text-muted-foreground">
-                {tick.label}
-              </span>
-            </div>
-          ))}
-
-
-          <svg
+      <ChartHover
+        xs={plot.xs}
+        xLabels={plot.xLabels}
+        series={plot.series.map(({ label, tone, ys, display }) => ({ label, tone, ys, display }))}
+      >
+        {plot.yTicks.map((tick) => (
+          <div
+            key={tick.label}
             aria-hidden="true"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="none"
-            className="absolute inset-0 h-full w-full overflow-visible"
+            className="absolute inset-x-0 border-t border-border"
+            style={{ bottom: `${tick.at * 100}%` }}
           >
-            {drawn.map((s) => (
-              <g key={s.label}>
-                {s.area && <path d={s.area} fill={TONE_COLOR[s.tone]} fillOpacity={0.1} stroke="none" />}
-                <path
-                  d={s.path}
-                  fill="none"
-                  stroke={TONE_COLOR[s.tone]}
-                  strokeWidth={s.tone === 'focus' ? 2 : 1.5}
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeDasharray={s.tone === 'baseline' ? '4 4' : undefined}
-                  vectorEffect="non-scaling-stroke"
-                />
-              </g>
-            ))}
-          </svg>
-
-          {focus && !plot.points.some((point) => point.x === plot.xs[last]) && (
-            <span
-              aria-hidden="true"
-              className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-surface"
-              style={{ left: `${plot.xs[last] * 100}%`, bottom: `${focus.ys[last] * 100}%`, background: TONE_COLOR.focus }}
-            />
-          )}
-
-          {plot.points.map((point) => (
-            <div
-              key={point.label}
-              aria-hidden="true"
-              className="absolute"
-              style={{ left: `${point.x * 100}%`, bottom: `${point.y * 100}%` }}
-            >
-              <span
-                className="absolute top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-surface"
-                style={{ background: TONE_COLOR.focus }}
-              />
-              <span
-                className="absolute bottom-2.5 whitespace-nowrap font-mono text-[11px] text-foreground"
-                style={{ transform: edgeShift(point.x) }}
-              >
-                {point.label}
-              </span>
-            </div>
-          ))}
-
-          {plot.xTicks.map((tick) => (
-            <span
-              key={`${tick.label}-${tick.at}`}
-              aria-hidden="true"
-              className="absolute top-full mt-2 whitespace-nowrap font-mono text-[11px] text-muted-foreground"
-              style={{ left: `${tick.at * 100}%`, transform: edgeShift(tick.at) }}
-            >
+            <span className="absolute -left-12 w-10 -translate-y-1/2 text-right font-mono text-[11px] tabular-nums text-muted-foreground">
               {tick.label}
             </span>
-          ))}
+          </div>
+        ))}
 
-          <ChartHover
-            xs={plot.xs}
-            xLabels={plot.xLabels}
-            series={plot.series.map(({ label, tone, ys, display }) => ({ label, tone, ys, display }))}
+
+        <svg
+          aria-hidden="true"
+          viewBox={VIEWBOX}
+          preserveAspectRatio="none"
+          className="absolute inset-0 h-full w-full overflow-visible"
+        >
+          {drawn.map((s) => (
+            <g key={s.label}>
+              {s.area && <path d={s.area} fill={TONE_COLOR[s.tone]} fillOpacity={0.1} stroke="none" />}
+              <path
+                d={s.path}
+                fill="none"
+                stroke={TONE_COLOR[s.tone]}
+                strokeWidth={s.tone === 'focus' ? 2 : 1.5}
+                strokeLinejoin="round"
+                strokeLinecap="round"
+                strokeDasharray={s.tone === 'baseline' ? '4 4' : undefined}
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
+          ))}
+        </svg>
+
+        {focus && !plot.points.some((point) => point.x === plot.xs[last]) && (
+          <span
+            aria-hidden="true"
+            className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-surface"
+            style={{ left: `${plot.xs[last] * 100}%`, bottom: `${focus.ys[last] * 100}%`, background: TONE_COLOR.focus }}
           />
-        </div>
-      </div>
+        )}
+
+        {plot.points.map((point) => (
+          <div
+            key={point.label}
+            aria-hidden="true"
+            className="absolute"
+            style={{ left: `${point.x * 100}%`, bottom: `${point.y * 100}%` }}
+          >
+            <span
+              className="absolute top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-surface"
+              style={{ background: TONE_COLOR.focus }}
+            />
+            <span
+              className="absolute bottom-2.5 whitespace-nowrap font-mono text-[11px] text-foreground"
+              style={{ transform: edgeShift(point.x) }}
+            >
+              {point.label}
+            </span>
+          </div>
+        ))}
+
+        {plot.xTicks.map((tick, i) => (
+          <span
+            key={`${tick.label}-${tick.at}`}
+            aria-hidden="true"
+            className={cn(
+              'absolute top-full mt-2 whitespace-nowrap font-mono text-[11px] text-muted-foreground',
+              thinTicks && i % 2 === 1 && 'max-sm:hidden',
+            )}
+            style={{ left: `${tick.at * 100}%`, transform: edgeShift(tick.at) }}
+          >
+            {tick.label}
+          </span>
+        ))}
+      </ChartHover>
 
       <div className="mt-4 space-y-2">
         <p className="text-xs leading-relaxed text-muted-foreground">{chart.source}</p>
@@ -162,48 +159,55 @@ function LineChartView({ chart }: { chart: LineChart }) {
   );
 }
 
+function percent(fraction: number): string {
+  const value = fraction * 100;
+  return `${value >= 10 ? Math.round(value) : value.toFixed(1)}%`;
+}
+
 function FunnelView({ chart }: { chart: FunnelChart }) {
   const top = chart.stages[0].value;
   return (
     <figure>
-      <figcaption className="max-w-[62ch]">
-        <p className="text-base font-medium leading-snug">{chart.title}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
-      </figcaption>
-      <ol className="mt-7 space-y-2.5">
+      <Caption chart={chart} />
+      <ol className="mt-7 space-y-3">
         {chart.stages.map((stage, i) => {
           const share = stage.value / top;
-          const kept = i === 0 ? 100 : Math.round((stage.value / chart.stages[i - 1].value) * 100);
           return (
-            <li key={stage.label} className="grid gap-y-0.5 sm:grid-cols-[11rem_1fr] sm:items-center sm:gap-x-4">
-              <span className="text-sm leading-snug">{stage.label}</span>
+            <li key={stage.label} className="grid gap-y-1 sm:grid-cols-[13rem_1fr] sm:items-center sm:gap-x-4">
+              <span className="text-sm leading-snug">
+                {stage.label}
+                {i > 0 && (
+                  <span className="block text-xs text-muted-foreground">
+                    <span className="font-mono tabular-nums">{percent(stage.value / chart.stages[i - 1].value)}</span> of the
+                    stage above
+                  </span>
+                )}
+              </span>
               <div className="relative h-7">
                 <span
                   className="absolute inset-y-1 left-0 rounded-r-[4px]"
-                  style={{ width: `max(3px, calc((100% - 5.5rem) * ${share}))`, background: TONE_COLOR.focus }}
+                  style={{ width: `max(3px, calc((100% - 4rem) * ${share}))`, background: TONE_COLOR.focus }}
                 />
                 <span
                   className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap font-mono text-sm tabular-nums"
-                  style={{ left: `calc(max(3px, calc((100% - 5.5rem) * ${share})) + 0.6rem)` }}
+                  style={{ left: `calc(max(3px, calc((100% - 4rem) * ${share})) + 0.6rem)` }}
                 >
-                  {kept}%
+                  {percent(share)}
                 </span>
               </div>
             </li>
           );
         })}
       </ol>
-      <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
+      <Source chart={chart} />
     </figure>
   );
 }
 
-const BOX_LABEL = 'font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground';
-
 function JudgeBox({ label, items }: { label: string; items: string[] }) {
   return (
     <div className="rounded-md border border-border bg-background/60 p-4">
-      <p className={BOX_LABEL}>{label}</p>
+      <p className="eyebrow">{label}</p>
       <ul className="mt-3 space-y-1.5 text-sm">
         {items.map((item) => (
           <li key={item}>{item}</li>
@@ -224,17 +228,14 @@ function FlowArrow() {
 function JudgeView({ chart }: { chart: JudgeChart }) {
   return (
     <figure>
-      <figcaption className="max-w-[62ch]">
-        <p className="text-base font-medium leading-snug">{chart.title}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
-      </figcaption>
+      <Caption chart={chart} />
       <div className="mt-8 grid gap-2 md:grid-cols-[1fr_1.5rem_1fr_1.5rem_1.25fr] md:gap-1">
-        <JudgeBox label="The judge sees" items={chart.sees} />
+        <JudgeBox label="The judge saw" items={chart.sees} />
         <FlowArrow />
-        <JudgeBox label="It returns" items={chart.returns} />
+        <JudgeBox label="It returned" items={chart.returns} />
         <FlowArrow />
         <div className="rounded-md border border-signal/50 bg-background/60 p-4">
-          <p className={BOX_LABEL}>Code decides</p>
+          <p className="eyebrow">Code decided</p>
           <p className="mt-3 text-sm">{chart.rule}</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li className="grid grid-cols-[0.75rem_1fr] gap-x-2">
@@ -252,7 +253,7 @@ function JudgeView({ chart }: { chart: JudgeChart }) {
           </ul>
         </div>
       </div>
-      <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
+      <Source chart={chart} />
     </figure>
   );
 }
@@ -353,12 +354,12 @@ function TailView({ chart }: { chart: TailChart }) {
     <figure>
       <Caption chart={chart} />
       <div aria-hidden="true" className="relative mt-10 h-48 md:h-56">
-        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
+        <svg viewBox={VIEWBOX} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
           <path d={loss.area} fill={TONE_COLOR.context} fillOpacity={0.18} stroke="none" />
           <path d={loss.tail} fill={TONE_COLOR.focus} fillOpacity={0.3} stroke="none" />
           <path d={loss.curve} fill="none" stroke={TONE_COLOR.context} strokeWidth={1.5} vectorEffect="non-scaling-stroke" />
           <path d={loss.tailCurve} fill="none" stroke={TONE_COLOR.focus} strokeWidth={2} vectorEffect="non-scaling-stroke" />
-          <line x1="0" x2="1000" y1="1000" y2="1000" stroke="hsl(var(--border))" strokeWidth={1} vectorEffect="non-scaling-stroke" />
+          <line x1="0%" x2="100%" y1="100%" y2="100%" stroke="hsl(var(--border))" strokeWidth={1} vectorEffect="non-scaling-stroke" />
         </svg>
         {[
           { at: loss.varAt, label: `VaR ${pct}%`, dashed: false, top: 'top-0' },

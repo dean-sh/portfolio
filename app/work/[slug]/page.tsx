@@ -1,11 +1,14 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Arrow } from '@/components/Arrow';
 import { Chart } from '@/components/Chart';
+import { Contact } from '@/components/Contact';
 import { Photo } from '@/components/Photo';
+import { Toc } from '@/components/Toc';
 import { Pipeline } from '@/components/Pipeline';
-import { cn } from '@/lib/utils';
+import { OPEN_GRAPH } from '@/lib/metadata';
 import { ALL_CASE_STUDIES, findCaseStudy, formatIndex, workImage, type CaseStudyEntry } from '@/lib/work';
 
 type Params = { slug: string };
@@ -21,21 +24,9 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const url = `/work/${study.slug}`;
   return {
     title: study.title,
-    description: study.summary,
+    description: study.hook,
     alternates: { canonical: url },
-    openGraph: {
-      type: 'article',
-      url,
-      title: study.title,
-      description: study.summary,
-      images: [{ url: '/images/og-image.png', width: 1200, height: 630, alt: study.title }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: study.title,
-      description: study.summary,
-      images: ['/images/og-image.png'],
-    },
+    openGraph: { ...OPEN_GRAPH, type: 'article', url, title: study.title, description: study.hook },
   };
 }
 
@@ -54,14 +45,13 @@ const SECTIONS = [
 function SectionHeading({ id, index, children }: { id: string; index: number; children: string }) {
   return (
     <h2 id={id} className="scroll-mt-24 font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:text-[2rem]">
-      <span className="mr-3 align-middle font-mono text-sm text-signal">{String(index).padStart(2, '0')}</span>
+      <span aria-hidden="true" className="mr-3 align-middle font-mono text-sm text-signal">
+        {formatIndex(index - 1)}
+      </span>
       {children}
     </h2>
   );
 }
-
-const PANEL =
-  'rounded-2xl border border-border bg-surface shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_16px_40px_-20px_hsl(var(--foreground)/0.14)]';
 
 function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
   const { study, next } = entry;
@@ -79,7 +69,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
         All work
       </Link>
 
-      <header className="mt-8 md:mt-12" data-reveal="">
+      <header className="rise mt-8 md:mt-12">
         <p className="meta">
           {study.org} · {study.period}
         </p>
@@ -100,13 +90,13 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       </header>
 
       <ul
-        className={cn(PANEL, 'mt-12 flex flex-wrap gap-x-16 gap-y-8 p-6 md:mt-16 md:p-8 lg:px-10')}
-        data-reveal=""
+        className="panel rise mt-12 grid divide-y divide-border sm:w-fit sm:auto-cols-auto sm:grid-flow-col sm:divide-x sm:divide-y-0 md:mt-16"
+        style={{ '--i': 1 } as CSSProperties}
       >
         {study.metrics.map((m) => (
-          <li key={m.label} className="min-w-0 max-w-[17rem]">
-            <p className="font-mono text-4xl tracking-tight text-signal md:text-5xl">{m.value}</p>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.label}</p>
+          <li key={m.label} className="p-6 md:px-8 md:py-7">
+            <p className="whitespace-nowrap font-mono text-3xl tracking-tight text-signal min-[360px]:text-4xl md:text-5xl">{m.value}</p>
+            <p className="mt-2 max-w-[17rem] text-sm leading-relaxed text-muted-foreground">{m.label}</p>
           </li>
         ))}
       </ul>
@@ -115,29 +105,14 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
         <Photo
           src={workImage(study.slug)}
           priority
-          sizes="(max-width: 1200px) 100vw, 1152px"
+          sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1215px) calc(100vw - 4rem), 1088px"
           className="aspect-[16/10] md:aspect-[21/9]"
         />
       </div>
 
       <div className="mt-16 grid gap-12 md:mt-24 lg:grid-cols-12">
         <aside className="hidden lg:col-span-3 lg:block">
-          <nav aria-label="On this page" className="sticky top-28">
-            <p className="eyebrow">On this page</p>
-            <ol className="mt-3 space-y-1">
-              {SECTIONS.map((section, i) => (
-                <li key={section.id}>
-                  <a
-                    href={`#${section.id}`}
-                    className="inline-flex min-h-9 items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    <span className="font-mono text-xs text-signal">{String(i + 1).padStart(2, '0')}</span>
-                    {section.label}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
+          <Toc sections={SECTIONS} />
         </aside>
 
         <div className="min-w-0 lg:col-span-9">
@@ -155,7 +130,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
               Results
             </SectionHeading>
             {study.chart && (
-              <div className={cn(PANEL, 'mt-8 p-5 md:p-8')}>
+              <div className="panel mt-8 p-5 md:p-8">
                 <Chart chart={study.chart} />
               </div>
             )}
@@ -198,11 +173,13 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
           </span>
           <Photo
             src={workImage(next.slug)}
-            sizes="(max-width: 767px) 100vw, 40vw"
+            sizes="(max-width: 767px) calc(100vw - 3rem), 440px"
             className="aspect-[16/9] md:col-span-5"
           />
         </Link>
       </nav>
+
+      <Contact className="mt-24 md:mt-32" />
     </article>
   );
 }

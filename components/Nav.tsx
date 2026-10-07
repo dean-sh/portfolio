@@ -8,8 +8,8 @@ function readTheme(): 'light' | 'dark' {
 }
 
 export function Nav({ name }: { name: string }) {
-  const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
-  useEffect(() => setTheme(readTheme()), []);
+  const [dark, setDark] = useState(false);
+  useEffect(() => setDark(readTheme() === 'dark'), []);
 
   function toggle() {
     const next = readTheme() === 'dark' ? 'light' : 'dark';
@@ -19,7 +19,7 @@ export function Nav({ name }: { name: string }) {
     try {
       window.localStorage.setItem('theme', next);
     } catch {}
-    setTheme(next);
+    setDark(next === 'dark');
   }
 
   return (
@@ -28,7 +28,7 @@ export function Nav({ name }: { name: string }) {
         <Link href="/" className="inline-flex min-h-11 items-center whitespace-nowrap font-medium text-foreground">
           {name}
         </Link>
-        <nav className="-mr-2 flex items-center text-muted-foreground sm:mr-0 sm:gap-2">
+        <nav aria-label="Primary" className="-mr-2 flex items-center text-muted-foreground sm:mr-0 sm:gap-2">
           <Link href="/#work" className="inline-flex min-h-11 items-center px-2 transition-colors hover:text-foreground sm:px-2.5">
             Work
           </Link>
@@ -40,10 +40,11 @@ export function Nav({ name }: { name: string }) {
           </Link>
           <button
             type="button"
+            aria-pressed={dark}
             onClick={toggle}
-            className="inline-flex min-h-11 items-center px-2 transition-colors hover:text-foreground sm:px-2.5"
+            className="inline-flex min-h-11 items-center px-2 transition-colors hover:text-foreground dark:text-foreground sm:px-2.5"
           >
-            {theme === 'dark' ? 'Light' : 'Dark'}
+            Dark
           </button>
         </nav>
       </div>

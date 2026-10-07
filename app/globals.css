@@ -9,23 +9,10 @@
     --muted-foreground: 240 4% 46%;
     --border: 240 6% 90%;
     --signal: 137 66% 30%;
-    --signal-fill: 137 66% 30%;
     --signal-foreground: 0 0% 100%;
-    --primary: 240 6% 10%;
-    --primary-foreground: 0 0% 98%;
+    --signal-hover: 137 66% 24%;
     --muted: 240 5% 96%;
-    --accent: 240 5% 96%;
-    --accent-foreground: 240 6% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 6% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 6% 10%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
-    --input: 240 6% 90%;
-    --ring: 240 6% 10%;
     --surface: 0 0% 100%;
-    --radius: 0.5rem;
     --chart-focus: #1a7f37;
     --chart-context: #c4c4cc;
     --gh-0: #ebedf0;
@@ -41,21 +28,9 @@
     --muted-foreground: 240 5% 65%;
     --border: 240 4% 16%;
     --signal: 128 49% 49%;
-    --signal-fill: 131 55% 40%;
     --signal-foreground: 240 8% 5%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 8% 5%;
+    --signal-hover: 128 49% 55%;
     --muted: 240 6% 10%;
-    --accent: 240 6% 10%;
-    --accent-foreground: 0 0% 98%;
-    --card: 240 7% 8%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 7% 8%;
-    --popover-foreground: 0 0% 98%;
-    --secondary: 240 6% 10%;
-    --secondary-foreground: 0 0% 98%;
-    --input: 240 4% 16%;
-    --ring: 0 0% 98%;
     --surface: 240 7% 8%;
     --chart-focus: #2ea043;
     --chart-context: #71717a;
@@ -65,8 +40,6 @@
     --gh-3: #26a641;
     --gh-4: #39d353;
   }
-
-
 
   html {
     scroll-behavior: smooth;
@@ -105,8 +78,7 @@
     @apply outline-none ring-1 ring-signal ring-offset-2 ring-offset-background;
   }
 
-  button:active,
-  a.button:active {
+  button:active {
     transform: scale(0.98);
   }
 }
@@ -116,16 +88,8 @@
     @apply mx-auto w-full max-w-[72rem] px-6 sm:px-8;
   }
 
-  .bleed {
-    @apply -mx-6 sm:-mx-8;
-  }
-
-  .prose-col {
-    @apply max-w-[45rem];
-  }
-
-  .measure {
-    @apply max-w-[65ch];
+  .panel {
+    @apply rounded-2xl border border-border bg-surface shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_16px_40px_-20px_hsl(var(--foreground)/0.14)];
   }
 
   .meta {
@@ -136,20 +100,12 @@
     @apply text-xs font-medium tracking-[0.02em] text-muted-foreground;
   }
 
-  .label {
-    @apply font-mono text-[0.6875rem] uppercase leading-none tracking-[0.16em] text-signal;
-  }
-
   .link {
     @apply underline decoration-border decoration-1 underline-offset-[0.3em] hover:decoration-signal hover:decoration-2;
     transition:
       text-decoration-color 200ms ease,
       text-decoration-thickness 200ms ease,
       color 200ms ease;
-  }
-
-  .hairline {
-    @apply border-t border-border;
   }
 
   .rise {
@@ -160,11 +116,9 @@
 
 @keyframes rise {
   from {
-    opacity: 0;
     transform: translateY(8px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
@@ -193,7 +147,7 @@
   font-size: 0.875rem;
   z-index: 50;
   transition: transform 0.2s ease;
-  @apply border bg-background font-mono text-foreground;
+  @apply border bg-background font-sans text-foreground;
 }
 
 .skip-link:focus {
@@ -243,8 +197,14 @@ html.js [data-reveal][data-shown] {
   }
   to {
     opacity: 0;
-    transform: scale(1.9);
+    transform: scale(var(--pulse-to, 1.9));
   }
+}
+
+/* Today's heatmap cell is 3px from its neighbours, so its ring stays in the gap. */
+.pulse-ring-tight::after {
+  inset: -1px;
+  --pulse-to: 1.2;
 }
 
 @media (prefers-reduced-motion: reduce) {

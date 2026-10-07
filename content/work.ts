@@ -12,8 +12,8 @@ export const WORK: CaseStudy[] = [
     summary:
       'Renewcast\'s forecasts come from weather models, so they miss what a plant is doing right now. Soiling, a tripped inverter or a cloud bank 20 km off course all show up in the readings first. I trained a small recurrent network that reads the latest readings next to the forecast customers already received and corrects the next four hours. One model covers the solar fleet and another covers the wind fleet.',
     metrics: [
-      { value: '21.9%', label: 'Less short-term solar error, in backtests' },
-      { value: '26.6%', label: 'Less short-term wind error, in backtests' },
+      { value: '21.9%', label: 'Median cut in solar error over the first two hours' },
+      { value: '26.6%', label: 'Median cut in wind error over the first two hours' },
     ],
     pipeline: {
       caption: 'The model reads the forecast customers already got and the latest readings. Anything beyond four hours is left as it was.',
@@ -39,7 +39,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'Across 224 solar and wind plants, the correction cut error in the first two hours by 21.9% for solar and 26.6% for wind.',
+      'In a backtest that held out each client, the median plant-month\'s error over the first two hours fell 21.9% for solar and 26.6% for wind. Carrying the latest error forward managed 16.3% and 25.3%.',
     ],
     chart: charts.fleetNowcasting,
     stack: ['PyTorch', 'Python', 'MLflow', 'Databricks'],
@@ -96,7 +96,7 @@ export const WORK: CaseStudy[] = [
     title: 'Cutting solar forecast error from 15% to 6% in five months',
     hook: 'Most of a solar plant\'s output comes down to sun angle, panel layout and temperature. Physics handles that part. I trained the model only on what physics gets wrong.',
     org: 'Renewcast',
-    period: '2025-2026',
+    period: '2025 to 2026',
     role: 'Owned the solar forecasting stack',
     summary:
       'Renewcast sells solar production forecasts to European energy companies. I rebuilt its forecasting stack so a physical model of each plant does most of the work and machine learning only fixes what physics gets wrong. Portfolio error fell every month for five months.',
@@ -132,7 +132,7 @@ export const WORK: CaseStudy[] = [
     ],
     results: [
       'Portfolio error fell from 15.3% to 6.2% between May and October 2025, lower every month.',
-      'The new release rule also caught six hand-picked models that were worse than what was already in production.',
+      'Under the new release rule, six of twelve hand-picked models failed to beat what was already in production.',
     ],
     chart: charts.physicsFirstSolar,
     stack: ['Python', 'pvlib', 'LightGBM', 'MLflow', 'Databricks'],
@@ -175,7 +175,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'By October 2026, four client portfolios ran on the framework, the largest with 1,189 plants. On a 107-site portfolio, forecast error averaged 10% over 14 months.',
+      'By October 2026, four client portfolios ran on the framework, the largest with 1,189 plants. On a 107-site portfolio, hourly forecast error came to 10% of metered energy over 14 months. Monthly totals were off by 5% on average.',
     ],
     chart: charts.portfolioFramework,
     stack: ['Python', 'pvlib', 'H3', 'LightGBM', 'MLflow'],
@@ -183,7 +183,7 @@ export const WORK: CaseStudy[] = [
   {
     slug: 'judge-gated-generation',
     title: 'AI can stage a living room. It shouldn\'t move the walls.',
-    hook: 'Image models are good at furniture and bad at architecture. I built the pipeline that checks every edit and repairs the ones that change the room.',
+    hook: 'Image models are good at furniture and bad at architecture. I built the pipeline that checked every edit and repaired the ones that changed the room.',
     org: 'Katalo',
     period: '2026',
     role: 'Co-founder · AI pipeline, evals and infrastructure',
@@ -194,7 +194,7 @@ export const WORK: CaseStudy[] = [
       { value: '91%', label: 'Accuracy against human reviewers' },
     ],
     pipeline: {
-      caption: 'A vision model checks every edit against the rules human editors follow. A failed edit comes back with fix instructions for the next attempt.',
+      caption: 'A vision model checked every edit against the rules human editors followed. A failed edit came back with fix instructions for the next attempt.',
       stages: [
         { label: 'Listing photo' },
         { label: 'Image generation' },
@@ -206,19 +206,19 @@ export const WORK: CaseStudy[] = [
     decisions: [
       {
         title: 'Turn the editing handbook into a rubric',
-        body: 'I rewrote the handbook human editors use as a structured rubric for a vision model. The model scores each edit and flags structural failures like a moved window. Plain code then decides whether the image can ship.',
+        body: 'I rewrote the handbook human editors used as a structured rubric for a vision model. The model scored each edit and flagged structural failures like a moved window. Plain code then decided whether the image could ship.',
       },
       {
         title: 'Use rejections as repair instructions',
-        body: 'When the judge rejects an edit, it says what to fix. Those instructions go into the next attempt, which can also switch to a different model family. Attempts are capped.',
+        body: 'When the judge rejected an edit, it said what to fix. Those instructions went into the next attempt, which could also switch to a different model family. Attempts were capped.',
       },
       {
         title: 'Measure what the agency would see',
-        body: 'I calibrated the judge against human labels and replayed each listing to see which image would actually have been published. Wrong approvals and wrong rejections are counted separately, because they cost different things.',
+        body: 'I calibrated the judge against human labels and replayed each listing to see which image would actually have been published. Wrong approvals and wrong rejections were counted separately, because they cost different things.',
       },
       {
         title: 'Share four providers without falling over',
-        body: 'Each provider has its own rate limits and failure modes. Per-customer limits stop one bulk upload from blocking everyone else, and the system slows down on its own when a provider pushes back.',
+        body: 'Each provider had its own rate limits and failure modes. Per-customer limits stopped one bulk upload from blocking everyone else, and the system slowed down on its own when a provider pushed back.',
       },
     ],
     results: [
@@ -235,13 +235,13 @@ export const EARLIER: CaseStudy[] = [
     title: 'Pricing energy contracts against the risk of the whole portfolio',
     hook: 'Large industrial tenders were priced by hand, with no view of the rest of the portfolio. I built an engine that prices each tender against the risk of the whole book and cut pricing time by 95%.',
     org: 'tem.',
-    period: '2024-2025',
+    period: '2024 to 2025',
     role: 'Designed and built the pricing engine',
     summary:
-      'I built a modular pricing engine at tem. Analysts swap pricing strategies and test them against hundreds of simulated markets, with Value at Risk and Expected Shortfall built into every price.',
+      'I built a modular pricing engine at tem. Analysts swap pricing strategies and test them against simulated markets, with Value at Risk and Expected Shortfall built into every price.',
     metrics: [
       { value: '95%', label: 'Less time to price a tender' },
-      { value: '10×', label: 'More scenarios tested per quote' },
+      { value: '10×', label: 'More scenarios tested' },
     ],
     pipeline: {
       caption: 'Every quote is tested in simulated markets alongside the contracts already signed, so the price carries the risk it adds.',
@@ -272,7 +272,7 @@ export const EARLIER: CaseStudy[] = [
       },
     ],
     results: [
-      'Pricing a tender takes 95% less time, with 10 times as many scenarios tested per quote.',
+      'Pricing a tender takes 95% less time, with 10 times as many scenarios tested.',
     ],
     chart: charts.pricingTail,
     stack: ['Python', 'Monte Carlo', 'Streamlit'],
@@ -282,14 +282,14 @@ export const EARLIER: CaseStudy[] = [
     title: 'Matching small businesses with local renewables to skip £50/MWh in levies',
     hook: 'Great Britain lets generators under 5 MW sell straight to nearby businesses and skip most policy levies. Each deal needs a compatible pair, so I built the system that finds them.',
     org: 'tem.',
-    period: '2024-2025',
+    period: '2024 to 2025',
     role: 'Built the matching platform',
     summary:
       'I built a platform that pairs SMEs with local generators under 5 MW and keeps every pair inside the Supplier Exempt Class A limits. The matched power skips about £50/MWh in non-commodity costs, and the generator still gets its agreed price.',
     metrics: [
       { value: '£50/MWh', label: 'Levies avoided per matched MWh' },
       { value: '60+', label: 'Generator and business pairings' },
-      { value: '35%', label: 'Of candidate pairs became deals' },
+      { value: '35%', label: 'Match success rate across candidate pairs' },
     ],
     pipeline: {
       caption: 'Every candidate pair is scored on how well generation lines up with demand, then checked against the exemption limits before a contract is drafted.',
@@ -316,7 +316,7 @@ export const EARLIER: CaseStudy[] = [
       },
     ],
     results: [
-      'More than 60 pairings and over £3M of value for SMEs and utilities, with 35% of candidate pairs becoming deals.',
+      'More than 60 pairings and over £3M of value for SMEs and utilities, with a 35% match success rate across candidate pairs.',
     ],
     chart: charts.exemptEquation,
     stack: ['Python', 'PyTorch', 'Optimisation', 'Graph algorithms'],
@@ -326,13 +326,13 @@ export const EARLIER: CaseStudy[] = [
     title: 'Forecasting load, solar and prices for hundreds of sites at once',
     hook: 'Every site had its own weather, market and asset data, and forecasting them one at a time didn\'t scale. Global models that learn across sites cut forecast error by more than 30% against the benchmark.',
     org: 'Energy-tech',
-    period: '2023-2025',
+    period: '2023 to 2025',
     role: 'Led model development',
     summary:
       'I led the development of long-term forecasting models for UK energy-tech firms. They power product features, inform trading decisions and cut balancing costs, across load, solar generation, battery state and market prices.',
     metrics: [
       { value: '>30%', label: 'Lower MAPE than the benchmark' },
-      { value: '4', label: 'Forecast types: load, solar, battery, price' },
+      { value: '4', label: 'Forecast types for load, solar, battery and price' },
     ],
     pipeline: {
       caption: 'Weather, history and market data feed one prediction engine, and an API serves every product that uses the forecasts.',
@@ -363,7 +363,7 @@ export const EARLIER: CaseStudy[] = [
       },
     ],
     results: [
-      'The forecasts power core features in energy management platforms with thousands of users. Sub-hourly forecasts cut balancing costs and penalties, an estimated saving of millions a year.',
+      'The forecasts powered core features in customer-facing energy management platforms. Sub-hourly forecasts cut balancing costs and penalties.',
     ],
     chart: charts.forecastingCompare,
     stack: ['Python', 'PyTorch', 'MLflow', 'AWS', 'Docker'],
@@ -372,8 +372,8 @@ export const EARLIER: CaseStudy[] = [
     slug: 'mlops-foundation',
     title: 'One model contract, so every forecast ships the same way',
     hook: 'Solar, wind and pricing models each had their own packaging and runtime, so a small experiment meant pipeline surgery. A shared model contract and one package format cut deploy prep from days to under one.',
-    org: 'tem.',
-    period: '2024-2025',
+    org: 'Renewcast',
+    period: '2025',
     role: 'Platform R&D',
     summary:
       'Forecasting work had spread across solar, wind and pricing, and the tooling grew one model at a time. We rebuilt the path from notebook to production around a model contract, MLflow packaging and a challenger-versus-champion loop.',
@@ -421,7 +421,7 @@ export const EARLIER: CaseStudy[] = [
     title: 'Catching robot failures on the line before they happen',
     hook: 'Robots on automotive production lines failed without warning, and an unplanned stop holds up the whole line. Anomaly detection on live sensor data flagged problems early and cut unplanned downtime by more than 35%.',
     org: 'Datamole',
-    period: '2020-2022',
+    period: '2020 to 2022',
     role: 'Built the anomaly detection models',
     summary:
       'At Datamole AI I built anomaly detection models that predict robot failures in automotive manufacturing. The system reads multivariate sensor data in real time and flags the patterns that come before a failure.',

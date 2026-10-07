@@ -2,7 +2,9 @@ import path from 'node:path';
 import { Children, type ReactNode } from 'react';
 import { Document, Font, Link, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
+import { EMAIL } from '@/content/email';
 import { HERO, LINKS } from '@/content/site';
+import { PALETTE } from '@/lib/palette';
 
 const font = (file: string) => path.join(process.cwd(), 'assets/fonts', file);
 
@@ -18,17 +20,14 @@ Font.register({ family: 'Geist Mono', src: font('GeistMono-Regular.ttf') });
 Font.register({ family: 'Instrument Serif', src: font('InstrumentSerif-Regular.ttf') });
 Font.registerHyphenationCallback((word) => [word]);
 
-const INK = '#18181B';
-const MUTED = '#71717A';
-const BORDER = '#E4E4E7';
-const ACCENT = '#1A7F37';
+const { ink: INK, muted: MUTED, border: BORDER, accent: ACCENT, surface: PAPER } = PALETTE;
 const HAIRLINE = 0.6;
 const MARGIN = 44;
 
 const bare = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 const CONTACTS = [
-  { href: `mailto:${LINKS.email}`, label: LINKS.email },
+  { href: `mailto:${EMAIL}`, label: EMAIL },
   ...[LINKS.site, LINKS.linkedin, LINKS.github].map((url) => ({ href: url, label: bare(url) })),
 ];
 
@@ -40,7 +39,7 @@ const s = StyleSheet.create({
     paddingTop: MARGIN,
     paddingBottom: MARGIN + 12,
     paddingHorizontal: MARGIN,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: PAPER,
     color: INK,
     fontFamily: 'Geist',
   },

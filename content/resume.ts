@@ -26,7 +26,7 @@ export type Place = {
 };
 
 export const SUMMARY =
-  'Engineering lead and two-time founder. I spent seven years putting machine learning into production, mostly forecasting for energy markets, then built the AI behind Otty and Katalo. I now lead engineering at a stealth startup building critical infrastructure for aerospace, defence and robotics.';
+  'Engineering lead and two-time founder. I spent seven years putting machine learning into production, mostly forecasting for energy markets, then built the AI behind Otty and Katalo. I now lead engineering at a stealth startup building critical European infrastructure for aerospace, defence and robotics.';
 
 export const BASE: Place = { city: 'Prague', country: 'Czech Republic', countryCode: 'CZ' };
 
@@ -82,7 +82,7 @@ export const EXPERIENCE: Role[] = [
   },
   {
     role: 'Founding Data Scientist',
-    company: 'tem.energy',
+    company: 'tem.',
     location: 'London · Remote',
     period: '2024 to May 2025',
     bullets: [
