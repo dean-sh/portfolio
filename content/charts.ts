@@ -34,7 +34,7 @@ export const fleetNowcasting: Chart = {
   x: { kind: 'number', values: [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240], unit: ' min' },
   y: { format: 'percent', min: 0 },
   series: [
-    { label: 'Served forecast', tone: 'context', values: [6.07, 6.06, 5.98, 6.06, 6.12, 6.09, 6.03, 6.09, 6.14, 6.13, 6.08, 6.15, 6.21, 6.18, 6.1, 6.22] },
+    { label: 'Delivered forecast', tone: 'context', values: [6.07, 6.06, 5.98, 6.06, 6.12, 6.09, 6.03, 6.09, 6.14, 6.13, 6.08, 6.15, 6.21, 6.18, 6.1, 6.22] },
     { label: 'Persistence', tone: 'baseline', values: [2.74, 3.67, 4.31, 4.63, 4.95, 5.16, 5.34, 5.57, 5.53, 5.68, 5.76, 5.85, 5.97, 5.99, 6.04, 6.22] },
     { label: 'Fleet GRU', tone: 'focus', values: [3.06, 3.75, 4.09, 4.39, 4.66, 4.93, 5.08, 5.34, 5.25, 5.46, 5.63, 5.71, 5.68, 5.74, 6.0, 6.22] },
   ],
