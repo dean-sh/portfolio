@@ -25,7 +25,7 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 - Charts name their source and label simulations. Do not invent measured results. Keep mobile readouts within the plot and preserve the expandable data table.
 - The remaining legacy pages under `app/projects/*` wrap `components/ProjectDetails.tsx` and are not linked from the site.
 - `app/sitemap.ts` lists home, resume and every case study. `next.config.js` redirects old `/projects/*` and retired `/work/*` URLs to their current case studies.
-- `content/resume.ts` holds the resume summary, locations, experience, education and skills. `app/resume/page.tsx` and the resume PDF both render it.
+- `content/resume.ts` holds the resume summary, base location (`BASE`), remote note, experience, education and skills. `app/resume/page.tsx` and the resume PDF both render it.
 
 ## Design system
 
@@ -64,4 +64,4 @@ Every case study needs a photograph at `public/images/work/<slug>.jpg`. `workIma
 
 The resume PDF at `/dean-shabi-cv.pdf` is generated at build time from `content/resume.ts` by `app/dean-shabi-cv.pdf/route.ts` and `components/ResumeDocument.tsx`. The route is static, so `next build` renders it once per deploy with `@react-pdf/renderer` and the TTFs in `assets/fonts/`. Never commit a PDF by hand. After a content change, open the PDF and check that it still fits on two pages.
 
-The PDF is also tuned to parse cleanly in resume parsers (OpenResume, pdfminer, pdfplumber, pypdf, pdf.js and poppler). The single-column skills, the gutter offsets, the gaps around the role and company dot, and the footer draw order exist for that, and comments in `components/ResumeDocument.tsx` say why. `patches/@react-pdf+textkit+7.0.1.patch`, applied by `postinstall`, keeps text that starts with a digit in one PDF text run, so parsers read periods like "2026 to now" whole. When `@react-pdf/textkit` is upgraded, check whether the patch still applies or is still needed.
+The PDF is also tuned to parse cleanly in resume parsers (OpenResume, pdfminer, pdfplumber, pypdf, pdf.js and poppler). The single-column skills, the gutter offsets, the gaps around the role and company dot, the SemiBold role and company, the "Prague, CZ" header form of `BASE` and the footer draw order exist for that, and comments in `components/ResumeDocument.tsx` say why. The email address (`LINKS.email`) appears on the PDF only, never on the website. `patches/@react-pdf+textkit+7.0.1.patch`, applied by `postinstall`, keeps text that starts with a digit in one PDF text run, so parsers read periods like "2026 to now" whole. When `@react-pdf/textkit` is upgraded, check whether the patch still applies or is still needed.
