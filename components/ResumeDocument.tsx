@@ -11,6 +11,7 @@ Font.register({
   fonts: [
     { src: font('Geist-Regular.ttf'), fontWeight: 400 },
     { src: font('Geist-Medium.ttf'), fontWeight: 500 },
+    { src: font('Geist-SemiBold.ttf'), fontWeight: 600 },
   ],
 });
 Font.register({ family: 'Geist Mono', src: font('GeistMono-Regular.ttf') });
@@ -65,8 +66,10 @@ const s = StyleSheet.create({
   main: { flex: 1 },
   // Wider than a space, so item-based parsers keep the title, the dot and the company as separate items.
   roleLine: { flexDirection: 'row', columnGap: 4.5 },
-  role: { ...type(10, 1.3), fontWeight: 500 },
-  company: { ...type(10, 1.3), color: MUTED },
+  // OpenResume picks the company as the first bold item that is neither title nor date, reading bold from the font name, so the dot stays Regular.
+  role: { ...type(10, 1.3), fontWeight: 600 },
+  company: { ...type(10, 1.3), fontWeight: 600, color: MUTED },
+  separator: { ...type(10, 1.3), color: MUTED },
   bullets: { marginTop: 4 },
   bullet: { flexDirection: 'row', marginTop: 1.5 },
   dash: { width: 6, height: 1, marginTop: 6.2, marginRight: 6, backgroundColor: ACCENT },
@@ -156,7 +159,7 @@ export function ResumeDocument() {
             >
               <View style={s.roleLine}>
                 <Text style={s.role}>{item.role}</Text>
-                <Text style={s.company}>·</Text>
+                <Text style={s.separator}>·</Text>
                 <Text style={s.company}>{item.company}</Text>
               </View>
               <View style={s.bullets}>
