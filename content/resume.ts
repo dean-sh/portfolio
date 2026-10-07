@@ -57,7 +57,7 @@ export const EXPERIENCE: Role[] = [
     skills: ['AI agents', 'TypeScript', 'Postgres', 'Product'],
   },
   {
-    role: 'Co-founder',
+    role: 'Co-Founder',
     company: 'Katalo',
     location: 'Remote',
     period: 'Feb 2026 to Sep 2026',
