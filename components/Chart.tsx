@@ -22,7 +22,7 @@ function LineChartView({ chart }: { chart: LineChart }) {
       <Caption chart={chart} />
 
       {multi && (
-        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground">
+        <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-1 text-xs text-muted-foreground max-md:hidden">
           {[...plot.series].reverse().map((s) => (
             <li key={s.label} className="flex items-center gap-2">
               <LineKey tone={s.tone} />
@@ -32,91 +32,87 @@ function LineChartView({ chart }: { chart: LineChart }) {
         </ul>
       )}
 
-      <div className="mt-6 h-56 pb-7 pl-12 pr-1 pt-3 md:h-64">
-        <div className="relative h-full w-full">
-          {plot.yTicks.map((tick) => (
-            <div
-              key={tick.label}
-              aria-hidden="true"
-              className="absolute inset-x-0 border-t border-border"
-              style={{ bottom: `${tick.at * 100}%` }}
-            >
-              <span className="absolute -left-12 w-10 -translate-y-1/2 text-right font-mono text-[11px] tabular-nums text-muted-foreground">
-                {tick.label}
-              </span>
-            </div>
-          ))}
-
-
-          <svg
-            aria-hidden="true"
-            viewBox={VIEWBOX}
-            preserveAspectRatio="none"
-            className="absolute inset-0 h-full w-full overflow-visible"
-          >
-            {drawn.map((s) => (
-              <g key={s.label}>
-                {s.area && <path d={s.area} fill={TONE_COLOR[s.tone]} fillOpacity={0.1} stroke="none" />}
-                <path
-                  d={s.path}
-                  fill="none"
-                  stroke={TONE_COLOR[s.tone]}
-                  strokeWidth={s.tone === 'focus' ? 2 : 1.5}
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  strokeDasharray={s.tone === 'baseline' ? '4 4' : undefined}
-                  vectorEffect="non-scaling-stroke"
-                />
-              </g>
-            ))}
-          </svg>
-
-          {focus && !plot.points.some((point) => point.x === plot.xs[last]) && (
-            <span
-              aria-hidden="true"
-              className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-surface"
-              style={{ left: `${plot.xs[last] * 100}%`, bottom: `${focus.ys[last] * 100}%`, background: TONE_COLOR.focus }}
-            />
-          )}
-
-          {plot.points.map((point) => (
-            <div
-              key={point.label}
-              aria-hidden="true"
-              className="absolute"
-              style={{ left: `${point.x * 100}%`, bottom: `${point.y * 100}%` }}
-            >
-              <span
-                className="absolute top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-surface"
-                style={{ background: TONE_COLOR.focus }}
-              />
-              <span
-                className="absolute bottom-2.5 whitespace-nowrap font-mono text-[11px] text-foreground"
-                style={{ transform: edgeShift(point.x) }}
-              >
-                {point.label}
-              </span>
-            </div>
-          ))}
-
-          {plot.xTicks.map((tick) => (
-            <span
-              key={`${tick.label}-${tick.at}`}
-              aria-hidden="true"
-              className="absolute top-full mt-2 whitespace-nowrap font-mono text-[11px] text-muted-foreground"
-              style={{ left: `${tick.at * 100}%`, transform: edgeShift(tick.at) }}
-            >
-              {tick.label}
-            </span>
-          ))}
-
-          <ChartHover
-            xs={plot.xs}
-            xLabels={plot.xLabels}
-            series={plot.series.map(({ label, tone, ys, display }) => ({ label, tone, ys, display }))}
-          />
+      <ChartHover
+        xs={plot.xs}
+        xLabels={plot.xLabels}
+        series={plot.series.map(({ label, tone, ys, display }) => ({ label, tone, ys, display }))}
+      >
+      {plot.yTicks.map((tick) => (
+        <div
+          key={tick.label}
+          aria-hidden="true"
+          className="absolute inset-x-0 border-t border-border"
+          style={{ bottom: `${tick.at * 100}%` }}
+        >
+          <span className="absolute -left-12 w-10 -translate-y-1/2 text-right font-mono text-[11px] tabular-nums text-muted-foreground">
+            {tick.label}
+          </span>
         </div>
-      </div>
+      ))}
+
+
+      <svg
+        aria-hidden="true"
+        viewBox={VIEWBOX}
+        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full overflow-visible"
+      >
+        {drawn.map((s) => (
+          <g key={s.label}>
+            {s.area && <path d={s.area} fill={TONE_COLOR[s.tone]} fillOpacity={0.1} stroke="none" />}
+            <path
+              d={s.path}
+              fill="none"
+              stroke={TONE_COLOR[s.tone]}
+              strokeWidth={s.tone === 'focus' ? 2 : 1.5}
+              strokeLinejoin="round"
+              strokeLinecap="round"
+              strokeDasharray={s.tone === 'baseline' ? '4 4' : undefined}
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
+        ))}
+      </svg>
+
+      {focus && !plot.points.some((point) => point.x === plot.xs[last]) && (
+        <span
+          aria-hidden="true"
+          className="absolute h-2 w-2 -translate-x-1/2 translate-y-1/2 rounded-full ring-2 ring-surface"
+          style={{ left: `${plot.xs[last] * 100}%`, bottom: `${focus.ys[last] * 100}%`, background: TONE_COLOR.focus }}
+        />
+      )}
+
+      {plot.points.map((point) => (
+        <div
+          key={point.label}
+          aria-hidden="true"
+          className="absolute"
+          style={{ left: `${point.x * 100}%`, bottom: `${point.y * 100}%` }}
+        >
+          <span
+            className="absolute top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-surface"
+            style={{ background: TONE_COLOR.focus }}
+          />
+          <span
+            className="absolute bottom-2.5 whitespace-nowrap font-mono text-[11px] text-foreground"
+            style={{ transform: edgeShift(point.x) }}
+          >
+            {point.label}
+          </span>
+        </div>
+      ))}
+
+      {plot.xTicks.map((tick) => (
+        <span
+          key={`${tick.label}-${tick.at}`}
+          aria-hidden="true"
+          className="absolute top-full mt-2 whitespace-nowrap font-mono text-[11px] text-muted-foreground"
+          style={{ left: `${tick.at * 100}%`, transform: edgeShift(tick.at) }}
+        >
+          {tick.label}
+        </span>
+      ))}
+      </ChartHover>
 
       <div className="mt-4 space-y-2">
         <p className="text-xs leading-relaxed text-muted-foreground">{chart.source}</p>
