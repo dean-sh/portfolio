@@ -83,7 +83,7 @@ const s = StyleSheet.create({
     color: MUTED,
   },
   footerText: { fontSize: 7.5 },
-  // A lineHeight on the page number's render Text drops the whole fixed footer.
+  // A lineHeight on a render Text drops the whole fixed footer.
   pageNumber: { fontFamily: 'Geist Mono', fontSize: 7 },
 });
 
@@ -109,10 +109,22 @@ function Entry({ aside, children }: { aside: ReactNode; children: ReactNode }) {
   );
 }
 
+// OpenResume joins the last text of one page to the first text of the next, so later pages draw their footer before the body.
+function Footer({ onFirstPage }: { onFirstPage: boolean }) {
+  const show = (pageNumber: number, text: string) => ((pageNumber === 1) === onFirstPage ? text : '');
+  return (
+    <View style={s.footer} fixed>
+      <Text style={s.footerText} render={({ pageNumber }) => show(pageNumber, `${bare(LINKS.site)}/resume`)} />
+      <Text style={s.pageNumber} render={({ pageNumber, totalPages }) => show(pageNumber, `${pageNumber} / ${totalPages}`)} />
+    </View>
+  );
+}
+
 export function ResumeDocument() {
   return (
     <Document title={`${HERO.name} · Resume`} author={HERO.name}>
       <Page size="A4" style={s.page}>
+        <Footer onFirstPage={false} />
         <Text style={s.name}>{HERO.name}</Text>
         <Text style={s.summary}>{SUMMARY}</Text>
         <View style={s.meta}>
@@ -173,10 +185,7 @@ export function ResumeDocument() {
           ))}
         </Section>
 
-        <View style={s.footer} fixed>
-          <Text style={s.footerText}>{`${bare(LINKS.site)}/resume`}</Text>
-          <Text style={s.pageNumber} render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
-        </View>
+        <Footer onFirstPage />
       </Page>
     </Document>
   );
