@@ -19,10 +19,18 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type Place = {
+  city: string;
+  country: string;
+  countryCode: string;
+};
+
 export const SUMMARY =
   'Engineering lead and two-time founder. I spent seven years putting machine learning into production, mostly forecasting for energy markets, then built the AI behind Otty and Katalo. I now lead engineering at a stealth startup building critical infrastructure for aerospace, defence and robotics.';
 
-export const LOCATIONS = ['Prague, Czech Republic', 'Remote with UK and EU teams'];
+export const BASE: Place = { city: 'Prague', country: 'Czech Republic', countryCode: 'CZ' };
+
+export const REMOTE = 'Remote with UK and EU teams';
 
 export const EXPERIENCE: Role[] = [
   {

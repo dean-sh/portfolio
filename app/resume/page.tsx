@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import { HERO } from '@/content/site';
-import { EDUCATION, EXPERIENCE, LOCATIONS, SKILL_GROUPS, SUMMARY } from '@/content/resume';
+import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
 
 export const metadata = {
   title: 'Resume',
   description: 'Dean Shabi. Engineering lead, AI engineer and two-time founder.',
   alternates: { canonical: '/resume' },
 };
+
+const LOCATIONS = [`${BASE.city}, ${BASE.country}`, REMOTE];
 
 const HEADING = 'font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:text-[2rem]';
 

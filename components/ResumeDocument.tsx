@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { Children, type ReactNode } from 'react';
 import { Document, Font, Link, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
-import { EDUCATION, EXPERIENCE, LOCATIONS, SKILL_GROUPS, SUMMARY } from '@/content/resume';
+import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
 import { HERO, LINKS } from '@/content/site';
 
 const font = (file: string) => path.join(process.cwd(), 'assets/fonts', file);
@@ -130,7 +130,7 @@ export function ResumeDocument() {
         <Text style={s.name}>{HERO.name}</Text>
         <Text style={s.summary}>{SUMMARY}</Text>
         <View style={s.meta}>
-          <Text style={s.locations}>{LOCATIONS.join(' · ')}</Text>
+          <Text style={s.locations}>{`${BASE.city}, ${BASE.countryCode} · ${REMOTE}`}</Text>
           <View style={s.profiles}>
             {PROFILES.map((url) => (
               <Link key={url} src={url} style={s.profile}>
