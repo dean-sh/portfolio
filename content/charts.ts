@@ -59,15 +59,15 @@ export const ottyFunnel: Chart = {
 
 export const kataloJudge: Chart = {
   kind: 'judge',
-  title: 'How the judge decides',
-  note: 'A vision model compares every edited photo with the original and scores it against the rubric human editors use. The model only reports. Plain code makes the call. Of the edits it approved, 95% were approved by human reviewers too.',
+  title: 'How the judge decided',
+  note: 'A vision model compared every edited photo with the original and scored it against the rubric human editors used. The model only reported. Plain code made the call. Of the edits it approved, 95% were approved by human reviewers too.',
   source: 'Precision measured against human reviewers.',
   sees: ['Original photo', 'Edited photo', 'Editors\' rubric'],
   returns: ['Score from 1 to 5', 'Structural failures', 'Fix instructions'],
   rule: 'Score of 4 or more and no structural failure',
   pass: 'Publish to the listing',
   fail: 'Retry with the fix instructions, up to 3 attempts',
-  sparkLabel: 'How the LLM judge decides',
+  sparkLabel: 'How the LLM judge decided',
 };
 
 export const pricingTail: Chart = {

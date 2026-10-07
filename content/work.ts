@@ -96,7 +96,7 @@ export const WORK: CaseStudy[] = [
     title: 'Cutting solar forecast error from 15% to 6% in five months',
     hook: 'Most of a solar plant\'s output comes down to sun angle, panel layout and temperature. Physics handles that part. I trained the model only on what physics gets wrong.',
     org: 'Renewcast',
-    period: '2025-2026',
+    period: '2025 to 2026',
     role: 'Owned the solar forecasting stack',
     summary:
       'Renewcast sells solar production forecasts to European energy companies. I rebuilt its forecasting stack so a physical model of each plant does most of the work and machine learning only fixes what physics gets wrong. Portfolio error fell every month for five months.',
@@ -183,7 +183,7 @@ export const WORK: CaseStudy[] = [
   {
     slug: 'judge-gated-generation',
     title: 'AI can stage a living room. It shouldn\'t move the walls.',
-    hook: 'Image models are good at furniture and bad at architecture. I built the pipeline that checks every edit and repairs the ones that change the room.',
+    hook: 'Image models are good at furniture and bad at architecture. I built the pipeline that checked every edit and repaired the ones that changed the room.',
     org: 'Katalo',
     period: '2026',
     role: 'Co-founder · AI pipeline, evals and infrastructure',
@@ -194,7 +194,7 @@ export const WORK: CaseStudy[] = [
       { value: '91%', label: 'Accuracy against human reviewers' },
     ],
     pipeline: {
-      caption: 'A vision model checks every edit against the rules human editors follow. A failed edit comes back with fix instructions for the next attempt.',
+      caption: 'A vision model checked every edit against the rules human editors followed. A failed edit came back with fix instructions for the next attempt.',
       stages: [
         { label: 'Listing photo' },
         { label: 'Image generation' },
@@ -206,19 +206,19 @@ export const WORK: CaseStudy[] = [
     decisions: [
       {
         title: 'Turn the editing handbook into a rubric',
-        body: 'I rewrote the handbook human editors use as a structured rubric for a vision model. The model scores each edit and flags structural failures like a moved window. Plain code then decides whether the image can ship.',
+        body: 'I rewrote the handbook human editors used as a structured rubric for a vision model. The model scored each edit and flagged structural failures like a moved window. Plain code then decided whether the image could ship.',
       },
       {
         title: 'Use rejections as repair instructions',
-        body: 'When the judge rejects an edit, it says what to fix. Those instructions go into the next attempt, which can also switch to a different model family. Attempts are capped.',
+        body: 'When the judge rejected an edit, it said what to fix. Those instructions went into the next attempt, which could also switch to a different model family. Attempts were capped.',
       },
       {
         title: 'Measure what the agency would see',
-        body: 'I calibrated the judge against human labels and replayed each listing to see which image would actually have been published. Wrong approvals and wrong rejections are counted separately, because they cost different things.',
+        body: 'I calibrated the judge against human labels and replayed each listing to see which image would actually have been published. Wrong approvals and wrong rejections were counted separately, because they cost different things.',
       },
       {
         title: 'Share four providers without falling over',
-        body: 'Each provider has its own rate limits and failure modes. Per-customer limits stop one bulk upload from blocking everyone else, and the system slows down on its own when a provider pushes back.',
+        body: 'Each provider had its own rate limits and failure modes. Per-customer limits stopped one bulk upload from blocking everyone else, and the system slowed down on its own when a provider pushed back.',
       },
     ],
     results: [
@@ -235,7 +235,7 @@ export const EARLIER: CaseStudy[] = [
     title: 'Pricing energy contracts against the risk of the whole portfolio',
     hook: 'Large industrial tenders were priced by hand, with no view of the rest of the portfolio. I built an engine that prices each tender against the risk of the whole book and cut pricing time by 95%.',
     org: 'tem.',
-    period: '2024-2025',
+    period: '2024 to 2025',
     role: 'Designed and built the pricing engine',
     summary:
       'I built a modular pricing engine at tem. Analysts swap pricing strategies and test them against simulated markets, with Value at Risk and Expected Shortfall built into every price.',
@@ -282,7 +282,7 @@ export const EARLIER: CaseStudy[] = [
     title: 'Matching small businesses with local renewables to skip £50/MWh in levies',
     hook: 'Great Britain lets generators under 5 MW sell straight to nearby businesses and skip most policy levies. Each deal needs a compatible pair, so I built the system that finds them.',
     org: 'tem.',
-    period: '2024-2025',
+    period: '2024 to 2025',
     role: 'Built the matching platform',
     summary:
       'I built a platform that pairs SMEs with local generators under 5 MW and keeps every pair inside the Supplier Exempt Class A limits. The matched power skips about £50/MWh in non-commodity costs, and the generator still gets its agreed price.',
@@ -326,13 +326,13 @@ export const EARLIER: CaseStudy[] = [
     title: 'Forecasting load, solar and prices for hundreds of sites at once',
     hook: 'Every site had its own weather, market and asset data, and forecasting them one at a time didn\'t scale. Global models that learn across sites cut forecast error by more than 30% against the benchmark.',
     org: 'Energy-tech',
-    period: '2023-2025',
+    period: '2023 to 2025',
     role: 'Led model development',
     summary:
       'I led the development of long-term forecasting models for UK energy-tech firms. They power product features, inform trading decisions and cut balancing costs, across load, solar generation, battery state and market prices.',
     metrics: [
       { value: '>30%', label: 'Lower MAPE than the benchmark' },
-      { value: '4', label: 'Forecast types: load, solar, battery, price' },
+      { value: '4', label: 'Forecast types for load, solar, battery and price' },
     ],
     pipeline: {
       caption: 'Weather, history and market data feed one prediction engine, and an API serves every product that uses the forecasts.',
@@ -421,7 +421,7 @@ export const EARLIER: CaseStudy[] = [
     title: 'Catching robot failures on the line before they happen',
     hook: 'Robots on automotive production lines failed without warning, and an unplanned stop holds up the whole line. Anomaly detection on live sensor data flagged problems early and cut unplanned downtime by more than 35%.',
     org: 'Datamole',
-    period: '2020-2022',
+    period: '2020 to 2022',
     role: 'Built the anomaly detection models',
     summary:
       'At Datamole AI I built anomaly detection models that predict robot failures in automotive manufacturing. The system reads multivariate sensor data in real time and flags the patterns that come before a failure.',

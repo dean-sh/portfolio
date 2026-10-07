@@ -227,12 +227,12 @@ function JudgeView({ chart }: { chart: JudgeChart }) {
         <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
       </figcaption>
       <div className="mt-8 grid gap-2 md:grid-cols-[1fr_1.5rem_1fr_1.5rem_1.25fr] md:gap-1">
-        <JudgeBox label="The judge sees" items={chart.sees} />
+        <JudgeBox label="The judge saw" items={chart.sees} />
         <FlowArrow />
-        <JudgeBox label="It returns" items={chart.returns} />
+        <JudgeBox label="It returned" items={chart.returns} />
         <FlowArrow />
         <div className="rounded-md border border-signal/50 bg-background/60 p-4">
-          <p className={BOX_LABEL}>Code decides</p>
+          <p className={BOX_LABEL}>Code decided</p>
           <p className="mt-3 text-sm">{chart.rule}</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li className="grid grid-cols-[0.75rem_1fr] gap-x-2">
