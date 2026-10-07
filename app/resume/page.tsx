@@ -1,12 +1,17 @@
 import type { CSSProperties } from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { HERO } from '@/content/site';
+import { OPEN_GRAPH } from '@/lib/metadata';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
 
-export const metadata = {
+const DESCRIPTION = `${HERO.name}. Engineering lead, AI engineer and two-time founder.`;
+
+export const metadata: Metadata = {
   title: 'Resume',
-  description: 'Dean Shabi. Engineering lead, AI engineer and two-time founder.',
+  description: DESCRIPTION,
   alternates: { canonical: '/resume' },
+  openGraph: { ...OPEN_GRAPH, type: 'profile', url: '/resume', title: `Resume · ${HERO.name}`, description: DESCRIPTION },
 };
 
 const LOCATIONS = [`${BASE.city}, ${BASE.country}`, REMOTE];

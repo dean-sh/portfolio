@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { serifItalic } from './fonts';
@@ -12,6 +13,8 @@ import { EARLIER, WORK } from '@/content/work';
 import { formatIndex, workImage } from '@/lib/work';
 import { cn } from '@/lib/utils';
 import { HERO, LINKS, NOW, QUOTE } from '@/content/site';
+
+export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 const GITHUB_USER = LINKS.github.split('/').pop() ?? '';
 const [featured, panelled, offset, ...closing] = WORK;

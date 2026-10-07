@@ -6,6 +6,7 @@ import { mono, serif } from './fonts';
 import { Nav } from '@/components/Nav';
 import { RevealObserver } from '@/components/RevealObserver';
 import { HERO, LINKS } from '@/content/site';
+import { OPEN_GRAPH } from '@/lib/metadata';
 
 const SITE_TITLE = 'Dean Shabi · Engineering lead';
 
@@ -18,20 +19,15 @@ export const metadata: Metadata = {
   authors: [{ name: HERO.name }],
   creator: HERO.name,
   metadataBase: new URL(LINKS.site),
-  alternates: { canonical: '/' },
   openGraph: {
-    title: SITE_TITLE,
-    description: HERO.title,
-    url: LINKS.site,
-    siteName: HERO.name,
+    ...OPEN_GRAPH,
     type: 'website',
-    locale: 'en_GB',
-  },
-  twitter: {
-    card: 'summary_large_image',
+    url: '/',
     title: SITE_TITLE,
     description: HERO.title,
   },
+  // Title, description and image come from each page's openGraph.
+  twitter: { card: 'summary_large_image' },
   robots: {
     index: true,
     follow: true,

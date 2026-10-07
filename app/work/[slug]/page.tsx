@@ -6,6 +6,7 @@ import { Arrow } from '@/components/Arrow';
 import { Chart } from '@/components/Chart';
 import { Photo } from '@/components/Photo';
 import { Pipeline } from '@/components/Pipeline';
+import { OPEN_GRAPH } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 import { ALL_CASE_STUDIES, findCaseStudy, formatIndex, workImage, type CaseStudyEntry } from '@/lib/work';
 
@@ -22,19 +23,9 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const url = `/work/${study.slug}`;
   return {
     title: study.title,
-    description: study.summary,
+    description: study.hook,
     alternates: { canonical: url },
-    openGraph: {
-      type: 'article',
-      url,
-      title: study.title,
-      description: study.summary,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: study.title,
-      description: study.summary,
-    },
+    openGraph: { ...OPEN_GRAPH, type: 'article', url, title: study.title, description: study.hook },
   };
 }
 
