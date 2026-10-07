@@ -95,7 +95,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       >
         {study.metrics.map((m) => (
           <li key={m.label} className="p-6 md:px-8 md:py-7">
-            <p className="whitespace-nowrap font-mono text-4xl tracking-tight text-signal md:text-5xl">{m.value}</p>
+            <p className="whitespace-nowrap font-mono text-3xl tracking-tight text-signal min-[360px]:text-4xl md:text-5xl">{m.value}</p>
             <p className="mt-2 max-w-[17rem] text-sm leading-relaxed text-muted-foreground">{m.label}</p>
           </li>
         ))}
