@@ -1,12 +1,12 @@
 import Image from"next/image";
 import { ProjectDetails } from"@/components/ProjectDetails";
 export const metadata = {
- title:"Portfolio Pricing Engine | Dean Shabi",
+ title:"Portfolio pricing engine | Dean Shabi",
  description:
-"Developing a portfolio-aware pricing system for risk-optimized energy trading.",
+"A pricing engine that prices energy tenders against the current and projected risk of the whole contract portfolio.",
 };
 
-// Feather icons (example - replace with actual import if needed or use inline SVGs)
+// Inline Feather icons
 const CheckCircle = () => (
  <svg
  className="w-5 h-5 text-foreground"
@@ -36,38 +36,6 @@ const Activity = () => (
  strokeLinejoin="round"
  strokeWidth={2}
  d="M22 12h-4l-3 9L9 3l-3 9H2"
- />
- </svg>
-);
-const DollarSign = () => (
- <svg
- className="w-5 h-5 text-foreground"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
- />
- </svg>
-);
-const Zap = () => (
- <svg
- className="w-5 h-5 text-foreground"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M13 10V3L4 14h7v7l9-11h-7z"
  />
  </svg>
 );
@@ -179,8 +147,8 @@ const AlertTriangle = () => (
 export default function PortfolioPricingPage() {
  return (
  <ProjectDetails
- title="Portfolio Pricing Engine"
- subtitle="Risk-optimized pricing framework for energy trading portfolios"
+ title="Portfolio pricing engine"
+ subtitle="Prices energy tenders against the current and projected risk of the whole contract portfolio."
  image="/images/financial-analytics.jpg"
  industry="Energy"
  client="Confidential Utility Partner"
@@ -202,26 +170,25 @@ export default function PortfolioPricingPage() {
  {/* Introduction Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Project Overview
+ Overview
  </h2>
  <div className="prose prose-lg max-w-none">
  <p className="lead text-xl text-foreground">
- Developed a modular and portfolio-aware pricing engine for a
- leading energy provider. This tool integrates risk-adjusted
- pricing strategies and supports real-time scenario testing for
- energy tenders.
+ I built a modular pricing engine for an energy provider.
+ Analysts can swap pricing strategies and test them against
+ hundreds of simulated market conditions in real time.
  </p>
  </div>
  </section>
  {/* The Challenge Section */}
  <section className="bg-muted rounded-xl p-6 border border-border">
- <h2 className="text-2xl font-bold text-foreground mb-4">The Challenge</h2>
+ <h2 className="text-2xl font-bold text-foreground mb-4">The challenge</h2>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
  <div>
  <p className="mb-4">
- Traditional industrial-scale energy contract pricing often lacks
- portfolio context, is reactive, and manually intensive. Key
- difficulties included:
+ Large industrial energy contracts are often priced by hand, in
+ reaction to the market, with no view of the rest of the
+ portfolio. The hard parts:
  </p>
  <ul className="space-y-3">
  <li className="flex items-start">
@@ -229,8 +196,8 @@ export default function PortfolioPricingPage() {
  <span className="text-foreground">•</span>
  </div>
  <span>
- Quantifying financial risk across dynamic, interconnected
- portfolios.
+ Measuring financial risk across a portfolio whose contracts
+ change and interact.
  </span>
  </li>
  <li className="flex items-start">
@@ -238,8 +205,7 @@ export default function PortfolioPricingPage() {
  <span className="text-foreground">•</span>
  </div>
  <span>
- Balancing competitive pricing with adequate risk-adjusted
- margins.
+ Pricing competitively while keeping risk-adjusted margins.
  </span>
  </li>
  <li className="flex items-start">
@@ -247,8 +213,8 @@ export default function PortfolioPricingPage() {
  <span className="text-foreground">•</span>
  </div>
  <span>
- Modeling complex interdependencies between existing and
- future contracts.
+ Modeling how existing and future contracts depend on each
+ other.
  </span>
  </li>
  </ul>
@@ -264,7 +230,7 @@ export default function PortfolioPricingPage() {
  {/* What I Delivered Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-6 border-b border-border pb-2">
- What I Delivered
+ What I delivered
  </h2>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  <div className="bg-muted rounded-lg p-6 shadow-sm border border-border space-y-3">
@@ -273,12 +239,12 @@ export default function PortfolioPricingPage() {
  <Layers />
  </div>
  <h3 className="text-lg font-semibold text-foreground">
- Simulation Framework Design
+ Simulation framework
  </h3>
  </div>
  <p className="text-muted-foreground text-sm">
- Designed and built a simulation framework to test how pricing
- decisions impact risk across evolving energy portfolios.
+ I designed and built a framework that tests how each pricing
+ decision changes risk as the portfolio evolves.
  </p>
  </div>
  <div className="bg-muted rounded-lg p-6 shadow-sm border border-border space-y-3">
@@ -287,13 +253,12 @@ export default function PortfolioPricingPage() {
  <GitMerge />
  </div>
  <h3 className="text-lg font-semibold text-foreground">
- Risk Metric Integration
+ Risk metrics in the price
  </h3>
  </div>
  <p className="text-muted-foreground text-sm">
- Integrated key financial risk metrics (Value at Risk and
- Expected Shortfall) directly into the pricing logic to better
- quantify uncertainty.
+ Value at Risk and Expected Shortfall feed straight into the
+ pricing logic.
  </p>
  </div>
  <div className="bg-muted rounded-lg p-6 shadow-sm border border-border space-y-3">
@@ -302,13 +267,12 @@ export default function PortfolioPricingPage() {
  <Activity />
  </div>
  <h3 className="text-lg font-semibold text-foreground">
- Interactive Analysis App
+ Analyst app
  </h3>
  </div>
  <p className="text-muted-foreground text-sm">
- Developed a Streamlit-based application allowing analysts to
- interactively explore, compare, and visualize different pricing
- strategies.
+ A Streamlit app where analysts explore, compare and visualize
+ pricing strategies.
  </p>
  </div>
  <div className="bg-muted rounded-lg p-6 shadow-sm border border-border space-y-3">
@@ -317,61 +281,12 @@ export default function PortfolioPricingPage() {
  <CheckCircle />
  </div>
  <h3 className="text-lg font-semibold text-foreground">
- Strategic Input
+ Next-generation planning
  </h3>
  </div>
  <p className="text-muted-foreground text-sm">
- Contributed to the strategic planning for a next-generation
- pricing engine as part of a broader transformation initiative.
- </p>
- </div>
- </div>
- </section>
- {/* Key Innovations Section */}
- <section className="bg-muted rounded-xl p-6 border border-border">
- <h2 className="text-2xl font-bold text-foreground mb-6">
- Key Innovations
- </h2>
- <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
- <div className="space-y-2">
- <div className="flex items-center space-x-2">
- <div className="bg-muted p-1.5 rounded-full">
- <Layers />
- </div>
- <h3 className="font-semibold text-foreground">
- Portfolio-Aware Modeling
- </h3>
- </div>
- <p className="text-sm text-muted-foreground pl-8">
- New pricing accurately reflects the current and projected risk
- exposure of the entire contract portfolio.
- </p>
- </div>
- <div className="space-y-2">
- <div className="flex items-center space-x-2">
- <div className="bg-muted p-1.5 rounded-full">
- <Zap />
- </div>
- <h3 className="font-semibold text-foreground">
- Flexible Strategy Evaluation
- </h3>
- </div>
- <p className="text-sm text-muted-foreground pl-8">
- Enabled dynamic switching between various pricing strategies.
- </p>
- </div>
- <div className="space-y-2">
- <div className="flex items-center space-x-2">
- <div className="bg-muted p-1.5 rounded-full">
- <Activity />
- </div>
- <h3 className="font-semibold text-foreground">
- Scenario-Based Testing
- </h3>
- </div>
- <p className="text-sm text-muted-foreground pl-8">
- Forecasted performance and risk implications across hundreds of
- simulated market conditions.
+ I helped plan the next-generation pricing engine, part of a
+ wider transformation program.
  </p>
  </div>
  </div>
@@ -379,13 +294,8 @@ export default function PortfolioPricingPage() {
  {/* Methodological Exploration Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-6 border-b border-border pb-2">
- Methodological Exploration
+ Two ways to model risk
  </h2>
- <p className="mb-6 prose prose-lg max-w-none">
- To build a robust pricing engine, we rigorously evaluated different
- modeling techniques, balancing computational speed with analytical
- depth.
- </p>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
  <div className="bg-muted rounded-xl p-6 border border-border space-y-4">
  <div className="flex items-center space-x-3">
@@ -393,13 +303,12 @@ export default function PortfolioPricingPage() {
  <BarChart2 />
  </div>
  <h3 className="text-xl font-semibold text-foreground">
- Statistical Approaches
+ Statistical models
  </h3>
  </div>
  <p className="text-muted-foreground">
- Leveraged historical data analysis and established statistical
- risk models (like VaR/ES). This provided rapid baseline risk
- profiling and efficient calculation for standard scenarios.
+ Historical data and standard VaR and ES models. Fast baseline
+ risk profiles for standard scenarios.
  </p>
  </div>
  <div className="bg-muted rounded-xl p-6 border border-border space-y-4">
@@ -408,14 +317,13 @@ export default function PortfolioPricingPage() {
  <Cpu />
  </div>
  <h3 className="text-xl font-semibold text-foreground">
- Monte Carlo Simulations
+ Monte Carlo simulation
  </h3>
  </div>
  <p className="text-muted-foreground">
- Employed extensive simulations to model complex portfolio
- interactions and forecast outcomes under thousands of potential
- market conditions. This approach excelled at capturing
- non-linear effects and tail risks.
+ Thousands of simulated market conditions show how contracts in
+ the portfolio interact. Better at non-linear effects and tail
+ risk.
  </p>
  </div>
  </div>
@@ -423,7 +331,7 @@ export default function PortfolioPricingPage() {
  {/* VaR and ES Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Key Risk Concepts: VaR & ES (CVaR)
+ VaR and ES in plain terms
  </h2>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
  <div className="bg-muted rounded-xl p-6 border border-border space-y-4">
@@ -432,18 +340,12 @@ export default function PortfolioPricingPage() {
  <span className="text-foreground font-bold">VaR</span>
  </div>
  <h3 className="text-xl font-semibold text-foreground">
- Value at Risk (VaR)
+ Value at Risk
  </h3>
  </div>
  <p className="text-muted-foreground">
- VaR estimates the maximum potential loss for the portfolio over
- a specific time horizon at a given confidence level (e.g., 95%
- or 99%). It answers: &quot;What&apos;s the most I can expect to lose under
- normal market conditions?&quot;
- </p>
- <p className="text-muted-foreground">
- While useful, VaR doesn&apos;t capture the severity of losses beyond
- its threshold.
+ The largest expected loss over a set period at a confidence
+ level such as 95% or 99%. It ignores losses past that line.
  </p>
  </div>
  <div className="bg-muted rounded-xl p-6 border border-border space-y-4">
@@ -452,111 +354,51 @@ export default function PortfolioPricingPage() {
  <span className="text-foreground font-bold">ES</span>
  </div>
  <h3 className="text-xl font-semibold text-foreground">
- Expected Shortfall (ES / CVaR)
+ Expected Shortfall
  </h3>
  </div>
  <p className="text-muted-foreground">
- ES, or Conditional Value at Risk (CVaR), measures the average
- loss expected when the VaR threshold is breached. It answers:
-&quot;If things go really bad (beyond the VaR level), what&apos;s the
- average loss I can expect?&quot;
- </p>
- <p className="text-muted-foreground">
- ES provides a more comprehensive view of tail risk, crucial for
- managing extreme events in volatile energy markets.
+ The average loss beyond the VaR line, also called CVaR. It
+ shows the tail risk that volatile energy markets carry.
  </p>
  </div>
  </div>
  <p className="mt-6 prose prose-lg max-w-none">
- Integrating both VaR and ES into the pricing engine allowed for a
- nuanced understanding of potential downside risks, enabling the
- development of pricing strategies that were both competitive and
- robust against adverse market movements.
+ Pricing with both keeps a quote competitive without ignoring
+ the tail.
  </p>
  </section>
  {/* Business Impact Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Business Impact & Outcomes
+ Results
  </h2>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
  <div className="bg-muted rounded-xl p-6 border border-border">
- <h3 className="text-xl font-semibold text-foreground mb-6">
- Key Metrics Achieved
- </h3>
  <div className="grid grid-cols-3 gap-4 text-center">
- {""}
- {/* Changed to 3 columns */}
  <div>
  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted text-foreground mb-3">
  <span className="text-2xl font-bold">95%</span>
  </div>
  <p className="text-sm font-medium text-foreground">
- Speed Increase
+ Speed increase
  </p>
- <p className="text-xs text-muted-foreground">in Pricing Time</p>
+ <p className="text-xs text-muted-foreground">in pricing time</p>
  </div>
  <div>
  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted text-foreground mb-3">
- <span className="text-2xl font-bold">20%</span>{""}
- {/* Updated */}
+ <span className="text-2xl font-bold">20%</span>
  </div>
  <p className="text-sm font-medium text-foreground">
- Target Reduction
+ Target reduction
  </p>
- <p className="text-xs text-muted-foreground">in Portfolio Risk</p>
+ <p className="text-xs text-muted-foreground">in portfolio risk</p>
  </div>
  <div>
  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted text-foreground mb-3">
- <span className="text-2xl font-bold">10x</span>{""}
- {/* Updated */}
+ <span className="text-2xl font-bold">10x</span>
  </div>
  <p className="text-sm font-medium text-foreground">Growth</p>
  <p className="text-xs text-muted-foreground">in tested scenarios</p>
- </div>
- </div>
- </div>
-
- <div>
- <h3 className="text-xl font-semibold text-foreground mb-4">
- Strategic Value Delivered
- </h3>
- <div className="space-y-4">
- <div className="flex items-start">
- {""}
- {/* Use items-start for alignment */}
- <div className="rounded-full bg-muted h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-0.5">
- <DollarSign />
- </div>
- <div>
- <h4 className="font-medium text-lg">
- Enhanced Risk Visibility
- </h4>
- <p className="text-muted-foreground text-sm">
- Provided clearer insights into portfolio risk, supporting
- strategic hedging and informed tender pricing decisions.
- </p>{""}
- {/* Updated text */}
- </div>
- </div>
- <div className="flex items-start">
- {""}
- {/* Use items-start for alignment */}
- <div className="rounded-full bg-muted h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-0.5">
- <Zap />
- </div>
- <div>
- <h4 className="font-medium text-lg">
- Improved Decision Agility
- </h4>
- <p className="text-muted-foreground text-sm">
- Enabled faster, data-driven pricing adjustments in
- response to changing market conditions and portfolio
- structures.
- </p>{""}
- {/* Updated text */}
- </div>
- </div>
  </div>
  </div>
  </div>

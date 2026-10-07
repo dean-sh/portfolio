@@ -1,5 +1,6 @@
-import type { Chart as ChartSpec } from '@/content/types';
+import type { Chart as ChartSpec, FunnelChart, JudgeChart, LineChart } from '@/content/types';
 import { plotChart, TONE_COLOR } from '@/lib/chart';
+import { Arrow } from './Arrow';
 import { ChartHover } from './ChartHover';
 import { LineKey } from './LineKey';
 
@@ -11,7 +12,7 @@ function edgeShift(at: number): string {
   return 'translateX(-50%)';
 }
 
-export function Chart({ chart }: { chart: ChartSpec }) {
+function LineChartView({ chart }: { chart: LineChart }) {
   const plot = plotChart(chart);
   const multi = plot.series.length > 1;
   const drawn = [...plot.series].sort((a, b) => TONE_ORDER[a.tone] - TONE_ORDER[b.tone]);
@@ -51,18 +52,6 @@ export function Chart({ chart }: { chart: ChartSpec }) {
             </div>
           ))}
 
-          {plot.refs.map((ref) => (
-            <div
-              key={ref.label}
-              aria-hidden="true"
-              className="absolute inset-x-0 border-t border-muted-foreground/40"
-              style={{ bottom: `${ref.at * 100}%` }}
-            >
-              <span className="absolute bottom-1 right-0 font-mono text-[11px] text-muted-foreground">
-                {ref.label}
-              </span>
-            </div>
-          ))}
 
           <svg
             aria-hidden="true"
@@ -171,4 +160,110 @@ export function Chart({ chart }: { chart: ChartSpec }) {
       </div>
     </figure>
   );
+}
+
+function FunnelView({ chart }: { chart: FunnelChart }) {
+  const top = chart.stages[0].value;
+  return (
+    <figure>
+      <figcaption className="max-w-[62ch]">
+        <p className="text-base font-medium leading-snug">{chart.title}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
+      </figcaption>
+      <ol className="mt-7 space-y-2.5">
+        {chart.stages.map((stage, i) => {
+          const share = stage.value / top;
+          const kept = i === 0 ? 100 : Math.round((stage.value / chart.stages[i - 1].value) * 100);
+          return (
+            <li key={stage.label} className="grid gap-y-0.5 sm:grid-cols-[11rem_1fr] sm:items-center sm:gap-x-4">
+              <span className="text-sm leading-snug">{stage.label}</span>
+              <div className="relative h-7">
+                <span
+                  className="absolute inset-y-1 left-0 rounded-r-[4px]"
+                  style={{ width: `max(3px, calc((100% - 5.5rem) * ${share}))`, background: TONE_COLOR.focus }}
+                />
+                <span
+                  className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap font-mono text-sm tabular-nums"
+                  style={{ left: `calc(max(3px, calc((100% - 5.5rem) * ${share})) + 0.6rem)` }}
+                >
+                  {kept}%
+                </span>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+      <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
+    </figure>
+  );
+}
+
+const BOX_LABEL = 'font-mono text-[11px] uppercase tracking-[0.12em] text-muted-foreground';
+
+function JudgeBox({ label, items }: { label: string; items: string[] }) {
+  return (
+    <div className="rounded-md border border-border bg-background/60 p-4">
+      <p className={BOX_LABEL}>{label}</p>
+      <ul className="mt-3 space-y-1.5 text-sm">
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function FlowArrow() {
+  return (
+    <div aria-hidden="true" className="flex items-center justify-center text-muted-foreground">
+      <Arrow className="rotate-90 md:rotate-0" />
+    </div>
+  );
+}
+
+function JudgeView({ chart }: { chart: JudgeChart }) {
+  return (
+    <figure>
+      <figcaption className="max-w-[62ch]">
+        <p className="text-base font-medium leading-snug">{chart.title}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
+      </figcaption>
+      <div className="mt-8 grid gap-2 md:grid-cols-[1fr_1.5rem_1fr_1.5rem_1.25fr] md:gap-1">
+        <JudgeBox label="The judge sees" items={chart.sees} />
+        <FlowArrow />
+        <JudgeBox label="It returns" items={chart.returns} />
+        <FlowArrow />
+        <div className="rounded-md border border-signal/50 bg-background/60 p-4">
+          <p className={BOX_LABEL}>Code decides</p>
+          <p className="mt-3 text-sm">{chart.rule}</p>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li className="grid grid-cols-[0.75rem_1fr] gap-x-2">
+              <span className="mt-[0.45em] h-2 w-2 rounded-full" style={{ background: TONE_COLOR.focus }} />
+              <span>
+                <span className="font-medium">Yes.</span> {chart.pass}
+              </span>
+            </li>
+            <li className="grid grid-cols-[0.75rem_1fr] gap-x-2">
+              <span className="mt-[0.45em] h-2 w-2 rounded-full bg-muted-foreground/50" />
+              <span>
+                <span className="font-medium">No.</span> {chart.fail}
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
+    </figure>
+  );
+}
+
+export function Chart({ chart }: { chart: ChartSpec }) {
+  switch (chart.kind) {
+    case 'funnel':
+      return <FunnelView chart={chart} />;
+    case 'judge':
+      return <JudgeView chart={chart} />;
+    case 'line':
+      return <LineChartView chart={chart} />;
+  }
 }

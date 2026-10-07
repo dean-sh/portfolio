@@ -1,16 +1,16 @@
 import Image from"next/image";
 import { ProjectDetails } from"@/components/ProjectDetails";
 export const metadata = {
- title:"High-Accuracy Forecasting Models | Dean Shabi",
+ title:"Energy forecasting models | Dean Shabi",
  description:
-"Developing advanced forecasting models for energy consumption, generation, and pricing.",
+"Load, generation and price forecasting models for UK energy-tech firms. MAPE improved by over 30% across hundreds of sites.",
 };
 
 export default function ForecastingModelsPage() {
  return (
  <ProjectDetails
- title="High-Accuracy Forecasting Models"
- subtitle="Advanced prediction systems for energy markets"
+ title="Energy forecasting models"
+ subtitle="Load, generation and price forecasts for UK energy-tech firms. MAPE improved by over 30% across hundreds of sites."
  image="/images/energy-demand.jpg"
  industry="Energy"
  client="Energy-tech companies"
@@ -29,55 +29,23 @@ export default function ForecastingModelsPage() {
  {/* Introduction Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Project Overview
+ Overview
  </h2>
  <div className="prose prose-lg max-w-none">
  <p className="lead text-xl text-foreground">
- Led the development of advanced long-term load, generation, and
- price forecasting models for UK energy-tech firms. These systems
- power core features, support trading decisions, and reduce
- balancing costs via sub-hourly predictions, achieving a{""}
- <strong className="text-energy-400">
- &gt;30% Mean Absolute Percentage Error (MAPE) improvement
- </strong>{""}
- across hundreds of sites and significantly boosting accuracy and
- profitability.
+ I led the development of these long-term forecasting models.
+ They power product features, inform trading decisions and cut
+ balancing costs. MAPE, the mean absolute percentage error,
+ improved by{" "}
+ <strong className="text-energy-400">over 30%</strong>.
  </p>
  </div>
  </section>
 
- {/* The Challenge Section - REFACTORED with Cards */}
+ {/* Challenge Section */}
  <section className="card rounded-xl bg-muted p-6 border-border">
- <h2 className="text-2xl font-bold text-foreground mb-6">The Challenge</h2>
+ <h2 className="text-2xl font-bold text-foreground mb-6">The challenge</h2>
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
- {/* Card 1: Volatility */}
- <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
- <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
- <svg
- className="w-5 h-5 text-energy-400"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M13 10V3L4 14h7v7l9-11h-7z"
- />
- </svg>
- </div>
- <h3 className="font-semibold text-foreground text-base">
- Volatility & Seasonality
- </h3>
- </div>
- <p className="text-sm text-muted-foreground pl-8">
- Managing inherent fluctuations in energy use and renewable
- generation (solar).
- </p>
- </div>
  {/* Card 2: Data Integration */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
  <div className="flex items-center space-x-2 mb-2">
@@ -98,12 +66,12 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- Diverse Data Sources
+ Many data sources
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Integrating complex, high-dimensional data (weather, market,
- asset specifics).
+ Each forecast combines high-dimensional weather, market and asset
+ data.
  </p>
  </div>
  {/* Card 3: Scalability */}
@@ -126,11 +94,12 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- Scalability
+ Scale
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Handling hundreds/thousands of unique sites efficiently.
+ The models had to cover hundreds to thousands of unique sites
+ efficiently.
  </p>
  </div>
  {/* Card 4: Granularity */}
@@ -153,104 +122,69 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- High Granularity
+ Sub-hourly detail
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Maintaining accuracy at sub-hourly levels for operational needs.
- </p>
- </div>
- {/* Card 5: Robustness */}
- <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
- <div className="flex items-center space-x-2 mb-2">
- <div className="bg-energy-600/10 p-1.5 rounded-full">
- <svg
- className="w-5 h-5 text-energy-400"
- fill="none"
- stroke="currentColor"
- viewBox="0 0 24 24"
- xmlns="http://www.w3.org/2000/svg"
- >
- <path
- strokeLinecap="round"
- strokeLinejoin="round"
- strokeWidth={2}
- d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
- />
- </svg>
- </div>
- <h3 className="font-semibold text-foreground text-base">
- Robustness & Efficiency
- </h3>
- </div>
- <p className="text-sm text-muted-foreground pl-8">
- Developing reliable, computationally efficient, and maintainable
- models.
+ Operations needed accurate forecasts below the hour.
  </p>
  </div>
  </div>
  </section>
 
- {/* Methodological Exploration & Innovations Section - REFACTORED */}
+ {/* Methods Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-6 border-b border-border pb-2">
- Methodological Exploration & Innovations
+ How I built them
  </h2>
 
  {/* Model Types Grid */}
  <h3 className="text-xl font-semibold text-foreground mb-4">
- Specialized Model Components
+ Model types
  </h3>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
  {/* Existing cards slightly restyled */}
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
  <h3 className="text-lg font-semibold text-energy-400 mb-2">
- Advanced Load Forecasting
+ Load forecasting
  </h3>
  <p className="text-sm text-muted-foreground">
- Techniques sensitive to temporal dependencies and exogenous
- factors for diverse customer segments.
+ Captures time dependencies and outside drivers across different
+ customer segments.
  </p>
  </div>
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
  <h3 className="text-lg font-semibold text-energy-400 mb-2">
- Weather-Aware PV Generation
+ Solar PV generation
  </h3>
  <p className="text-sm text-muted-foreground">
- Models incorporating weather, panel physics, and site geometry
- for precise solar predictions.
+ Combines weather, panel physics and site geometry.
  </p>
  </div>
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
  <h3 className="text-lg font-semibold text-energy-400 mb-2">
- Battery State Modeling
+ Battery state
  </h3>
  <p className="text-sm text-muted-foreground">
- Predicting degradation and state-of-charge for optimizing
+ Predicts degradation and state of charge to get more out of
  storage assets.
  </p>
  </div>
  <div className="card rounded-lg bg-muted p-5 border-border transition-shadow">
  <h3 className="text-lg font-semibold text-energy-400 mb-2">
- Granular Price Forecasting
+ Price forecasting
  </h3>
  <p className="text-sm text-muted-foreground">
- Sub-hourly market price predictions leveraging market data and
- volatility modeling.
+ Predicts sub-hourly market prices from market data and volatility
+ models.
  </p>
  </div>
  </div>
 
  {/* Methodologies & Innovations Grid */}
  <h3 className="text-xl font-semibold text-foreground mb-4">
- Modeling Techniques & Innovations
+ Techniques
  </h3>
- <p className="mb-6 text-muted-foreground">
- A rigorous evaluation of diverse modeling approaches was key,
- balancing statistical methods, ensemble techniques, and advanced
- neural networks. Innovations focused on scalability and learning
- complex patterns:
- </p>
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
  {/* Innovation 1: Transfer Learning */}
  <div className="card rounded-lg bg-muted p-4 border-border space-y-2">
@@ -272,12 +206,12 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- Transfer Learning
+ Transfer learning
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Applied across sites/tasks in NNs, improving performance and
- reducing training time, especially for data-sparse sites.
+ Networks reuse what they learn across sites and tasks. That
+ raised accuracy and cut training time, most for data-poor sites.
  </p>
  </div>
  {/* Innovation 2: Global Models */}
@@ -300,12 +234,12 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- Global Modeling
+ Global models
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Developed models learning shared patterns from hundreds of time
- series simultaneously, enhancing generalization.
+ One model learns shared patterns from hundreds of time series at
+ once, which helps it generalize.
  </p>
  </div>
  {/* Innovation 3: MLflow */}
@@ -328,12 +262,12 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- MLflow Integration
+ MLflow
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Used extensively for experiment tracking, model versioning, and
- results management, ensuring reproducibility.
+ Tracks experiments, versions models and stores results, so every
+ run can be reproduced.
  </p>
  </div>
  {/* Innovation 4: Hybrid Models */}
@@ -356,12 +290,12 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- Hybrid Approaches
+ Hybrid models
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Combined strengths of different model classes (e.g., statistical
- + ML) to capture complex patterns.
+ Combine model classes, such as statistical and ML models, in one
+ forecast.
  </p>
  </div>
  {/* Technique 5: Diverse Models Evaluated */}
@@ -384,31 +318,31 @@ export default function ForecastingModelsPage() {
  </svg>
  </div>
  <h3 className="font-semibold text-foreground text-base">
- Diverse Techniques
+ Model comparison
  </h3>
  </div>
  <p className="text-sm text-muted-foreground pl-8">
- Evaluated statistical (ARIMA), ensembles (LGBM), and NNs (RNN,
- LSTM, Transformer).
+ I evaluated ARIMA, LGBM ensembles and RNN, LSTM and Transformer
+ networks.
  </p>
  </div>
  </div>
  </section>
 
- {/* Technical Diagram Section - REMAINS */}
+ {/* Technical Diagram Section */}
  <section className="card rounded-xl bg-muted p-6 border-border">
  <h2 className="text-2xl font-bold text-foreground mb-4">
- Model Architecture
+ Model architecture
  </h2>
  <div className="relative rounded-lg overflow-hidden bg-muted flex items-center justify-center py-8">
  <div className="text-center p-8">
  <div className="inline-block mx-auto mb-6 p-4 border-2 border-energy-600 rounded-xl">
- <h3 className="font-medium">Data Processing Pipeline</h3>
+ <h3 className="font-medium">Data processing pipeline</h3>
  </div>
  <div className="flex justify-center items-center gap-4 flex-wrap">
  <div className="flex flex-col items-center">
  <div className="w-32 h-24 border border-border rounded p-2 flex items-center justify-center bg-muted">
- <p className="text-sm text-center">Weather Data</p>
+ <p className="text-sm text-center">Weather data</p>
  </div>
  <div className="h-8 flex items-center">
  <span className="text-energy-400">▼</span>
@@ -418,7 +352,7 @@ export default function ForecastingModelsPage() {
  <div className="flex flex-col items-center">
  <div className="w-32 h-24 border border-border rounded p-2 flex items-center justify-center bg-muted">
  <p className="text-sm text-center">
- Historical Energy Data
+ Historical energy data
  </p>
  </div>
  <div className="h-8 flex items-center">
@@ -428,7 +362,7 @@ export default function ForecastingModelsPage() {
 
  <div className="flex flex-col items-center">
  <div className="w-32 h-24 border border-border rounded p-2 flex items-center justify-center bg-muted">
- <p className="text-sm text-center">Market Signals</p>
+ <p className="text-sm text-center">Market signals</p>
  </div>
  <div className="h-8 flex items-center">
  <span className="text-energy-400">▼</span>
@@ -437,7 +371,7 @@ export default function ForecastingModelsPage() {
  </div>
 
  <div className="inline-block mx-auto my-2 p-4 border-2 border-energy-600/70 rounded-xl bg-energy-600/10 w-64">
- <h3 className="font-medium">ML Prediction Engine</h3>
+ <h3 className="font-medium">ML prediction engine</h3>
  </div>
 
  <div className="h-8 flex items-center justify-center">
@@ -445,54 +379,47 @@ export default function ForecastingModelsPage() {
  </div>
 
  <div className="inline-block mx-auto p-4 border-2 border-primary/70 rounded-xl">
- <h3 className="font-medium">API & Integration Layer</h3>
+ <h3 className="font-medium">API and integration layer</h3>
  </div>
  </div>
  </div>
  </section>
 
- {/* Business Impact Section - REVISED EMPHASIS + 30% HIGHLIGHT */}
+ {/* Results Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-6 border-b border-border pb-2">
- Business Impact & Outcomes
+ Results
  </h2>
- <p className="mb-6 prose prose-lg max-w-none text-muted-foreground">
- The deployment of these high-accuracy forecasting models delivered
- significant, measurable value across multiple business areas,
- headlined by a major leap in predictive performance:
- </p>
 
  {/* Highlight Metric */}
  <div className="card rounded-xl bg-energy-600/10 p-6 border-energy-600/30 mb-8 text-center">
  <h3 className="text-lg font-semibold text-energy-400 mb-2">
- Key Performance Gain
+ Headline result
  </h3>
  <div className="text-5xl font-bold text-energy-400 mb-2">
- {""}
- &gt;30%{""}
+ &gt;30%
  </div>
  <p className="text-foreground font-medium">
- MAPE Improvement vs. Benchmark
+ MAPE improvement vs. benchmark
  </p>
  <p className="text-sm text-muted-foreground mt-1">
- Aggregated across hundreds of production sites (Load & Generation)
+ Load and generation, aggregated across hundreds of production
+ sites
  </p>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
- {/* Revised impact points for clarity and consistency */}
  <div className="flex items-start">
  <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
  <span className="text-xl font-bold text-energy-400">✓</span>
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
- Enhanced Product Value
+ Product features
  </h3>
  <p className="text-muted-foreground text-sm">
- Powered core functionality in customer-facing energy
- management platforms, improving user experience and product
- stickiness for thousands of users.
+ The forecasts power core features in customer-facing energy
+ management platforms with thousands of users.
  </p>
  </div>
  </div>
@@ -503,47 +430,11 @@ export default function ForecastingModelsPage() {
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
- Optimized Trading Decisions
+ Lower balancing costs
  </h3>
  <p className="text-muted-foreground text-sm">
- Enabled more profitable energy trading strategies through
- reliable, high-confidence forecasts, directly impacting
- bottom-line results.
- </p>
- </div>
- </div>
-
- <div className="flex items-start">
- <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
- <span className="text-xl font-bold text-energy-400">✓</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">
- Significant Cost Reduction
- </h3>
- <p className="text-muted-foreground text-sm">
- Substantially reduced energy balancing costs (estimated in
- millions annually) through precise sub-hourly predictions,
- minimizing penalties and optimizing grid interactions.
- </p>
- </div>
- </div>
-
- <div className="flex items-start">
- <div className="bg-energy-600/10 rounded-full h-10 w-10 flex items-center justify-center mr-4 shrink-0 mt-1">
- <span className="text-xl font-bold text-energy-400">✓</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">
- Improved Market Competitiveness
- </h3>
- <p className="text-muted-foreground text-sm">
- Provided a distinct competitive advantage for energy suppliers
- by leveraging superior forecasting technology, achieving over{""}
- <strong className="text-foreground">
- 30% MAPE improvement
- </strong>
- .
+ Sub-hourly forecasts cut energy balancing costs and penalties.
+ The estimated saving runs to millions annually.
  </p>
  </div>
  </div>

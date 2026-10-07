@@ -72,7 +72,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
       </ul>
 
       {study.chart && (
-        <section className="mt-14">
+        <section className="mt-14 rounded-lg border border-border bg-surface p-5 shadow-[0_1px_2px_hsl(var(--foreground)/0.04),0_8px_24px_-12px_hsl(var(--foreground)/0.08)] md:p-7">
           <Chart chart={study.chart} />
         </section>
       )}

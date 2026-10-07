@@ -43,3 +43,10 @@ Next.js 14 App Router, TypeScript strict, Tailwind 3.
 - Headings are sentence case. Numbers are mono with `tabular-nums`.
 - Server components by default. `'use client'` only where state is needed.
 - The theme toggle and its no-flash script live in `app/layout.tsx` (inline script that sets the `dark` class before paint) and `components/Nav.tsx` (toggles the class, `data-theme` and `localStorage.theme`). Keep the two in sync.
+
+## GitHub contributions
+
+The home page shows the GitHub contribution heatmap under the hero. `lib/github.ts` fetches the public calendar at `github.com/users/<user>/contributions` (no token) with `revalidate: 86400`, so the page regenerates at most once a day. A failed refresh throws, which makes Next keep serving the last good page. A failed fetch during `next build` returns `null` and the section is left out. Colours come from the `--gh-0` to `--gh-4` tokens in `app/globals.css` (GitHub's greens, per theme). Levels are the user's own quartiles of active days.
+
+Each work row on the home page draws a sparkline of its case study chart (`components/Sparkline.tsx`), reusing `lib/chart.ts`. A chart with `spark: 'cumulative'` is drawn as running totals.
+

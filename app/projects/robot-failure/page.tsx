@@ -1,18 +1,18 @@
 import Image from"next/image";
 import { ProjectDetails } from"@/components/ProjectDetails";
 export const metadata = {
- title:"Robot Failure Detection | Dean Shabi",
+ title:"Robot failure detection | Dean Shabi",
  description:
-"Machine learning models to detect and predict robot failures in automotive manufacturing.",
+"Anomaly detection that predicts robot failures in automotive manufacturing. Unplanned downtime fell by over 35%.",
 };
 
 export default function RobotFailurePage() {
  return (
  <ProjectDetails
- title="Robot Failure Detection"
- subtitle="AI-powered predictive maintenance for industrial robotics"
+ title="Robot failure detection"
+ subtitle="Predictive maintenance for robots on automotive production lines. Unplanned downtime fell by over 35%."
  image="/images/robot-failure.jpg"
- industry="Automotive Manufacturing"
+ industry="Automotive manufacturing"
  client="Datamole AI"
  tags={[
 "Computer Vision",
@@ -31,22 +31,15 @@ export default function RobotFailurePage() {
  {/* Introduction Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Project Overview
+ Overview
  </h2>
  <div className="prose prose-lg max-w-none">
  <p className="lead text-xl text-foreground">
- At Datamole AI, I implemented advanced anomaly detection
- algorithms to identify and predict robot failures in automotive
- manufacturing. This system monitors complex robotic systems in
- real-time, detecting subtle patterns that indicate potential
- failures before they occur.
- </p>
-
- <p>
- Working closely with industry specialists, our team developed
- custom AI solutions that analyzed multivariate sensor data from
- industrial robots to dramatically reduce downtime and maintenance
- costs.
+ At Datamole AI, I built anomaly detection models that predict
+ robot failures in automotive manufacturing. The system reads
+ multivariate robot sensor data in real time and flags the
+ patterns that come before a failure. Our team worked closely
+ with industry specialists.
  </p>
  </div>
  </section>
@@ -54,12 +47,8 @@ export default function RobotFailurePage() {
  {/* Technical Approach Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Technical Approach
+ How it works
  </h2>
- <p className="mb-6">
- The robot failure detection system involved several technical
- components:
- </p>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
  <div className="bg-muted rounded-lg p-5 shadow-md border border-border hover:shadow-lg transition-shadow">
@@ -80,11 +69,10 @@ export default function RobotFailurePage() {
  </svg>
  </div>
  <h3 className="text-lg font-semibold text-foreground mb-2">
- Real-time Data Processing
+ Real-time data pipeline
  </h3>
  <p>
- Pipeline to handle high-frequency multivariate signals from
- robot sensors in real-time.
+ Processes high-frequency robot sensor signals as they arrive.
  </p>
  </div>
 
@@ -106,11 +94,11 @@ export default function RobotFailurePage() {
  </svg>
  </div>
  <h3 className="text-lg font-semibold text-foreground mb-2">
- Anomaly Detection Models
+ Anomaly detection models
  </h3>
  <p>
- Advanced algorithms using both supervised and unsupervised
- approaches to detect deviations from normal operation.
+ Supervised and unsupervised models flag deviations from normal
+ operation.
  </p>
  </div>
 
@@ -132,11 +120,10 @@ export default function RobotFailurePage() {
  </svg>
  </div>
  <h3 className="text-lg font-semibold text-foreground mb-2">
- Feature Extraction
+ Feature extraction
  </h3>
  <p>
- Time series feature extraction techniques to identify subtle
- patterns preceding failures in complex sensor data.
+ Time series features that capture early signs of failure.
  </p>
  </div>
 
@@ -158,20 +145,19 @@ export default function RobotFailurePage() {
  </svg>
  </div>
  <h3 className="text-lg font-semibold text-foreground mb-2">
- Alert System
+ Alerts
  </h3>
  <p>
- Automated alert system with configurable thresholds for
- different failure types and severity levels.
+ Configurable thresholds for each failure type and severity
+ level.
  </p>
  </div>
  </div>
 
  <div className="mt-6">
  <p>
- The system employed a hybrid approach combining statistical
- methods, deep learning, and domain knowledge to achieve high
- accuracy in industrial environments with complex noise patterns.
+ The models combine statistical methods, deep learning and domain
+ knowledge to cope with noisy factory data.
  </p>
  </div>
  </section>
@@ -179,46 +165,46 @@ export default function RobotFailurePage() {
  {/* Implementation Challenges Section */}
  <section className="bg-muted rounded-xl p-6 border border-border">
  <h2 className="text-2xl font-bold text-foreground mb-4">
- Implementation Challenges
+ What made it hard
  </h2>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Noisy Data
+ Noisy data
  </h3>
  <p>
- Working with noisy, high-dimensional sensor data from industrial
- environments required sophisticated filtering techniques.
+ Factory sensor data is noisy and high-dimensional, so it needed
+ careful filtering.
  </p>
  </div>
 
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- False Positives Balance
+ False alarms vs. missed failures
  </h3>
  <p>
- Balancing false positives (unnecessary maintenance) with false
- negatives (missed failures) to optimize reliability.
+ False alarms trigger needless maintenance. Misses let failures
+ through. We had to balance both.
  </p>
  </div>
 
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Model Generalization
+ Generalization
  </h3>
  <p>
- Developing models that could generalize across different robot
- types and configurations in varied manufacturing environments.
+ The models had to work across robot types, configurations and
+ factories.
  </p>
  </div>
 
  <div className="bg-muted rounded-lg p-5 shadow-md">
  <h3 className="text-lg font-semibold text-foreground mb-3">
- Interpretable Results
+ Usable output
  </h3>
  <p>
- Creating interpretable results that maintenance teams could act
- upon without requiring data science expertise.
+ Maintenance teams had to act on the output without a data
+ scientist.
  </p>
  </div>
  </div>
@@ -227,7 +213,7 @@ export default function RobotFailurePage() {
  {/* Business Impact Section */}
  <section>
  <h2 className="text-2xl font-bold text-foreground mb-4 border-b border-border pb-2">
- Business Impact
+ Results
  </h2>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
  <div className="flex">
@@ -235,10 +221,10 @@ export default function RobotFailurePage() {
  <span className="text-2xl text-foreground">1</span>
  </div>
  <div>
- <h3 className="font-semibold text-lg mb-1">Reduced Downtime</h3>
+ <h3 className="font-semibold text-lg mb-1">Less downtime</h3>
  <p className="text-muted-foreground">
- Unplanned downtime in automotive manufacturing lines was
- reduced by over 35%.
+ Unplanned downtime on the automotive manufacturing lines fell
+ by over 35%.
  </p>
  </div>
  </div>
@@ -249,54 +235,11 @@ export default function RobotFailurePage() {
  </div>
  <div>
  <h3 className="font-semibold text-lg mb-1">
- Predictive Maintenance
+ Repairs before breakdowns
  </h3>
  <p className="text-muted-foreground">
- Identified maintenance needs before catastrophic failures
- occurred, preventing costly production stoppages.
- </p>
- </div>
- </div>
-
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">3</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">Cost Reduction</h3>
- <p className="text-muted-foreground">
- Decreased maintenance costs by enabling targeted, preventive
- interventions instead of major repairs.
- </p>
- </div>
- </div>
-
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">4</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">
- Equipment Lifespan
- </h3>
- <p className="text-muted-foreground">
- Extended robot equipment lifespan through early intervention
- and optimized maintenance schedules.
- </p>
- </div>
- </div>
-
- <div className="flex">
- <div className="bg-muted rounded-full h-12 w-12 flex items-center justify-center mr-4 shrink-0">
- <span className="text-2xl text-foreground">5</span>
- </div>
- <div>
- <h3 className="font-semibold text-lg mb-1">
- Production Quality
- </h3>
- <p className="text-muted-foreground">
- Improved production throughput and quality by ensuring
- consistent robot performance.
+ The system flagged maintenance needs before robots failed. Teams
+ did targeted preventive work instead of major repairs.
  </p>
  </div>
  </div>
@@ -306,12 +249,12 @@ export default function RobotFailurePage() {
  {/* System Architecture Section */}
  <section className="bg-muted rounded-xl p-6 border border-border">
  <h2 className="text-2xl font-bold text-foreground mb-4">
- System Architecture
+ System architecture
  </h2>
  <div className="aspect-video relative rounded-lg overflow-hidden bg-card/60 flex items-center justify-center">
  <div className="text-center p-8 w-full">
  <div className="bg-muted rounded-xl p-4 mb-6 mx-auto max-w-sm">
- <h3 className="font-medium">Sensor Data Collection</h3>
+ <h3 className="font-medium">Sensor data collection</h3>
  </div>
 
  <div className="flex justify-center">
@@ -340,10 +283,10 @@ export default function RobotFailurePage() {
 
  <div className="grid grid-cols-3 gap-4 mb-6">
  <div className="bg-muted rounded-lg p-3">
- <h4 className="text-sm font-medium">Signal Processing</h4>
+ <h4 className="text-sm font-medium">Signal processing</h4>
  </div>
  <div className="bg-muted rounded-lg p-3">
- <h4 className="text-sm font-medium">Feature Extraction</h4>
+ <h4 className="text-sm font-medium">Feature extraction</h4>
  </div>
  <div className="bg-muted rounded-lg p-3">
  <h4 className="text-sm font-medium">Normalization</h4>
@@ -375,7 +318,7 @@ export default function RobotFailurePage() {
  </div>
 
  <div className="bg-muted rounded-xl p-4 mb-6 mx-auto max-w-sm border border-primary/20">
- <h3 className="font-medium">Anomaly Detection Models</h3>
+ <h3 className="font-medium">Anomaly detection models</h3>
  </div>
 
  <div className="flex justify-center">
@@ -404,10 +347,10 @@ export default function RobotFailurePage() {
 
  <div className="grid grid-cols-2 gap-4">
  <div className="bg-muted rounded-lg p-3">
- <h4 className="text-sm font-medium">Alert System</h4>
+ <h4 className="text-sm font-medium">Alert system</h4>
  </div>
  <div className="bg-muted rounded-lg p-3">
- <h4 className="text-sm font-medium">Maintenance Interface</h4>
+ <h4 className="text-sm font-medium">Maintenance interface</h4>
  </div>
  </div>
  </div>

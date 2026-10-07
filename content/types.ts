@@ -18,6 +18,7 @@ export type Decision = {
 export type CaseStudy = {
   slug: string;
   title: string;
+  hook: string;
   org: Org;
   period: string;
   role: string;
@@ -33,37 +34,52 @@ export type CaseStudy = {
 
 export type ChartX =
   | { kind: 'month'; values: string[] }
-  | { kind: 'week'; values: string[] }
-  | { kind: 'clock'; values: string[] }
-  | { kind: 'elapsed'; values: number[] }
   | { kind: 'number'; values: number[]; unit: string; label?: string };
 
-export type ChartFormat = 'percent' | 'mwh' | 'ms' | 'tokens' | 'count';
+export type ChartFormat = 'percent' | 'mwh';
 
 export type ChartSeries = {
   label: string;
   tone: 'focus' | 'context' | 'baseline';
   values: number[];
-  step?: boolean;
 };
 
-export type Chart = {
+type ChartCommon = {
   title: string;
   note: string;
   source: string;
+  spark?: { label: string; value: string };
+};
+
+export type LineChart = ChartCommon & {
+  kind: 'line';
   x: ChartX;
   y: { format: ChartFormat; min?: number; max?: number };
   series: ChartSeries[];
-  refs?: { y: number; label: string }[];
   points?: { at: number; label: string }[];
 };
+
+export type FunnelChart = ChartCommon & {
+  kind: 'funnel';
+  stages: { label: string; value: number }[];
+};
+
+export type JudgeChart = ChartCommon & {
+  kind: 'judge';
+  sees: string[];
+  returns: string[];
+  rule: string;
+  pass: string;
+  fail: string;
+};
+
+export type Chart = LineChart | FunnelChart | JudgeChart;
 
 export type EarlierWork = {
   title: string;
   org: string;
   period: string;
   href: string;
-  line: string;
 };
 
 export type Testimonial = {

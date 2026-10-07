@@ -22,7 +22,8 @@ export function Nav({ name }: { name: string }) {
   }
 
   return (
-    <header className="container flex h-16 items-center justify-between font-mono text-xs">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65">
+      <div className="container flex h-14 max-w-[52rem] items-center justify-between font-mono text-xs">
       <Link href="/" className="text-foreground">
         {name}
       </Link>
@@ -37,6 +38,7 @@ export function Nav({ name }: { name: string }) {
           {theme === 'dark' ? 'Light' : 'Dark'}
         </button>
       </nav>
+      </div>
     </header>
   );
 }

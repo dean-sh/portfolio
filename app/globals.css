@@ -8,9 +8,9 @@
     --foreground: 0 0% 8%;
     --muted-foreground: 40 4% 42%;
     --border: 40 10% 88%;
-    --signal: 41 85% 38%;
-    --signal-fill: 41 77% 60%;
-    --signal-foreground: 0 0% 8%;
+    --signal: 137 66% 30%;
+    --signal-fill: 137 66% 30%;
+    --signal-foreground: 0 0% 100%;
     --primary: 0 0% 8%;
     --primary-foreground: 40 20% 98%;
     --muted: 40 12% 94%;
@@ -25,19 +25,31 @@
     --input: 40 10% 88%;
     --ring: 0 0% 8%;
     --radius: 0.125rem;
-    --chart-focus: #b37f0f;
+    --chart-focus: #1a7f37;
     --chart-context: #c2bfb8;
+    --surface: 0 0% 100%;
+    --gh-0: #eeebe5;
+    --gh-1: #9be9a8;
+    --gh-2: #40c463;
+    --gh-3: #30a14e;
+    --gh-4: #216e39;
   }
 
   .dark {
-    --chart-focus: #b88830;
+    --chart-focus: #2ea043;
     --chart-context: #6b707a;
+    --surface: 222 13% 11%;
+    --gh-0: #1d1f25;
+    --gh-1: #0e4429;
+    --gh-2: #006d32;
+    --gh-3: #26a641;
+    --gh-4: #39d353;
     --background: 220 14% 8%;
     --foreground: 40 25% 91%;
     --muted-foreground: 220 8% 64%;
     --border: 220 10% 18%;
-    --signal: 41 77% 60%;
-    --signal-fill: 41 77% 60%;
+    --signal: 128 49% 49%;
+    --signal-fill: 131 55% 40%;
     --signal-foreground: 220 14% 8%;
     --primary: 40 25% 91%;
     --primary-foreground: 220 14% 8%;

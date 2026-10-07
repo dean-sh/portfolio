@@ -124,7 +124,7 @@ export default function RootLayout({
         <main id="main-content" className="flex flex-1 flex-col">
           {children}
         </main>
-        <footer className="container pb-16 pt-16 font-mono text-xs text-muted-foreground">
+        <footer className="container max-w-[52rem] pb-16 pt-16 font-mono text-xs text-muted-foreground">
           &copy; {new Date().getFullYear()} {HERO.name}
         </footer>
         <Analytics />
