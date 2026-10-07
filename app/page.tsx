@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { serifItalic } from './fonts';
 import { Arrow } from '@/components/Arrow';
+import { CallButton, Contact } from '@/components/Contact';
 import { Contributions } from '@/components/Contributions';
 import { Photo } from '@/components/Photo';
 import { SparkBody, Sparkline } from '@/components/Sparkline';
@@ -20,11 +21,6 @@ const GITHUB_USER = LINKS.github.split('/').pop() ?? '';
 const [featured, panelled, offset, ...closing] = WORK;
 const heroStudy = WORK.find((study) => study.slug === 'physics-first-solar')!;
 
-const CONTACTS = [
-  { label: 'LinkedIn', href: LINKS.linkedin },
-  { label: 'GitHub', href: LINKS.github },
-];
-
 const reveal = (i = 0) => ({ 'data-reveal': '', style: { '--i': i } as CSSProperties });
 
 const SECTION = 'mt-[clamp(4rem,9vw,7rem)]';
@@ -35,9 +31,6 @@ const LIFT =
 const CARD = cn('panel', LIFT, 'group overflow-hidden hover:border-signal/40');
 
 const CARD_GAP = 'gap-6 md:gap-8 lg:gap-10';
-
-const BUTTON =
-  'group inline-flex min-h-11 items-center gap-2 rounded-lg bg-signal px-5 text-sm font-medium text-signal-foreground transition-[transform,background-color] duration-200 hover:bg-signal-hover active:translate-y-px';
 
 const NUDGE = 'transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-signal';
 
@@ -107,10 +100,7 @@ export default function Home() {
             )}
           </h1>
           <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-2">
-            <a href={LINKS.cal} target="_blank" rel="noreferrer" className={BUTTON}>
-              Book a call
-              <Arrow className="transition-transform duration-300 group-hover:translate-x-0.5" />
-            </a>
+            <CallButton>Book a call</CallButton>
             <a
               href="#work"
               className="group inline-flex min-h-11 items-center gap-2 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground"
@@ -345,35 +335,7 @@ export default function Home() {
         </figure>
       </section>
 
-      <section
-        id="contact"
-        className={cn(SECTION, 'scroll-mt-20 border-t border-border pt-12 md:pt-16')}
-        {...reveal(0)}
-      >
-        <h2 className="font-serif text-[clamp(2.2rem,1.4rem+3vw,4.2rem)] leading-[1.04] tracking-[-0.015em] text-balance md:w-9/12">
-          Have a machine learning system that has to hold up in production? I&apos;d like to hear about it.
-        </h2>
-        <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-          <a href={LINKS.cal} target="_blank" rel="noreferrer" className={BUTTON}>
-            Book a 30-minute call
-            <Arrow className="transition-transform duration-300 group-hover:translate-x-0.5" />
-          </a>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            {CONTACTS.map((c) => (
-              <li key={c.href}>
-                <a
-                  href={c.href}
-                  className="link inline-flex min-h-11 items-center"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {c.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <Contact className={SECTION} />
     </div>
   );
 }

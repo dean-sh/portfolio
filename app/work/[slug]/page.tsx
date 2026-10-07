@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Arrow } from '@/components/Arrow';
 import { Chart } from '@/components/Chart';
+import { Contact } from '@/components/Contact';
 import { Photo } from '@/components/Photo';
 import { Pipeline } from '@/components/Pipeline';
 import { OPEN_GRAPH } from '@/lib/metadata';
@@ -193,6 +194,8 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
           />
         </Link>
       </nav>
+
+      <Contact className="mt-24 md:mt-32" />
     </article>
   );
 }

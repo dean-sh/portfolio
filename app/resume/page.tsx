@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Contact } from '@/components/Contact';
 import { HERO } from '@/content/site';
 import { OPEN_GRAPH } from '@/lib/metadata';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
@@ -21,9 +21,9 @@ const HEADING = 'font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:t
 function ResumeLinks({ className }: { className: string }) {
   return (
     <div className={className}>
-      <Link href="/#contact" className="link inline-flex min-h-11 items-center">
+      <a href="#contact" className="link inline-flex min-h-11 items-center">
         Contact me
-      </Link>
+      </a>
       <a href="/dean-shabi-cv.pdf" className="link inline-flex min-h-11 items-center">
         Download as PDF
       </a>
@@ -119,6 +119,8 @@ export default function ResumePage() {
               ))}
             </dl>
           </section>
+
+          <Contact compact className="mt-16" />
         </div>
       </div>
     </div>

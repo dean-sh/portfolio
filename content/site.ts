@@ -55,6 +55,8 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const QUOTE = TESTIMONIALS[2];
 
+export const CONTACT_LINE = "Have a machine learning system that has to hold up in production? I'd like to hear about it.";
+
 export const LINKS = {
   site: 'https://deanshabi.com',
   linkedin: 'https://www.linkedin.com/in/dean-shabi/',
