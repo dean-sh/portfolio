@@ -16,6 +16,10 @@ const REDIRECTS = {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60 * 60 * 24 * 31,
+  },
   async redirects() {
     return Object.entries(REDIRECTS).map(([source, destination]) => ({ source, destination, permanent: true }));
   },

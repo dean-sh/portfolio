@@ -122,7 +122,7 @@ export default function Home() {
           <Photo
             src={HERO.photo}
             priority
-            sizes="(max-width: 1023px) 100vw, 440px"
+            sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1023px) calc(100vw - 4rem), 440px"
             className="aspect-[4/3] md:aspect-[16/10] lg:aspect-[4/5]"
           />
           <span className="mt-1 flex min-h-11 items-center justify-between gap-4 text-xs">
@@ -184,7 +184,7 @@ export default function Home() {
           <Link href={`/work/${featured.slug}`} className={cn(CARD, 'grid md:grid-cols-12')} {...reveal(2)}>
             <Photo
               src={workImage(featured.slug)}
-              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 620px"
+              sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) 50vw, 620px"
               className="aspect-[4/3] rounded-none rounded-t-2xl md:col-span-6 md:aspect-auto md:min-h-[28rem] md:rounded-none md:rounded-l-2xl lg:col-span-7"
             />
             <div className="min-w-0 p-6 sm:p-8 md:col-span-6 md:self-center md:p-10 lg:col-span-5">
@@ -203,7 +203,7 @@ export default function Home() {
             <Link href={`/work/${panelled.slug}`} className={cn(CARD, 'block p-3 md:col-span-7')} {...reveal(0)}>
               <Photo
                 src={workImage(panelled.slug)}
-                sizes="(max-width: 767px) 100vw, (max-width: 1151px) 55vw, 610px"
+                sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1151px) 55vw, 610px"
                 className="aspect-[16/9] rounded-xl"
               />
               <div className="px-3 pb-4 pt-6 md:px-5 md:pb-6">
@@ -234,7 +234,7 @@ export default function Home() {
             >
               <Photo
                 src={workImage(offset.slug)}
-                sizes="(max-width: 767px) 100vw, (max-width: 1151px) 40vw, 440px"
+                sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1151px) 40vw, 440px"
                 className="aspect-[4/3] rounded-none rounded-t-2xl"
               />
               <div className="px-6 pb-3 pt-6 md:px-7 md:pt-7">
@@ -252,7 +252,7 @@ export default function Home() {
                 <Link href={`/work/${study.slug}`} className={cn(CARD, 'flex h-full flex-col p-3')}>
                   <Photo
                     src={workImage(study.slug)}
-                    sizes="(max-width: 767px) 100vw, (max-width: 1151px) 50vw, 520px"
+                    sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1151px) 50vw, 520px"
                     className="aspect-[16/9] rounded-xl"
                   />
                   <div className="px-3 pt-6 md:px-5">

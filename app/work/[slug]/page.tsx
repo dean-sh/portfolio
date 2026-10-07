@@ -116,7 +116,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
         <Photo
           src={workImage(study.slug)}
           priority
-          sizes="(max-width: 1200px) 100vw, 1152px"
+          sizes="(max-width: 639px) calc(100vw - 3rem), (max-width: 1215px) calc(100vw - 4rem), 1088px"
           className="aspect-[16/10] md:aspect-[21/9]"
         />
       </div>
@@ -199,7 +199,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
           </span>
           <Photo
             src={workImage(next.slug)}
-            sizes="(max-width: 767px) 100vw, 40vw"
+            sizes="(max-width: 767px) calc(100vw - 3rem), 440px"
             className="aspect-[16/9] md:col-span-5"
           />
         </Link>
