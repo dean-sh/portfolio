@@ -85,7 +85,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <meta name="theme-color" content="#FAFAFA" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
