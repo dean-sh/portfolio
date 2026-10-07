@@ -44,7 +44,7 @@ export const fleetNowcasting: Chart = {
 export const ottyFunnel: Chart = {
   kind: 'funnel',
   title: 'From roles judged to interviews, first four weeks',
-  note: 'Each percentage is the share kept from the stage above. The agent turned down most roles, and every application it sent went through the candidate\'s rules first.',
+  note: 'Each bar and the figure beside it is a share of all roles judged. The figure under each stage name is the share kept from the stage above. The agent turned down most roles, and every application it sent went through the candidate\'s rules first.',
   source: 'Otty production data, first four weeks.',
   stages: [
     { label: 'Roles judged', value: 438 },

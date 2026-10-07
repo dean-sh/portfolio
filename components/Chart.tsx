@@ -160,38 +160,47 @@ function LineChartView({ chart }: { chart: LineChart }) {
   );
 }
 
+function percent(fraction: number): string {
+  const value = fraction * 100;
+  return `${value >= 10 ? Math.round(value) : value.toFixed(1)}%`;
+}
+
 function FunnelView({ chart }: { chart: FunnelChart }) {
   const top = chart.stages[0].value;
   return (
     <figure>
-      <figcaption className="max-w-[62ch]">
-        <p className="text-base font-medium leading-snug">{chart.title}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{chart.note}</p>
-      </figcaption>
-      <ol className="mt-7 space-y-2.5">
+      <Caption chart={chart} />
+      <ol className="mt-7 space-y-3">
         {chart.stages.map((stage, i) => {
           const share = stage.value / top;
-          const kept = i === 0 ? 100 : Math.round((stage.value / chart.stages[i - 1].value) * 100);
           return (
-            <li key={stage.label} className="grid gap-y-0.5 sm:grid-cols-[11rem_1fr] sm:items-center sm:gap-x-4">
-              <span className="text-sm leading-snug">{stage.label}</span>
+            <li key={stage.label} className="grid gap-y-1 sm:grid-cols-[13rem_1fr] sm:items-center sm:gap-x-4">
+              <span className="text-sm leading-snug">
+                {stage.label}
+                {i > 0 && (
+                  <span className="block text-xs text-muted-foreground">
+                    <span className="font-mono tabular-nums">{percent(stage.value / chart.stages[i - 1].value)}</span> of the
+                    stage above
+                  </span>
+                )}
+              </span>
               <div className="relative h-7">
                 <span
                   className="absolute inset-y-1 left-0 rounded-r-[4px]"
-                  style={{ width: `max(3px, calc((100% - 5.5rem) * ${share}))`, background: TONE_COLOR.focus }}
+                  style={{ width: `max(3px, calc((100% - 4rem) * ${share}))`, background: TONE_COLOR.focus }}
                 />
                 <span
                   className="absolute top-1/2 -translate-y-1/2 whitespace-nowrap font-mono text-sm tabular-nums"
-                  style={{ left: `calc(max(3px, calc((100% - 5.5rem) * ${share})) + 0.6rem)` }}
+                  style={{ left: `calc(max(3px, calc((100% - 4rem) * ${share})) + 0.6rem)` }}
                 >
-                  {kept}%
+                  {percent(share)}
                 </span>
               </div>
             </li>
           );
         })}
       </ol>
-      <p className="mt-6 font-mono text-[11px] leading-relaxed text-muted-foreground">{chart.source}</p>
+      <Source chart={chart} />
     </figure>
   );
 }
