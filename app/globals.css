@@ -10,6 +10,7 @@
     --border: 240 6% 90%;
     --signal: 137 66% 30%;
     --signal-foreground: 0 0% 100%;
+    --signal-hover: 137 66% 24%;
     --muted: 240 5% 96%;
     --surface: 0 0% 100%;
     --chart-focus: #1a7f37;
@@ -28,6 +29,7 @@
     --border: 240 4% 16%;
     --signal: 128 49% 49%;
     --signal-foreground: 240 8% 5%;
+    --signal-hover: 128 49% 55%;
     --muted: 240 6% 10%;
     --surface: 240 7% 8%;
     --chart-focus: #2ea043;
@@ -155,7 +157,7 @@
   font-size: 0.875rem;
   z-index: 50;
   transition: transform 0.2s ease;
-  @apply border bg-background font-mono text-foreground;
+  @apply border bg-background font-sans text-foreground;
 }
 
 .skip-link:focus {

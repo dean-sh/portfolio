@@ -40,7 +40,7 @@ const CARD = cn(PANEL, LIFT, 'group overflow-hidden hover:border-signal/40');
 const CARD_GAP = 'gap-6 md:gap-8 lg:gap-10';
 
 const BUTTON =
-  'group inline-flex min-h-11 items-center gap-2 rounded-lg bg-signal px-5 text-sm font-medium text-signal-foreground transition-[transform,background-color] duration-200 hover:bg-signal/90 active:translate-y-px';
+  'group inline-flex min-h-11 items-center gap-2 rounded-lg bg-signal px-5 text-sm font-medium text-signal-foreground transition-[transform,background-color] duration-200 hover:bg-signal-hover active:translate-y-px';
 
 const NUDGE = 'transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-signal';
 
@@ -66,6 +66,8 @@ function HeadlineVisual({ visual }: { visual: 'portrait' | 'chart' }) {
     </span>
   );
 }
+
+const titleId = (study: CaseStudy) => `title-${study.slug}`;
 
 function StudyMeta({ study }: { study: CaseStudy }) {
   return (
@@ -185,7 +187,12 @@ export default function Home() {
         </h2>
 
         <div className={cn('mt-10 grid md:mt-14', CARD_GAP)}>
-          <Link href={`/work/${featured.slug}`} className={cn(CARD, 'grid md:grid-cols-12')} {...reveal(2)}>
+          <Link
+            href={`/work/${featured.slug}`}
+            aria-labelledby={titleId(featured)}
+            className={cn(CARD, 'grid md:grid-cols-12')}
+            {...reveal(2)}
+          >
             <Photo
               src={workImage(featured.slug)}
               sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1023px) 50vw, 620px"
@@ -193,7 +200,10 @@ export default function Home() {
             />
             <div className="min-w-0 p-6 sm:p-8 md:col-span-6 md:self-center md:p-10 lg:col-span-5">
               <StudyMeta study={featured} />
-              <h3 className="mt-4 font-serif text-[clamp(1.9rem,1.4rem+1.4vw,2.6rem)] leading-[1.06] tracking-[-0.012em] text-balance">
+              <h3
+                id={titleId(featured)}
+                className="mt-4 font-serif text-[clamp(1.9rem,1.4rem+1.4vw,2.6rem)] leading-[1.06] tracking-[-0.012em] text-balance"
+              >
                 {featured.title}
               </h3>
               <p className={cn(HOOK, 'mt-4 text-[0.975rem]')}>{featured.hook}</p>
@@ -204,7 +214,12 @@ export default function Home() {
           </Link>
 
           <div className={cn('grid md:grid-cols-12', CARD_GAP)}>
-            <Link href={`/work/${panelled.slug}`} className={cn(CARD, 'block p-3 md:col-span-7')} {...reveal(0)}>
+            <Link
+              href={`/work/${panelled.slug}`}
+              aria-labelledby={titleId(panelled)}
+              className={cn(CARD, 'block p-3 md:col-span-7')}
+              {...reveal(0)}
+            >
               <Photo
                 src={workImage(panelled.slug)}
                 sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1151px) 55vw, 610px"
@@ -212,7 +227,7 @@ export default function Home() {
               />
               <div className="px-3 pb-4 pt-6 md:px-5 md:pb-6">
                 <StudyMeta study={panelled} />
-                <h3 className={cn(TITLE, 'mt-3')}>
+                <h3 id={titleId(panelled)} className={cn(TITLE, 'mt-3')}>
                   {panelled.title}
                   <TitleArrow />
                 </h3>
@@ -233,6 +248,7 @@ export default function Home() {
 
             <Link
               href={`/work/${offset.slug}`}
+              aria-labelledby={titleId(offset)}
               className={cn(CARD, 'block md:col-span-5 md:mt-20 md:self-start')}
               {...reveal(1)}
             >
@@ -243,7 +259,9 @@ export default function Home() {
               />
               <div className="px-6 pb-3 pt-6 md:px-7 md:pt-7">
                 <StudyMeta study={offset} />
-                <h3 className={cn(TITLE, 'mt-3')}>{offset.title}</h3>
+                <h3 id={titleId(offset)} className={cn(TITLE, 'mt-3')}>
+                  {offset.title}
+                </h3>
                 <p className={cn(HOOK, 'mt-3')}>{offset.hook}</p>
                 <ReadMore />
               </div>
@@ -253,7 +271,11 @@ export default function Home() {
           <ul className={cn('grid md:grid-cols-2', CARD_GAP)}>
             {closing.map((study, i) => (
               <li key={study.slug} {...reveal(i)}>
-                <Link href={`/work/${study.slug}`} className={cn(CARD, 'flex h-full flex-col p-3')}>
+                <Link
+                  href={`/work/${study.slug}`}
+                  aria-labelledby={titleId(study)}
+                  className={cn(CARD, 'flex h-full flex-col p-3')}
+                >
                   <Photo
                     src={workImage(study.slug)}
                     sizes="(max-width: 767px) calc(100vw - 3rem), (max-width: 1151px) 50vw, 520px"
@@ -261,7 +283,7 @@ export default function Home() {
                   />
                   <div className="px-3 pt-6 md:px-5">
                     <StudyMeta study={study} />
-                    <h3 className={cn(TITLE, 'mt-3')}>
+                    <h3 id={titleId(study)} className={cn(TITLE, 'mt-3')}>
                       {study.title}
                       <TitleArrow />
                     </h3>
@@ -287,6 +309,7 @@ export default function Home() {
             <li key={study.slug} {...reveal(i + 1)}>
               <Link
                 href={`/work/${study.slug}`}
+                aria-labelledby={titleId(study)}
                 className="group flex items-center gap-4 border-t border-border py-5 transition-colors duration-300 hover:border-signal/40"
               >
                 <Photo src={workImage(study.slug)} sizes="80px" className="h-14 w-20 shrink-0 rounded-lg" />
@@ -294,7 +317,10 @@ export default function Home() {
                   <span className="meta block">
                     {study.org} · {study.period}
                   </span>
-                  <span className="mt-1 block text-[0.95rem] leading-snug transition-colors duration-200 group-hover:text-signal">
+                  <span
+                    id={titleId(study)}
+                    className="mt-1 block text-[0.95rem] leading-snug transition-colors duration-200 group-hover:text-signal"
+                  >
                     {study.title}
                   </span>
                   {study.metrics[0] && (

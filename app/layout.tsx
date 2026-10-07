@@ -97,7 +97,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Nav name={HERO.name} />
-        <main id="main-content" className="flex flex-1 flex-col">
+        <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col focus-visible:[box-shadow:none]">
           {children}
         </main>
         <footer className="container pb-16 pt-16 text-xs text-muted-foreground">

@@ -65,8 +65,9 @@ export function ChartHover({
   return (
     <div
       tabIndex={0}
+      role="group"
       aria-label="Chart values. Use the arrow keys to move between points."
-      className="absolute inset-0 cursor-crosshair touch-pan-y outline-none focus-visible:ring-1 focus-visible:ring-foreground/30"
+      className="absolute inset-0 cursor-crosshair touch-pan-y"
       onPointerMove={track}
       onPointerDown={track}
       onPointerLeave={(event) => {

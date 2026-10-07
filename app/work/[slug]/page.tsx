@@ -44,7 +44,9 @@ const SECTIONS = [
 function SectionHeading({ id, index, children }: { id: string; index: number; children: string }) {
   return (
     <h2 id={id} className="scroll-mt-24 font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:text-[2rem]">
-      <span className="mr-3 align-middle font-mono text-sm text-signal">{String(index).padStart(2, '0')}</span>
+      <span aria-hidden="true" className="mr-3 align-middle font-mono text-sm text-signal">
+        {String(index).padStart(2, '0')}
+      </span>
       {children}
     </h2>
   );
@@ -121,7 +123,9 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
                     href={`#${section.id}`}
                     className="inline-flex min-h-9 items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
                   >
-                    <span className="font-mono text-xs text-signal">{String(i + 1).padStart(2, '0')}</span>
+                    <span aria-hidden="true" className="font-mono text-xs text-signal">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
                     {section.label}
                   </a>
                 </li>

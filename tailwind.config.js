@@ -17,6 +17,7 @@ module.exports = {
         signal: {
           DEFAULT: 'hsl(var(--signal) / <alpha-value>)',
           foreground: 'hsl(var(--signal-foreground) / <alpha-value>)',
+          hover: 'hsl(var(--signal-hover) / <alpha-value>)',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
