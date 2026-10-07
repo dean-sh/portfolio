@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, type PointerEvent, type ReactNode } from 'react';
-
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+import { MONTHS } from '@/lib/chart';
 
 type Tip = { left: number; top: number; frac: number; count: number; date: string };
 

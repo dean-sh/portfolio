@@ -1,10 +1,8 @@
 import type { Chart as ChartSpec, CompareChart, EquationChart, FunnelChart, JudgeChart, LineChart, TailChart } from '@/content/types';
-import { lossCurve, plotChart, TONE_COLOR } from '@/lib/chart';
+import { inDrawOrder, lossCurve, plotChart, TONE_COLOR, VIEWBOX } from '@/lib/chart';
 import { Arrow } from './Arrow';
 import { ChartHover } from './ChartHover';
 import { LineKey } from './LineKey';
-
-const TONE_ORDER = { baseline: 0, context: 1, focus: 2 } as const;
 
 function edgeShift(at: number): string {
   if (at < 0.04) return 'translateX(0)';
@@ -15,7 +13,7 @@ function edgeShift(at: number): string {
 function LineChartView({ chart }: { chart: LineChart }) {
   const plot = plotChart(chart);
   const multi = plot.series.length > 1;
-  const drawn = [...plot.series].sort((a, b) => TONE_ORDER[a.tone] - TONE_ORDER[b.tone]);
+  const drawn = inDrawOrder(plot.series);
   const focus = plot.series.find((s) => s.tone === 'focus');
   const last = plot.xs.length - 1;
 
@@ -55,7 +53,7 @@ function LineChartView({ chart }: { chart: LineChart }) {
 
           <svg
             aria-hidden="true"
-            viewBox="0 0 1000 1000"
+            viewBox={VIEWBOX}
             preserveAspectRatio="none"
             className="absolute inset-0 h-full w-full overflow-visible"
           >
@@ -353,12 +351,12 @@ function TailView({ chart }: { chart: TailChart }) {
     <figure>
       <Caption chart={chart} />
       <div aria-hidden="true" className="relative mt-10 h-48 md:h-56">
-        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
+        <svg viewBox={VIEWBOX} preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
           <path d={loss.area} fill={TONE_COLOR.context} fillOpacity={0.18} stroke="none" />
           <path d={loss.tail} fill={TONE_COLOR.focus} fillOpacity={0.3} stroke="none" />
           <path d={loss.curve} fill="none" stroke={TONE_COLOR.context} strokeWidth={1.5} vectorEffect="non-scaling-stroke" />
           <path d={loss.tailCurve} fill="none" stroke={TONE_COLOR.focus} strokeWidth={2} vectorEffect="non-scaling-stroke" />
-          <line x1="0" x2="1000" y1="1000" y2="1000" stroke="hsl(var(--border))" strokeWidth={1} vectorEffect="non-scaling-stroke" />
+          <line x1="0%" x2="100%" y1="100%" y2="100%" stroke="hsl(var(--border))" strokeWidth={1} vectorEffect="non-scaling-stroke" />
         </svg>
         {[
           { at: loss.varAt, label: `VaR ${pct}%`, dashed: false, top: 'top-0' },

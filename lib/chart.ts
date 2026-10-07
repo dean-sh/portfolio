@@ -24,8 +24,18 @@ export const TONE_COLOR: Record<ChartSeries['tone'], string> = {
   baseline: 'var(--chart-context)',
 };
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// Paths are drawn in a SIZE x SIZE box and stretched to the plot with preserveAspectRatio="none".
 const SIZE = 1000;
+export const VIEWBOX = `0 0 ${SIZE} ${SIZE}`;
+
+const TONE_ORDER = { baseline: 0, context: 1, focus: 2 } as const;
+
+// Back to front, so the focus series is drawn on top.
+export function inDrawOrder<T extends { tone: ChartSeries['tone'] }>(series: T[]): T[] {
+  return [...series].sort((a, b) => TONE_ORDER[a.tone] - TONE_ORDER[b.tone]);
+}
 
 export function formatValue(value: number, format: ChartFormat): string {
   return format === 'percent' ? `${value.toFixed(1)}%` : `${Math.round(value).toLocaleString('en-GB')} MWh`;

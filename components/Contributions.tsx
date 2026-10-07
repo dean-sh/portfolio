@@ -1,9 +1,9 @@
 import type { CSSProperties } from 'react';
 import { getContributions, type ContributionCalendar } from '@/lib/github';
+import { MONTHS } from '@/lib/chart';
 import { cn } from '@/lib/utils';
 import { ContributionsHover } from './ContributionsHover';
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const MOBILE_WEEKS = 26;
 const LEVELS = [0, 1, 2, 3, 4] as const;
 
