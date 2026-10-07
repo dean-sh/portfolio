@@ -79,7 +79,7 @@ export async function Contributions({ user }: { user: string }) {
                     data-count={day.count}
                     className={cn(
                       'aspect-square rounded-[2px] outline outline-1 outline-offset-1 outline-transparent transition-[outline-color] hover:outline-foreground/60',
-                      day.date === latest && 'pulse-ring',
+                      day.date === latest && 'pulse-ring pulse-ring-tight',
                     )}
                     style={{ background: `var(--gh-${day.level})`, color: 'var(--gh-4)' }}
                   />

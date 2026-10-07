@@ -207,8 +207,14 @@ html.js [data-reveal][data-shown] {
   }
   to {
     opacity: 0;
-    transform: scale(1.9);
+    transform: scale(var(--pulse-to, 1.9));
   }
+}
+
+/* Today's heatmap cell is 3px from its neighbours, so its ring stays in the gap. */
+.pulse-ring-tight::after {
+  inset: -1px;
+  --pulse-to: 1.2;
 }
 
 @media (prefers-reduced-motion: reduce) {
