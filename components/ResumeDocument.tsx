@@ -57,7 +57,8 @@ const s = StyleSheet.create({
   entry: { flexDirection: 'row', paddingVertical: 7, borderBottomWidth: HAIRLINE, borderBottomColor: BORDER },
   aside: { width: 108, paddingTop: 2, paddingRight: 10 },
   period: { ...type(7.5, 1.4), fontFamily: 'Geist Mono' },
-  location: { ...type(8, 1.4), marginTop: 2, color: MUTED },
+  // The location and institution offsets keep each period closer to its title than to the line below, so pdfminer reads the gutter with its entry.
+  location: { ...type(8, 1.4), marginTop: 6, color: MUTED },
   main: { flex: 1 },
   role: { ...type(10, 1.3), fontWeight: 500 },
   company: { fontWeight: 400, color: MUTED },
@@ -67,7 +68,7 @@ const s = StyleSheet.create({
   bulletText: { ...type(9, 1.5), flex: 1, color: MUTED },
   skills: { ...type(7.5, 1.4), marginTop: 5, color: MUTED },
   degree: { ...type(9.5, 1.3), fontWeight: 500 },
-  institution: { ...type(8.5, 1.4), marginTop: 1, color: MUTED },
+  institution: { ...type(8.5, 1.4), marginTop: 4, color: MUTED },
   details: { ...type(8.5, 1.5), marginTop: 3, color: MUTED },
   skillGroup: { marginTop: 6 },
   skillLabel: { ...type(9, 1.3), fontWeight: 500 },
