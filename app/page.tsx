@@ -17,7 +17,6 @@ const [featured, panelled, offset, ...closing] = WORK;
 const heroStudy = WORK.find((study) => study.slug === 'physics-first-solar')!;
 
 const CONTACTS = [
-  { label: LINKS.email, href: `mailto:${LINKS.email}` },
   { label: 'LinkedIn', href: LINKS.linkedin },
   { label: 'GitHub', href: LINKS.github },
 ];
@@ -339,7 +338,7 @@ export default function Home() {
                 <a
                   href={c.href}
                   className="link inline-flex min-h-11 items-center"
-                  target={c.href.startsWith('mailto:') ? undefined : '_blank'}
+                  target="_blank"
                   rel="noreferrer"
                 >
                   {c.label}

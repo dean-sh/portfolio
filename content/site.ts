@@ -56,6 +56,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const QUOTE = TESTIMONIALS[2];
 
 export const LINKS = {
+  site: 'https://deanshabi.com',
   email: 'deanshabi@gmail.com',
   linkedin: 'https://www.linkedin.com/in/dean-shabi/',
   github: 'https://github.com/dean-sh',
