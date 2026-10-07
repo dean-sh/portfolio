@@ -6,6 +6,7 @@ import { Arrow } from '@/components/Arrow';
 import { Chart } from '@/components/Chart';
 import { Contact } from '@/components/Contact';
 import { Photo } from '@/components/Photo';
+import { Toc } from '@/components/Toc';
 import { Pipeline } from '@/components/Pipeline';
 import { OPEN_GRAPH } from '@/lib/metadata';
 import { ALL_CASE_STUDIES, findCaseStudy, formatIndex, workImage, type CaseStudyEntry } from '@/lib/work';
@@ -45,7 +46,7 @@ function SectionHeading({ id, index, children }: { id: string; index: number; ch
   return (
     <h2 id={id} className="scroll-mt-24 font-serif text-[1.75rem] leading-tight tracking-[-0.01em] md:text-[2rem]">
       <span aria-hidden="true" className="mr-3 align-middle font-mono text-sm text-signal">
-        {String(index).padStart(2, '0')}
+        {formatIndex(index - 1)}
       </span>
       {children}
     </h2>
@@ -111,24 +112,7 @@ function CaseStudy({ entry }: { entry: CaseStudyEntry }) {
 
       <div className="mt-16 grid gap-12 md:mt-24 lg:grid-cols-12">
         <aside className="hidden lg:col-span-3 lg:block">
-          <nav aria-label="On this page" className="sticky top-28">
-            <p className="eyebrow">On this page</p>
-            <ol className="mt-3 space-y-1">
-              {SECTIONS.map((section, i) => (
-                <li key={section.id}>
-                  <a
-                    href={`#${section.id}`}
-                    className="inline-flex min-h-9 items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    <span aria-hidden="true" className="font-mono text-xs text-signal">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    {section.label}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
+          <Toc sections={SECTIONS} />
         </aside>
 
         <div className="min-w-0 lg:col-span-9">
