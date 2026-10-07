@@ -22,7 +22,7 @@ const MUTED = '#71717A';
 const BORDER = '#E4E4E7';
 const ACCENT = '#1A7F37';
 const HAIRLINE = 0.6;
-const MARGIN = 46;
+const MARGIN = 44;
 
 const bare = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '');
 
@@ -34,27 +34,27 @@ const type = (fontSize: number, lineHeight: number) => ({ fontSize, lineHeight }
 const s = StyleSheet.create({
   page: {
     paddingTop: MARGIN,
-    paddingBottom: MARGIN + 18,
+    paddingBottom: MARGIN + 12,
     paddingHorizontal: MARGIN,
     backgroundColor: '#FFFFFF',
     color: INK,
     fontFamily: 'Geist',
   },
   name: { ...type(30, 1), fontFamily: 'Instrument Serif', letterSpacing: -0.4 },
-  summary: { ...type(9.5, 1.5), marginTop: 12, maxWidth: 440, color: MUTED },
-  meta: { marginTop: 12, flexDirection: 'row', justifyContent: 'space-between' },
+  summary: { ...type(9.5, 1.5), marginTop: 10, maxWidth: 440, color: MUTED },
+  meta: { marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' },
   locations: { ...type(8, 1.4), color: MUTED },
   profiles: { flexDirection: 'row', gap: 12 },
   profile: { ...type(8, 1.4), color: INK, textDecoration: 'none' },
   heading: {
-    ...type(15, 1.2),
-    marginTop: 20,
+    ...type(15, 1.1),
+    marginTop: 18,
     paddingBottom: 6,
     borderBottomWidth: HAIRLINE,
     borderBottomColor: BORDER,
     fontFamily: 'Instrument Serif',
   },
-  entry: { flexDirection: 'row', paddingVertical: 8, borderBottomWidth: HAIRLINE, borderBottomColor: BORDER },
+  entry: { flexDirection: 'row', paddingVertical: 7, borderBottomWidth: HAIRLINE, borderBottomColor: BORDER },
   aside: { width: 108, paddingTop: 2, paddingRight: 10 },
   period: { ...type(7.5, 1.4), fontFamily: 'Geist Mono' },
   location: { ...type(8, 1.4), marginTop: 2, color: MUTED },
@@ -62,20 +62,19 @@ const s = StyleSheet.create({
   role: { ...type(10, 1.3), fontWeight: 500 },
   company: { fontWeight: 400, color: MUTED },
   bullets: { marginTop: 4 },
-  bullet: { flexDirection: 'row', marginTop: 2 },
+  bullet: { flexDirection: 'row', marginTop: 1.5 },
   dash: { width: 6, height: 1, marginTop: 6.2, marginRight: 6, backgroundColor: ACCENT },
   bulletText: { ...type(9, 1.5), flex: 1, color: MUTED },
   skills: { ...type(7.5, 1.4), marginTop: 5, color: MUTED },
   degree: { ...type(9.5, 1.3), fontWeight: 500 },
   institution: { ...type(8.5, 1.4), marginTop: 1, color: MUTED },
   details: { ...type(8.5, 1.5), marginTop: 3, color: MUTED },
-  skillGrid: { flexDirection: 'row', flexWrap: 'wrap', paddingTop: 8, rowGap: 8 },
-  skillGroup: { width: '50%', paddingRight: 16 },
+  skillGroup: { marginTop: 6 },
   skillLabel: { ...type(9, 1.3), fontWeight: 500 },
-  skillItems: { ...type(8.5, 1.5), marginTop: 2, color: MUTED },
+  skillItems: { ...type(8.5, 1.4), marginTop: 1, color: MUTED },
   footer: {
     position: 'absolute',
-    bottom: MARGIN - 16,
+    bottom: MARGIN - 14,
     left: MARGIN,
     right: MARGIN,
     flexDirection: 'row',
@@ -165,14 +164,12 @@ export function ResumeDocument() {
         </Section>
 
         <Section title="Skills">
-          <View style={s.skillGrid}>
-            {SKILL_GROUPS.map((group) => (
-              <View key={group.label} style={s.skillGroup}>
-                <Text style={s.skillLabel}>{group.label}</Text>
-                <Text style={s.skillItems}>{group.items.join(', ')}</Text>
-              </View>
-            ))}
-          </View>
+          {SKILL_GROUPS.map((group) => (
+            <View key={group.label} style={s.skillGroup} wrap={false}>
+              <Text style={s.skillLabel}>{group.label}</Text>
+              <Text style={s.skillItems}>{group.items.join(', ')}</Text>
+            </View>
+          ))}
         </Section>
 
         <View style={s.footer} fixed>
