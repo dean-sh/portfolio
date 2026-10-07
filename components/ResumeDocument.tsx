@@ -26,7 +26,10 @@ const MARGIN = 44;
 
 const bare = (url: string) => url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '');
 
-const PROFILES = [LINKS.site, LINKS.linkedin, LINKS.github];
+const CONTACTS = [
+  { href: `mailto:${LINKS.email}`, label: LINKS.email },
+  ...[LINKS.site, LINKS.linkedin, LINKS.github].map((url) => ({ href: url, label: bare(url) })),
+];
 
 // react-pdf resolves a unitless lineHeight against the element's own fontSize (default 18), not the inherited one.
 const type = (fontSize: number, lineHeight: number) => ({ fontSize, lineHeight });
@@ -43,9 +46,9 @@ const s = StyleSheet.create({
   name: { ...type(30, 1), fontFamily: 'Instrument Serif' },
   summary: { ...type(9.5, 1.5), marginTop: 10, maxWidth: 440, color: MUTED },
   meta: { marginTop: 10, flexDirection: 'row', justifyContent: 'space-between' },
-  locations: { ...type(8, 1.4), color: MUTED },
-  profiles: { flexDirection: 'row', gap: 12 },
-  profile: { ...type(8, 1.4), color: INK, textDecoration: 'none' },
+  locations: { ...type(7.5, 1.4), color: MUTED },
+  contacts: { flexDirection: 'row', gap: 10 },
+  contact: { ...type(7.5, 1.4), color: INK, textDecoration: 'none' },
   heading: {
     ...type(15, 1.1),
     marginTop: 18,
@@ -131,10 +134,10 @@ export function ResumeDocument() {
         <Text style={s.summary}>{SUMMARY}</Text>
         <View style={s.meta}>
           <Text style={s.locations}>{`${BASE.city}, ${BASE.countryCode} · ${REMOTE}`}</Text>
-          <View style={s.profiles}>
-            {PROFILES.map((url) => (
-              <Link key={url} src={url} style={s.profile}>
-                {bare(url)}
+          <View style={s.contacts}>
+            {CONTACTS.map(({ href, label }) => (
+              <Link key={href} src={href} style={s.contact}>
+                {label}
               </Link>
             ))}
           </View>
