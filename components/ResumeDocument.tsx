@@ -60,8 +60,10 @@ const s = StyleSheet.create({
   // The location and institution offsets keep each period closer to its title than to the line below, so pdfminer reads the gutter with its entry.
   location: { ...type(8, 1.4), marginTop: 6, color: MUTED },
   main: { flex: 1 },
+  // Wider than a space, so item-based parsers keep the title, the dot and the company as separate items.
+  roleLine: { flexDirection: 'row', columnGap: 4.5 },
   role: { ...type(10, 1.3), fontWeight: 500 },
-  company: { fontWeight: 400, color: MUTED },
+  company: { ...type(10, 1.3), color: MUTED },
   bullets: { marginTop: 4 },
   bullet: { flexDirection: 'row', marginTop: 1.5 },
   dash: { width: 6, height: 1, marginTop: 6.2, marginRight: 6, backgroundColor: ACCENT },
@@ -149,10 +151,11 @@ export function ResumeDocument() {
                 </>
               }
             >
-              <Text style={s.role}>
-                {item.role}
-                <Text style={s.company}> · {item.company}</Text>
-              </Text>
+              <View style={s.roleLine}>
+                <Text style={s.role}>{item.role}</Text>
+                <Text style={s.company}>·</Text>
+                <Text style={s.company}>{item.company}</Text>
+              </View>
               <View style={s.bullets}>
                 {item.bullets.map((bullet) => (
                   <View key={bullet} style={s.bullet}>
