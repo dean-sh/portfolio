@@ -19,7 +19,7 @@ const serif = Instrument_Serif({
   adjustFontFallback: true,
 });
 
-const SITE_TITLE = 'Dean Shabi · Engineering lead';
+const SITE_TITLE = 'Dean Shabi · AI engineer and founder';
 
 export const metadata: Metadata = {
   title: {
