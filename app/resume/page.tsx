@@ -7,7 +7,7 @@ import { JsonLd, RESUME_GRAPH } from '@/lib/structured-data';
 import { BASE, EDUCATION, EXPERIENCE, REMOTE, SKILL_GROUPS, SUMMARY } from '@/content/resume';
 
 const DESCRIPTION =
-  'Resume of Dean Shabi, an AI engineer and two-time founder in Prague with seven years of machine learning in production, mostly energy forecasting.';
+  'Resume of Dean Shabi, an engineering lead and two-time founder in Prague with seven years of machine learning in production, mostly energy forecasting.';
 
 export const metadata: Metadata = {
   title: 'Resume',
