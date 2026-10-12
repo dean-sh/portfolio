@@ -26,7 +26,7 @@ export type Place = {
 };
 
 export const SUMMARY =
-  'Engineering lead and two-time founder. I spent seven years putting machine learning into production, mostly forecasting for energy markets, then built the AI behind Otty and Katalo. I now lead engineering at a stealth startup building critical European infrastructure for aerospace, defence and robotics.';
+  'Engineering lead and two-time founder. I\'ve spent seven years putting machine learning into production, mostly forecasting for energy markets, and built the AI behind Otty and Katalo. I now own the solar forecasting stack at Renewcast.';
 
 export const BASE: Place = { city: 'Prague', country: 'Czech Republic', countryCode: 'CZ' };
 
@@ -34,14 +34,16 @@ export const REMOTE = 'Remote with UK and EU teams';
 
 export const EXPERIENCE: Role[] = [
   {
-    role: 'Engineering Lead',
-    company: 'Stealth startup',
-    location: 'Europe',
-    period: '2026 to now',
+    role: 'Senior Data Scientist',
+    company: 'Renewcast',
+    location: 'Italy · Remote',
+    period: '2025 to now',
     bullets: [
-      'Lead engineering at a company building critical European infrastructure for aerospace, defence and robotics.',
+      'Own the solar forecasting stack. Cut portfolio forecast error from 15% to 6% in five months by pairing plant physics with a learned correction.',
+      'Built one model per fleet that corrects the next four hours from live plant data. It beat persistence on 98% of solar plant-months in backtests.',
+      'Replaced hand-picked model releases with a statistical test against the forecasts customers received, documented in four ADRs.',
     ],
-    skills: ['Engineering leadership', 'Systems architecture', 'AI'],
+    skills: ['Machine learning', 'Weather prediction', 'Python', 'API development'],
   },
   {
     role: 'Founder',
@@ -67,18 +69,6 @@ export const EXPERIENCE: Role[] = [
       'Released prompts and judge versions the way code ships, with snapshots, hashes and a staging step.',
     ],
     skills: ['LLM evals', 'Convex', 'TypeScript', 'Image models'],
-  },
-  {
-    role: 'Senior Data Scientist',
-    company: 'Renewcast',
-    location: 'Italy · Remote',
-    period: '2025 to Oct 2026',
-    bullets: [
-      'Owned the solar forecasting stack. Cut portfolio forecast error from 15% to 6% in five months by pairing plant physics with a learned correction.',
-      'Built one model per fleet that corrects the next four hours from live plant data. It beat persistence on 98% of solar plant-months in backtests.',
-      'Replaced hand-picked model releases with a statistical test against the forecasts customers received, documented in four ADRs.',
-    ],
-    skills: ['Machine learning', 'Weather prediction', 'Python', 'API development'],
   },
   {
     role: 'Founding Data Scientist',

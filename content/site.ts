@@ -38,9 +38,9 @@ export const PERSON = {
 export type NowItem = { label: string; value: string; href?: string; detail: string };
 
 export const NOW: NowItem[] = [
-  { label: 'Now', value: 'Engineering lead', detail: 'Stealth startup in aerospace, defence and robotics' },
+  { label: 'Now', value: 'Renewcast', detail: 'Senior data scientist on solar and wind forecasting' },
   { label: 'Founder', value: 'Otty', href: 'https://heyotty.com', detail: 'Previously co-founded Katalo' },
-  { label: 'Before', value: 'Machine learning', detail: 'Renewcast, tem. and AmpX' },
+  { label: 'Before', value: 'Machine learning', detail: 'tem., AmpX and Datamole' },
   { label: 'Based in', value: 'Prague', detail: 'Remote with UK and EU teams' },
 ];
 
