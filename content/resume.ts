@@ -26,7 +26,7 @@ export type Place = {
 };
 
 export const SUMMARY =
-  'Engineering lead and two-time founder. I\'ve spent seven years putting machine learning into production, mostly forecasting for energy markets, and built the AI behind Otty and Katalo. I now own the solar forecasting stack at Renewcast.';
+  'AI engineer and two-time founder. I\'ve spent seven years putting machine learning into production, mostly forecasting for energy markets, and built the AI behind Otty and Katalo. I now own the solar forecasting stack at Renewcast.';
 
 export const BASE: Place = { city: 'Prague', country: 'Czech Republic', countryCode: 'CZ' };
 

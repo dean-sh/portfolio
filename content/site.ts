@@ -3,7 +3,7 @@ import type { Testimonial } from './types';
 export type HeadlineSegment = { text: string } | { visual: 'portrait' | 'chart' };
 
 const HEADLINE: HeadlineSegment[] = [
-  { text: 'Engineering lead.' },
+  { text: 'AI engineer and founder.' },
   { visual: 'portrait' },
   { text: 'I build machine learning' },
   { visual: 'chart' },
@@ -18,13 +18,13 @@ export const HERO = {
   title: HEADLINE.map((s) => ('text' in s ? s.text : ' ')).join('').replace(/\s+/g, ' ').trim(),
   // Meta description for the home page, at most 155 characters.
   description:
-    'Dean Shabi is an engineering lead in Prague who builds machine learning systems for production. Case studies cover energy forecasting and AI agents.',
+    'Dean Shabi is an AI engineer and founder in Prague who builds machine learning systems for production. Case studies cover energy forecasting and AI agents.',
 };
 
 // The Person in the site's structured data. Never add the email or a phone number here.
 export const PERSON = {
   description:
-    'Engineering lead and two-time founder in Prague, with seven years of machine learning in production, mostly forecasting for energy markets.',
+    'AI engineer and two-time founder in Prague, with seven years of machine learning in production, mostly forecasting for energy markets.',
   knowsAbout: [
     'Machine learning',
     'Time series forecasting',
