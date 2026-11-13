@@ -199,7 +199,7 @@ export const WORK: CaseStudy[] = [
       },
     ],
     results: [
-      'Four client portfolios now run on the framework, the largest with 1,189 plants. On a 107-site portfolio, hourly forecast error came to 10% of metered energy over 14 months. Monthly totals were off by 5% on average.',
+      'By October 2026, four client portfolios ran on the framework, the largest with 1,189 plants. On a 107-site portfolio, hourly forecast error came to 10% of metered energy over 14 months. Monthly totals were off by 5% on average.',
     ],
     chart: charts.portfolioFramework,
     stack: ['Python', 'pvlib', 'H3', 'LightGBM', 'MLflow'],
